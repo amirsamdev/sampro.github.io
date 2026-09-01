@@ -1,1129 +1,1218 @@
+```html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>GAMEHUB — دنیای گیمینگ</title>
-
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --bg: #202020;
-    --bg-soft: #292929;
-    --blue-dark: #2E4192;
-    --blue: #4E6FF8;
-    --blue-soft: #9aabff;
-
-    --text: #ffffff;
-    --text-soft: rgba(255,255,255,.68);
-    --text-muted: rgba(255,255,255,.42);
-
-    --border: rgba(255,255,255,.08);
-    --card: rgba(255,255,255,.045);
-
-    --radius: 18px;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    min-height: 100vh;
-
-    background:
-        radial-gradient(
-            circle at 15% 5%,
-            rgba(78,111,248,.18),
-            transparent 30%
-        ),
-        linear-gradient(
-            180deg,
-            #222222 0%,
-            #292929 35%,
-            #2E4192 130%
-        );
-
-    color: var(--text);
-
-    font-family:
-        Vazirmatn,
-        IRANSans,
-        Tahoma,
-        Arial,
-        sans-serif;
-}
-
-button,
-input {
-    font: inherit;
-}
-
-button {
-    cursor: pointer;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-img {
-    max-width: 100%;
-    display: block;
-}
-
-
-/* =========================
-   LAYOUT
-========================= */
-
-.container {
-    width: min(1120px, calc(100% - 36px));
-    margin: auto;
-}
-
-
-/* =========================
-   HEADER
-========================= */
-
-.header {
-    height: 76px;
-
-    position: sticky;
-    top: 0;
-    z-index: 50;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GAMEHUB — دنیای گیمینگ</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #202020;
+            --bg-soft: #292929;
+            --blue-dark: #2E4192;
+            --blue: #4E6FF8;
+            --blue-soft: #9aabff;
+
+            --text: #ffffff;
+            --text-soft: rgba(255,255,255,.68);
+            --text-muted: rgba(255,255,255,.42);
+
+            --border: rgba(255,255,255,.08);
+            --card: rgba(255,255,255,.045);
+
+            --radius: 18px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 15% 5%,
+                    rgba(78,111,248,.18),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    180deg,
+                    #222222 0%,
+                    #292929 35%,
+                    #2E4192 130%
+                );
+
+            color: var(--text);
+
+            font-family:
+                Vazirmatn,
+                IRANSans,
+                Tahoma,
+                Arial,
+                sans-serif;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(1120px, calc(100% - 36px));
+            margin: auto;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+            height: 76px;
+
+            position: sticky;
+            top: 0;
+            z-index: 50;
+
+            border-bottom: 1px solid var(--border);
+
+            background: rgba(30,30,30,.72);
+
+            backdrop-filter: blur(20px);
+        }
 
-    border-bottom: 1px solid var(--border);
+        .header-inner {
+            height: 100%;
 
-    background: rgba(30,30,30,.72);
+            display: flex;
+            align-items: center;
+            gap: 36px;
+        }
 
-    backdrop-filter: blur(20px);
-}
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
 
-.header-inner {
-    height: 100%;
+            font-size: 15px;
+            font-weight: 900;
+        }
 
-    display: flex;
-    align-items: center;
-    gap: 36px;
-}
+        .logo-mark {
+            width: 36px;
+            height: 36px;
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+            display: grid;
+            place-items: center;
 
-    font-size: 15px;
-    font-weight: 900;
-    letter-spacing: .5px;
-}
+            border-radius: 11px;
 
-.logo-mark {
-    width: 36px;
-    height: 36px;
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--blue-dark),
+                    var(--blue)
+                );
 
-    display: grid;
-    place-items: center;
+            box-shadow:
+                0 8px 30px rgba(78,111,248,.25);
+        }
 
-    border-radius: 11px;
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+        }
 
-    background:
-        linear-gradient(
-            135deg,
-            var(--blue-dark),
-            var(--blue)
-        );
+        .nav a {
+            color: var(--text-muted);
 
-    box-shadow:
-        0 8px 30px rgba(78,111,248,.25);
-}
+            font-size: 12px;
+            font-weight: 700;
 
-.nav {
-    display: flex;
-    align-items: center;
-    gap: 26px;
-}
+            transition: .2s;
+        }
 
-.nav a {
-    color: var(--text-muted);
+        .nav a:hover,
+        .nav a.active {
+            color: white;
+        }
 
-    font-size: 12px;
-    font-weight: 700;
+        .header-right {
+            margin-right: auto;
 
-    transition: .2s;
-}
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-.nav a:hover,
-.nav a.active {
-    color: white;
-}
+        .search {
+            width: 190px;
+            height: 38px;
 
-.header-right {
-    margin-right: auto;
+            display: flex;
+            align-items: center;
+            gap: 8px;
 
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+            padding: 0 12px;
 
-.search {
-    width: 190px;
-    height: 38px;
+            border: 1px solid var(--border);
+            border-radius: 11px;
 
-    display: flex;
-    align-items: center;
-    gap: 8px;
+            background: rgba(255,255,255,.04);
+        }
 
-    padding: 0 12px;
+        .search span {
+            color: var(--text-muted);
+        }
 
-    border: 1px solid var(--border);
-    border-radius: 11px;
+        .search input {
+            width: 100%;
 
-    background: rgba(255,255,255,.04);
-}
+            border: 0;
+            outline: 0;
 
-.search span {
-    color: var(--text-muted);
-}
+            background: transparent;
 
-.search input {
-    width: 100%;
+            color: white;
 
-    border: 0;
-    outline: 0;
+            font-size: 11px;
+        }
 
-    background: transparent;
+        .search input::placeholder {
+            color: var(--text-muted);
+        }
 
-    color: white;
+        .profile {
+            width: 38px;
+            height: 38px;
 
-    font-size: 11px;
-}
+            display: grid;
+            place-items: center;
 
-.search input::placeholder {
-    color: var(--text-muted);
-}
+            border: 1px solid var(--border);
+            border-radius: 11px;
 
-.profile {
-    width: 38px;
-    height: 38px;
+            background: rgba(255,255,255,.05);
 
-    display: grid;
-    place-items: center;
+            font-size: 14px;
+        }
 
-    border: 1px solid var(--border);
-    border-radius: 11px;
+        .mobile-menu {
+            display: none;
 
-    background: rgba(255,255,255,.05);
+            width: 38px;
+            height: 38px;
 
-    font-size: 14px;
-}
+            border: 1px solid var(--border);
+            border-radius: 11px;
 
-.mobile-menu {
-    display: none;
+            background: rgba(255,255,255,.05);
 
-    width: 38px;
-    height: 38px;
+            color: white;
+        }
 
-    border: 1px solid var(--border);
-    border-radius: 11px;
+        /* =========================
+           SLIDER
+        ========================= */
 
-    background: rgba(255,255,255,.05);
+        .hero-slider {
+            margin-top: 30px;
 
-    color: white;
-}
+            position: relative;
 
+            min-height: 430px;
 
-/* =========================
-   HERO
-========================= */
+            overflow: hidden;
 
-.hero {
-    margin-top: 30px;
+            border: 1px solid var(--border);
+            border-radius: 26px;
 
-    min-height: 430px;
+            background: #242424;
+        }
 
-    position: relative;
-    overflow: hidden;
+        .slides {
+            position: relative;
 
-    display: flex;
-    align-items: flex-end;
+            width: 100%;
+            min-height: 430px;
+        }
 
-    padding: 42px;
+        .slide {
+            position: absolute;
+            inset: 0;
 
-    border: 1px solid var(--border);
-    border-radius: 26px;
+            display: flex;
+            align-items: flex-end;
 
-    background:
-        linear-gradient(
-            110deg,
-            rgba(18,18,18,.95) 0%,
-            rgba(35,42,72,.92) 50%,
-            rgba(46,65,146,.94) 100%
-        );
-}
+            padding: 42px;
 
-.hero::after {
-    content: "";
+            opacity: 0;
 
-    position: absolute;
+            visibility: hidden;
 
-    width: 430px;
-    height: 430px;
+            transition:
+                opacity .55s ease,
+                transform .55s ease;
 
-    left: -100px;
-    top: -130px;
+            transform: scale(1.02);
+        }
 
-    border-radius: 50%;
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
 
-    background:
-        rgba(78,111,248,.17);
+        .slide-bg {
+            position: absolute;
+            inset: 0;
 
-    filter: blur(20px);
-}
+            background:
+                linear-gradient(
+                    110deg,
+                    rgba(18,18,18,.97) 0%,
+                    rgba(35,42,72,.94) 50%,
+                    rgba(46,65,146,.96) 100%
+                );
+        }
 
-.hero-art {
-    position: absolute;
+        .slide-glow {
+            position: absolute;
 
-    left: 7%;
-    bottom: -30px;
+            width: 450px;
+            height: 450px;
 
-    font-size: clamp(130px, 22vw, 270px);
+            left: -100px;
+            top: -140px;
 
-    opacity: .11;
+            border-radius: 50%;
 
-    transform: rotate(8deg);
-}
+            background:
+                rgba(78,111,248,.17);
 
-.hero-content {
-    position: relative;
-    z-index: 2;
+            filter: blur(25px);
+        }
 
-    max-width: 650px;
-}
+        .slide-art {
+            position: absolute;
 
-.hero-game {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
+            left: 7%;
+            bottom: -30px;
 
-    padding: 7px 10px;
+            font-size: clamp(130px, 22vw, 270px);
 
-    border-radius: 8px;
+            opacity: .11;
 
-    background: rgba(78,111,248,.85);
+            transform: rotate(8deg);
+        }
 
-    font-size: 9px;
-    font-weight: 900;
-}
+        .slide-content {
+            position: relative;
+            z-index: 3;
 
-.hero h1 {
-    margin-top: 16px;
+            max-width: 650px;
+        }
 
-    max-width: 680px;
+        .slide-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
 
-    font-size:
-        clamp(34px, 6vw, 65px);
+            padding: 7px 10px;
 
-    line-height: 1.15;
+            border-radius: 8px;
 
-    letter-spacing: -1.5px;
-}
+            background: rgba(78,111,248,.85);
 
-.hero-description {
-    max-width: 550px;
+            font-size: 9px;
+            font-weight: 900;
+        }
 
-    margin-top: 16px;
+        .slide h1 {
+            margin-top: 16px;
 
-    color: var(--text-soft);
+            font-size:
+                clamp(34px, 6vw, 65px);
 
-    font-size: 13px;
-    line-height: 1.9;
-}
+            line-height: 1.15;
 
-.hero-meta {
-    margin-top: 20px;
+            letter-spacing: -1.5px;
+        }
 
-    display: flex;
-    align-items: center;
-    gap: 15px;
+        .slide-description {
+            max-width: 550px;
 
-    color: var(--text-muted);
+            margin-top: 16px;
 
-    font-size: 10px;
-}
+            color: var(--text-soft);
 
-.read-button {
-    margin-top: 24px;
+            font-size: 13px;
+            line-height: 1.9;
+        }
 
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
+        .slide-meta {
+            margin-top: 20px;
 
-    padding: 11px 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
 
-    border-radius: 10px;
+            color: var(--text-muted);
 
-    background: white;
+            font-size: 10px;
+        }
 
-    color: #30469c;
+        .read-button {
+            margin-top: 24px;
 
-    font-size: 11px;
-    font-weight: 900;
-}
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
 
+            padding: 11px 15px;
 
-/* =========================
-   SECTION
-========================= */
+            border-radius: 10px;
 
-.section {
-    margin-top: 48px;
-}
+            background: white;
 
-.section-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+            color: #30469c;
 
-    margin-bottom: 17px;
-}
+            font-size: 11px;
+            font-weight: 900;
+        }
 
-.section-title {
-    font-size: 21px;
-    font-weight: 850;
-}
+        .slider-dots {
+            position: absolute;
 
-.section-description {
-    margin-top: 5px;
+            left: 28px;
+            bottom: 24px;
 
-    color: var(--text-muted);
+            z-index: 10;
 
-    font-size: 10px;
-}
+            display: flex;
+            gap: 6px;
+        }
 
-.section-link {
-    color: var(--blue-soft);
+        .slider-dot {
+            width: 7px;
+            height: 7px;
 
-    font-size: 10px;
-    font-weight: 800;
-}
+            padding: 0;
 
+            border: 0;
 
-/* =========================
-   YOUR GAMES
-========================= */
+            border-radius: 50%;
 
-.games-scroll {
-    display: flex;
-    gap: 9px;
+            background: rgba(255,255,255,.25);
 
-    overflow-x: auto;
+            transition: .25s;
+        }
 
-    padding-bottom: 5px;
+        .slider-dot.active {
+            width: 22px;
 
-    scrollbar-width: none;
-}
+            border-radius: 20px;
 
-.games-scroll::-webkit-scrollbar {
-    display: none;
-}
+            background: white;
+        }
 
-.game {
-    flex: 0 0 auto;
+        /* =========================
+           SECTION
+        ========================= */
 
-    display: flex;
-    align-items: center;
-    gap: 9px;
+        .section {
+            margin-top: 48px;
+        }
 
-    padding: 9px 12px;
+        .section-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
 
-    border: 1px solid var(--border);
-    border-radius: 11px;
+            margin-bottom: 17px;
+        }
 
-    background: rgba(255,255,255,.04);
+        .section-title {
+            font-size: 21px;
+            font-weight: 850;
+        }
 
-    color: var(--text-muted);
+        .section-description {
+            margin-top: 5px;
 
-    font-size: 11px;
-    font-weight: 750;
+            color: var(--text-muted);
 
-    transition: .2s;
-}
+            font-size: 10px;
+        }
 
-.game:hover,
-.game.active {
-    color: white;
+        .section-link {
+            color: var(--blue-soft);
 
-    border-color:
-        rgba(78,111,248,.55);
+            font-size: 10px;
+            font-weight: 800;
+        }
 
-    background:
-        rgba(78,111,248,.18);
-}
+        /* =========================
+           GAMES
+        ========================= */
 
-.game-icon {
-    width: 26px;
-    height: 26px;
+        .games-scroll {
+            display: flex;
+            gap: 9px;
 
-    display: grid;
-    place-items: center;
+            overflow-x: auto;
 
-    border-radius: 7px;
+            padding-bottom: 5px;
 
-    background:
-        rgba(255,255,255,.07);
+            scrollbar-width: none;
+        }
 
-    font-size: 13px;
-}
+        .games-scroll::-webkit-scrollbar {
+            display: none;
+        }
 
+        .game {
+            flex: 0 0 auto;
 
-/* =========================
-   FEED
-========================= */
+            display: flex;
+            align-items: center;
+            gap: 9px;
 
-.feed {
-    display: grid;
+            padding: 9px 12px;
 
-    grid-template-columns:
-        minmax(0, 1fr)
-        320px;
+            border: 1px solid var(--border);
+            border-radius: 11px;
 
-    gap: 18px;
-}
+            background: rgba(255,255,255,.04);
 
-.feed-list {
-    display: grid;
-    gap: 10px;
-}
+            color: var(--text-muted);
 
+            font-size: 11px;
+            font-weight: 750;
 
-/* =========================
-   STORY
-========================= */
+            transition: .2s;
+        }
 
-.story {
-    display: grid;
+        .game:hover,
+        .game.active {
+            color: white;
 
-    grid-template-columns:
-        145px
-        minmax(0, 1fr);
+            border-color:
+                rgba(78,111,248,.55);
 
-    gap: 16px;
+            background:
+                rgba(78,111,248,.18);
+        }
 
-    padding: 11px;
+        .game-icon {
+            width: 26px;
+            height: 26px;
 
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+            display: grid;
+            place-items: center;
 
-    background: var(--card);
+            border-radius: 7px;
 
-    transition:
-        transform .2s,
-        border .2s,
-        background .2s;
-}
+            background:
+                rgba(255,255,255,.07);
 
-.story:hover {
-    transform: translateY(-2px);
+            font-size: 13px;
+        }
 
-    border-color:
-        rgba(78,111,248,.35);
+        /* =========================
+           FILTER INFO
+        ========================= */
 
-    background:
-        rgba(255,255,255,.065);
-}
+        .selected-game-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
 
-.story-image {
-    min-height: 125px;
+            margin-top: 13px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+            color: var(--text-muted);
 
-    border-radius: 12px;
+            font-size: 10px;
+        }
 
-    background:
-        linear-gradient(
-            135deg,
-            #282828,
-            #303b78,
-            #4e6ff8
-        );
+        .selected-game-name {
+            color: var(--blue-soft);
+            font-weight: 900;
+        }
 
-    font-size: 52px;
-}
+        /* =========================
+           FEED
+        ========================= */
 
-.story-info {
-    padding: 7px 5px 7px 0;
-}
+        .feed {
+            display: grid;
 
-.story-tag {
-    color: var(--blue-soft);
+            grid-template-columns:
+                minmax(0, 1fr)
+                320px;
 
-    font-size: 8px;
-    font-weight: 900;
+            gap: 18px;
+        }
 
-    letter-spacing: .5px;
-}
+        .feed-list {
+            display: grid;
+            gap: 10px;
+        }
 
-.story h3 {
-    margin-top: 7px;
+        .story {
+            display: grid;
 
-    font-size: 16px;
-    line-height: 1.6;
-}
+            grid-template-columns:
+                145px
+                minmax(0, 1fr);
 
-.story p {
-    margin-top: 7px;
+            gap: 16px;
 
-    color: var(--text-muted);
+            padding: 11px;
 
-    font-size: 10px;
-    line-height: 1.8;
-}
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
 
-.story-bottom {
-    margin-top: 12px;
+            background: var(--card);
 
-    display: flex;
-    align-items: center;
-    gap: 12px;
+            transition:
+                transform .2s,
+                border .2s,
+                background .2s;
+        }
 
-    color: var(--text-muted);
+        .story:hover {
+            transform: translateY(-2px);
 
-    font-size: 9px;
-}
+            border-color:
+                rgba(78,111,248,.35);
 
-.story-bottom span:first-child {
-    color: var(--text-soft);
-}
+            background:
+                rgba(255,255,255,.065);
+        }
 
+        .story-image {
+            min-height: 125px;
 
-/* =========================
-   SIDEBAR
-========================= */
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-.sidebar {
-    display: grid;
-    gap: 12px;
-}
+            border-radius: 12px;
 
-.side-box {
-    padding: 18px;
+            background:
+                linear-gradient(
+                    135deg,
+                    #282828,
+                    #303b78,
+                    #4e6ff8
+                );
 
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+            font-size: 52px;
+        }
 
-    background:
-        rgba(20,20,20,.28);
-}
+        .story-info {
+            padding: 7px 5px 7px 0;
+        }
 
-.side-heading {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+        .story-tag {
+            color: var(--blue-soft);
 
-    margin-bottom: 14px;
-}
+            font-size: 8px;
+            font-weight: 900;
 
-.side-heading h3 {
-    font-size: 13px;
-    font-weight: 850;
-}
+            letter-spacing: .5px;
+        }
 
-.side-heading a {
-    color: var(--blue-soft);
+        .story h3 {
+            margin-top: 7px;
 
-    font-size: 9px;
-    font-weight: 800;
-}
+            font-size: 16px;
+            line-height: 1.6;
+        }
 
+        .story p {
+            margin-top: 7px;
 
-/* =========================
-   TRENDING
-========================= */
+            color: var(--text-muted);
 
-.trending {
-    display: grid;
-    gap: 3px;
-}
+            font-size: 10px;
+            line-height: 1.8;
+        }
 
-.trend {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+        .story-bottom {
+            margin-top: 12px;
 
-    padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
 
-    border-bottom:
-        1px solid rgba(255,255,255,.055);
-}
+            color: var(--text-muted);
 
-.trend:last-child {
-    border-bottom: 0;
-}
+            font-size: 9px;
+        }
 
-.trend-number {
-    width: 20px;
+        .story-bottom span:first-child {
+            color: var(--text-soft);
+        }
 
-    color: var(--text-muted);
+        /* =========================
+           EMPTY
+        ========================= */
 
-    font-size: 10px;
-    font-weight: 900;
-}
+        .empty-state {
+            display: none;
 
-.trend-content {
-    min-width: 0;
-}
+            padding: 35px;
 
-.trend-title {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
 
-    font-size: 10px;
-    font-weight: 750;
-}
+            text-align: center;
 
-.trend-meta {
-    margin-top: 2px;
+            color: var(--text-muted);
 
-    color: var(--text-muted);
+            font-size: 12px;
+        }
 
-    font-size: 8px;
-}
+        /* =========================
+           SIDEBAR
+        ========================= */
 
+        .sidebar {
+            display: grid;
+            gap: 12px;
+        }
 
-/* =========================
-   DISCOVER
-========================= */
+        .side-box {
+            padding: 18px;
 
-.discover-grid {
-    display: grid;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
 
-    grid-template-columns:
-        repeat(3, 1fr);
+            background:
+                rgba(20,20,20,.28);
+        }
 
-    gap: 10px;
-}
+        .side-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-.discover-card {
-    min-height: 150px;
+            margin-bottom: 14px;
+        }
 
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+        .side-heading h3 {
+            font-size: 13px;
+            font-weight: 850;
+        }
 
-    position: relative;
-    overflow: hidden;
+        .side-heading a {
+            color: var(--blue-soft);
 
-    padding: 14px;
+            font-size: 9px;
+            font-weight: 800;
+        }
 
-    border: 1px solid var(--border);
-    border-radius: 16px;
+        /* =========================
+           TRENDING
+        ========================= */
 
-    background:
-        linear-gradient(
-            145deg,
-            #292929,
-            #303e86
-        );
+        .trending {
+            display: grid;
+            gap: 3px;
+        }
 
-    transition: .2s;
-}
+        .trend {
+            display: flex;
+            align-items: center;
+            gap: 10px;
 
-.discover-card:hover {
-    transform: translateY(-3px);
+            padding: 10px 0;
 
-    border-color:
-        rgba(78,111,248,.4);
-}
+            border-bottom:
+                1px solid rgba(255,255,255,.055);
+        }
 
-.discover-emoji {
-    position: absolute;
+        .trend:last-child {
+            border-bottom: 0;
+        }
 
-    left: 5px;
-    top: -3px;
+        .trend-number {
+            width: 20px;
 
-    font-size: 65px;
+            color: var(--text-muted);
 
-    opacity: .16;
-}
+            font-size: 10px;
+            font-weight: 900;
+        }
 
-.discover-game {
-    position: relative;
-    z-index: 2;
+        .trend-content {
+            min-width: 0;
+        }
 
-    font-size: 13px;
-    font-weight: 850;
-}
+        .trend-title {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
 
-.discover-type {
-    position: relative;
-    z-index: 2;
+            font-size: 10px;
+            font-weight: 750;
+        }
 
-    margin-top: 2px;
+        .trend-meta {
+            margin-top: 2px;
 
-    color: var(--text-muted);
+            color: var(--text-muted);
 
-    font-size: 9px;
-}
+            font-size: 8px;
+        }
 
-.follow {
-    position: relative;
-    z-index: 2;
+        /* =========================
+           TODAY
+        ========================= */
 
-    width: fit-content;
+        .today-list {
+            display: grid;
+            gap: 2px;
+        }
 
-    margin-top: 11px;
+        .today-item {
+            display: grid;
 
-    padding: 6px 8px;
+            grid-template-columns: 46px 1fr;
 
-    border: 1px solid rgba(255,255,255,.12);
-    border-radius: 7px;
+            gap: 10px;
 
-    background: rgba(0,0,0,.18);
+            padding: 9px 0;
 
-    color: white;
+            border-bottom:
+                1px solid rgba(255,255,255,.05);
+        }
 
-    font-size: 8px;
-    font-weight: 800;
-}
+        .today-item:last-child {
+            border-bottom: 0;
+        }
 
-.follow.following {
-    background: var(--blue);
+        .today-time {
+            color: var(--text-muted);
 
-    border-color: var(--blue);
-}
+            font-size: 9px;
+        }
 
+        .today-game {
+            color: var(--blue-soft);
 
-/* =========================
-   TODAY
-========================= */
+            font-size: 8px;
+            font-weight: 900;
+        }
 
-.today-list {
-    display: grid;
-    gap: 2px;
-}
+        .today-title {
+            margin-top: 2px;
 
-.today-item {
-    display: grid;
+            font-size: 10px;
+            font-weight: 700;
+        }
 
-    grid-template-columns: 46px 1fr;
+        /* =========================
+           DISCOVER
+        ========================= */
 
-    gap: 10px;
+        .discover-grid {
+            display: grid;
 
-    padding: 9px 0;
+            grid-template-columns:
+                repeat(3, 1fr);
 
-    border-bottom:
-        1px solid rgba(255,255,255,.05);
-}
+            gap: 10px;
+        }
 
-.today-item:last-child {
-    border-bottom: 0;
-}
+        .discover-card {
+            min-height: 150px;
 
-.today-time {
-    color: var(--text-muted);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
 
-    font-size: 9px;
-}
+            position: relative;
+            overflow: hidden;
 
-.today-game {
-    color: var(--blue-soft);
+            padding: 14px;
 
-    font-size: 8px;
-    font-weight: 900;
-}
+            border: 1px solid var(--border);
+            border-radius: 16px;
 
-.today-title {
-    margin-top: 2px;
+            background:
+                linear-gradient(
+                    145deg,
+                    #292929,
+                    #303e86
+                );
 
-    font-size: 10px;
-    font-weight: 700;
-}
+            transition: .2s;
+        }
 
+        .discover-card:hover {
+            transform: translateY(-3px);
 
-/* =========================
-   TOPICS
-========================= */
+            border-color:
+                rgba(78,111,248,.4);
+        }
 
-.topics {
-    display: flex;
-    gap: 8px;
+        .discover-emoji {
+            position: absolute;
 
-    overflow-x: auto;
+            left: 5px;
+            top: -3px;
 
-    scrollbar-width: none;
-}
+            font-size: 65px;
 
-.topics::-webkit-scrollbar {
-    display: none;
-}
+            opacity: .16;
+        }
 
-.topic {
-    flex: 0 0 auto;
+        .discover-game {
+            position: relative;
+            z-index: 2;
 
-    padding: 7px 10px;
+            font-size: 13px;
+            font-weight: 850;
+        }
 
-    border: 1px solid var(--border);
-    border-radius: 20px;
+        .discover-type {
+            position: relative;
+            z-index: 2;
 
-    color: var(--text-muted);
+            margin-top: 2px;
 
-    font-size: 9px;
-    font-weight: 700;
-}
+            color: var(--text-muted);
 
+            font-size: 9px;
+        }
 
-/* =========================
-   FOOTER
-========================= */
+        .follow {
+            position: relative;
+            z-index: 2;
 
-.footer {
-    margin-top: 70px;
+            width: fit-content;
 
-    padding: 28px 0;
+            margin-top: 11px;
 
-    border-top:
-        1px solid rgba(255,255,255,.07);
+            padding: 6px 8px;
 
-    color: var(--text-muted);
+            border: 1px solid rgba(255,255,255,.12);
+            border-radius: 7px;
 
-    font-size: 9px;
-}
+            background: rgba(0,0,0,.18);
 
-.footer-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+            color: white;
 
+            font-size: 8px;
+            font-weight: 800;
+        }
 
-/* =========================
-   SEARCH
-========================= */
+        .follow.following {
+            background: var(--blue);
 
-.no-results {
-    display: none;
+            border-color: var(--blue);
+        }
 
-    padding: 30px;
+        /* =========================
+           CTA
+        ========================= */
 
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+        .cta {
+            padding: 32px;
 
-    text-align: center;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 22px;
 
-    color: var(--text-muted);
+            background:
+                linear-gradient(
+                    120deg,
+                    rgba(46,65,146,.6),
+                    rgba(78,111,248,.16)
+                );
+        }
 
-    font-size: 12px;
-}
+        .cta-label {
+            color: #9aabff;
 
+            font-size: 9px;
+            font-weight: 900;
+        }
 
-/* =========================
-   TABLET
-========================= */
+        .cta h2 {
+            margin-top: 9px;
 
-@media (max-width: 900px) {
+            font-size:
+                clamp(23px,4vw,35px);
+        }
 
-    .nav {
-        display: none;
-    }
+        .cta p {
+            max-width: 550px;
 
-    .mobile-menu {
-        display: block;
-    }
+            margin-top: 8px;
 
-    .feed {
-        grid-template-columns: 1fr;
-    }
+            color: rgba(255,255,255,.5);
 
-    .sidebar {
-        grid-template-columns: 1fr 1fr;
-    }
-}
+            font-size: 11px;
 
+            line-height: 1.9;
+        }
 
-/* =========================
-   MOBILE
-========================= */
+        /* =========================
+           ERROR
+        ========================= */
 
-@media (max-width: 600px) {
+        .json-error {
+            display: none;
 
-    .container {
-        width: calc(100% - 26px);
-    }
+            margin-top: 20px;
 
-    .header {
-        height: 65px;
-    }
+            padding: 18px;
 
-    .header-inner {
-        gap: 10px;
-    }
+            border: 1px solid rgba(255,80,80,.25);
+            border-radius: 14px;
 
-    .search {
-        display: none;
-    }
+            background: rgba(255,60,60,.08);
 
-    .profile {
-        display: none;
-    }
+            color: #ffb0b0;
 
-    .hero {
-        margin-top: 17px;
+            font-size: 11px;
 
-        min-height: 410px;
+            line-height: 1.8;
+        }
 
-        padding: 25px 21px;
+        /* =========================
+           FOOTER
+        ========================= */
 
-        border-radius: 20px;
-    }
+        .footer {
+            margin-top: 70px;
 
-    .hero h1 {
-        font-size: 35px;
-    }
+            padding: 28px 0;
 
-    .hero-description {
-        font-size: 11px;
-    }
+            border-top:
+                1px solid rgba(255,255,255,.07);
 
-    .hero-art {
-        left: -10px;
-        bottom: 30px;
+            color: var(--text-muted);
 
-        font-size: 150px;
-    }
+            font-size: 9px;
+        }
 
-    .section {
-        margin-top: 37px;
-    }
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-    .feed {
-        gap: 30px;
-    }
+        /* =========================
+           MOBILE
+        ========================= */
 
-    .story {
-        grid-template-columns: 105px 1fr;
+        @media (max-width: 900px) {
 
-        gap: 11px;
+            .nav {
+                display: none;
+            }
 
-        padding: 9px;
+            .mobile-menu {
+                display: block;
+            }
 
-        border-radius: 15px;
-    }
+            .feed {
+                grid-template-columns: 1fr;
+            }
 
-    .story-image {
-        min-height: 115px;
+            .sidebar {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
 
-        border-radius: 10px;
+        @media (max-width: 600px) {
 
-        font-size: 37px;
-    }
+            .container {
+                width: calc(100% - 26px);
+            }
 
-    .story-info {
-        padding: 4px 3px 4px 0;
-    }
+            .header {
+                height: 65px;
+            }
 
-    .story h3 {
-        font-size: 13px;
-        line-height: 1.6;
-    }
+            .header-inner {
+                gap: 10px;
+            }
 
-    .story p {
-        display: none;
-    }
+            .search {
+                display: none;
+            }
 
-    .story-bottom {
-        margin-top: 8px;
+            .profile {
+                display: none;
+            }
 
-        font-size: 8px;
-    }
+            .hero-slider {
+                margin-top: 17px;
 
-    .sidebar {
-        grid-template-columns: 1fr;
-    }
+                min-height: 410px;
 
-    .discover-grid {
-        grid-template-columns:
-            repeat(3, 150px);
+                border-radius: 20px;
+            }
 
-        overflow-x: auto;
+            .slides {
+                min-height: 410px;
+            }
 
-        padding-bottom: 5px;
+            .slide {
+                padding: 25px 21px;
+            }
 
-        scrollbar-width: none;
-    }
+            .slide h1 {
+                font-size: 35px;
+            }
 
-    .discover-card {
-        min-height: 145px;
-    }
+            .slide-description {
+                font-size: 11px;
+            }
 
-    .footer-inner {
-        flex-direction: column;
-        gap: 8px;
+            .slide-art {
+                left: -10px;
+                bottom: 30px;
 
-        text-align: center;
-    }
-}
+                font-size: 150px;
+            }
 
+            .slider-dots {
+                left: 20px;
+                bottom: 17px;
+            }
 
-/* =========================
-   SMALL MOBILE
-========================= */
+            .section {
+                margin-top: 37px;
+            }
 
-@media (max-width: 380px) {
+            .feed {
+                gap: 30px;
+            }
 
-    .hero h1 {
-        font-size: 31px;
-    }
+            .story {
+                grid-template-columns: 105px 1fr;
 
-    .story {
-        grid-template-columns: 90px 1fr;
-    }
+                gap: 11px;
 
-    .story-image {
-        min-height: 105px;
-    }
+                padding: 9px;
 
-    .story h3 {
-        font-size: 12px;
-    }
-}
+                border-radius: 15px;
+            }
 
-</style>
+            .story-image {
+                min-height: 115px;
+
+                border-radius: 10px;
+
+                font-size: 37px;
+            }
+
+            .story-info {
+                padding: 4px 3px 4px 0;
+            }
+
+            .story h3 {
+                font-size: 13px;
+                line-height: 1.6;
+            }
+
+            .story p {
+                display: none;
+            }
+
+            .story-bottom {
+                margin-top: 8px;
+
+                font-size: 8px;
+            }
+
+            .sidebar {
+                grid-template-columns: 1fr;
+            }
+
+            .discover-grid {
+                grid-template-columns:
+                    repeat(3, 150px);
+
+                overflow-x: auto;
+
+                padding-bottom: 5px;
+
+                scrollbar-width: none;
+            }
+
+            .discover-card {
+                min-height: 145px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                gap: 8px;
+
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 380px) {
+
+            .slide h1 {
+                font-size: 31px;
+            }
+
+            .story {
+                grid-template-columns: 90px 1fr;
+            }
+
+            .story-image {
+                min-height: 105px;
+            }
+
+            .story h3 {
+                font-size: 12px;
+            }
+        }
+    </style>
 </head>
 
-
 <body>
-
-
-<!-- =========================
-     HEADER
-========================= -->
 
 <header class="header">
 
     <div class="container header-inner">
 
         <a href="#" class="logo">
-
-            <span class="logo-mark">
-                🎮
-            </span>
-
+            <span class="logo-mark">🎮</span>
             گیم‌هاب
-
         </a>
-
 
         <nav class="nav">
 
@@ -1145,7 +1234,6 @@ img {
 
         </nav>
 
-
         <div class="header-right">
 
             <div class="search">
@@ -1160,11 +1248,9 @@ img {
 
             </div>
 
-
             <button class="profile">
                 👤
             </button>
-
 
             <button
                 class="mobile-menu"
@@ -1180,772 +1266,258 @@ img {
 </header>
 
 
-
 <main class="container">
 
+    <!-- =========================
+         SLIDER
+    ========================= -->
 
-<!-- =========================
-     HERO
-========================= -->
+    <section class="hero-slider">
 
-<section class="hero">
+        <div
+            class="slides"
+            id="slidesContainer"
+        ></div>
 
-    <div class="hero-art">
-        🎯
-    </div>
+        <div
+            class="slider-dots"
+            id="sliderDots"
+        ></div>
 
-    <div class="hero-content">
+    </section>
 
-        <span class="hero-game">
-            🔥 ولورانت · امروز
-        </span>
 
-        <h1>
-            اکت جدید بالاخره رسید.
-        </h1>
-
-        <p class="hero-description">
-            همه چیزهایی که باید درباره آپدیت جدید ولورانت،
-            محتوای جدید، تغییرات رقابتی و اتفاقات مهم امروز
-            بدانید.
-        </p>
-
-        <div class="hero-meta">
-
-            <span>
-                ۵ دقیقه مطالعه
-            </span>
-
-            <span>
-                •
-            </span>
-
-            <span>
-                ۲ ساعت پیش
-            </span>
-
-        </div>
-
-        <a href="#" class="read-button">
-            مطالعه مطلب ←
-        </a>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================
-     YOUR GAMES
-========================= -->
-
-<section class="section" id="games">
-
-    <div class="section-top">
-
-        <div>
-
-            <h2 class="section-title">
-                بازی‌های من
-            </h2>
-
-            <p class="section-description">
-                اتفاقات مهم بازی‌هایی که دنبال می‌کنی
-            </p>
-
-        </div>
-
-        <a href="#" class="section-link">
-            مدیریت
-        </a>
-
-    </div>
-
-
-    <div class="games-scroll">
-
-        <button class="game active">
-
-            <span class="game-icon">
-                🎯
-            </span>
-
-            ولورانت
-
-        </button>
-
-
-        <button class="game">
-
-            <span class="game-icon">
-                🪂
-            </span>
-
-            فورتنایت
-
-        </button>
-
-
-        <button class="game">
-
-            <span class="game-icon">
-                ⚔️
-            </span>
-
-            کال آو دیوتی
-
-        </button>
-
-
-        <button class="game">
-
-            <span class="game-icon">
-                ⛏️
-            </span>
-
-            ماینکرفت
-
-        </button>
-
-
-        <button class="game">
-
-            <span class="game-icon">
-                🏎️
-            </span>
-
-            جی‌تی‌ای
-
-        </button>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================
-     TOPICS
-========================= -->
-
-<section class="section">
-
-    <div class="topics">
-
-        <a href="#" class="topic">
-            #ولورانت
-        </a>
-
-        <a href="#" class="topic">
-            #فورتنایت
-        </a>
-
-        <a href="#" class="topic">
-            #اخبار_گیم
-        </a>
-
-        <a href="#" class="topic">
-            #سیزن_جدید
-        </a>
-
-        <a href="#" class="topic">
-            #ای‌اسپورت
-        </a>
-
-        <a href="#" class="topic">
-            #آپدیت
-        </a>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================
-     MAIN FEED
-========================= -->
-
-<section class="section">
-
-    <div class="section-top">
-
-        <div>
-
-            <h2 class="section-title">
-                برای تو
-            </h2>
-
-            <p class="section-description">
-                مطالبی که امروز ارزش خواندن دارند
-            </p>
-
-        </div>
-
-        <a href="#" class="section-link">
-            جدیدترین‌ها
-        </a>
-
-    </div>
-
-
-    <div class="feed">
-
-
-        <div class="feed-list" id="feedList">
-
-
-            <article class="story">
-
-                <div class="story-image">
-                    🎯
-                </div>
-
-                <div class="story-info">
-
-                    <span class="story-tag">
-                        ولورانت · آپدیت
-                    </span>
-
-                    <h3>
-                        ۵ چیزی که باید درباره اکت جدید بدانید
-                    </h3>
-
-                    <p>
-                        محتوای جدید، تغییرات گیم‌پلی و مهم‌ترین
-                        چیزهایی که قبل از ورود به بازی باید بدانید.
-                    </p>
-
-                    <div class="story-bottom">
-
-                        <span>
-                            ۵ دقیقه مطالعه
-                        </span>
-
-                        <span>•</span>
-
-                        <span>
-                            ۲ ساعت پیش
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-
-            <article class="story">
-
-                <div class="story-image">
-                    🪂
-                </div>
-
-                <div class="story-info">
-
-                    <span class="story-tag">
-                        فورتنایت · ایونت
-                    </span>
-
-                    <h3>
-                        یک ایونت محدود جدید شروع شد
-                    </h3>
-
-                    <p>
-                        چالش‌ها، جایزه‌ها و محتوای محدودی که
-                        همین حالا در دسترس هستند.
-                    </p>
-
-                    <div class="story-bottom">
-
-                        <span>
-                            ۴ دقیقه مطالعه
-                        </span>
-
-                        <span>•</span>
-
-                        <span>
-                            ۳۴ دقیقه پیش
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-
-            <article class="story">
-
-                <div class="story-image">
-                    ⚔️
-                </div>
-
-                <div class="story-info">
-
-                    <span class="story-tag">
-                        کال آو دیوتی · سیزن
-                    </span>
-
-                    <h3>
-                        در سیزن بعدی چه چیزهایی تغییر می‌کند؟
-                    </h3>
-
-                    <p>
-                        سلاح‌های جدید، مودهای تازه و تغییرات
-                        گیم‌پلی که به بازی اضافه می‌شوند.
-                    </p>
-
-                    <div class="story-bottom">
-
-                        <span>
-                            ۶ دقیقه مطالعه
-                        </span>
-
-                        <span>•</span>
-
-                        <span>
-                            ۱ ساعت پیش
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-
-            <article class="story">
-
-                <div class="story-image">
-                    🏆
-                </div>
-
-                <div class="story-info">
-
-                    <span class="story-tag">
-                        ای‌اسپورت · ولورانت
-                    </span>
-
-                    <h3>
-                        بزرگ‌ترین تورنمنت بعدی نزدیک است
-                    </h3>
-
-                    <p>
-                        برنامه مسابقات، زمان بازی‌ها و تیم‌هایی که
-                        باید این بار بیشتر حواست به آن‌ها باشد.
-                    </p>
-
-                    <div class="story-bottom">
-
-                        <span>
-                            ۳ دقیقه مطالعه
-                        </span>
-
-                        <span>•</span>
-
-                        <span>
-                            ۳ ساعت پیش
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <div
-                class="no-results"
-                id="noResults"
-            >
-                مطلبی پیدا نشد.
-            </div>
-
-
-        </div>
-
-
-
-        <!-- =========================
-             SIDEBAR
-        ========================= -->
-
-        <aside class="sidebar">
-
-
-            <!-- TRENDING -->
-
-            <div class="side-box">
-
-                <div class="side-heading">
-
-                    <h3>
-                        🔥 ترند امروز
-                    </h3>
-
-                    <a href="#">
-                        همه
-                    </a>
-
-                </div>
-
-
-                <div class="trending">
-
-
-                    <div class="trend">
-
-                        <span class="trend-number">
-                            ۰۱
-                        </span>
-
-                        <div class="trend-content">
-
-                            <div class="trend-title">
-                                اکت جدید ولورانت
-                            </div>
-
-                            <div class="trend-meta">
-                                ۱۲.۴ هزار نفر دنبال می‌کنند
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="trend">
-
-                        <span class="trend-number">
-                            ۰۲
-                        </span>
-
-                        <div class="trend-content">
-
-                            <div class="trend-title">
-                                سیزن جدید فورتنایت
-                            </div>
-
-                            <div class="trend-meta">
-                                ۸.۷ هزار نفر دنبال می‌کنند
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="trend">
-
-                        <span class="trend-number">
-                            ۰۳
-                        </span>
-
-                        <div class="trend-content">
-
-                            <div class="trend-title">
-                                آپدیت جدید کال آو دیوتی
-                            </div>
-
-                            <div class="trend-meta">
-                                ۶.۱ هزار نفر دنبال می‌کنند
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="trend">
-
-                        <span class="trend-number">
-                            ۰۴
-                        </span>
-
-                        <div class="trend-content">
-
-                            <div class="trend-title">
-                                اتفاقات جدید GTA Online
-                            </div>
-
-                            <div class="trend-meta">
-                                ۴.۸ هزار نفر دنبال می‌کنند
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- TODAY -->
-
-            <div class="side-box" id="today">
-
-                <div class="side-heading">
-
-                    <h3>
-                        📅 امروز
-                    </h3>
-
-                    <a href="#">
-                        تقویم
-                    </a>
-
-                </div>
-
-
-                <div class="today-list">
-
-
-                    <div class="today-item">
-
-                        <span class="today-time">
-                            ۱۰:۰۰
-                        </span>
-
-                        <div>
-
-                            <div class="today-game">
-                                فورتنایت
-                            </div>
-
-                            <div class="today-title">
-                                شروع ایونت جدید
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="today-item">
-
-                        <span class="today-time">
-                            ۱۴:۰۰
-                        </span>
-
-                        <div>
-
-                            <div class="today-game">
-                                ولورانت
-                            </div>
-
-                            <div class="today-title">
-                                مسابقه تورنمنت
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="today-item">
-
-                        <span class="today-time">
-                            ۱۸:۰۰
-                        </span>
-
-                        <div>
-
-                            <div class="today-game">
-                                کال آو دیوتی
-                            </div>
-
-                            <div class="today-title">
-                                شروع Double XP
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-
-        </aside>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================
-     DISCOVER
-========================= -->
-
-<section class="section" id="discover">
-
-    <div class="section-top">
-
-        <div>
-
-            <h2 class="section-title">
-                بازی‌های جدید برای کشف
-            </h2>
-
-            <p class="section-description">
-                شاید بازی بعدی مورد علاقه‌ات همین‌جا باشد
-            </p>
-
-        </div>
-
-        <a href="#" class="section-link">
-            مشاهده همه
-        </a>
-
-    </div>
-
-
-    <div class="discover-grid">
-
-
-        <article class="discover-card">
-
-            <div class="discover-emoji">
-                🦸
-            </div>
-
-            <strong class="discover-game">
-                مارول رایولز
-            </strong>
-
-            <span class="discover-type">
-                شوتر قهرمانی
-            </span>
-
-            <button class="follow">
-                + دنبال کردن
-            </button>
-
-        </article>
-
-
-        <article class="discover-card">
-
-            <div class="discover-emoji">
-                🔫
-            </div>
-
-            <strong class="discover-game">
-                ایپکس لجندز
-            </strong>
-
-            <span class="discover-type">
-                بتل رویال
-            </span>
-
-            <button class="follow">
-                + دنبال کردن
-            </button>
-
-        </article>
-
-
-        <article class="discover-card">
-
-            <div class="discover-emoji">
-                🧟
-            </div>
-
-            <strong class="discover-game">
-                دد بای دی‌لایت
-            </strong>
-
-            <span class="discover-type">
-                ترس و بقا
-            </span>
-
-            <button class="follow">
-                + دنبال کردن
-            </button>
-
-        </article>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================
-     CTA
-========================= -->
-
-<section class="section">
+    <!-- =========================
+         JSON ERROR
+    ========================= -->
 
     <div
-        style="
-            padding:32px;
-            border:1px solid rgba(255,255,255,.08);
-            border-radius:22px;
-            background:
-                linear-gradient(
-                    120deg,
-                    rgba(46,65,146,.6),
-                    rgba(78,111,248,.16)
-                );
-        "
+        class="json-error"
+        id="jsonError"
+    ></div>
+
+
+    <!-- =========================
+         YOUR GAMES
+    ========================= -->
+
+    <section
+        class="section"
+        id="games"
     >
 
-        <span
-            style="
-                color:#9aabff;
-                font-size:9px;
-                font-weight:900;
-            "
-        >
-            دنیای گیمینگ تو
-        </span>
+        <div class="section-top">
 
-        <h2
-            style="
-                margin-top:9px;
-                font-size:clamp(23px,4vw,35px);
-            "
-        >
-            فقط بازی‌هایی که برایت مهم هستند.
-        </h2>
+            <div>
 
-        <p
-            style="
-                max-width:550px;
-                margin-top:8px;
-                color:rgba(255,255,255,.5);
-                font-size:11px;
-                line-height:1.9;
-            "
-        >
-            آپدیت‌ها، ایونت‌ها، اخبار و اتفاقات مهم
-            بازی‌های مورد علاقه‌ات را بدون شلوغی دنبال کن.
-        </p>
+                <h2 class="section-title">
+                    بازی‌های من
+                </h2>
 
-    </div>
+                <p class="section-description">
+                    یک بازی را انتخاب کن تا اخبار و ایونت‌های همان بازی را ببینی
+                </p>
 
-</section>
+            </div>
 
+            <a
+                href="#"
+                class="section-link"
+                id="showAll"
+            >
+                همه
+            </a>
+
+        </div>
+
+        <div
+            class="games-scroll"
+            id="gamesContainer"
+        ></div>
+
+        <div class="selected-game-info">
+
+            <span>
+                در حال نمایش:
+            </span>
+
+            <span
+                class="selected-game-name"
+                id="selectedGameName"
+            >
+                همه بازی‌ها
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MAIN FEED
+    ========================= -->
+
+    <section class="section">
+
+        <div class="section-top">
+
+            <div>
+
+                <h2 class="section-title">
+                    اخبار و اتفاقات
+                </h2>
+
+                <p class="section-description">
+                    جدیدترین اخبار و ایونت‌های بازی انتخاب‌شده
+                </p>
+
+            </div>
+
+            <a
+                href="#"
+                class="section-link"
+                id="newestLink"
+            >
+                جدیدترین‌ها
+            </a>
+
+        </div>
+
+
+        <div class="feed">
+
+            <div
+                class="feed-list"
+                id="feedList"
+            ></div>
+
+
+            <aside class="sidebar">
+
+                <!-- TRENDING -->
+
+                <div class="side-box">
+
+                    <div class="side-heading">
+
+                        <h3>
+                            🔥 ترند امروز
+                        </h3>
+
+                        <a href="#">
+                            همه
+                        </a>
+
+                    </div>
+
+                    <div
+                        class="trending"
+                        id="trendingContainer"
+                    ></div>
+
+                </div>
+
+
+                <!-- TODAY -->
+
+                <div
+                    class="side-box"
+                    id="today"
+                >
+
+                    <div class="side-heading">
+
+                        <h3>
+                            📅 امروز
+                        </h3>
+
+                        <a href="#">
+                            تقویم
+                        </a>
+
+                    </div>
+
+                    <div
+                        class="today-list"
+                        id="todayContainer"
+                    ></div>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         DISCOVER
+    ========================= -->
+
+    <section
+        class="section"
+        id="discover"
+    >
+
+        <div class="section-top">
+
+            <div>
+
+                <h2 class="section-title">
+                    بازی‌های جدید برای کشف
+                </h2>
+
+                <p class="section-description">
+                    شاید بازی بعدی مورد علاقه‌ات همین‌جا باشد
+                </p>
+
+            </div>
+
+            <a
+                href="#"
+                class="section-link"
+            >
+                مشاهده همه
+            </a>
+
+        </div>
+
+        <div
+            class="discover-grid"
+            id="discoverContainer"
+        ></div>
+
+    </section>
+
+
+    <!-- =========================
+         CTA
+    ========================= -->
+
+    <section class="section">
+
+        <div class="cta">
+
+            <span class="cta-label">
+                دنیای گیمینگ تو
+            </span>
+
+            <h2>
+                فقط بازی‌هایی که برایت مهم هستند.
+            </h2>
+
+            <p>
+                آپدیت‌ها، ایونت‌ها، اخبار و اتفاقات مهم
+                بازی‌های مورد علاقه‌ات را بدون شلوغی دنبال کن.
+            </p>
+
+        </div>
+
+    </section>
 
 </main>
 
-
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer class="footer">
 
@@ -1964,175 +1536,905 @@ img {
 </footer>
 
 
-
 <script>
 
-/* =========================
-   انتخاب بازی
-========================= */
+    /* ==========================================
+       CONFIG
+    ========================================== */
 
-const games =
-    document.querySelectorAll(".game");
-
-games.forEach(game => {
-
-    game.addEventListener("click", () => {
-
-        games.forEach(item => {
-            item.classList.remove("active");
-        });
-
-        game.classList.add("active");
-
-    });
-
-});
+    const JSON_PATH = "./json/";
 
 
-/* =========================
-   دنبال کردن بازی
-========================= */
+    /* ==========================================
+       STATE
+    ========================================== */
 
-const followButtons =
-    document.querySelectorAll(".follow");
+    let allGames = [];
+    let allNews = [];
+    let allEvents = [];
+    let allSlides = [];
+    let allDiscover = [];
 
-followButtons.forEach(button => {
+    let selectedGame = "all";
 
-    button.addEventListener("click", () => {
-
-        const following =
-            button.classList.toggle("following");
-
-        button.textContent =
-            following
-                ? "✓ دنبال می‌کنی"
-                : "+ دنبال کردن";
-
-    });
-
-});
+    let currentSlide = 0;
+    let sliderTimer = null;
 
 
-/* =========================
-   جستجو
-========================= */
+    /* ==========================================
+       JSON LOADER
+    ========================================== */
 
-const searchInput =
-    document.getElementById("searchInput");
+    async function loadJSON(file) {
 
-const stories =
-    document.querySelectorAll(".story");
+        const response = await fetch(
+            JSON_PATH + file
+        );
 
-const noResults =
-    document.getElementById("noResults");
-
-
-searchInput.addEventListener("input", () => {
-
-    const query =
-        searchInput.value
-            .toLowerCase()
-            .trim();
-
-    let visible = 0;
-
-    stories.forEach(story => {
-
-        const text =
-            story.innerText.toLowerCase();
-
-        const match =
-            text.includes(query);
-
-        story.style.display =
-            match ? "grid" : "none";
-
-        if (match) {
-            visible++;
+        if (!response.ok) {
+            throw new Error(
+                `خطا در دریافت ${file}`
+            );
         }
 
-    });
-
-    noResults.style.display =
-        visible === 0
-            ? "block"
-            : "none";
-
-});
-
-
-/* =========================
-   منوی موبایل
-========================= */
-
-const mobileMenu =
-    document.getElementById("mobileMenu");
-
-mobileMenu.addEventListener("click", () => {
-
-    const nav =
-        document.querySelector(".nav");
-
-    if (nav.style.display === "flex") {
-
-        nav.style.display = "none";
-
-    } else {
-
-        nav.style.display = "flex";
-
-        nav.style.position = "absolute";
-        nav.style.top = "65px";
-        nav.style.left = "13px";
-        nav.style.right = "13px";
-
-        nav.style.padding = "16px";
-
-        nav.style.flexDirection = "column";
-        nav.style.alignItems = "stretch";
-
-        nav.style.gap = "16px";
-
-        nav.style.border =
-            "1px solid rgba(255,255,255,.08)";
-
-        nav.style.borderRadius = "15px";
-
-        nav.style.background =
-            "rgba(30,30,30,.96)";
-
-        nav.style.backdropFilter =
-            "blur(20px)";
+        return await response.json();
     }
 
-});
+
+    /* ==========================================
+       INITIALIZE
+    ========================================== */
+
+    async function initialize() {
+
+        try {
+
+            const [
+                slides,
+                games,
+                news,
+                events,
+                discover
+            ] = await Promise.all([
+
+                loadJSON("slides.json"),
+                loadJSON("games.json"),
+                loadJSON("news.json"),
+                loadJSON("events.json"),
+                loadJSON("discover.json")
+
+            ]);
+
+            allSlides = slides;
+            allGames = games;
+            allNews = news;
+            allEvents = events;
+            allDiscover = discover;
 
 
-/* =========================
-   کلیک روی مقاله
-========================= */
+            renderSlides();
+            renderGames();
+            renderFeed();
+            renderTrending();
+            renderToday();
+            renderDiscover();
 
-document
-    .querySelectorAll(".story")
-    .forEach(story => {
+        } catch (error) {
 
-        story.style.cursor = "pointer";
+            console.error(error);
 
-        story.addEventListener("click", () => {
+            const errorBox =
+                document.getElementById("jsonError");
 
-            const title =
-                story.querySelector("h3").innerText;
+            errorBox.style.display = "block";
 
-            console.log(
-                "باز کردن مقاله:",
-                title
+            errorBox.innerHTML = `
+                <strong>خطا در بارگذاری اطلاعات JSON</strong>
+                <br>
+                ${error.message}
+                <br><br>
+                اگر فایل HTML را مستقیم با
+                <b>file://</b>
+                باز کرده‌ای، باید پروژه را با یک
+                Local Server اجرا کنی.
+            `;
+        }
+
+    }
+
+
+    /* ==========================================
+       SLIDER
+    ========================================== */
+
+    function renderSlides() {
+
+        const container =
+            document.getElementById(
+                "slidesContainer"
             );
+
+        const dots =
+            document.getElementById(
+                "sliderDots"
+            );
+
+        container.innerHTML = "";
+        dots.innerHTML = "";
+
+        if (!allSlides.length) {
+            return;
+        }
+
+
+        allSlides.forEach((slide, index) => {
+
+            const article =
+                document.createElement("article");
+
+            article.className =
+                "slide" +
+                (index === 0 ? " active" : "");
+
+
+            article.innerHTML = `
+
+                <div
+                    class="slide-bg"
+                    style="
+                        background:
+                        ${slide.background || `
+                            linear-gradient(
+                                110deg,
+                                rgba(18,18,18,.97),
+                                rgba(46,65,146,.96)
+                            )
+                        `}
+                    "
+                ></div>
+
+                <div class="slide-glow"></div>
+
+                <div class="slide-art">
+                    ${slide.art || "🎮"}
+                </div>
+
+                <div class="slide-content">
+
+                    <span class="slide-tag">
+                        ${slide.tag || ""}
+                    </span>
+
+                    <h1>
+                        ${slide.title || ""}
+                    </h1>
+
+                    <p class="slide-description">
+                        ${slide.description || ""}
+                    </p>
+
+                    <div class="slide-meta">
+
+                        <span>
+                            ${slide.readTime || ""}
+                        </span>
+
+                        <span>•</span>
+
+                        <span>
+                            ${slide.time || ""}
+                        </span>
+
+                    </div>
+
+                    <a
+                        href="${slide.url || "#"}"
+                        class="read-button"
+                    >
+                        ${slide.buttonText || "مطالعه مطلب ←"}
+                    </a>
+
+                </div>
+
+            `;
+
+            container.appendChild(article);
+
+
+            const dot =
+                document.createElement("button");
+
+            dot.className =
+                "slider-dot" +
+                (index === 0 ? " active" : "");
+
+            dot.setAttribute(
+                "aria-label",
+                `اسلاید ${index + 1}`
+            );
+
+            dot.addEventListener(
+                "click",
+                () => goToSlide(index)
+            );
+
+            dots.appendChild(dot);
 
         });
 
-    });
+
+        startSlider();
+    }
+
+
+    function goToSlide(index) {
+
+        const slides =
+            document.querySelectorAll(".slide");
+
+        const dots =
+            document.querySelectorAll(".slider-dot");
+
+
+        if (!slides.length) {
+            return;
+        }
+
+
+        currentSlide =
+            (index + slides.length) %
+            slides.length;
+
+
+        slides.forEach(
+            (slide, i) => {
+
+                slide.classList.toggle(
+                    "active",
+                    i === currentSlide
+                );
+
+            }
+        );
+
+
+        dots.forEach(
+            (dot, i) => {
+
+                dot.classList.toggle(
+                    "active",
+                    i === currentSlide
+                );
+
+            }
+        );
+
+    }
+
+
+    function startSlider() {
+
+        clearInterval(sliderTimer);
+
+        if (allSlides.length <= 1) {
+            return;
+        }
+
+        sliderTimer =
+            setInterval(() => {
+
+                goToSlide(
+                    currentSlide + 1
+                );
+
+            }, 5000);
+
+    }
+
+
+    /* ==========================================
+       GAMES
+    ========================================== */
+
+    function renderGames() {
+
+        const container =
+            document.getElementById(
+                "gamesContainer"
+            );
+
+        container.innerHTML = "";
+
+
+        allGames.forEach(game => {
+
+            const button =
+                document.createElement("button");
+
+            button.className =
+                "game" +
+                (
+                    selectedGame === game.id
+                        ? " active"
+                        : ""
+                );
+
+
+            button.dataset.game =
+                game.id;
+
+
+            button.innerHTML = `
+
+                <span class="game-icon">
+                    ${game.icon || "🎮"}
+                </span>
+
+                ${game.name}
+
+            `;
+
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    selectGame(game.id);
+
+                }
+            );
+
+
+            container.appendChild(button);
+
+        });
+
+    }
+
+
+    function selectGame(gameId) {
+
+        selectedGame = gameId;
+
+        renderGames();
+        renderFeed();
+
+        const game =
+            allGames.find(
+                item => item.id === gameId
+            );
+
+
+        document.getElementById(
+            "selectedGameName"
+        ).textContent =
+            game
+                ? game.name
+                : "همه بازی‌ها";
+
+    }
+
+
+    /* ==========================================
+       FEED
+    ========================================== */
+
+    function renderFeed() {
+
+        const container =
+            document.getElementById(
+                "feedList"
+            );
+
+
+        container.innerHTML = "";
+
+
+        let news =
+            [...allNews];
+
+
+        let events =
+            [...allEvents];
+
+
+        if (selectedGame !== "all") {
+
+            news =
+                news.filter(
+                    item =>
+                        item.gameId === selectedGame
+                );
+
+            events =
+                events.filter(
+                    item =>
+                        item.gameId === selectedGame
+                );
+
+        }
+
+
+        const combined = [
+
+            ...news.map(item => ({
+                ...item,
+                contentType: "news"
+            })),
+
+            ...events.map(item => ({
+                ...item,
+                contentType: "event"
+            }))
+
+        ];
+
+
+        combined.sort(
+            (a, b) =>
+                (b.order || 0) -
+                (a.order || 0)
+        );
+
+
+        if (!combined.length) {
+
+            container.innerHTML = `
+                <div
+                    class="empty-state"
+                    style="display:block"
+                >
+                    برای این بازی هنوز خبری ثبت نشده.
+                </div>
+            `;
+
+            return;
+        }
+
+
+        combined.forEach(item => {
+
+            const article =
+                document.createElement("article");
+
+            article.className = "story";
+
+
+            article.innerHTML = `
+
+                <div class="story-image">
+                    ${item.image || item.icon || "🎮"}
+                </div>
+
+                <div class="story-info">
+
+                    <span class="story-tag">
+                        ${item.gameName || ""}
+                        ·
+                        ${item.category || ""}
+                    </span>
+
+                    <h3>
+                        ${item.title || ""}
+                    </h3>
+
+                    <p>
+                        ${item.description || ""}
+                    </p>
+
+                    <div class="story-bottom">
+
+                        <span>
+                            ${item.readTime || ""}
+                        </span>
+
+                        <span>•</span>
+
+                        <span>
+                            ${item.time || ""}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            article.addEventListener(
+                "click",
+                () => {
+
+                    if (item.url && item.url !== "#") {
+                        window.location.href =
+                            item.url;
+                    }
+
+                }
+            );
+
+
+            container.appendChild(article);
+
+        });
+
+    }
+
+
+    /* ==========================================
+       TRENDING
+    ========================================== */
+
+    function renderTrending() {
+
+        const container =
+            document.getElementById(
+                "trendingContainer"
+            );
+
+
+        container.innerHTML = "";
+
+
+        const trending =
+            allGames
+                .filter(game => game.trending)
+                .slice(0, 5);
+
+
+        trending.forEach(
+            (game, index) => {
+
+                const item =
+                    document.createElement("div");
+
+                item.className = "trend";
+
+
+                item.innerHTML = `
+
+                    <span class="trend-number">
+                        ${String(index + 1).padStart(2, "0")}
+                    </span>
+
+                    <div class="trend-content">
+
+                        <div class="trend-title">
+                            ${game.name}
+                        </div>
+
+                        <div class="trend-meta">
+                            ${game.followers || ""}
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                container.appendChild(item);
+
+            }
+        );
+
+    }
+
+
+    /* ==========================================
+       TODAY
+    ========================================== */
+
+    function renderToday() {
+
+        const container =
+            document.getElementById(
+                "todayContainer"
+            );
+
+
+        container.innerHTML = "";
+
+
+        allEvents
+            .filter(event => event.today)
+            .forEach(event => {
+
+                const item =
+                    document.createElement("div");
+
+                item.className =
+                    "today-item";
+
+
+                item.innerHTML = `
+
+                    <span class="today-time">
+                        ${event.eventTime || ""}
+                    </span>
+
+                    <div>
+
+                        <div class="today-game">
+                            ${event.gameName || ""}
+                        </div>
+
+                        <div class="today-title">
+                            ${event.title || ""}
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                container.appendChild(item);
+
+            });
+
+    }
+
+
+    /* ==========================================
+       DISCOVER
+    ========================================== */
+
+    function renderDiscover() {
+
+        const container =
+            document.getElementById(
+                "discoverContainer"
+            );
+
+
+        container.innerHTML = "";
+
+
+        allDiscover.forEach(game => {
+
+            const card =
+                document.createElement("article");
+
+            card.className =
+                "discover-card";
+
+
+            card.innerHTML = `
+
+                <div class="discover-emoji">
+                    ${game.icon || "🎮"}
+                </div>
+
+                <strong class="discover-game">
+                    ${game.name}
+                </strong>
+
+                <span class="discover-type">
+                    ${game.type || ""}
+                </span>
+
+                <button class="follow">
+                    + دنبال کردن
+                </button>
+
+            `;
+
+
+            const button =
+                card.querySelector(".follow");
+
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    const following =
+                        button.classList.toggle(
+                            "following"
+                        );
+
+
+                    button.textContent =
+                        following
+                            ? "✓ دنبال می‌کنی"
+                            : "+ دنبال کردن";
+
+                }
+            );
+
+
+            container.appendChild(card);
+
+        });
+
+    }
+
+
+    /* ==========================================
+       SHOW ALL
+    ========================================== */
+
+    document
+        .getElementById("showAll")
+        .addEventListener(
+            "click",
+            event => {
+
+                event.preventDefault();
+
+                selectedGame = "all";
+
+                renderGames();
+                renderFeed();
+
+                document.getElementById(
+                    "selectedGameName"
+                ).textContent =
+                    "همه بازی‌ها";
+
+            }
+        );
+
+
+    /* ==========================================
+       SEARCH
+    ========================================== */
+
+    document
+        .getElementById("searchInput")
+        .addEventListener(
+            "input",
+            event => {
+
+                const query =
+                    event.target.value
+                        .toLowerCase()
+                        .trim();
+
+
+                const stories =
+                    document.querySelectorAll(
+                        ".story"
+                    );
+
+
+                let visible = 0;
+
+
+                stories.forEach(
+                    story => {
+
+                        const text =
+                            story.innerText
+                                .toLowerCase();
+
+
+                        const match =
+                            text.includes(query);
+
+
+                        story.style.display =
+                            match
+                                ? "grid"
+                                : "none";
+
+
+                        if (match) {
+                            visible++;
+                        }
+
+                    }
+                );
+
+
+                const empty =
+                    document.querySelector(
+                        ".empty-state"
+                    );
+
+
+                if (
+                    query &&
+                    visible === 0 &&
+                    !empty
+                ) {
+
+                    const feed =
+                        document.getElementById(
+                            "feedList"
+                        );
+
+
+                    feed.innerHTML += `
+                        <div
+                            class="empty-state"
+                            style="display:block"
+                        >
+                            مطلبی با این عبارت پیدا نشد.
+                        </div>
+                    `;
+
+                }
+
+            }
+        );
+
+
+    /* ==========================================
+       MOBILE MENU
+    ========================================== */
+
+    document
+        .getElementById("mobileMenu")
+        .addEventListener(
+            "click",
+            () => {
+
+                const nav =
+                    document.querySelector(".nav");
+
+
+                if (
+                    nav.style.display === "flex"
+                ) {
+
+                    nav.style.display =
+                        "none";
+
+                    return;
+
+                }
+
+
+                nav.style.display = "flex";
+
+                nav.style.position =
+                    "absolute";
+
+                nav.style.top =
+                    "65px";
+
+                nav.style.left =
+                    "13px";
+
+                nav.style.right =
+                    "13px";
+
+                nav.style.padding =
+                    "16px";
+
+                nav.style.flexDirection =
+                    "column";
+
+                nav.style.alignItems =
+                    "stretch";
+
+                nav.style.gap =
+                    "16px";
+
+                nav.style.border =
+                    "1px solid rgba(255,255,255,.08)";
+
+                nav.style.borderRadius =
+                    "15px";
+
+                nav.style.background =
+                    "rgba(30,30,30,.96)";
+
+                nav.style.backdropFilter =
+                    "blur(20px)";
+
+            }
+        );
+
+
+    /* ==========================================
+       START
+    ========================================== */
+
+    initialize();
 
 </script>
 
 </body>
 </html>
+```
