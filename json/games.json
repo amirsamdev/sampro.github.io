@@ -1,0 +1,32 @@
+[
+  {
+    "id": "valorant",
+    "name": "ولورانت",
+    "icon": "🎯",
+    "active": true
+  },
+  {
+    "id": "fortnite",
+    "name": "فورتنایت",
+    "icon": "🪂",
+    "active": false
+  },
+  {
+    "id": "cod",
+    "name": "کال آو دیوتی",
+    "icon": "⚔️",
+    "active": false
+  },
+  {
+    "id": "minecraft",
+    "name": "ماینکرفت",
+    "icon": "⛏️",
+    "active": false
+  },
+  {
+    "id": "gta",
+    "name": "جی‌تی‌ای",
+    "icon": "🏎️",
+    "active": false
+  }
+]
