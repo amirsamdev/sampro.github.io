@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
 <html lang="fa" dir="rtl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+```
 <title>GAMEHUB — دنیای گیمینگ موبایل</title>
 
 <link
@@ -15,7 +15,6 @@
 >
 
 <style>
-
     * {
         margin: 0;
         padding: 0;
@@ -25,18 +24,14 @@
     :root {
         --bg: #202020;
         --bg-soft: #292929;
-
         --blue-dark: #2E4192;
         --blue: #4E6FF8;
         --blue-soft: #9aabff;
-
-        --text: #ffffff;
+        --text: #fff;
         --text-soft: rgba(255,255,255,.72);
         --text-muted: rgba(255,255,255,.48);
-
         --border: rgba(255,255,255,.09);
         --card: rgba(255,255,255,.05);
-
         --radius: 20px;
     }
 
@@ -46,7 +41,6 @@
 
     body {
         min-height: 100vh;
-
         background:
             radial-gradient(
                 circle at 15% 5%,
@@ -55,42 +49,18 @@
             ),
             linear-gradient(
                 180deg,
-                #222222 0%,
+                #222 0%,
                 #292929 35%,
                 #2E4192 130%
             );
-
         color: var(--text);
-
         font-family:
             "Vazirmatn",
             Tahoma,
             Arial,
             sans-serif;
-
         font-size: 15px;
         line-height: 1.8;
-    }
-
-    body::before {
-        content: "";
-
-        position: fixed;
-        inset: 0;
-
-        pointer-events: none;
-
-        background:
-            linear-gradient(
-                rgba(255,255,255,.015) 1px,
-                transparent 1px
-            );
-
-        background-size: 100% 5px;
-
-        opacity: .25;
-
-        z-index: -1;
     }
 
     button,
@@ -117,66 +87,48 @@
         margin: auto;
     }
 
-
     /* =========================
        HEADER
     ========================= */
 
     .header {
         height: 78px;
-
         position: sticky;
         top: 0;
-
         z-index: 50;
-
-        border-bottom:
-            1px solid var(--border);
-
-        background:
-            rgba(30,30,30,.78);
-
-        backdrop-filter:
-            blur(20px);
+        border-bottom: 1px solid var(--border);
+        background: rgba(30,30,30,.78);
+        backdrop-filter: blur(20px);
     }
 
     .header-inner {
         height: 100%;
-
         display: flex;
         align-items: center;
-
         gap: 38px;
     }
 
     .logo {
         display: flex;
         align-items: center;
-
         gap: 11px;
-
         font-size: 17px;
         font-weight: 900;
-
         white-space: nowrap;
     }
 
     .logo-mark {
         width: 40px;
         height: 40px;
-
         display: grid;
         place-items: center;
-
         border-radius: 12px;
-
         background:
             linear-gradient(
                 135deg,
                 var(--blue-dark),
                 var(--blue)
             );
-
         box-shadow:
             0 8px 30px rgba(78,111,248,.25);
     }
@@ -184,16 +136,13 @@
     .nav {
         display: flex;
         align-items: center;
-
         gap: 28px;
     }
 
     .nav a {
         color: var(--text-muted);
-
         font-size: 13px;
         font-weight: 700;
-
         transition: .2s;
     }
 
@@ -204,59 +153,41 @@
 
     .header-right {
         margin-right: auto;
-
         display: flex;
         align-items: center;
+        gap: 10px;
     }
 
     .mobile-menu {
         width: 42px;
         height: 42px;
-
         display: none;
         place-items: center;
-
-        border:
-            1px solid var(--border);
-
+        border: 1px solid var(--border);
         border-radius: 12px;
-
-        background:
-            rgba(255,255,255,.05);
-
+        background: rgba(255,255,255,.05);
         color: white;
-
         font-size: 16px;
     }
 
-
     /* =========================
-       HERO
+       HERO SLIDER
     ========================= */
 
     .hero-slider {
         margin-top: 30px;
-
         position: relative;
-
         min-height: 450px;
-
         overflow: hidden;
-
-        border:
-            1px solid var(--border);
-
+        border: 1px solid var(--border);
         border-radius: 28px;
-
         background: #242424;
-
         box-shadow:
             0 25px 80px rgba(0,0,0,.15);
     }
 
     .slides {
         position: relative;
-
         width: 100%;
         min-height: 450px;
     }
@@ -264,17 +195,12 @@
     .slide {
         position: absolute;
         inset: 0;
-
         display: flex;
         align-items: flex-end;
-
         padding: 48px;
-
         opacity: 0;
         visibility: hidden;
-
         transform: scale(1.025);
-
         transition:
             opacity .55s ease,
             transform .55s ease;
@@ -283,7 +209,6 @@
     .slide.active {
         opacity: 1;
         visibility: visible;
-
         transform: scale(1);
     }
 
@@ -295,7 +220,6 @@
     .slide-overlay {
         position: absolute;
         inset: 0;
-
         background:
             linear-gradient(
                 90deg,
@@ -307,152 +231,103 @@
 
     .slide-glow {
         position: absolute;
-
         width: 500px;
         height: 500px;
-
         left: -100px;
         top: -150px;
-
         border-radius: 50%;
-
         background:
             rgba(78,111,248,.18);
-
         filter: blur(30px);
     }
 
     .slide-art {
         position: absolute;
-
         left: 5%;
         bottom: -30px;
-
-        font-size:
-            clamp(150px, 24vw, 290px);
-
+        font-size: clamp(150px, 24vw, 290px);
         opacity: .12;
-
         transform: rotate(8deg);
     }
 
     .slide-content {
         position: relative;
-
         z-index: 3;
-
         max-width: 690px;
     }
 
     .slide-tag {
         display: inline-flex;
         align-items: center;
-
         gap: 8px;
-
         padding: 7px 12px;
-
         border-radius: 9px;
-
-        background:
-            rgba(78,111,248,.9);
-
+        background: rgba(78,111,248,.9);
         font-size: 11px;
         font-weight: 900;
     }
 
     .slide h1 {
         margin-top: 17px;
-
-        font-size:
-            clamp(38px, 6vw, 68px);
-
+        font-size: clamp(38px, 6vw, 68px);
         line-height: 1.25;
-
         font-weight: 900;
     }
 
     .slide-description {
         max-width: 610px;
-
         margin-top: 16px;
-
         color: var(--text-soft);
-
         font-size: 15px;
         line-height: 2;
     }
 
     .slide-meta {
         margin-top: 20px;
-
         display: flex;
         align-items: center;
-
         gap: 14px;
-
         color: var(--text-muted);
-
         font-size: 11px;
     }
 
     .read-button {
         margin-top: 25px;
-
         display: inline-flex;
         align-items: center;
-
         gap: 9px;
-
         padding: 12px 17px;
-
         border-radius: 11px;
-
         background: white;
-
         color: #30469c;
-
         font-size: 12px;
         font-weight: 900;
     }
 
     .slider-dots {
         position: absolute;
-
         left: 30px;
         bottom: 25px;
-
         z-index: 10;
-
         display: flex;
-
         gap: 7px;
     }
 
     .slider-dot {
         width: 8px;
         height: 8px;
-
         padding: 0;
-
         border: 0;
-
         border-radius: 50%;
-
-        background:
-            rgba(255,255,255,.25);
-
+        background: rgba(255,255,255,.25);
         transition: .25s;
     }
 
     .slider-dot.active {
         width: 25px;
-
         border-radius: 20px;
-
         background: white;
     }
-
 
     /* =========================
        SECTION
@@ -464,68 +339,347 @@
 
     .section-top {
         display: flex;
-
         justify-content: space-between;
         align-items: flex-end;
-
         margin-bottom: 20px;
     }
 
     .section-title {
         font-size: 25px;
-
         line-height: 1.5;
-
         font-weight: 900;
     }
 
     .section-description {
         margin-top: 6px;
-
         color: var(--text-muted);
-
         font-size: 12px;
     }
 
     .section-link {
         color: var(--blue-soft);
-
         font-size: 11px;
         font-weight: 800;
     }
 
+    /* =========================
+       MOBILE GAMES
+    ========================= */
+
+    .games-scroll {
+        display: flex;
+        gap: 11px;
+        overflow-x: auto;
+        padding: 4px 2px 10px;
+        scrollbar-width: none;
+    }
+
+    .games-scroll::-webkit-scrollbar {
+        display: none;
+    }
+
+    .game {
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 11px 15px;
+        border: 1px solid var(--border);
+        border-radius: 13px;
+        background: rgba(255,255,255,.045);
+        color: var(--text-soft);
+        font-size: 12px;
+        font-weight: 800;
+        transition: .2s;
+    }
+
+    .game:hover,
+    .game.active {
+        color: white;
+        border-color: rgba(78,111,248,.55);
+        background: rgba(78,111,248,.18);
+        transform: translateY(-2px);
+    }
+
+    .game-icon {
+        width: 32px;
+        height: 32px;
+        display: grid;
+        place-items: center;
+        border-radius: 9px;
+        background: rgba(255,255,255,.07);
+        font-size: 16px;
+    }
+
+    .selected-game-info {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 14px;
+        color: var(--text-muted);
+        font-size: 11px;
+    }
+
+    .selected-game-name {
+        color: var(--blue-soft);
+        font-weight: 900;
+    }
 
     /* =========================
-       NEWS
+       FEED
+    ========================= */
+
+    .feed {
+        display: grid;
+        grid-template-columns:
+            minmax(0,1fr)
+            330px;
+        gap: 20px;
+    }
+
+    .feed-list {
+        display: grid;
+        gap: 12px;
+    }
+
+    .story {
+        display: grid;
+        grid-template-columns:
+            160px
+            minmax(0,1fr);
+        gap: 17px;
+        padding: 12px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--card);
+        transition:
+            transform .2s,
+            border .2s,
+            background .2s;
+    }
+
+    .story:hover {
+        transform: translateY(-3px);
+        border-color: rgba(78,111,248,.35);
+        background: rgba(255,255,255,.065);
+    }
+
+    .story-image {
+        min-height: 135px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border-radius: 13px;
+        background:
+            linear-gradient(
+                135deg,
+                #282828,
+                #303b78,
+                #4e6ff8
+            );
+        font-size: 58px;
+    }
+
+    .story-image img {
+        width: 100%;
+        height: 100%;
+        min-height: 135px;
+        object-fit: cover;
+    }
+
+    .story-info {
+        padding: 7px 5px 7px 0;
+    }
+
+    .story-tag {
+        color: var(--blue-soft);
+        font-size: 10px;
+        font-weight: 900;
+    }
+
+    .story h3 {
+        margin-top: 8px;
+        font-size: 18px;
+        line-height: 1.65;
+        font-weight: 850;
+    }
+
+    .story p {
+        margin-top: 8px;
+        color: var(--text-muted);
+        font-size: 12px;
+        line-height: 1.9;
+    }
+
+    .story-bottom {
+        margin-top: 13px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--text-muted);
+        font-size: 10px;
+    }
+
+    .story-bottom span:first-child {
+        color: var(--text-soft);
+    }
+
+    .story.event {
+        border-right:
+            3px solid var(--blue);
+    }
+
+    /* =========================
+       SIDEBAR
+    ========================= */
+
+    .sidebar {
+        display: grid;
+        gap: 14px;
+    }
+
+    .side-box {
+        padding: 20px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background:
+            rgba(20,20,20,.30);
+    }
+
+    .side-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+
+    .side-heading h3 {
+        font-size: 15px;
+        font-weight: 900;
+    }
+
+    .side-heading a {
+        color: var(--blue-soft);
+        font-size: 10px;
+        font-weight: 800;
+    }
+
+    /* =========================
+       TRENDING
+    ========================= */
+
+    .trending {
+        display: grid;
+        gap: 3px;
+    }
+
+    .trend {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        padding: 11px 0;
+        border-bottom:
+            1px solid rgba(255,255,255,.055);
+    }
+
+    .trend:last-child {
+        border-bottom: 0;
+    }
+
+    .trend-number {
+        width: 27px;
+        color: var(--text-muted);
+        font-size: 12px;
+        font-weight: 900;
+    }
+
+    .trend-icon {
+        width: 34px;
+        height: 34px;
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        border-radius: 9px;
+        background: rgba(78,111,248,.14);
+    }
+
+    .trend-content {
+        min-width: 0;
+    }
+
+    .trend-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 12px;
+        font-weight: 800;
+    }
+
+    .trend-meta {
+        margin-top: 2px;
+        color: var(--text-muted);
+        font-size: 9px;
+    }
+
+    /* =========================
+       TODAY
+    ========================= */
+
+    .today-list {
+        display: grid;
+        gap: 2px;
+    }
+
+    .today-item {
+        display: grid;
+        grid-template-columns:
+            52px
+            1fr;
+        gap: 10px;
+        padding: 10px 0;
+        border-bottom:
+            1px solid rgba(255,255,255,.05);
+    }
+
+    .today-item:last-child {
+        border-bottom: 0;
+    }
+
+    .today-time {
+        color: var(--text-muted);
+        font-size: 10px;
+    }
+
+    .today-game {
+        color: var(--blue-soft);
+        font-size: 9px;
+        font-weight: 900;
+    }
+
+    .today-title {
+        margin-top: 2px;
+        font-size: 11px;
+        font-weight: 750;
+    }
+
+    /* =========================
+       NEWS SECTION
     ========================= */
 
     .news-grid {
         display: grid;
-
         grid-template-columns:
             repeat(3, 1fr);
-
         gap: 15px;
     }
 
     .news-card {
         position: relative;
-
         overflow: hidden;
-
-        min-height: 380px;
-
-        display: flex;
-        flex-direction: column;
-
-        border:
-            1px solid var(--border);
-
+        border: 1px solid var(--border);
         border-radius: 20px;
-
-        background:
-            rgba(255,255,255,.045);
-
+        background: rgba(255,255,255,.045);
         transition:
             transform .25s ease,
             border-color .25s ease,
@@ -533,23 +687,14 @@
     }
 
     .news-card:hover {
-        transform:
-            translateY(-7px);
-
-        border-color:
-            rgba(78,111,248,.45);
-
-        background:
-            rgba(255,255,255,.065);
+        transform: translateY(-6px);
+        border-color: rgba(78,111,248,.45);
+        background: rgba(255,255,255,.065);
     }
 
     .news-image {
-        position: relative;
-
-        height: 205px;
-
+        height: 190px;
         overflow: hidden;
-
         background:
             linear-gradient(
                 135deg,
@@ -562,299 +707,65 @@
     .news-image img {
         width: 100%;
         height: 100%;
-
         object-fit: cover;
-
-        transition:
-            transform .45s ease;
+        transition: transform .4s ease;
     }
 
     .news-card:hover .news-image img {
         transform: scale(1.06);
     }
 
-    .news-image::after {
-        content: "";
-
-        position: absolute;
-
-        inset: 0;
-
-        background:
-            linear-gradient(
-                180deg,
-                transparent 45%,
-                rgba(20,20,20,.65)
-            );
-    }
-
-    .news-tag {
-        position: absolute;
-
-        right: 13px;
-        top: 13px;
-
-        z-index: 3;
-
-        padding: 5px 9px;
-
-        border-radius: 8px;
-
-        background:
-            rgba(20,20,20,.75);
-
-        border:
-            1px solid rgba(255,255,255,.12);
-
-        backdrop-filter:
-            blur(10px);
-
-        color:
-            var(--blue-soft);
-
-        font-size: 9px;
-
-        font-weight: 900;
-    }
-
     .news-content {
         padding: 17px;
-
-        display: flex;
-        flex-direction: column;
-
-        flex: 1;
     }
 
     .news-game {
-        color:
-            var(--blue-soft);
-
-        font-size: 9px;
-
+        color: var(--blue-soft);
+        font-size: 10px;
         font-weight: 900;
     }
 
-    .news-title {
+    .news-card h3 {
         margin-top: 7px;
-
-        font-size: 17px;
-
-        line-height: 1.65;
-
+        font-size: 16px;
+        line-height: 1.7;
         font-weight: 900;
     }
 
-    .news-description {
-        margin-top: 8px;
-
-        color:
-            var(--text-muted);
-
+    .news-card p {
+        margin-top: 7px;
+        color: var(--text-muted);
         font-size: 11px;
-
         line-height: 1.9;
-
-        display:
-            -webkit-box;
-
-        -webkit-line-clamp: 3;
-
-        -webkit-box-orient: vertical;
-
-        overflow: hidden;
     }
 
-    .news-bottom {
-        margin-top: auto;
-        padding-top: 15px;
-
+    .news-footer {
+        margin-top: 14px;
         display: flex;
-
-        justify-content: space-between;
         align-items: center;
-
+        justify-content: space-between;
         gap: 10px;
     }
 
-    .news-meta {
-        color:
-            var(--text-muted);
-
+    .news-time {
+        color: var(--text-muted);
         font-size: 9px;
     }
 
     .news-more {
-        display: inline-flex;
-        align-items: center;
-
-        gap: 5px;
-
-        padding: 7px 10px;
-
+        padding: 7px 11px;
         border-radius: 8px;
-
-        background:
-            rgba(78,111,248,.14);
-
-        color:
-            var(--blue-soft);
-
+        background: rgba(78,111,248,.14);
+        color: var(--blue-soft);
         font-size: 9px;
-
         font-weight: 900;
-
         transition: .2s;
     }
 
-    .news-card:hover .news-more {
-        background:
-            var(--blue);
-
+    .news-more:hover {
+        background: var(--blue);
         color: white;
     }
-
-
-    /* =========================
-       FEED
-    ========================= */
-
-    .feed {
-        display: grid;
-
-        grid-template-columns:
-            minmax(0,1fr)
-            330px;
-
-        gap: 20px;
-    }
-
-    .feed-list {
-        display: grid;
-
-        gap: 12px;
-    }
-
-    .story {
-        display: grid;
-
-        grid-template-columns:
-            160px
-            minmax(0,1fr);
-
-        gap: 17px;
-
-        padding: 12px;
-
-        border:
-            1px solid var(--border);
-
-        border-radius: var(--radius);
-
-        background: var(--card);
-
-        transition:
-            transform .2s,
-            border .2s,
-            background .2s;
-    }
-
-    .story:hover {
-        transform:
-            translateY(-3px);
-
-        border-color:
-            rgba(78,111,248,.35);
-
-        background:
-            rgba(255,255,255,.065);
-    }
-
-    .story-image {
-        min-height: 135px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        overflow: hidden;
-
-        border-radius: 13px;
-
-        background:
-            linear-gradient(
-                135deg,
-                #282828,
-                #303b78,
-                #4e6ff8
-            );
-    }
-
-    .story-image img {
-        width: 100%;
-        height: 100%;
-
-        object-fit: cover;
-    }
-
-    .story-info {
-        padding: 7px 5px 7px 0;
-    }
-
-    .story-tag {
-        color:
-            var(--blue-soft);
-
-        font-size: 10px;
-
-        font-weight: 900;
-    }
-
-    .story h3 {
-        margin-top: 8px;
-
-        font-size: 18px;
-
-        line-height: 1.65;
-
-        font-weight: 850;
-    }
-
-    .story p {
-        margin-top: 8px;
-
-        color:
-            var(--text-muted);
-
-        font-size: 12px;
-
-        line-height: 1.9;
-    }
-
-    .story-bottom {
-        margin-top: 13px;
-
-        display: flex;
-        align-items: center;
-
-        gap: 12px;
-
-        color:
-            var(--text-muted);
-
-        font-size: 10px;
-    }
-
-    .story-bottom span:first-child {
-        color:
-            var(--text-soft);
-    }
-
-    .story.event {
-        border-right:
-            3px solid var(--blue);
-    }
-
 
     /* =========================
        EMPTY
@@ -862,332 +773,12 @@
 
     .empty-state {
         padding: 40px;
-
-        border:
-            1px solid var(--border);
-
+        border: 1px solid var(--border);
         border-radius: var(--radius);
-
         text-align: center;
-
-        color:
-            var(--text-muted);
-
+        color: var(--text-muted);
         font-size: 13px;
     }
-
-
-    /* =========================
-       SIDEBAR
-    ========================= */
-
-    .sidebar {
-        display: grid;
-
-        gap: 14px;
-    }
-
-    .side-box {
-        padding: 20px;
-
-        border:
-            1px solid var(--border);
-
-        border-radius: var(--radius);
-
-        background:
-            rgba(20,20,20,.30);
-    }
-
-    .side-heading {
-        display: flex;
-        align-items: center;
-
-        justify-content: space-between;
-
-        margin-bottom: 15px;
-    }
-
-    .side-heading h3 {
-        font-size: 15px;
-
-        font-weight: 900;
-    }
-
-    .side-heading a {
-        color:
-            var(--blue-soft);
-
-        font-size: 10px;
-
-        font-weight: 800;
-    }
-
-
-    /* =========================
-       GAME INFO
-    ========================= */
-
-    .game-info-box {
-        position: relative;
-
-        overflow: hidden;
-
-        padding: 22px;
-
-        border:
-            1px solid rgba(78,111,248,.25);
-
-        border-radius: 20px;
-
-        background:
-            linear-gradient(
-                145deg,
-                rgba(78,111,248,.15),
-                rgba(255,255,255,.035)
-            );
-    }
-
-    .game-info-box::before {
-        content: "";
-
-        position: absolute;
-
-        width: 160px;
-        height: 160px;
-
-        left: -70px;
-        top: -70px;
-
-        border-radius: 50%;
-
-        background:
-            rgba(78,111,248,.18);
-
-        filter: blur(30px);
-    }
-
-    .game-info-icon {
-        position: relative;
-
-        width: 48px;
-        height: 48px;
-
-        display: grid;
-        place-items: center;
-
-        border-radius: 13px;
-
-        background:
-            rgba(78,111,248,.2);
-
-        font-size: 23px;
-    }
-
-    .game-info-title {
-        position: relative;
-
-        margin-top: 14px;
-
-        font-size: 17px;
-
-        font-weight: 900;
-    }
-
-    .game-info-description {
-        position: relative;
-
-        margin-top: 7px;
-
-        color:
-            var(--text-muted);
-
-        font-size: 11px;
-
-        line-height: 1.9;
-    }
-
-    .game-info-meta {
-        position: relative;
-
-        margin-top: 14px;
-
-        display: flex;
-        flex-wrap: wrap;
-
-        gap: 7px;
-    }
-
-    .game-info-meta span {
-        padding: 5px 8px;
-
-        border-radius: 7px;
-
-        background:
-            rgba(255,255,255,.06);
-
-        color:
-            var(--text-soft);
-
-        font-size: 9px;
-    }
-
-
-    /* =========================
-       DISCOVER
-    ========================= */
-
-    .discover-grid {
-        display: grid;
-
-        grid-template-columns:
-            repeat(4, 1fr);
-
-        gap: 12px;
-    }
-
-    .discover-card {
-        min-height: 185px;
-
-        display: flex;
-        flex-direction: column;
-
-        justify-content: flex-end;
-
-        position: relative;
-
-        overflow: hidden;
-
-        padding: 17px;
-
-        border:
-            1px solid var(--border);
-
-        border-radius: 18px;
-
-        background:
-            linear-gradient(
-                145deg,
-                #292929,
-                #303e86
-            );
-
-        transition: .2s;
-    }
-
-    .discover-card:hover {
-        transform:
-            translateY(-4px);
-
-        border-color:
-            rgba(78,111,248,.4);
-    }
-
-    .discover-emoji {
-        position: absolute;
-
-        left: 5px;
-        top: -8px;
-
-        font-size: 80px;
-
-        opacity: .15;
-
-        transform:
-            rotate(-8deg);
-    }
-
-    .discover-rank {
-        position: absolute;
-
-        top: 13px;
-        right: 13px;
-
-        padding: 4px 8px;
-
-        border-radius: 7px;
-
-        background:
-            rgba(0,0,0,.22);
-
-        color:
-            var(--blue-soft);
-
-        font-size: 9px;
-
-        font-weight: 900;
-    }
-
-    .discover-game {
-        position: relative;
-
-        z-index: 2;
-
-        font-size: 16px;
-
-        font-weight: 900;
-    }
-
-    .discover-type {
-        position: relative;
-
-        z-index: 2;
-
-        margin-top: 2px;
-
-        color:
-            var(--text-muted);
-
-        font-size: 10px;
-    }
-
-    .discover-followers {
-        position: relative;
-
-        z-index: 2;
-
-        margin-top: 5px;
-
-        color:
-            var(--text-muted);
-
-        font-size: 9px;
-    }
-
-    .follow {
-        position: relative;
-
-        z-index: 2;
-
-        width: fit-content;
-
-        margin-top: 12px;
-
-        padding: 7px 10px;
-
-        border:
-            1px solid rgba(255,255,255,.12);
-
-        border-radius: 8px;
-
-        background:
-            rgba(0,0,0,.18);
-
-        color: white;
-
-        font-size: 9px;
-
-        font-weight: 800;
-    }
-
-    .follow.following {
-        background:
-            var(--blue);
-
-        border-color:
-            var(--blue);
-    }
-
 
     /* =========================
        CTA
@@ -1195,88 +786,58 @@
 
     .cta {
         padding: 38px;
-
-        border:
-            1px solid rgba(255,255,255,.08);
-
+        border: 1px solid rgba(255,255,255,.08);
         border-radius: 24px;
-
         background:
             linear-gradient(
                 120deg,
                 rgba(46,65,146,.6),
                 rgba(78,111,248,.16)
             );
-
         overflow: hidden;
-
         position: relative;
     }
 
     .cta::after {
         content: "";
-
         position: absolute;
-
         width: 250px;
         height: 250px;
-
         left: -70px;
         top: -100px;
-
         border-radius: 50%;
-
         background:
             rgba(78,111,248,.15);
-
         filter: blur(30px);
     }
 
     .cta-label {
         position: relative;
-
         z-index: 2;
-
-        color:
-            #9aabff;
-
+        color: #9aabff;
         font-size: 11px;
-
         font-weight: 900;
     }
 
     .cta h2 {
         position: relative;
-
         z-index: 2;
-
         margin-top: 9px;
-
         font-size:
             clamp(25px,4vw,39px);
-
         line-height: 1.5;
-
         font-weight: 900;
     }
 
     .cta p {
         position: relative;
-
         z-index: 2;
-
         max-width: 650px;
-
         margin-top: 8px;
-
-        color:
-            rgba(255,255,255,.55);
-
+        color: rgba(255,255,255,.55);
         font-size: 12px;
-
         line-height: 2;
     }
-
 
     /* =========================
        ERROR
@@ -1284,27 +845,15 @@
 
     .json-error {
         display: none;
-
         margin-top: 20px;
-
         padding: 20px;
-
-        border:
-            1px solid rgba(255,80,80,.25);
-
+        border: 1px solid rgba(255,80,80,.25);
         border-radius: 15px;
-
-        background:
-            rgba(255,60,60,.08);
-
-        color:
-            #ffb0b0;
-
+        background: rgba(255,60,60,.08);
+        color: #ffb0b0;
         font-size: 12px;
-
         line-height: 2;
     }
-
 
     /* =========================
        FOOTER
@@ -1312,26 +861,18 @@
 
     .footer {
         margin-top: 80px;
-
         padding: 30px 0;
-
         border-top:
             1px solid rgba(255,255,255,.07);
-
-        color:
-            var(--text-muted);
-
+        color: var(--text-muted);
         font-size: 10px;
     }
 
     .footer-inner {
         display: flex;
-
         align-items: center;
-
         justify-content: space-between;
     }
-
 
     /* =========================
        MOBILE
@@ -1352,13 +893,7 @@
         }
 
         .sidebar {
-            grid-template-columns:
-                1fr 1fr;
-        }
-
-        .discover-grid {
-            grid-template-columns:
-                repeat(2, 1fr);
+            grid-template-columns: 1fr 1fr;
         }
 
         .news-grid {
@@ -1367,7 +902,6 @@
         }
     }
 
-
     @media (max-width: 650px) {
 
         body {
@@ -1375,8 +909,7 @@
         }
 
         .container {
-            width:
-                calc(100% - 26px);
+            width: calc(100% - 26px);
         }
 
         .header {
@@ -1389,9 +922,7 @@
 
         .hero-slider {
             margin-top: 17px;
-
             min-height: 420px;
-
             border-radius: 21px;
         }
 
@@ -1400,8 +931,7 @@
         }
 
         .slide {
-            padding:
-                28px 22px;
+            padding: 28px 22px;
         }
 
         .slide h1 {
@@ -1415,7 +945,6 @@
         .slide-art {
             left: -15px;
             bottom: 20px;
-
             font-size: 160px;
         }
 
@@ -1431,51 +960,31 @@
             font-size: 10px;
         }
 
-        .news-grid {
-            display: flex;
-
-            overflow-x: auto;
-
-            padding-bottom: 7px;
-
-            scrollbar-width: none;
-        }
-
-        .news-grid::-webkit-scrollbar {
-            display: none;
-        }
-
-        .news-card {
-            flex:
-                0 0 275px;
-
-            min-height: 365px;
-        }
-
         .feed {
             gap: 28px;
         }
 
         .story {
             grid-template-columns:
-                105px 1fr;
-
+                105px
+                1fr;
             gap: 11px;
-
             padding: 9px;
-
             border-radius: 15px;
         }
 
         .story-image {
             min-height: 120px;
-
             border-radius: 10px;
+            font-size: 40px;
+        }
+
+        .story-image img {
+            min-height: 120px;
         }
 
         .story-info {
-            padding:
-                4px 3px 4px 0;
+            padding: 4px 3px 4px 0;
         }
 
         .story h3 {
@@ -1488,7 +997,6 @@
 
         .story-bottom {
             margin-top: 8px;
-
             font-size: 8px;
         }
 
@@ -1496,38 +1004,31 @@
             grid-template-columns: 1fr;
         }
 
-        .discover-grid {
+        .news-grid {
             display: flex;
-
             overflow-x: auto;
-
-            grid-template-columns: none;
-
-            padding-bottom: 7px;
-
+            padding-bottom: 8px;
             scrollbar-width: none;
         }
 
-        .discover-grid::-webkit-scrollbar {
+        .news-grid::-webkit-scrollbar {
             display: none;
         }
 
-        .discover-card {
-            flex:
-                0 0 190px;
+        .news-card {
+            flex: 0 0 285px;
+        }
 
-            min-height: 165px;
+        .news-image {
+            height: 170px;
         }
 
         .footer-inner {
             flex-direction: column;
-
             gap: 8px;
-
             text-align: center;
         }
     }
-
 
     @media (max-width: 380px) {
 
@@ -1537,10 +1038,15 @@
 
         .story {
             grid-template-columns:
-                90px 1fr;
+                90px
+                1fr;
         }
 
         .story-image {
+            min-height: 105px;
+        }
+
+        .story-image img {
             min-height: 105px;
         }
 
@@ -1548,7 +1054,6 @@
             font-size: 13px;
         }
     }
-
 </style>
 ```
 
@@ -1562,15 +1067,9 @@
 <div class="container header-inner">
 
     <a href="#" class="logo">
-
-        <span class="logo-mark">
-            🎮
-        </span>
-
+        <span class="logo-mark">🎮</span>
         گیم‌هاب
-
     </a>
-
 
     <nav class="nav">
 
@@ -1578,27 +1077,25 @@
             خانه
         </a>
 
+        <a href="#games">
+            بازی‌های موبایل
+        </a>
+
         <a href="#news">
             اخبار
         </a>
 
         <a href="#today">
-            بازی‌ها
-        </a>
-
-        <a href="#discover">
-            کشف بازی‌ها
+            امروز
         </a>
 
     </nav>
-
 
     <div class="header-right">
 
         <button
             class="mobile-menu"
             id="mobileMenu"
-            aria-label="منو"
         >
             ☰
         </button>
@@ -1614,7 +1111,7 @@
 
 ```
 <!-- =========================
-     HERO
+     SLIDER
 ========================= -->
 
 <section class="hero-slider">
@@ -1643,12 +1140,12 @@
 
 
 <!-- =========================
-     NEWS
+     MOBILE GAMES
 ========================= -->
 
 <section
     class="section"
-    id="news"
+    id="games"
 >
 
     <div class="section-top">
@@ -1656,30 +1153,36 @@
         <div>
 
             <h2 class="section-title">
-                اخبار
+                بازی‌های موبایل برای کشف
             </h2>
 
             <p class="section-description">
-                تازه‌ترین اخبار و اتفاقات دنیای بازی
+                بازی بعدی مورد علاقه‌ات را پیدا کن و اخبارش را دنبال کن
             </p>
 
         </div>
 
-        <a
-            href="#"
-            class="section-link"
-            id="newestLink"
-        >
-            جدیدترین‌ها
-        </a>
-
     </div>
 
-
     <div
-        class="news-grid"
-        id="newsContainer"
+        class="games-scroll"
+        id="gamesContainer"
     ></div>
+
+    <div class="selected-game-info">
+
+        <span>
+            در حال نمایش:
+        </span>
+
+        <span
+            class="selected-game-name"
+            id="selectedGameName"
+        >
+            همه بازی‌ها
+        </span>
+
+    </div>
 
 </section>
 
@@ -1699,10 +1202,18 @@
             </h2>
 
             <p class="section-description">
-                تازه‌ترین خبرها، آپدیت‌ها و ایونت‌های بازی‌های موبایل
+                تازه‌ترین اخبار، آپدیت‌ها و ایونت‌های بازی‌های موبایل
             </p>
 
         </div>
+
+        <a
+            href="#"
+            class="section-link"
+            id="newestLink"
+        >
+            جدیدترین‌ها
+        </a>
 
     </div>
 
@@ -1717,44 +1228,31 @@
 
         <aside class="sidebar">
 
+            <!-- TRENDING -->
 
-            <!-- GAME INFO -->
+            <div class="side-box">
 
-            <div
-                class="game-info-box"
-                id="gameInfoBox"
-            >
+                <div class="side-heading">
 
-                <div
-                    class="game-info-icon"
-                    id="gameInfoIcon"
-                >
-                    🎮
+                    <h3>
+                        🔥 ترند امروز
+                    </h3>
+
+                    <a href="#">
+                        همه
+                    </a>
+
                 </div>
 
                 <div
-                    class="game-info-title"
-                    id="gameInfoTitle"
-                >
-                    اطلاعات بازی
-                </div>
-
-                <div
-                    class="game-info-description"
-                    id="gameInfoDescription"
-                >
-                    اطلاعات بازی‌ها از فایل JSON دریافت می‌شود.
-                </div>
-
-                <div
-                    class="game-info-meta"
-                    id="gameInfoMeta"
+                    class="trending"
+                    id="trendingContainer"
                 ></div>
 
             </div>
 
 
-            <!-- TODAY EVENTS -->
+            <!-- TODAY -->
 
             <div
                 class="side-box"
@@ -1764,11 +1262,11 @@
                 <div class="side-heading">
 
                     <h3>
-                        📅 رویدادهای بازی
+                        📅 امروز
                     </h3>
 
                     <a href="#">
-                        بیشتر
+                        تقویم
                     </a>
 
                 </div>
@@ -1788,12 +1286,13 @@
 
 
 <!-- =========================
-     DISCOVER
+     NEWS
+     جایگزین بخش بازی‌های جدید
 ========================= -->
 
 <section
     class="section"
-    id="discover"
+    id="news"
 >
 
     <div class="section-top">
@@ -1801,11 +1300,11 @@
         <div>
 
             <h2 class="section-title">
-                بازی‌های موبایلی جدید
+                آخرین اخبار
             </h2>
 
             <p class="section-description">
-                چند بازی که ارزش کشف کردن دارند
+                مهم‌ترین خبرهای بازی‌های مورد علاقه‌ات را از دست نده
             </p>
 
         </div>
@@ -1813,6 +1312,7 @@
         <a
             href="#"
             class="section-link"
+            id="allNewsLink"
         >
             مشاهده همه
         </a>
@@ -1821,8 +1321,8 @@
 
 
     <div
-        class="discover-grid"
-        id="discoverContainer"
+        class="news-grid"
+        id="newsContainer"
     ></div>
 
 </section>
@@ -1891,7 +1391,8 @@
     let allNews = [];
     let allEvents = [];
     let allSlides = [];
-    let allDiscover = [];
+
+    let selectedGame = "all";
 
     let currentSlide = 0;
     let sliderTimer = null;
@@ -1920,7 +1421,6 @@
         }
 
         return [];
-
     }
 
 
@@ -1948,7 +1448,6 @@
         const data = await response.json();
 
         return toArray(data, keys);
-
     }
 
 
@@ -1964,8 +1463,7 @@
                 slides,
                 games,
                 news,
-                events,
-                discover
+                events
             ] = await Promise.all([
 
                 loadJSON(
@@ -1986,11 +1484,6 @@
                 loadJSON(
                     "events.json",
                     ["events", "items"]
-                ),
-
-                loadJSON(
-                    "discover.json",
-                    ["discover", "games", "items"]
                 )
 
             ]);
@@ -2000,15 +1493,14 @@
             allGames = games;
             allNews = news;
             allEvents = events;
-            allDiscover = discover;
 
 
             renderSlides();
-            renderNews();
+            renderGames();
             renderFeed();
+            renderTrending();
             renderToday();
-            renderDiscover();
-            renderGameInfo();
+            renderNews();
 
         }
         catch (error) {
@@ -2039,7 +1531,6 @@
                 باز کرده‌ای، پروژه را با Local Server اجرا کن.
 
             `;
-
         }
 
     }
@@ -2078,7 +1569,6 @@
                 "sliderDots"
             );
 
-
         container.innerHTML = "";
         dots.innerHTML = "";
 
@@ -2095,7 +1585,6 @@
                     document.createElement(
                         "article"
                     );
-
 
                 article.className =
                     "slide" +
@@ -2123,9 +1612,11 @@
                     <div class="slide-glow"></div>
 
                     <div class="slide-art">
+
                         ${escapeHTML(
                             slide.art || "🎮"
                         )}
+
                     </div>
 
                     <div class="slide-content">
@@ -2157,17 +1648,21 @@
                         <div class="slide-meta">
 
                             <span>
+
                                 ${escapeHTML(
                                     slide.readTime || ""
                                 )}
+
                             </span>
 
                             <span>•</span>
 
                             <span>
+
                                 ${escapeHTML(
                                     slide.time || ""
                                 )}
+
                             </span>
 
                         </div>
@@ -2199,7 +1694,6 @@
                         "button"
                     );
 
-
                 dot.className =
                     "slider-dot" +
                     (
@@ -2208,18 +1702,15 @@
                             : ""
                     );
 
-
                 dot.setAttribute(
                     "aria-label",
                     `اسلاید ${index + 1}`
                 );
 
-
                 dot.addEventListener(
                     "click",
                     () => goToSlide(index)
                 );
-
 
                 dots.appendChild(dot);
 
@@ -2287,11 +1778,9 @@
 
         clearInterval(sliderTimer);
 
-
         if (allSlides.length <= 1) {
             return;
         }
-
 
         sliderTimer =
             setInterval(
@@ -2309,173 +1798,97 @@
 
 
     /* ==========================================
-       NEWS CARDS
+       GAMES
     ========================================== */
 
-    function renderNews() {
+    function renderGames() {
 
         const container =
             document.getElementById(
-                "newsContainer"
+                "gamesContainer"
             );
-
 
         container.innerHTML = "";
 
 
-        const news =
-            [...allNews]
-                .sort(
-                    (a, b) =>
-                        Number(b.order || 0) -
-                        Number(a.order || 0)
-                )
-                .slice(0, 6);
+        /*
+            عمداً دکمه «همه بازی‌ها»
+            حذف شده.
+        */
 
 
-        if (!news.length) {
+        allGames.forEach(
+            game => {
 
-            container.innerHTML = `
-
-                <div class="empty-state">
-
-                    هنوز خبری ثبت نشده.
-
-                </div>
-
-            `;
-
-            return;
-
-        }
-
-
-        news.forEach(
-            newsItem => {
-
-                const card =
+                const button =
                     document.createElement(
-                        "article"
+                        "button"
+                    );
+
+                button.className =
+                    "game" +
+                    (
+                        selectedGame === game.id
+                            ? " active"
+                            : ""
                     );
 
 
-                card.className =
-                    "news-card";
+                button.dataset.game =
+                    game.id;
 
 
-                const image =
-                    newsItem.image
-                        ? `
+                button.innerHTML = `
 
-                            <img
-                                src="${escapeHTML(newsItem.image)}"
-                                alt="${escapeHTML(newsItem.title || "")}"
-                                loading="lazy"
-                            >
+                    <span class="game-icon">
 
-                        `
-                        : `
+                        ${escapeHTML(
+                            game.icon || "🎮"
+                        )}
 
-                            <div
-                                style="
-                                    height:100%;
-                                    display:grid;
-                                    place-items:center;
-                                    font-size:70px;
-                                "
-                            >
-                                ${escapeHTML(
-                                    newsItem.icon || "🎮"
-                                )}
-                            </div>
+                    </span>
 
-                        `;
-
-
-                card.innerHTML = `
-
-                    <div class="news-image">
-
-                        ${image}
-
-                        <span class="news-tag">
-
-                            ${escapeHTML(
-                                newsItem.category ||
-                                "خبر"
-                            )}
-
-                        </span>
-
-                    </div>
-
-
-                    <div class="news-content">
-
-                        <div class="news-game">
-
-                            ${escapeHTML(
-                                newsItem.gameName || "GAMEHUB"
-                            )}
-
-                        </div>
-
-
-                        <h3 class="news-title">
-
-                            ${escapeHTML(
-                                newsItem.title || ""
-                            )}
-
-                        </h3>
-
-
-                        <p class="news-description">
-
-                            ${escapeHTML(
-                                newsItem.description || ""
-                            )}
-
-                        </p>
-
-
-                        <div class="news-bottom">
-
-                            <span class="news-meta">
-
-                                ${escapeHTML(
-                                    newsItem.time || ""
-                                )}
-
-                            </span>
-
-
-                            <a
-                                class="news-more"
-                                href="${escapeHTML(
-                                    newsItem.url || "#"
-                                )}"
-                            >
-
-                                ادامه
-
-                                <span>
-                                    ←
-                                </span>
-
-                            </a>
-
-                        </div>
-
-                    </div>
+                    ${escapeHTML(
+                        game.name
+                    )}
 
                 `;
 
 
-                container.appendChild(card);
+                button.addEventListener(
+                    "click",
+                    () => selectGame(game.id)
+                );
+
+
+                container.appendChild(button);
 
             }
         );
+
+    }
+
+
+    function selectGame(gameId) {
+
+        selectedGame = gameId;
+
+        renderGames();
+        renderFeed();
+
+
+        const game =
+            allGames.find(
+                item => item.id === gameId
+            );
+
+
+        document.getElementById(
+            "selectedGameName"
+        ).textContent =
+            game
+                ? game.name
+                : "";
 
     }
 
@@ -2491,16 +1904,34 @@
                 "feedList"
             );
 
-
         container.innerHTML = "";
 
 
-        const news =
+        let news =
             [...allNews];
 
-
-        const events =
+        let events =
             [...allEvents];
+
+
+        if (selectedGame !== "all") {
+
+            news =
+                news.filter(
+                    item =>
+                        item.gameId ===
+                        selectedGame
+                );
+
+
+            events =
+                events.filter(
+                    item =>
+                        item.gameId ===
+                        selectedGame
+                );
+
+        }
 
 
         const combined = [
@@ -2535,14 +1966,14 @@
 
                 <div class="empty-state">
 
-                    هنوز خبری ثبت نشده.
+                    برای این بازی هنوز
+                    خبری ثبت نشده.
 
                 </div>
 
             `;
 
             return;
-
         }
 
 
@@ -2564,17 +1995,15 @@
                     );
 
 
-                const image =
+                const imageContent =
                     item.image
                         ? `
-
                             <img
                                 src="${escapeHTML(item.image)}"
                                 alt="${escapeHTML(item.title || "")}"
                                 loading="lazy"
                             >
-
-                        `
+                          `
                         : escapeHTML(
                             item.icon || "🎮"
                         );
@@ -2584,7 +2013,7 @@
 
                     <div class="story-image">
 
-                        ${image}
+                        ${imageContent}
 
                     </div>
 
@@ -2678,6 +2107,118 @@
 
 
     /* ==========================================
+       TRENDING
+    ========================================== */
+
+    function renderTrending() {
+
+        const container =
+            document.getElementById(
+                "trendingContainer"
+            );
+
+        container.innerHTML = "";
+
+
+        const trending =
+            allGames
+
+                .filter(
+                    game =>
+                        game.trending === true
+                )
+
+                .sort(
+                    (a, b) =>
+                        Number(a.trendRank || 999) -
+                        Number(b.trendRank || 999)
+                )
+
+                .slice(0, 5);
+
+
+        if (!trending.length) {
+
+            container.innerHTML = `
+
+                <div class="empty-state">
+
+                    هنوز بازی ترند ثبت نشده.
+
+                </div>
+
+            `;
+
+            return;
+        }
+
+
+        trending.forEach(
+            (game, index) => {
+
+                const item =
+                    document.createElement(
+                        "div"
+                    );
+
+                item.className = "trend";
+
+
+                item.innerHTML = `
+
+                    <span class="trend-number">
+
+                        ${String(
+                            game.trendRank ||
+                            index + 1
+                        ).padStart(2, "0")}
+
+                    </span>
+
+
+                    <span class="trend-icon">
+
+                        ${escapeHTML(
+                            game.icon || "🎮"
+                        )}
+
+                    </span>
+
+
+                    <div class="trend-content">
+
+                        <div class="trend-title">
+
+                            ${escapeHTML(
+                                game.name
+                            )}
+
+                        </div>
+
+                        <div class="trend-meta">
+
+                            ${escapeHTML(
+                                game.trendText ||
+                                game.followers ||
+                                "در حال ترند"
+                            )}
+
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                container.appendChild(item);
+
+            }
+        );
+
+    }
+
+
+    /* ==========================================
        TODAY
     ========================================== */
 
@@ -2688,22 +2229,22 @@
                 "todayContainer"
             );
 
-
         container.innerHTML = "";
 
 
         const todayEvents =
             allEvents
+
                 .filter(
                     event =>
                         event.today === true
                 )
+
                 .sort(
                     (a, b) =>
                         Number(a.order || 0) -
                         Number(b.order || 0)
-                )
-                .slice(0, 5);
+                );
 
 
         if (!todayEvents.length) {
@@ -2712,14 +2253,13 @@
 
                 <div class="empty-state">
 
-                    برای امروز رویدادی ثبت نشده.
+                    برای امروز ایونتی ثبت نشده.
 
                 </div>
 
             `;
 
             return;
-
         }
 
 
@@ -2730,7 +2270,6 @@
                     document.createElement(
                         "div"
                     );
-
 
                 item.className =
                     "today-item";
@@ -2745,6 +2284,7 @@
                         )}
 
                     </span>
+
 
                     <div>
 
@@ -2778,207 +2318,154 @@
 
 
     /* ==========================================
-       GAME INFO
+       NEWS CARDS
+       اخبار پایین صفحه
+       مستقیماً از news.json
     ========================================== */
 
-    function renderGameInfo() {
-
-        const box =
-            document.getElementById(
-                "gameInfoBox"
-            );
-
-
-        if (!allGames.length) {
-
-            box.style.display = "none";
-
-            return;
-
-        }
-
-
-        const game =
-            allGames[0];
-
-
-        document.getElementById(
-            "gameInfoIcon"
-        ).textContent =
-            game.icon || "🎮";
-
-
-        document.getElementById(
-            "gameInfoTitle"
-        ).textContent =
-            game.name || "اطلاعات بازی";
-
-
-        document.getElementById(
-            "gameInfoDescription"
-        ).textContent =
-            game.description ||
-            "اطلاعات این بازی در گیم‌هاب.";
-
-
-        const meta =
-            document.getElementById(
-                "gameInfoMeta"
-            );
-
-
-        meta.innerHTML = "";
-
-
-        const values = [
-
-            game.type,
-            game.platform,
-            game.genre,
-            game.followers
-
-        ];
-
-
-        values
-            .filter(Boolean)
-            .slice(0, 4)
-            .forEach(
-                value => {
-
-                    const span =
-                        document.createElement(
-                            "span"
-                        );
-
-                    span.textContent =
-                        value;
-
-                    meta.appendChild(span);
-
-                }
-            );
-
-    }
-
-
-    /* ==========================================
-       DISCOVER
-    ========================================== */
-
-    function renderDiscover() {
+    function renderNews() {
 
         const container =
             document.getElementById(
-                "discoverContainer"
+                "newsContainer"
             );
-
 
         container.innerHTML = "";
 
 
-        allDiscover.forEach(
-            game => {
+        const news =
+            [...allNews]
+                .sort(
+                    (a, b) =>
+                        Number(b.order || 0) -
+                        Number(a.order || 0)
+                )
+                .slice(0, 6);
+
+
+        if (!news.length) {
+
+            container.innerHTML = `
+
+                <div class="empty-state">
+
+                    هنوز خبری ثبت نشده.
+
+                </div>
+
+            `;
+
+            return;
+        }
+
+
+        news.forEach(
+            item => {
 
                 const card =
                     document.createElement(
                         "article"
                     );
 
-
                 card.className =
-                    "discover-card";
+                    "news-card";
+
+
+                const image =
+                    item.image
+                        ? `
+                            <img
+                                src="${escapeHTML(item.image)}"
+                                alt="${escapeHTML(item.title || "")}"
+                                loading="lazy"
+                            >
+                          `
+                        : `
+                            <div style="
+                                width:100%;
+                                height:100%;
+                                display:grid;
+                                place-items:center;
+                                font-size:65px;
+                            ">
+                                ${escapeHTML(
+                                    item.icon || "📰"
+                                )}
+                            </div>
+                          `;
 
 
                 card.innerHTML = `
 
-                    <div class="discover-emoji">
+                    <div class="news-image">
 
-                        ${escapeHTML(
-                            game.icon || "🎮"
-                        )}
+                        ${image}
 
                     </div>
 
 
-                    ${
-                        game.rank
-                            ? `
+                    <div class="news-content">
 
-                                <span class="discover-rank">
+                        <span class="news-game">
 
-                                    #${escapeHTML(game.rank)}
+                            ${escapeHTML(
+                                item.gameName || "اخبار گیم"
+                            )}
 
-                                </span>
+                            ${item.category
+                                ? " · " +
+                                  escapeHTML(item.category)
+                                : ""
+                            }
 
-                              `
-                            : ""
-                    }
-
-
-                    <strong class="discover-game">
-
-                        ${escapeHTML(
-                            game.name
-                        )}
-
-                    </strong>
+                        </span>
 
 
-                    <span class="discover-type">
+                        <h3>
 
-                        ${escapeHTML(
-                            game.type ||
-                            "Mobile Game"
-                        )}
+                            ${escapeHTML(
+                                item.title || ""
+                            )}
 
-                    </span>
-
-
-                    <span class="discover-followers">
-
-                        ${escapeHTML(
-                            game.followers || ""
-                        )}
-
-                    </span>
+                        </h3>
 
 
-                    <button class="follow">
+                        <p>
 
-                        + دنبال کردن
+                            ${escapeHTML(
+                                item.description || ""
+                            )}
 
-                    </button>
+                        </p>
+
+
+                        <div class="news-footer">
+
+                            <span class="news-time">
+
+                                ${escapeHTML(
+                                    item.time || ""
+                                )}
+
+                            </span>
+
+
+                            <a
+                                href="${escapeHTML(
+                                    item.url || "#"
+                                )}"
+                                class="news-more"
+                            >
+
+                                ادامه مطلب ←
+
+                            </a>
+
+                        </div>
+
+                    </div>
 
                 `;
-
-
-                const button =
-                    card.querySelector(
-                        ".follow"
-                    );
-
-
-                button.addEventListener(
-                    "click",
-                    event => {
-
-                        event.stopPropagation();
-
-
-                        const following =
-                            button.classList.toggle(
-                                "following"
-                            );
-
-
-                        button.textContent =
-                            following
-                                ? "✓ دنبال می‌کنی"
-                                : "+ دنبال کردن";
-
-                    }
-                );
 
 
                 container.appendChild(card);
