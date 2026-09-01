@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
 <html lang="fa" dir="rtl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +8,6 @@
 ```
 <title>GAMEHUB — دنیای گیمینگ موبایل</title>
 
-<!-- Vazirmatn -->
 <link
     href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
     rel="stylesheet"
@@ -26,19 +24,21 @@
     :root {
         --bg: #202020;
         --bg-soft: #292929;
-
         --blue-dark: #2E4192;
         --blue: #4E6FF8;
         --blue-soft: #9aabff;
 
         --text: #ffffff;
         --text-soft: rgba(255,255,255,.72);
-        --text-muted: rgba(255,255,255,.48);
+        --text-muted: rgba(255,255,255,.45);
 
         --border: rgba(255,255,255,.09);
-        --card: rgba(255,255,255,.05);
+        --border-blue: rgba(78,111,248,.35);
 
-        --radius: 20px;
+        --card: rgba(255,255,255,.045);
+        --card-hover: rgba(255,255,255,.075);
+
+        --radius: 22px;
     }
 
     html {
@@ -47,18 +47,24 @@
 
     body {
         min-height: 100vh;
+        overflow-x: hidden;
 
         background:
             radial-gradient(
-                circle at 15% 5%,
-                rgba(78,111,248,.18),
-                transparent 30%
+                circle at 12% 0%,
+                rgba(78,111,248,.20),
+                transparent 27%
+            ),
+            radial-gradient(
+                circle at 90% 35%,
+                rgba(46,65,146,.20),
+                transparent 25%
             ),
             linear-gradient(
                 180deg,
-                #222222 0%,
-                #292929 35%,
-                #2E4192 130%
+                #202020 0%,
+                #262626 45%,
+                #2E4192 145%
             );
 
         color: var(--text);
@@ -71,6 +77,23 @@
 
         font-size: 15px;
         line-height: 1.8;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: -1;
+
+        background-image:
+            radial-gradient(
+                rgba(255,255,255,.05) 1px,
+                transparent 1px
+            );
+
+        background-size: 24px 24px;
+        opacity: .18;
     }
 
     button,
@@ -103,17 +126,21 @@
 
     .header {
         height: 78px;
-
         position: sticky;
         top: 0;
-
         z-index: 50;
 
-        border-bottom: 1px solid var(--border);
+        border-bottom:
+            1px solid rgba(255,255,255,.08);
 
-        background: rgba(30,30,30,.78);
+        background:
+            rgba(25,25,25,.76);
 
-        backdrop-filter: blur(20px);
+        backdrop-filter:
+            blur(22px);
+
+        -webkit-backdrop-filter:
+            blur(22px);
     }
 
     .header-inner {
@@ -137,13 +164,13 @@
     }
 
     .logo-mark {
-        width: 40px;
-        height: 40px;
+        width: 42px;
+        height: 42px;
 
         display: grid;
         place-items: center;
 
-        border-radius: 12px;
+        border-radius: 13px;
 
         background:
             linear-gradient(
@@ -153,7 +180,17 @@
             );
 
         box-shadow:
-            0 8px 30px rgba(78,111,248,.25);
+            0 10px 35px rgba(78,111,248,.28);
+
+        transform: rotate(-4deg);
+
+        transition: .25s;
+    }
+
+    .logo:hover .logo-mark {
+        transform:
+            rotate(4deg)
+            scale(1.06);
     }
 
     .nav {
@@ -163,17 +200,42 @@
     }
 
     .nav a {
+        position: relative;
+
         color: var(--text-muted);
 
         font-size: 13px;
-        font-weight: 700;
+        font-weight: 800;
 
         transition: .2s;
+    }
+
+    .nav a::after {
+        content: "";
+
+        position: absolute;
+
+        right: 0;
+        bottom: -9px;
+
+        width: 0;
+        height: 2px;
+
+        border-radius: 10px;
+
+        background: var(--blue);
+
+        transition: .25s;
     }
 
     .nav a:hover,
     .nav a.active {
         color: white;
+    }
+
+    .nav a:hover::after,
+    .nav a.active::after {
+        width: 100%;
     }
 
     .header-right {
@@ -184,66 +246,27 @@
         gap: 10px;
     }
 
-    .search {
-        width: 220px;
-        height: 42px;
-
-        display: flex;
-        align-items: center;
-
-        gap: 9px;
-        padding: 0 13px;
-
-        border: 1px solid var(--border);
-        border-radius: 12px;
-
-        background: rgba(255,255,255,.04);
-    }
-
-    .search span {
-        color: var(--text-muted);
-        font-size: 18px;
-    }
-
-    .search input {
-        width: 100%;
-
-        border: 0;
-        outline: 0;
-
-        background: transparent;
-        color: white;
-
-        font-size: 12px;
-    }
-
-    .search input::placeholder {
-        color: var(--text-muted);
-    }
-
-    .profile,
     .mobile-menu {
-        width: 42px;
-        height: 42px;
+        width: 44px;
+        height: 44px;
 
-        display: grid;
+        display: none;
         place-items: center;
 
-        border: 1px solid var(--border);
-        border-radius: 12px;
+        border:
+            1px solid var(--border);
 
-        background: rgba(255,255,255,.05);
+        border-radius: 13px;
+
+        background:
+            rgba(255,255,255,.05);
+
         color: white;
-
-        font-size: 16px;
-    }
-
-    .mobile-menu {
-        display: none;
+        font-size: 17px;
     }
 
     /* =========================
-       HERO SLIDER
+       HERO
     ========================= */
 
     .hero-slider {
@@ -251,23 +274,41 @@
 
         position: relative;
 
-        min-height: 450px;
+        min-height: 470px;
 
         overflow: hidden;
 
-        border: 1px solid var(--border);
-        border-radius: 28px;
+        border:
+            1px solid rgba(255,255,255,.10);
+
+        border-radius: 30px;
 
         background: #242424;
 
         box-shadow:
-            0 25px 80px rgba(0,0,0,.15);
+            0 35px 100px rgba(0,0,0,.24);
+    }
+
+    .hero-slider::before {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+
+        z-index: 2;
+
+        pointer-events: none;
+
+        border-radius: inherit;
+
+        box-shadow:
+            inset 0 0 80px rgba(0,0,0,.35);
     }
 
     .slides {
         position: relative;
         width: 100%;
-        min-height: 450px;
+        min-height: 470px;
     }
 
     .slide {
@@ -277,16 +318,16 @@
         display: flex;
         align-items: flex-end;
 
-        padding: 48px;
+        padding: 55px;
 
         opacity: 0;
         visibility: hidden;
 
-        transform: scale(1.025);
+        transform: scale(1.035);
 
         transition:
-            opacity .55s ease,
-            transform .55s ease;
+            opacity .65s ease,
+            transform .65s ease;
     }
 
     .slide.active {
@@ -307,40 +348,42 @@
         background:
             linear-gradient(
                 90deg,
-                rgba(20,20,20,.98),
-                rgba(30,35,65,.78),
-                rgba(46,65,146,.35)
+                rgba(15,15,15,.98) 0%,
+                rgba(20,24,45,.87) 42%,
+                rgba(46,65,146,.30) 100%
             );
     }
 
     .slide-glow {
         position: absolute;
 
-        width: 500px;
-        height: 500px;
+        width: 600px;
+        height: 600px;
 
-        left: -100px;
-        top: -150px;
+        left: -160px;
+        top: -180px;
 
         border-radius: 50%;
 
         background:
-            rgba(78,111,248,.18);
+            rgba(78,111,248,.20);
 
-        filter: blur(30px);
+        filter: blur(40px);
     }
 
     .slide-art {
         position: absolute;
 
-        left: 5%;
-        bottom: -30px;
+        left: 3%;
+        bottom: -40px;
 
-        font-size: clamp(150px, 24vw, 290px);
+        font-size:
+            clamp(160px, 25vw, 300px);
 
-        opacity: .12;
+        opacity: .13;
 
-        transform: rotate(8deg);
+        transform: rotate(7deg);
+        filter: blur(.2px);
     }
 
     .slide-content {
@@ -355,12 +398,15 @@
         align-items: center;
         gap: 8px;
 
-        padding: 7px 12px;
+        padding: 7px 13px;
 
         border-radius: 9px;
 
         background:
-            rgba(78,111,248,.9);
+            rgba(78,111,248,.92);
+
+        box-shadow:
+            0 10px 35px rgba(78,111,248,.20);
 
         font-size: 11px;
         font-weight: 900;
@@ -372,17 +418,15 @@
         font-size:
             clamp(38px, 6vw, 68px);
 
-        line-height: 1.25;
+        line-height: 1.22;
 
         font-weight: 900;
-
-        letter-spacing: 0;
     }
 
     .slide-description {
         max-width: 610px;
 
-        margin-top: 16px;
+        margin-top: 17px;
 
         color: var(--text-soft);
 
@@ -395,7 +439,7 @@
 
         display: flex;
         align-items: center;
-        gap: 14px;
+        gap: 13px;
 
         color: var(--text-muted);
 
@@ -407,9 +451,9 @@
 
         display: inline-flex;
         align-items: center;
-        gap: 9px;
+        gap: 10px;
 
-        padding: 12px 17px;
+        padding: 12px 18px;
 
         border-radius: 11px;
 
@@ -418,6 +462,17 @@
 
         font-size: 12px;
         font-weight: 900;
+
+        box-shadow:
+            0 10px 35px rgba(0,0,0,.18);
+
+        transition: .2s;
+    }
+
+    .read-button:hover {
+        transform: translateY(-2px);
+        box-shadow:
+            0 15px 40px rgba(0,0,0,.25);
     }
 
     .slider-dots {
@@ -449,18 +504,16 @@
 
     .slider-dot.active {
         width: 25px;
-
         border-radius: 20px;
-
         background: white;
     }
 
     /* =========================
-       SECTION
+       SECTIONS
     ========================= */
 
     .section {
-        margin-top: 55px;
+        margin-top: 58px;
     }
 
     .section-top {
@@ -490,11 +543,21 @@
 
         font-size: 11px;
         font-weight: 800;
+
+        transition: .2s;
+    }
+
+    .section-link:hover {
+        color: white;
     }
 
     /* =========================
-       MOBILE GAMES
+       GAME SELECTOR
     ========================= */
+
+    .games-wrap {
+        position: relative;
+    }
 
     .games-scroll {
         display: flex;
@@ -502,7 +565,7 @@
 
         overflow-x: auto;
 
-        padding: 4px 2px 10px;
+        padding: 5px 2px 13px;
 
         scrollbar-width: none;
     }
@@ -520,45 +583,65 @@
 
         padding: 11px 15px;
 
-        border: 1px solid var(--border);
-        border-radius: 13px;
+        border:
+            1px solid var(--border);
 
-        background: rgba(255,255,255,.045);
+        border-radius: 14px;
+
+        background:
+            rgba(255,255,255,.045);
 
         color: var(--text-soft);
 
         font-size: 12px;
         font-weight: 800;
 
-        transition: .2s;
+        transition: .25s;
     }
 
-    .game:hover,
+    .game:hover {
+        color: white;
+
+        border-color:
+            rgba(78,111,248,.45);
+
+        background:
+            rgba(78,111,248,.12);
+
+        transform:
+            translateY(-2px);
+    }
+
     .game.active {
         color: white;
 
         border-color:
-            rgba(78,111,248,.55);
+            rgba(78,111,248,.70);
 
         background:
-            rgba(78,111,248,.18);
+            linear-gradient(
+                135deg,
+                rgba(46,65,146,.65),
+                rgba(78,111,248,.25)
+            );
 
-        transform: translateY(-2px);
+        box-shadow:
+            0 8px 30px rgba(78,111,248,.12);
     }
 
     .game-icon {
-        width: 32px;
-        height: 32px;
+        width: 34px;
+        height: 34px;
 
         display: grid;
         place-items: center;
 
-        border-radius: 9px;
+        border-radius: 10px;
 
         background:
             rgba(255,255,255,.07);
 
-        font-size: 16px;
+        font-size: 17px;
     }
 
     .selected-game-info {
@@ -587,50 +670,64 @@
 
         grid-template-columns:
             minmax(0,1fr)
-            330px;
+            340px;
 
         gap: 20px;
     }
 
     .feed-list {
         display: grid;
-        gap: 12px;
+        gap: 13px;
     }
 
     .story {
         display: grid;
 
         grid-template-columns:
-            160px
+            170px
             minmax(0,1fr);
 
-        gap: 17px;
+        gap: 18px;
 
         padding: 12px;
 
-        border: 1px solid var(--border);
+        border:
+            1px solid var(--border);
+
         border-radius: var(--radius);
 
-        background: var(--card);
+        background:
+            rgba(255,255,255,.045);
 
         transition:
-            transform .2s,
-            border .2s,
-            background .2s;
+            transform .25s,
+            border .25s,
+            background .25s,
+            box-shadow .25s;
+
+        cursor: pointer;
     }
 
     .story:hover {
-        transform: translateY(-3px);
+        transform: translateY(-4px);
 
         border-color:
-            rgba(78,111,248,.35);
+            rgba(78,111,248,.38);
 
         background:
-            rgba(255,255,255,.065);
+            var(--card-hover);
+
+        box-shadow:
+            0 18px 45px rgba(0,0,0,.15);
+    }
+
+    .story.event {
+        border-right:
+            3px solid var(--blue);
     }
 
     .story-image {
-        min-height: 135px;
+        min-height: 140px;
 
         display: flex;
         align-items: center;
@@ -638,7 +735,7 @@
 
         overflow: hidden;
 
-        border-radius: 13px;
+        border-radius: 14px;
 
         background:
             linear-gradient(
@@ -648,7 +745,23 @@
                 #4e6ff8
             );
 
-        font-size: 58px;
+        font-size: 60px;
+
+        position: relative;
+    }
+
+    .story-image::after {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+
+        background:
+            linear-gradient(
+                135deg,
+                transparent,
+                rgba(255,255,255,.08)
+            );
     }
 
     .story-info {
@@ -696,9 +809,202 @@
         color: var(--text-soft);
     }
 
-    .story.event {
-        border-right:
-            3px solid var(--blue);
+    /* =========================
+       GAME INTELLIGENCE CARD
+    ========================= */
+
+    .sidebar {
+        display: grid;
+        gap: 14px;
+    }
+
+    .side-box {
+        position: relative;
+
+        padding: 21px;
+
+        overflow: hidden;
+
+        border:
+            1px solid var(--border);
+
+        border-radius: var(--radius);
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(255,255,255,.065),
+                rgba(255,255,255,.025)
+            );
+
+        box-shadow:
+            0 18px 50px rgba(0,0,0,.12);
+    }
+
+    .side-box::before {
+        content: "";
+
+        position: absolute;
+
+        width: 180px;
+        height: 180px;
+
+        left: -80px;
+        top: -80px;
+
+        border-radius: 50%;
+
+        background:
+            rgba(78,111,248,.12);
+
+        filter: blur(25px);
+    }
+
+    .side-heading {
+        position: relative;
+        z-index: 2;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        margin-bottom: 17px;
+    }
+
+    .side-heading h3 {
+        font-size: 15px;
+        font-weight: 900;
+    }
+
+    .side-heading span {
+        color: var(--blue-soft);
+
+        font-size: 9px;
+        font-weight: 900;
+    }
+
+    .game-profile {
+        position: relative;
+        z-index: 2;
+    }
+
+    .game-profile-top {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+    }
+
+    .game-profile-icon {
+        width: 54px;
+        height: 54px;
+
+        flex-shrink: 0;
+
+        display: grid;
+        place-items: center;
+
+        border:
+            1px solid rgba(255,255,255,.10);
+
+        border-radius: 15px;
+
+        background:
+            linear-gradient(
+                135deg,
+                rgba(46,65,146,.85),
+                rgba(78,111,248,.45)
+            );
+
+        font-size: 25px;
+
+        box-shadow:
+            0 12px 30px rgba(0,0,0,.16);
+    }
+
+    .game-profile-name {
+        font-size: 17px;
+        font-weight: 900;
+    }
+
+    .game-profile-type {
+        margin-top: 2px;
+
+        color: var(--blue-soft);
+
+        font-size: 9px;
+        font-weight: 800;
+    }
+
+    .game-description {
+        margin-top: 17px;
+
+        color: var(--text-soft);
+
+        font-size: 11px;
+        line-height: 2.1;
+    }
+
+    .game-stats {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap: 8px;
+
+        margin-top: 17px;
+    }
+
+    .game-stat {
+        padding: 11px;
+
+        border:
+            1px solid rgba(255,255,255,.07);
+
+        border-radius: 12px;
+
+        background:
+            rgba(255,255,255,.035);
+    }
+
+    .game-stat-label {
+        color: var(--text-muted);
+
+        font-size: 8px;
+    }
+
+    .game-stat-value {
+        margin-top: 2px;
+
+        color: white;
+
+        font-size: 11px;
+        font-weight: 900;
+    }
+
+    .game-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+
+        margin-top: 14px;
+    }
+
+    .game-tag {
+        padding: 5px 8px;
+
+        border:
+            1px solid rgba(78,111,248,.22);
+
+        border-radius: 7px;
+
+        background:
+            rgba(78,111,248,.09);
+
+        color: var(--blue-soft);
+
+        font-size: 8px;
+        font-weight: 800;
     }
 
     /* =========================
@@ -708,7 +1014,9 @@
     .empty-state {
         padding: 40px;
 
-        border: 1px solid var(--border);
+        border:
+            1px solid var(--border);
+
         border-radius: var(--radius);
 
         text-align: center;
@@ -716,161 +1024,9 @@
         color: var(--text-muted);
 
         font-size: 13px;
-    }
-
-    /* =========================
-       SIDEBAR
-    ========================= */
-
-    .sidebar {
-        display: grid;
-        gap: 14px;
-    }
-
-    .side-box {
-        padding: 20px;
-
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
 
         background:
-            rgba(20,20,20,.30);
-    }
-
-    .side-heading {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        margin-bottom: 15px;
-    }
-
-    .side-heading h3 {
-        font-size: 15px;
-        font-weight: 900;
-    }
-
-    .side-heading a {
-        color: var(--blue-soft);
-
-        font-size: 10px;
-        font-weight: 800;
-    }
-
-    /* =========================
-       TRENDING
-    ========================= */
-
-    .trending {
-        display: grid;
-        gap: 3px;
-    }
-
-    .trend {
-        display: flex;
-        align-items: center;
-        gap: 11px;
-
-        padding: 11px 0;
-
-        border-bottom:
-            1px solid rgba(255,255,255,.055);
-    }
-
-    .trend:last-child {
-        border-bottom: 0;
-    }
-
-    .trend-number {
-        width: 27px;
-
-        color: var(--text-muted);
-
-        font-size: 12px;
-        font-weight: 900;
-    }
-
-    .trend-icon {
-        width: 34px;
-        height: 34px;
-
-        display: grid;
-        place-items: center;
-
-        flex-shrink: 0;
-
-        border-radius: 9px;
-
-        background:
-            rgba(78,111,248,.14);
-    }
-
-    .trend-content {
-        min-width: 0;
-    }
-
-    .trend-title {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-
-        font-size: 12px;
-        font-weight: 800;
-    }
-
-    .trend-meta {
-        margin-top: 2px;
-
-        color: var(--text-muted);
-
-        font-size: 9px;
-    }
-
-    /* =========================
-       TODAY
-    ========================= */
-
-    .today-list {
-        display: grid;
-        gap: 2px;
-    }
-
-    .today-item {
-        display: grid;
-
-        grid-template-columns:
-            52px
-            1fr;
-
-        gap: 10px;
-
-        padding: 10px 0;
-
-        border-bottom:
-            1px solid rgba(255,255,255,.05);
-    }
-
-    .today-item:last-child {
-        border-bottom: 0;
-    }
-
-    .today-time {
-        color: var(--text-muted);
-        font-size: 10px;
-    }
-
-    .today-game {
-        color: var(--blue-soft);
-
-        font-size: 9px;
-        font-weight: 900;
-    }
-
-    .today-title {
-        margin-top: 2px;
-
-        font-size: 11px;
-        font-weight: 750;
+            rgba(255,255,255,.025);
     }
 
     /* =========================
@@ -881,13 +1037,13 @@
         display: grid;
 
         grid-template-columns:
-            repeat(4, 1fr);
+            repeat(4,1fr);
 
         gap: 12px;
     }
 
     .discover-card {
-        min-height: 185px;
+        min-height: 205px;
 
         display: flex;
         flex-direction: column;
@@ -896,10 +1052,12 @@
         position: relative;
         overflow: hidden;
 
-        padding: 17px;
+        padding: 18px;
 
-        border: 1px solid var(--border);
-        border-radius: 18px;
+        border:
+            1px solid var(--border);
+
+        border-radius: 19px;
 
         background:
             linear-gradient(
@@ -908,25 +1066,45 @@
                 #303e86
             );
 
-        transition: .2s;
+        transition:
+            transform .25s,
+            border .25s,
+            box-shadow .25s;
+    }
+
+    .discover-card::after {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+
+        background:
+            linear-gradient(
+                180deg,
+                transparent 25%,
+                rgba(10,10,10,.55)
+            );
     }
 
     .discover-card:hover {
-        transform: translateY(-4px);
+        transform: translateY(-5px);
 
         border-color:
-            rgba(78,111,248,.4);
+            rgba(78,111,248,.45);
+
+        box-shadow:
+            0 20px 50px rgba(0,0,0,.18);
     }
 
     .discover-emoji {
         position: absolute;
 
-        left: 5px;
-        top: -8px;
+        left: 2px;
+        top: -12px;
 
-        font-size: 80px;
+        font-size: 90px;
 
-        opacity: .15;
+        opacity: .14;
 
         transform: rotate(-8deg);
     }
@@ -942,7 +1120,7 @@
         border-radius: 7px;
 
         background:
-            rgba(0,0,0,.22);
+            rgba(0,0,0,.25);
 
         color: var(--blue-soft);
 
@@ -950,18 +1128,20 @@
         font-weight: 900;
     }
 
-    .discover-game {
+    .discover-game,
+    .discover-type,
+    .discover-followers,
+    .follow {
         position: relative;
         z-index: 2;
+    }
 
+    .discover-game {
         font-size: 16px;
         font-weight: 900;
     }
 
     .discover-type {
-        position: relative;
-        z-index: 2;
-
         margin-top: 2px;
 
         color: var(--text-muted);
@@ -970,9 +1150,6 @@
     }
 
     .discover-followers {
-        position: relative;
-        z-index: 2;
-
         margin-top: 5px;
 
         color: var(--text-muted);
@@ -981,16 +1158,14 @@
     }
 
     .follow {
-        position: relative;
-        z-index: 2;
-
         width: fit-content;
 
         margin-top: 12px;
-
         padding: 7px 10px;
 
-        border: 1px solid rgba(255,255,255,.12);
+        border:
+            1px solid rgba(255,255,255,.12);
+
         border-radius: 8px;
 
         background:
@@ -1000,6 +1175,13 @@
 
         font-size: 9px;
         font-weight: 800;
+
+        transition: .2s;
+    }
+
+    .follow:hover {
+        background:
+            rgba(255,255,255,.10);
     }
 
     .follow.following {
@@ -1012,55 +1194,77 @@
     ========================= */
 
     .cta {
-        padding: 38px;
+        padding: 42px;
 
-        border: 1px solid rgba(255,255,255,.08);
-        border-radius: 24px;
+        border:
+            1px solid rgba(255,255,255,.09);
+
+        border-radius: 25px;
 
         background:
             linear-gradient(
                 120deg,
-                rgba(46,65,146,.6),
-                rgba(78,111,248,.16)
+                rgba(46,65,146,.68),
+                rgba(78,111,248,.15)
             );
 
         overflow: hidden;
         position: relative;
+
+        box-shadow:
+            0 25px 70px rgba(0,0,0,.13);
     }
 
-    .cta::after {
+    .cta::before {
         content: "";
 
         position: absolute;
 
-        width: 250px;
-        height: 250px;
+        width: 400px;
+        height: 400px;
 
-        left: -70px;
-        top: -100px;
+        left: -150px;
+        top: -180px;
 
         border-radius: 50%;
 
         background:
-            rgba(78,111,248,.15);
+            rgba(78,111,248,.14);
 
-        filter: blur(30px);
+        filter: blur(45px);
+    }
+
+    .cta::after {
+        content: "GAMEHUB";
+
+        position: absolute;
+
+        left: 30px;
+        bottom: -25px;
+
+        color: rgba(255,255,255,.035);
+
+        font-size: 100px;
+        font-weight: 900;
+
+        letter-spacing: -5px;
+    }
+
+    .cta-label,
+    .cta h2,
+    .cta p {
+        position: relative;
+        z-index: 2;
     }
 
     .cta-label {
-        position: relative;
-        z-index: 2;
-
-        color: #9aabff;
+        color: var(--blue-soft);
 
         font-size: 11px;
         font-weight: 900;
     }
 
     .cta h2 {
-        position: relative;
-        z-index: 2;
-
         margin-top: 9px;
 
         font-size:
@@ -1072,9 +1276,6 @@
     }
 
     .cta p {
-        position: relative;
-        z-index: 2;
-
         max-width: 650px;
 
         margin-top: 8px;
@@ -1093,13 +1294,15 @@
         display: none;
 
         margin-top: 20px;
-
         padding: 20px;
 
-        border: 1px solid rgba(255,80,80,.25);
+        border:
+            1px solid rgba(255,80,80,.25);
+
         border-radius: 15px;
 
-        background: rgba(255,60,60,.08);
+        background:
+            rgba(255,60,60,.08);
 
         color: #ffb0b0;
 
@@ -1154,7 +1357,7 @@
 
         .discover-grid {
             grid-template-columns:
-                repeat(2, 1fr);
+                repeat(2,1fr);
         }
     }
 
@@ -1174,11 +1377,6 @@
 
         .header-inner {
             gap: 10px;
-        }
-
-        .search,
-        .profile {
-            display: none;
         }
 
         .hero-slider {
@@ -1208,11 +1406,12 @@
         .slide-art {
             left: -15px;
             bottom: 20px;
+
             font-size: 160px;
         }
 
         .section {
-            margin-top: 40px;
+            margin-top: 42px;
         }
 
         .section-title {
@@ -1286,13 +1485,20 @@
 
         .discover-card {
             flex: 0 0 190px;
-            min-height: 165px;
+            min-height: 175px;
+        }
+
+        .cta {
+            padding: 30px 23px;
+        }
+
+        .cta::after {
+            font-size: 65px;
         }
 
         .footer-inner {
             flex-direction: column;
             gap: 8px;
-
             text-align: center;
         }
     }
@@ -1344,8 +1550,8 @@
             بازی‌های موبایل
         </a>
 
-        <a href="#today">
-            امروز
+        <a href="#feed">
+            اخبار و اتفاقات
         </a>
 
         <a href="#discover">
@@ -1356,25 +1562,10 @@
 
     <div class="header-right">
 
-        <div class="search">
-
-            <span>⌕</span>
-
-            <input
-                id="searchInput"
-                type="text"
-                placeholder="جستجوی بازی یا خبر..."
-            >
-
-        </div>
-
-        <button class="profile">
-            👤
-        </button>
-
         <button
             class="mobile-menu"
             id="mobileMenu"
+            aria-label="منوی موبایل"
         >
             ☰
         </button>
@@ -1390,7 +1581,7 @@
 
 ```
 <!-- =========================
-     SLIDER
+     HERO
 ========================= -->
 
 <section class="hero-slider">
@@ -1419,7 +1610,7 @@
 
 
 <!-- =========================
-     MOBILE GAMES
+     GAMES
 ========================= -->
 
 <section
@@ -1432,11 +1623,11 @@
         <div>
 
             <h2 class="section-title">
-                بازی‌های موبایل برای کشف
+                بازی خودت را انتخاب کن
             </h2>
 
             <p class="section-description">
-                بازی بعدی مورد علاقه‌ات را پیدا کن و اخبارش را دنبال کن
+                یک بازی را انتخاب کن تا اخبار و اطلاعات اختصاصی آن را ببینی.
             </p>
 
         </div>
@@ -1446,20 +1637,26 @@
             class="section-link"
             id="showAll"
         >
-            همه بازی‌ها
+            نمایش همه
         </a>
 
     </div>
 
-    <div
-        class="games-scroll"
-        id="gamesContainer"
-    ></div>
+
+    <div class="games-wrap">
+
+        <div
+            class="games-scroll"
+            id="gamesContainer"
+        ></div>
+
+    </div>
+
 
     <div class="selected-game-info">
 
         <span>
-            در حال نمایش:
+            انتخاب فعلی:
         </span>
 
         <span
@@ -1478,7 +1675,10 @@
      FEED
 ========================= -->
 
-<section class="section">
+<section
+    class="section"
+    id="feed"
+>
 
     <div class="section-top">
 
@@ -1489,7 +1689,7 @@
             </h2>
 
             <p class="section-description">
-                تازه‌ترین اخبار، آپدیت‌ها و ایونت‌های بازی‌های موبایل
+                جدیدترین اخبار، آپدیت‌ها و اتفاقات بازی‌های مورد علاقه‌ات.
             </p>
 
         </div>
@@ -1513,54 +1713,28 @@
         ></div>
 
 
-        <aside class="sidebar">
+        <!-- GAME INFORMATION -->
 
-            <!-- TRENDING -->
+        <aside class="sidebar">
 
             <div class="side-box">
 
                 <div class="side-heading">
 
                     <h3>
-                        🔥 ترند امروز
+                        🎮 اطلاعات بازی
                     </h3>
 
-                    <a href="#">
-                        همه
-                    </a>
+                    <span>
+                        GAME INFO
+                    </span>
 
                 </div>
 
-                <div
-                    class="trending"
-                    id="trendingContainer"
-                ></div>
-
-            </div>
-
-
-            <!-- TODAY -->
-
-            <div
-                class="side-box"
-                id="today"
-            >
-
-                <div class="side-heading">
-
-                    <h3>
-                        📅 امروز
-                    </h3>
-
-                    <a href="#">
-                        تقویم
-                    </a>
-
-                </div>
 
                 <div
-                    class="today-list"
-                    id="todayContainer"
+                    class="game-profile"
+                    id="gameProfile"
                 ></div>
 
             </div>
@@ -1590,7 +1764,7 @@
             </h2>
 
             <p class="section-description">
-                چند بازی موبایلی که ارزش کشف کردن دارند
+                چند بازی که ارزش کشف کردن دارند.
             </p>
 
         </div>
@@ -1603,6 +1777,7 @@
         </a>
 
     </div>
+
 
     <div
         class="discover-grid"
@@ -1621,16 +1796,17 @@
     <div class="cta">
 
         <span class="cta-label">
-            دنیای گیمینگ تو
+            GAMEHUB / GAMER SPACE
         </span>
 
         <h2>
-            فقط بازی‌هایی که واقعاً برایت مهم هستند.
+            دنیای گیمینگت را یک‌جا داشته باش.
         </h2>
 
         <p>
-            آپدیت‌ها، ایونت‌ها، اخبار و اتفاقات مهم
-            بازی‌های موبایلی مورد علاقه‌ات را بدون شلوغی دنبال کن.
+            اخبار، آپدیت‌ها، ایونت‌ها و اتفاقات مهم
+            بازی‌های موبایلی مورد علاقه‌ات را بدون شلوغی
+            و حواس‌پرتی دنبال کن.
         </p>
 
     </div>
@@ -1685,7 +1861,6 @@
 
     /* ==========================================
        SAFE ARRAY
-       جلوگیری از allEvents is not iterable
     ========================================== */
 
     function toArray(data, keys = []) {
@@ -1791,8 +1966,7 @@
             renderSlides();
             renderGames();
             renderFeed();
-            renderTrending();
-            renderToday();
+            renderGameProfile();
             renderDiscover();
 
         }
@@ -1825,9 +1999,7 @@
                 باز کرده‌ای، پروژه را با Local Server اجرا کن.
 
             `;
-
         }
-
     }
 
 
@@ -1843,7 +2015,6 @@
             .replaceAll(">", "&gt;")
             .replaceAll('"', "&quot;")
             .replaceAll("'", "&#039;");
-
     }
 
 
@@ -1905,45 +2076,57 @@
                     <div class="slide-glow"></div>
 
                     <div class="slide-art">
+
                         ${escapeHTML(
                             slide.art || "🎮"
                         )}
+
                     </div>
 
                     <div class="slide-content">
 
                         <span class="slide-tag">
+
                             ${escapeHTML(
                                 slide.tag || "FEATURED"
                             )}
+
                         </span>
 
                         <h1>
+
                             ${escapeHTML(
                                 slide.title || ""
                             )}
+
                         </h1>
 
                         <p class="slide-description">
+
                             ${escapeHTML(
                                 slide.description || ""
                             )}
+
                         </p>
 
                         <div class="slide-meta">
 
                             <span>
+
                                 ${escapeHTML(
                                     slide.readTime || ""
                                 )}
+
                             </span>
 
                             <span>•</span>
 
                             <span>
+
                                 ${escapeHTML(
                                     slide.time || ""
                                 )}
+
                             </span>
 
                         </div>
@@ -1954,10 +2137,12 @@
                             )}"
                             class="read-button"
                         >
+
                             ${escapeHTML(
                                 slide.buttonText ||
                                 "مطالعه مطلب ←"
                             )}
+
                         </a>
 
                     </div>
@@ -1999,7 +2184,6 @@
         currentSlide = 0;
 
         startSlider();
-
     }
 
 
@@ -2048,7 +2232,6 @@
 
             }
         );
-
     }
 
 
@@ -2071,7 +2254,6 @@
                 },
                 5000
             );
-
     }
 
 
@@ -2110,12 +2292,16 @@
 
         `;
 
+
         allButton.addEventListener(
             "click",
             () => selectGame("all")
         );
 
-        container.appendChild(allButton);
+
+        container.appendChild(
+            allButton
+        );
 
 
         allGames.forEach(
@@ -2142,9 +2328,11 @@
                 button.innerHTML = `
 
                     <span class="game-icon">
+
                         ${escapeHTML(
                             game.icon || "🎮"
                         )}
+
                     </span>
 
                     ${escapeHTML(
@@ -2160,20 +2348,30 @@
                 );
 
 
-                container.appendChild(button);
+                container.appendChild(
+                    button
+                );
 
             }
         );
-
     }
 
+
+    /* ==========================================
+       SELECT GAME
+    ========================================== */
 
     function selectGame(gameId) {
 
         selectedGame = gameId;
 
+
         renderGames();
+
         renderFeed();
+
+        renderGameProfile();
+
 
         const game =
             allGames.find(
@@ -2187,7 +2385,268 @@
             game
                 ? game.name
                 : "همه بازی‌ها";
+    }
 
+
+    /* ==========================================
+       GAME PROFILE
+       اطلاعات اختصاصی از games.json
+    ========================================== */
+
+    function renderGameProfile() {
+
+        const container =
+            document.getElementById(
+                "gameProfile"
+            );
+
+
+        if (selectedGame === "all") {
+
+            container.innerHTML = `
+
+                <div class="game-profile">
+
+                    <div class="game-profile-top">
+
+                        <div class="game-profile-icon">
+                            🎮
+                        </div>
+
+                        <div>
+
+                            <div class="game-profile-name">
+                                همه بازی‌ها
+                            </div>
+
+                            <div class="game-profile-type">
+                                GAMEHUB COLLECTION
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <p class="game-description">
+
+                        یک بازی را از لیست انتخاب کن
+                        تا اطلاعات اختصاصی، سبک،
+                        توضیحات و مشخصات آن را اینجا ببینی.
+
+                        همه اطلاعات این بخش مستقیماً
+                        از فایل games.json خوانده می‌شود.
+
+                    </p>
+
+
+                    <div class="game-stats">
+
+                        <div class="game-stat">
+
+                            <div class="game-stat-label">
+                                بازی‌های موجود
+                            </div>
+
+                            <div class="game-stat-value">
+                                ${allGames.length}
+                            </div>
+
+                        </div>
+
+
+                        <div class="game-stat">
+
+                            <div class="game-stat-label">
+                                اخبار
+                            </div>
+
+                            <div class="game-stat-value">
+                                ${allNews.length}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `;
+
+            return;
+        }
+
+
+        const game =
+            allGames.find(
+                item => item.id === selectedGame
+            );
+
+
+        if (!game) {
+
+            container.innerHTML = `
+
+                <div class="empty-state">
+                    اطلاعات این بازی پیدا نشد.
+                </div>
+
+            `;
+
+            return;
+        }
+
+
+        const description =
+            game.description ||
+            game.bio ||
+            game.summary ||
+            "برای این بازی هنوز توضیحی ثبت نشده است.";
+
+
+        const type =
+            game.type ||
+            game.genre ||
+            game.category ||
+            "Mobile Game";
+
+
+        const followers =
+            game.followers ||
+            "—";
+
+
+        const rating =
+            game.rating ||
+            game.score ||
+            "—";
+
+
+        const tags =
+            Array.isArray(game.tags)
+                ? game.tags
+                : (
+                    typeof game.tags === "string"
+                        ? game.tags
+                            .split(",")
+                            .map(tag => tag.trim())
+                        : []
+                );
+
+
+        container.innerHTML = `
+
+            <div class="game-profile">
+
+                <div class="game-profile-top">
+
+                    <div class="game-profile-icon">
+
+                        ${escapeHTML(
+                            game.icon || "🎮"
+                        )}
+
+                    </div>
+
+
+                    <div>
+
+                        <div class="game-profile-name">
+
+                            ${escapeHTML(
+                                game.name || ""
+                            )}
+
+                        </div>
+
+
+                        <div class="game-profile-type">
+
+                            ${escapeHTML(type)}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <p class="game-description">
+
+                    ${escapeHTML(description)}
+
+                </p>
+
+
+                <div class="game-stats">
+
+                    <div class="game-stat">
+
+                        <div class="game-stat-label">
+                            دنبال‌کننده
+                        </div>
+
+                        <div class="game-stat-value">
+
+                            ${escapeHTML(
+                                followers
+                            )}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="game-stat">
+
+                        <div class="game-stat-label">
+                            امتیاز
+                        </div>
+
+                        <div class="game-stat-value">
+
+                            ${escapeHTML(
+                                rating
+                            )}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                ${
+                    tags.length
+                        ? `
+
+                            <div class="game-tags">
+
+                                ${tags
+                                    .slice(0, 6)
+                                    .map(
+                                        tag => `
+
+                                            <span class="game-tag">
+
+                                                ${escapeHTML(tag)}
+
+                                            </span>
+
+                                        `
+                                    )
+                                    .join("")
+                                }
+
+                            </div>
+
+                          `
+                        : ""
+                }
+
+            </div>
+
+        `;
     }
 
 
@@ -2221,13 +2680,13 @@
                         selectedGame
                 );
 
+
             events =
                 events.filter(
                     item =>
                         item.gameId ===
                         selectedGame
                 );
-
         }
 
 
@@ -2271,7 +2730,6 @@
             `;
 
             return;
-
         }
 
 
@@ -2324,33 +2782,41 @@
 
 
                         <h3>
+
                             ${escapeHTML(
                                 item.title || ""
                             )}
+
                         </h3>
 
 
                         <p>
+
                             ${escapeHTML(
                                 item.description || ""
                             )}
+
                         </p>
 
 
                         <div class="story-bottom">
 
                             <span>
+
                                 ${escapeHTML(
                                     item.readTime || ""
                                 )}
+
                             </span>
 
                             <span>•</span>
 
                             <span>
+
                                 ${escapeHTML(
                                     item.time || ""
                                 )}
+
                             </span>
 
                         </div>
@@ -2378,210 +2844,12 @@
                 );
 
 
-                container.appendChild(article);
-
-            }
-        );
-
-    }
-
-
-    /* ==========================================
-       TRENDING
-       مستقیماً از games.json
-    ========================================== */
-
-    function renderTrending() {
-
-        const container =
-            document.getElementById(
-                "trendingContainer"
-            );
-
-        container.innerHTML = "";
-
-
-        const trending =
-            allGames
-
-                .filter(
-                    game =>
-                        game.trending === true
-                )
-
-                .sort(
-                    (a, b) =>
-                        Number(a.trendRank || 999) -
-                        Number(b.trendRank || 999)
-                )
-
-                .slice(0, 5);
-
-
-        if (!trending.length) {
-
-            container.innerHTML = `
-
-                <div class="empty-state">
-                    هنوز بازی ترند ثبت نشده.
-                </div>
-
-            `;
-
-            return;
-
-        }
-
-
-        trending.forEach(
-            (game, index) => {
-
-                const item =
-                    document.createElement(
-                        "div"
-                    );
-
-                item.className = "trend";
-
-
-                item.innerHTML = `
-
-                    <span class="trend-number">
-                        ${String(
-                            game.trendRank ||
-                            index + 1
-                        ).padStart(2, "0")}
-                    </span>
-
-
-                    <span class="trend-icon">
-                        ${escapeHTML(
-                            game.icon || "🎮"
-                        )}
-                    </span>
-
-
-                    <div class="trend-content">
-
-                        <div class="trend-title">
-                            ${escapeHTML(
-                                game.name
-                            )}
-                        </div>
-
-                        <div class="trend-meta">
-
-                            ${escapeHTML(
-                                game.trendText ||
-                                game.followers ||
-                                "در حال ترند"
-                            )}
-
-                        </div>
-
-                    </div>
-
-                `;
-
-
-                container.appendChild(item);
-
-            }
-        );
-
-    }
-
-
-    /* ==========================================
-       TODAY
-    ========================================== */
-
-    function renderToday() {
-
-        const container =
-            document.getElementById(
-                "todayContainer"
-            );
-
-        container.innerHTML = "";
-
-
-        const todayEvents =
-            allEvents
-                .filter(
-                    event =>
-                        event.today === true
-                )
-                .sort(
-                    (a, b) =>
-                        Number(a.order || 0) -
-                        Number(b.order || 0)
+                container.appendChild(
+                    article
                 );
 
-
-        if (!todayEvents.length) {
-
-            container.innerHTML = `
-
-                <div class="empty-state">
-                    برای امروز ایونتی ثبت نشده.
-                </div>
-
-            `;
-
-            return;
-
-        }
-
-
-        todayEvents.forEach(
-            event => {
-
-                const item =
-                    document.createElement(
-                        "div"
-                    );
-
-                item.className =
-                    "today-item";
-
-
-                item.innerHTML = `
-
-                    <span class="today-time">
-                        ${escapeHTML(
-                            event.eventTime || ""
-                        )}
-                    </span>
-
-                    <div>
-
-                        <div class="today-game">
-
-                            ${escapeHTML(
-                                event.gameName || ""
-                            )}
-
-                        </div>
-
-                        <div class="today-title">
-
-                            ${escapeHTML(
-                                event.title || ""
-                            )}
-
-                        </div>
-
-                    </div>
-
-                `;
-
-
-                container.appendChild(item);
-
             }
         );
-
     }
 
 
@@ -2625,9 +2893,15 @@
                     ${
                         game.rank
                             ? `
+
                                 <span class="discover-rank">
-                                    #${escapeHTML(game.rank)}
+
+                                    #${escapeHTML(
+                                        game.rank
+                                    )}
+
                                 </span>
+
                               `
                             : ""
                     }
@@ -2645,7 +2919,8 @@
                     <span class="discover-type">
 
                         ${escapeHTML(
-                            game.type || "Mobile Game"
+                            game.type ||
+                            "Mobile Game"
                         )}
 
                     </span>
@@ -2681,6 +2956,7 @@
 
                         event.stopPropagation();
 
+
                         const following =
                             button.classList.toggle(
                                 "following"
@@ -2696,11 +2972,12 @@
                 );
 
 
-                container.appendChild(card);
+                container.appendChild(
+                    card
+                );
 
             }
         );
-
     }
 
 
@@ -2723,100 +3000,24 @@
 
 
     /* ==========================================
-       SEARCH
+       NEWEST
     ========================================== */
 
     document
-        .getElementById("searchInput")
+        .getElementById("newestLink")
         .addEventListener(
-            "input",
+            "click",
             event => {
 
-                const query =
-                    event.target.value
-                        .toLowerCase()
-                        .trim();
+                event.preventDefault();
 
+                selectGame("all");
 
-                const stories =
-                    document.querySelectorAll(
-                        ".story"
-                    );
-
-
-                let visible = 0;
-
-
-                stories.forEach(
-                    story => {
-
-                        const text =
-                            story.innerText
-                                .toLowerCase();
-
-
-                        const match =
-                            text.includes(
-                                query
-                            );
-
-
-                        story.style.display =
-                            match
-                                ? "grid"
-                                : "none";
-
-
-                        if (match) {
-                            visible++;
-                        }
-
-                    }
-                );
-
-
-                const oldEmpty =
-                    document.querySelector(
-                        ".search-empty"
-                    );
-
-
-                if (oldEmpty) {
-                    oldEmpty.remove();
-                }
-
-
-                if (
-                    query &&
-                    visible === 0
-                ) {
-
-                    const feed =
-                        document.getElementById(
-                            "feedList"
-                        );
-
-
-                    const empty =
-                        document.createElement(
-                            "div"
-                        );
-
-
-                    empty.className =
-                        "empty-state search-empty";
-
-
-                    empty.innerHTML = `
-                        مطلبی با عبارت
-                        «${escapeHTML(query)}»
-                        پیدا نشد.
-                    `;
-
-
-                    feed.appendChild(empty);
-
-                }
+                document
+                    .getElementById("feed")
+                    .scrollIntoView({
+                        behavior: "smooth"
+                    });
 
             }
         );
@@ -2838,57 +3039,54 @@
                     );
 
 
-                if (
-                    nav.style.display ===
-                    "flex"
-                ) {
+                const isOpen =
+                    nav.classList.toggle(
+                        "mobile-open"
+                    );
 
-                    nav.style.display =
-                        "none";
 
-                    return;
+                if (isOpen) {
+
+                    nav.style.display = "flex";
+
+                    nav.style.position =
+                        "absolute";
+
+                    nav.style.top = "68px";
+
+                    nav.style.left = "13px";
+
+                    nav.style.right = "13px";
+
+                    nav.style.padding = "18px";
+
+                    nav.style.flexDirection =
+                        "column";
+
+                    nav.style.alignItems =
+                        "stretch";
+
+                    nav.style.gap = "16px";
+
+                    nav.style.border =
+                        "1px solid rgba(255,255,255,.08)";
+
+                    nav.style.borderRadius =
+                        "16px";
+
+                    nav.style.background =
+                        "rgba(30,30,30,.97)";
+
+                    nav.style.backdropFilter =
+                        "blur(20px)";
 
                 }
 
+                else {
 
-                nav.style.display =
-                    "flex";
+                    nav.style.display = "";
 
-                nav.style.position =
-                    "absolute";
-
-                nav.style.top =
-                    "68px";
-
-                nav.style.left =
-                    "13px";
-
-                nav.style.right =
-                    "13px";
-
-                nav.style.padding =
-                    "18px";
-
-                nav.style.flexDirection =
-                    "column";
-
-                nav.style.alignItems =
-                    "stretch";
-
-                nav.style.gap =
-                    "16px";
-
-                nav.style.border =
-                    "1px solid rgba(255,255,255,.08)";
-
-                nav.style.borderRadius =
-                    "16px";
-
-                nav.style.background =
-                    "rgba(30,30,30,.97)";
-
-                nav.style.backdropFilter =
-                    "blur(20px)";
+                }
 
             }
         );
