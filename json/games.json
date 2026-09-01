@@ -1,32 +1,44 @@
 [
-  {
-    "id": "valorant",
-    "name": "ولورانت",
-    "icon": "🎯",
-    "active": true
-  },
-  {
-    "id": "fortnite",
-    "name": "فورتنایت",
-    "icon": "🪂",
-    "active": false
-  },
-  {
-    "id": "cod",
-    "name": "کال آو دیوتی",
-    "icon": "⚔️",
-    "active": false
-  },
-  {
-    "id": "minecraft",
-    "name": "ماینکرفت",
-    "icon": "⛏️",
-    "active": false
-  },
-  {
-    "id": "gta",
-    "name": "جی‌تی‌ای",
-    "icon": "🏎️",
-    "active": false
-  }
+    {
+        "id": "fortnite",
+        "name": "Fortnite",
+        "icon": "🟣",
+        "trending": true,
+        "followers": "۲.۴M دنبال‌کننده"
+    },
+    {
+        "id": "minecraft",
+        "name": "Minecraft",
+        "icon": "🟩",
+        "trending": true,
+        "followers": "۱.۹M دنبال‌کننده"
+    },
+    {
+        "id": "valorant",
+        "name": "Valorant",
+        "icon": "🔴",
+        "trending": true,
+        "followers": "۱.۷M دنبال‌کننده"
+    },
+    {
+        "id": "gta",
+        "name": "GTA",
+        "icon": "🟢",
+        "trending": true,
+        "followers": "۱.۵M دنبال‌کننده"
+    },
+    {
+        "id": "elden-ring",
+        "name": "Elden Ring",
+        "icon": "🟡",
+        "trending": true,
+        "followers": "۹۸۰K دنبال‌کننده"
+    },
+    {
+        "id": "fifa",
+        "name": "FC",
+        "icon": "⚽",
+        "trending": false,
+        "followers": "۷۲۰K دنبال‌کننده"
+    }
 ]
