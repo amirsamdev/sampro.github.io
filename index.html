@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -108,6 +107,7 @@
 
             display: flex;
             align-items: center;
+
             gap: 36px;
         }
 
@@ -165,6 +165,7 @@
 
             display: flex;
             align-items: center;
+
             gap: 10px;
         }
 
@@ -174,6 +175,7 @@
 
             display: flex;
             align-items: center;
+
             gap: 8px;
 
             padding: 0 12px;
@@ -205,7 +207,8 @@
             color: var(--text-muted);
         }
 
-        .profile {
+        .profile,
+        .mobile-menu {
             width: 38px;
             height: 38px;
 
@@ -217,21 +220,15 @@
 
             background: rgba(255,255,255,.05);
 
+            color: white;
+        }
+
+        .profile {
             font-size: 14px;
         }
 
         .mobile-menu {
             display: none;
-
-            width: 38px;
-            height: 38px;
-
-            border: 1px solid var(--border);
-            border-radius: 11px;
-
-            background: rgba(255,255,255,.05);
-
-            color: white;
         }
 
         /* =========================
@@ -270,7 +267,6 @@
             padding: 42px;
 
             opacity: 0;
-
             visibility: hidden;
 
             transition:
@@ -283,6 +279,7 @@
         .slide.active {
             opacity: 1;
             visibility: visible;
+
             transform: scale(1);
         }
 
@@ -293,9 +290,8 @@
             background:
                 linear-gradient(
                     110deg,
-                    rgba(18,18,18,.97) 0%,
-                    rgba(35,42,72,.94) 50%,
-                    rgba(46,65,146,.96) 100%
+                    rgba(18,18,18,.97),
+                    rgba(46,65,146,.96)
                 );
         }
 
@@ -339,6 +335,7 @@
         .slide-tag {
             display: inline-flex;
             align-items: center;
+
             gap: 7px;
 
             padding: 7px 10px;
@@ -354,8 +351,7 @@
         .slide h1 {
             margin-top: 16px;
 
-            font-size:
-                clamp(34px, 6vw, 65px);
+            font-size: clamp(34px, 6vw, 65px);
 
             line-height: 1.15;
 
@@ -378,6 +374,7 @@
 
             display: flex;
             align-items: center;
+
             gap: 15px;
 
             color: var(--text-muted);
@@ -390,6 +387,7 @@
 
             display: inline-flex;
             align-items: center;
+
             gap: 9px;
 
             padding: 11px 15px;
@@ -397,7 +395,6 @@
             border-radius: 10px;
 
             background: white;
-
             color: #30469c;
 
             font-size: 11px;
@@ -413,6 +410,7 @@
             z-index: 10;
 
             display: flex;
+
             gap: 6px;
         }
 
@@ -481,6 +479,7 @@
 
         .games-scroll {
             display: flex;
+
             gap: 9px;
 
             overflow-x: auto;
@@ -499,6 +498,7 @@
 
             display: flex;
             align-items: center;
+
             gap: 9px;
 
             padding: 9px 12px;
@@ -542,13 +542,10 @@
             font-size: 13px;
         }
 
-        /* =========================
-           FILTER INFO
-        ========================= */
-
         .selected-game-info {
             display: flex;
             align-items: center;
+
             gap: 8px;
 
             margin-top: 13px;
@@ -602,6 +599,8 @@
                 transform .2s,
                 border .2s,
                 background .2s;
+
+            cursor: pointer;
         }
 
         .story:hover {
@@ -621,6 +620,8 @@
             align-items: center;
             justify-content: center;
 
+            overflow: hidden;
+
             border-radius: 12px;
 
             background:
@@ -632,6 +633,13 @@
                 );
 
             font-size: 52px;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
         }
 
         .story-info {
@@ -651,6 +659,7 @@
             margin-top: 7px;
 
             font-size: 16px;
+
             line-height: 1.6;
         }
 
@@ -668,6 +677,7 @@
 
             display: flex;
             align-items: center;
+
             gap: 12px;
 
             color: var(--text-muted);
@@ -678,10 +688,6 @@
         .story-bottom span:first-child {
             color: var(--text-soft);
         }
-
-        /* =========================
-           EMPTY
-        ========================= */
 
         .empty-state {
             display: none;
@@ -749,6 +755,7 @@
         .trend {
             display: flex;
             align-items: center;
+
             gap: 10px;
 
             padding: 10px 0;
@@ -776,6 +783,7 @@
 
         .trend-title {
             white-space: nowrap;
+
             overflow: hidden;
             text-overflow: ellipsis;
 
@@ -803,7 +811,9 @@
         .today-item {
             display: grid;
 
-            grid-template-columns: 46px 1fr;
+            grid-template-columns:
+                46px
+                1fr;
 
             gap: 10px;
 
@@ -819,7 +829,6 @@
 
         .today-time {
             color: var(--text-muted);
-
             font-size: 9px;
         }
 
@@ -858,6 +867,7 @@
             justify-content: flex-end;
 
             position: relative;
+
             overflow: hidden;
 
             padding: 14px;
@@ -935,7 +945,6 @@
 
         .follow.following {
             background: var(--blue);
-
             border-color: var(--blue);
         }
 
@@ -979,7 +988,6 @@
             color: rgba(255,255,255,.5);
 
             font-size: 11px;
-
             line-height: 1.9;
         }
 
@@ -1002,7 +1010,6 @@
             color: #ffb0b0;
 
             font-size: 11px;
-
             line-height: 1.8;
         }
 
@@ -1040,7 +1047,7 @@
             }
 
             .mobile-menu {
-                display: block;
+                display: grid;
             }
 
             .feed {
@@ -1119,7 +1126,9 @@
             }
 
             .story {
-                grid-template-columns: 105px 1fr;
+                grid-template-columns:
+                    105px
+                    1fr;
 
                 gap: 11px;
 
@@ -1176,6 +1185,7 @@
 
             .footer-inner {
                 flex-direction: column;
+
                 gap: 8px;
 
                 text-align: center;
@@ -1189,7 +1199,9 @@
             }
 
             .story {
-                grid-template-columns: 90px 1fr;
+                grid-template-columns:
+                    90px
+                    1fr;
             }
 
             .story-image {
@@ -1214,7 +1226,7 @@
             گیم‌هاب
         </a>
 
-        <nav class="nav">
+        <nav class="nav" id="mainNav">
 
             <a href="#" class="active">
                 خانه
@@ -1248,13 +1260,18 @@
 
             </div>
 
-            <button class="profile">
+            <button
+                class="profile"
+                type="button"
+            >
                 👤
             </button>
 
             <button
                 class="mobile-menu"
                 id="mobileMenu"
+                type="button"
+                aria-label="منو"
             >
                 ☰
             </button>
@@ -1268,9 +1285,7 @@
 
 <main class="container">
 
-    <!-- =========================
-         SLIDER
-    ========================= -->
+    <!-- SLIDER -->
 
     <section class="hero-slider">
 
@@ -1287,9 +1302,7 @@
     </section>
 
 
-    <!-- =========================
-         JSON ERROR
-    ========================= -->
+    <!-- ERROR -->
 
     <div
         class="json-error"
@@ -1297,9 +1310,7 @@
     ></div>
 
 
-    <!-- =========================
-         YOUR GAMES
-    ========================= -->
+    <!-- GAMES -->
 
     <section
         class="section"
@@ -1353,9 +1364,7 @@
     </section>
 
 
-    <!-- =========================
-         MAIN FEED
-    ========================= -->
+    <!-- FEED -->
 
     <section class="section">
 
@@ -1451,9 +1460,7 @@
     </section>
 
 
-    <!-- =========================
-         DISCOVER
-    ========================= -->
+    <!-- DISCOVER -->
 
     <section
         class="section"
@@ -1491,9 +1498,7 @@
     </section>
 
 
-    <!-- =========================
-         CTA
-    ========================= -->
+    <!-- CTA -->
 
     <section class="section">
 
@@ -1562,22 +1567,95 @@
 
 
     /* ==========================================
+       HELPERS
+    ========================================== */
+
+    function normalizeArray(data, possibleKeys = []) {
+
+        /*
+         * این تابع مشکل اصلی allEvents را حل می‌کند.
+         *
+         * JSON می‌تواند این باشد:
+         *
+         * [
+         *   {...},
+         *   {...}
+         * ]
+         *
+         * یا:
+         *
+         * {
+         *   "events": [
+         *      {...}
+         *   ]
+         * }
+         */
+
+        if (Array.isArray(data)) {
+            return data;
+        }
+
+        if (data && typeof data === "object") {
+
+            for (const key of possibleKeys) {
+
+                if (Array.isArray(data[key])) {
+                    return data[key];
+                }
+
+            }
+
+        }
+
+        return [];
+    }
+
+
+    function escapeHTML(value) {
+
+        if (value === null || value === undefined) {
+            return "";
+        }
+
+        return String(value)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+
+    /* ==========================================
        JSON LOADER
     ========================================== */
 
     async function loadJSON(file) {
 
         const response = await fetch(
-            JSON_PATH + file
+            JSON_PATH + file,
+            {
+                cache: "no-store"
+            }
         );
 
         if (!response.ok) {
+
             throw new Error(
-                `خطا در دریافت ${file}`
+                `خطا در دریافت ${file} — HTTP ${response.status}`
             );
         }
 
-        return await response.json();
+        try {
+
+            return await response.json();
+
+        } catch (error) {
+
+            throw new Error(
+                `فرمت ${file} معتبر نیست.`
+            );
+        }
     }
 
 
@@ -1587,29 +1665,62 @@
 
     async function initialize() {
 
+        const errorBox =
+            document.getElementById("jsonError");
+
         try {
 
             const [
-                slides,
-                games,
-                news,
-                events,
-                discover
+                slidesData,
+                gamesData,
+                newsData,
+                eventsData,
+                discoverData
             ] = await Promise.all([
 
                 loadJSON("slides.json"),
+
                 loadJSON("games.json"),
+
                 loadJSON("news.json"),
+
                 loadJSON("events.json"),
+
                 loadJSON("discover.json")
 
             ]);
 
-            allSlides = slides;
-            allGames = games;
-            allNews = news;
-            allEvents = events;
-            allDiscover = discover;
+
+            /*
+             * مهم:
+             * تمام JSONها قبل از استفاده
+             * به Array تبدیل می‌شوند.
+             */
+
+            allSlides = normalizeArray(
+                slidesData,
+                ["slides", "data", "items"]
+            );
+
+            allGames = normalizeArray(
+                gamesData,
+                ["games", "data", "items"]
+            );
+
+            allNews = normalizeArray(
+                newsData,
+                ["news", "data", "items"]
+            );
+
+            allEvents = normalizeArray(
+                eventsData,
+                ["events", "data", "items"]
+            );
+
+            allDiscover = normalizeArray(
+                discoverData,
+                ["discover", "games", "data", "items"]
+            );
 
 
             renderSlides();
@@ -1619,27 +1730,73 @@
             renderToday();
             renderDiscover();
 
+
+            errorBox.style.display = "none";
+
         } catch (error) {
 
             console.error(error);
 
-            const errorBox =
-                document.getElementById("jsonError");
-
             errorBox.style.display = "block";
 
             errorBox.innerHTML = `
-                <strong>خطا در بارگذاری اطلاعات JSON</strong>
+
+                <strong>
+                    خطا در بارگذاری اطلاعات JSON
+                </strong>
+
                 <br>
-                ${error.message}
+
+                ${escapeHTML(error.message)}
+
                 <br><br>
-                اگر فایل HTML را مستقیم با
+
+                مطمئن شو ساختار پروژه دقیقاً این‌طور باشد:
+
+                <br>
+
+                <b>
+                    index.html
+                </b>
+
+                <br>
+
+                <b>
+                    json/slides.json
+                </b>
+
+                <br>
+
+                <b>
+                    json/games.json
+                </b>
+
+                <br>
+
+                <b>
+                    json/news.json
+                </b>
+
+                <br>
+
+                <b>
+                    json/events.json
+                </b>
+
+                <br>
+
+                <b>
+                    json/discover.json
+                </b>
+
+                <br><br>
+
+                اگر HTML را مستقیماً با
                 <b>file://</b>
-                باز کرده‌ای، باید پروژه را با یک
-                Local Server اجرا کنی.
+                باز کرده‌ای، آن را با Local Server اجرا کن.
+
             `;
         }
-
     }
 
 
@@ -1662,105 +1819,162 @@
         container.innerHTML = "";
         dots.innerHTML = "";
 
+        currentSlide = 0;
+
         if (!allSlides.length) {
-            return;
-        }
 
+            container.innerHTML = `
 
-        allSlides.forEach((slide, index) => {
+                <div class="slide active">
 
-            const article =
-                document.createElement("article");
+                    <div class="slide-bg"></div>
 
-            article.className =
-                "slide" +
-                (index === 0 ? " active" : "");
+                    <div class="slide-content">
 
-
-            article.innerHTML = `
-
-                <div
-                    class="slide-bg"
-                    style="
-                        background:
-                        ${slide.background || `
-                            linear-gradient(
-                                110deg,
-                                rgba(18,18,18,.97),
-                                rgba(46,65,146,.96)
-                            )
-                        `}
-                    "
-                ></div>
-
-                <div class="slide-glow"></div>
-
-                <div class="slide-art">
-                    ${slide.art || "🎮"}
-                </div>
-
-                <div class="slide-content">
-
-                    <span class="slide-tag">
-                        ${slide.tag || ""}
-                    </span>
-
-                    <h1>
-                        ${slide.title || ""}
-                    </h1>
-
-                    <p class="slide-description">
-                        ${slide.description || ""}
-                    </p>
-
-                    <div class="slide-meta">
-
-                        <span>
-                            ${slide.readTime || ""}
+                        <span class="slide-tag">
+                            GAMEHUB
                         </span>
 
-                        <span>•</span>
+                        <h1>
+                            به گیم‌هاب خوش آمدی
+                        </h1>
 
-                        <span>
-                            ${slide.time || ""}
-                        </span>
+                        <p class="slide-description">
+                            برای نمایش اسلایدها، اطلاعات
+                            slides.json را اضافه کن.
+                        </p>
 
                     </div>
-
-                    <a
-                        href="${slide.url || "#"}"
-                        class="read-button"
-                    >
-                        ${slide.buttonText || "مطالعه مطلب ←"}
-                    </a>
 
                 </div>
 
             `;
 
-            container.appendChild(article);
+            return;
+        }
 
 
-            const dot =
-                document.createElement("button");
+        allSlides.forEach(
+            (slide, index) => {
 
-            dot.className =
-                "slider-dot" +
-                (index === 0 ? " active" : "");
+                const article =
+                    document.createElement("article");
 
-            dot.setAttribute(
-                "aria-label",
-                `اسلاید ${index + 1}`
-            );
+                article.className =
+                    "slide" +
+                    (index === 0
+                        ? " active"
+                        : "");
 
-            dot.addEventListener(
-                "click",
-                () => goToSlide(index)
-            );
 
-            dots.appendChild(dot);
+                const background =
+                    slide.background ||
+                    `
+                        linear-gradient(
+                            110deg,
+                            rgba(18,18,18,.97),
+                            rgba(46,65,146,.96)
+                        )
+                    `;
 
-        });
+
+                article.innerHTML = `
+
+                    <div
+                        class="slide-bg"
+                        style="background:${escapeHTML(background)}"
+                    ></div>
+
+                    <div class="slide-glow"></div>
+
+                    <div class="slide-art">
+                        ${escapeHTML(
+                            slide.art || "🎮"
+                        )}
+                    </div>
+
+                    <div class="slide-content">
+
+                        <span class="slide-tag">
+                            ${escapeHTML(
+                                slide.tag || ""
+                            )}
+                        </span>
+
+                        <h1>
+                            ${escapeHTML(
+                                slide.title || ""
+                            )}
+                        </h1>
+
+                        <p class="slide-description">
+                            ${escapeHTML(
+                                slide.description || ""
+                            )}
+                        </p>
+
+                        <div class="slide-meta">
+
+                            <span>
+                                ${escapeHTML(
+                                    slide.readTime || ""
+                                )}
+                            </span>
+
+                            <span>•</span>
+
+                            <span>
+                                ${escapeHTML(
+                                    slide.time || ""
+                                )}
+                            </span>
+
+                        </div>
+
+                        <a
+                            href="${escapeHTML(
+                                slide.url || "#"
+                            )}"
+                            class="read-button"
+                        >
+                            ${escapeHTML(
+                                slide.buttonText ||
+                                "مطالعه مطلب ←"
+                            )}
+                        </a>
+
+                    </div>
+
+                `;
+
+                container.appendChild(article);
+
+
+                const dot =
+                    document.createElement("button");
+
+                dot.className =
+                    "slider-dot" +
+                    (index === 0
+                        ? " active"
+                        : "");
+
+                dot.type = "button";
+
+                dot.setAttribute(
+                    "aria-label",
+                    `اسلاید ${index + 1}`
+                );
+
+                dot.addEventListener(
+                    "click",
+                    () => goToSlide(index)
+                );
+
+                dots.appendChild(dot);
+
+            }
+        );
 
 
         startSlider();
@@ -1770,16 +1984,18 @@
     function goToSlide(index) {
 
         const slides =
-            document.querySelectorAll(".slide");
+            document.querySelectorAll(
+                ".slide"
+            );
 
         const dots =
-            document.querySelectorAll(".slider-dot");
-
+            document.querySelectorAll(
+                ".slider-dot"
+            );
 
         if (!slides.length) {
             return;
         }
-
 
         currentSlide =
             (index + slides.length) %
@@ -1808,7 +2024,6 @@
 
             }
         );
-
     }
 
 
@@ -1820,15 +2035,21 @@
             return;
         }
 
+        /*
+         * هر 5 ثانیه اسلاید عوض می‌شود.
+         */
+
         sliderTimer =
-            setInterval(() => {
+            setInterval(
+                () => {
 
-                goToSlide(
-                    currentSlide + 1
-                );
+                    goToSlide(
+                        currentSlide + 1
+                    );
 
-            }, 5000);
-
+                },
+                5000
+            );
     }
 
 
@@ -1846,49 +2067,94 @@
         container.innerHTML = "";
 
 
-        allGames.forEach(game => {
+        /*
+         * دکمه همه
+         */
 
-            const button =
-                document.createElement("button");
+        const allButton =
+            document.createElement("button");
 
-            button.className =
-                "game" +
-                (
-                    selectedGame === game.id
-                        ? " active"
-                        : ""
+        allButton.className =
+            "game" +
+            (
+                selectedGame === "all"
+                    ? " active"
+                    : ""
+            );
+
+        allButton.type = "button";
+
+        allButton.innerHTML = `
+
+            <span class="game-icon">
+                🎮
+            </span>
+
+            همه بازی‌ها
+
+        `;
+
+        allButton.addEventListener(
+            "click",
+            () => selectGame("all")
+        );
+
+        container.appendChild(allButton);
+
+
+        allGames.forEach(
+            game => {
+
+                const button =
+                    document.createElement(
+                        "button"
+                    );
+
+                button.className =
+                    "game" +
+                    (
+                        selectedGame === game.id
+                            ? " active"
+                            : ""
+                    );
+
+                button.type = "button";
+
+                button.dataset.game =
+                    game.id;
+
+
+                button.innerHTML = `
+
+                    <span class="game-icon">
+                        ${escapeHTML(
+                            game.icon || "🎮"
+                        )}
+                    </span>
+
+                    ${escapeHTML(
+                        game.name || ""
+                    )}
+
+                `;
+
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        selectGame(
+                            game.id
+                        );
+
+                    }
                 );
 
 
-            button.dataset.game =
-                game.id;
+                container.appendChild(button);
 
-
-            button.innerHTML = `
-
-                <span class="game-icon">
-                    ${game.icon || "🎮"}
-                </span>
-
-                ${game.name}
-
-            `;
-
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    selectGame(game.id);
-
-                }
-            );
-
-
-            container.appendChild(button);
-
-        });
-
+            }
+        );
     }
 
 
@@ -1899,9 +2165,11 @@
         renderGames();
         renderFeed();
 
+
         const game =
             allGames.find(
-                item => item.id === gameId
+                item =>
+                    item.id === gameId
             );
 
 
@@ -1911,7 +2179,6 @@
             game
                 ? game.name
                 : "همه بازی‌ها";
-
     }
 
 
@@ -1926,16 +2193,20 @@
                 "feedList"
             );
 
-
         container.innerHTML = "";
 
 
-        let news =
-            [...allNews];
+        /*
+         * حتماً با Array کار می‌کنیم.
+         */
 
+        let news = Array.isArray(allNews)
+            ? [...allNews]
+            : [];
 
-        let events =
-            [...allEvents];
+        let events = Array.isArray(allEvents)
+            ? [...allEvents]
+            : [];
 
 
         if (selectedGame !== "all") {
@@ -1943,121 +2214,197 @@
             news =
                 news.filter(
                     item =>
-                        item.gameId === selectedGame
+                        item.gameId ===
+                        selectedGame
                 );
 
             events =
                 events.filter(
                     item =>
-                        item.gameId === selectedGame
+                        item.gameId ===
+                        selectedGame
                 );
-
         }
 
 
         const combined = [
 
-            ...news.map(item => ({
-                ...item,
-                contentType: "news"
-            })),
+            ...news.map(
+                item => ({
+                    ...item,
+                    contentType: "news"
+                })
+            ),
 
-            ...events.map(item => ({
-                ...item,
-                contentType: "event"
-            }))
+            ...events.map(
+                item => ({
+                    ...item,
+                    contentType: "event"
+                })
+            )
 
         ];
 
 
         combined.sort(
             (a, b) =>
-                (b.order || 0) -
-                (a.order || 0)
+                (Number(b.order) || 0) -
+                (Number(a.order) || 0)
         );
 
 
         if (!combined.length) {
 
             container.innerHTML = `
+
                 <div
                     class="empty-state"
                     style="display:block"
                 >
                     برای این بازی هنوز خبری ثبت نشده.
                 </div>
+
             `;
 
             return;
         }
 
 
-        combined.forEach(item => {
+        combined.forEach(
+            item => {
 
-            const article =
-                document.createElement("article");
+                const article =
+                    document.createElement(
+                        "article"
+                    );
 
-            article.className = "story";
+                article.className =
+                    "story";
 
 
-            article.innerHTML = `
+                let imageHTML = "🎮";
 
-                <div class="story-image">
-                    ${item.image || item.icon || "🎮"}
-                </div>
 
-                <div class="story-info">
+                if (
+                    typeof item.image === "string" &&
+                    item.image.trim()
+                ) {
 
-                    <span class="story-tag">
-                        ${item.gameName || ""}
-                        ·
-                        ${item.category || ""}
-                    </span>
+                    if (
+                        item.image.match(
+                            /\.(jpg|jpeg|png|webp|gif|svg)$/i
+                        )
+                    ) {
 
-                    <h3>
-                        ${item.title || ""}
-                    </h3>
+                        imageHTML = `
 
-                    <p>
-                        ${item.description || ""}
-                    </p>
+                            <img
+                                src="${escapeHTML(
+                                    item.image
+                                )}"
+                                alt="${escapeHTML(
+                                    item.title || ""
+                                )}"
+                                loading="lazy"
+                            >
 
-                    <div class="story-bottom">
+                        `;
 
-                        <span>
-                            ${item.readTime || ""}
+                    } else {
+
+                        imageHTML =
+                            escapeHTML(
+                                item.image
+                            );
+                    }
+
+                } else if (item.icon) {
+
+                    imageHTML =
+                        escapeHTML(
+                            item.icon
+                        );
+                }
+
+
+                article.innerHTML = `
+
+                    <div class="story-image">
+                        ${imageHTML}
+                    </div>
+
+                    <div class="story-info">
+
+                        <span class="story-tag">
+
+                            ${escapeHTML(
+                                item.gameName || ""
+                            )}
+
+                            ·
+
+                            ${escapeHTML(
+                                item.category || ""
+                            )}
+
                         </span>
 
-                        <span>•</span>
+                        <h3>
+                            ${escapeHTML(
+                                item.title || ""
+                            )}
+                        </h3>
 
-                        <span>
-                            ${item.time || ""}
-                        </span>
+                        <p>
+                            ${escapeHTML(
+                                item.description || ""
+                            )}
+                        </p>
+
+                        <div class="story-bottom">
+
+                            <span>
+                                ${escapeHTML(
+                                    item.readTime || ""
+                                )}
+                            </span>
+
+                            <span>•</span>
+
+                            <span>
+                                ${escapeHTML(
+                                    item.time || ""
+                                )}
+                            </span>
+
+                        </div>
 
                     </div>
 
-                </div>
-
-            `;
+                `;
 
 
-            article.addEventListener(
-                "click",
-                () => {
+                if (
+                    item.url &&
+                    item.url !== "#"
+                ) {
 
-                    if (item.url && item.url !== "#") {
-                        window.location.href =
-                            item.url;
-                    }
+                    article.addEventListener(
+                        "click",
+                        () => {
 
+                            window.location.href =
+                                item.url;
+
+                        }
+                    );
                 }
-            );
 
 
-            container.appendChild(article);
+                container.appendChild(article);
 
-        });
-
+            }
+        );
     }
 
 
@@ -2072,39 +2419,78 @@
                 "trendingContainer"
             );
 
-
         container.innerHTML = "";
 
 
         const trending =
             allGames
-                .filter(game => game.trending)
+                .filter(
+                    game =>
+                        game.trending === true
+                )
                 .slice(0, 5);
+
+
+        if (!trending.length) {
+
+            container.innerHTML = `
+
+                <div class="trend">
+
+                    <div class="trend-content">
+
+                        <div class="trend-title">
+                            هنوز ترندی ثبت نشده
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `;
+
+            return;
+        }
 
 
         trending.forEach(
             (game, index) => {
 
                 const item =
-                    document.createElement("div");
+                    document.createElement(
+                        "div"
+                    );
 
-                item.className = "trend";
+                item.className =
+                    "trend";
 
 
                 item.innerHTML = `
 
                     <span class="trend-number">
-                        ${String(index + 1).padStart(2, "0")}
+
+                        ${String(
+                            index + 1
+                        ).padStart(2, "0")}
+
                     </span>
 
                     <div class="trend-content">
 
                         <div class="trend-title">
-                            ${game.name}
+
+                            ${escapeHTML(
+                                game.name || ""
+                            )}
+
                         </div>
 
                         <div class="trend-meta">
-                            ${game.followers || ""}
+
+                            ${escapeHTML(
+                                game.followers || ""
+                            )}
+
                         </div>
 
                     </div>
@@ -2116,7 +2502,6 @@
 
             }
         );
-
     }
 
 
@@ -2131,16 +2516,49 @@
                 "todayContainer"
             );
 
-
         container.innerHTML = "";
 
 
-        allEvents
-            .filter(event => event.today)
-            .forEach(event => {
+        const todayEvents =
+            allEvents.filter(
+                event =>
+                    event.today === true
+            );
+
+
+        if (!todayEvents.length) {
+
+            container.innerHTML = `
+
+                <div class="today-item">
+
+                    <span class="today-time">
+                        —
+                    </span>
+
+                    <div>
+
+                        <div class="today-title">
+                            رویدادی برای امروز ثبت نشده
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `;
+
+            return;
+        }
+
+
+        todayEvents.forEach(
+            event => {
 
                 const item =
-                    document.createElement("div");
+                    document.createElement(
+                        "div"
+                    );
 
                 item.className =
                     "today-item";
@@ -2149,17 +2567,29 @@
                 item.innerHTML = `
 
                     <span class="today-time">
-                        ${event.eventTime || ""}
+
+                        ${escapeHTML(
+                            event.eventTime || ""
+                        )}
+
                     </span>
 
                     <div>
 
                         <div class="today-game">
-                            ${event.gameName || ""}
+
+                            ${escapeHTML(
+                                event.gameName || ""
+                            )}
+
                         </div>
 
                         <div class="today-title">
-                            ${event.title || ""}
+
+                            ${escapeHTML(
+                                event.title || ""
+                            )}
+
                         </div>
 
                     </div>
@@ -2169,8 +2599,8 @@
 
                 container.appendChild(item);
 
-            });
-
+            }
+        );
     }
 
 
@@ -2185,67 +2615,86 @@
                 "discoverContainer"
             );
 
-
         container.innerHTML = "";
 
 
-        allDiscover.forEach(game => {
+        allDiscover.forEach(
+            game => {
 
-            const card =
-                document.createElement("article");
+                const card =
+                    document.createElement(
+                        "article"
+                    );
 
-            card.className =
-                "discover-card";
-
-
-            card.innerHTML = `
-
-                <div class="discover-emoji">
-                    ${game.icon || "🎮"}
-                </div>
-
-                <strong class="discover-game">
-                    ${game.name}
-                </strong>
-
-                <span class="discover-type">
-                    ${game.type || ""}
-                </span>
-
-                <button class="follow">
-                    + دنبال کردن
-                </button>
-
-            `;
+                card.className =
+                    "discover-card";
 
 
-            const button =
-                card.querySelector(".follow");
+                card.innerHTML = `
+
+                    <div class="discover-emoji">
+
+                        ${escapeHTML(
+                            game.icon || "🎮"
+                        )}
+
+                    </div>
+
+                    <strong class="discover-game">
+
+                        ${escapeHTML(
+                            game.name || ""
+                        )}
+
+                    </strong>
+
+                    <span class="discover-type">
+
+                        ${escapeHTML(
+                            game.type || ""
+                        )}
+
+                    </span>
+
+                    <button
+                        class="follow"
+                        type="button"
+                    >
+                        + دنبال کردن
+                    </button>
+
+                `;
 
 
-            button.addEventListener(
-                "click",
-                () => {
-
-                    const following =
-                        button.classList.toggle(
-                            "following"
-                        );
+                const button =
+                    card.querySelector(
+                        ".follow"
+                    );
 
 
-                    button.textContent =
-                        following
-                            ? "✓ دنبال می‌کنی"
-                            : "+ دنبال کردن";
+                button.addEventListener(
+                    "click",
+                    () => {
 
-                }
-            );
+                        const following =
+                            button.classList.toggle(
+                                "following"
+                            );
 
 
-            container.appendChild(card);
+                        button.textContent =
+                            following
+                                ? "✓ دنبال می‌کنی"
+                                : "+ دنبال کردن";
 
-        });
+                    }
+                );
 
+
+                container.appendChild(card);
+
+            }
+        );
     }
 
 
@@ -2309,7 +2758,9 @@
 
 
                         const match =
-                            text.includes(query);
+                            text.includes(
+                                query
+                            );
 
 
                         story.style.display =
@@ -2326,16 +2777,20 @@
                 );
 
 
-                const empty =
-                    document.querySelector(
-                        ".empty-state"
+                const oldSearchEmpty =
+                    document.getElementById(
+                        "searchEmpty"
                     );
+
+
+                if (oldSearchEmpty) {
+                    oldSearchEmpty.remove();
+                }
 
 
                 if (
                     query &&
-                    visible === 0 &&
-                    !empty
+                    visible === 0
                 ) {
 
                     const feed =
@@ -2344,15 +2799,35 @@
                         );
 
 
-                    feed.innerHTML += `
-                        <div
-                            class="empty-state"
-                            style="display:block"
-                        >
-                            مطلبی با این عبارت پیدا نشد.
-                        </div>
+                    const empty =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    empty.id =
+                        "searchEmpty";
+
+                    empty.className =
+                        "empty-state";
+
+
+                    empty.style.display =
+                        "block";
+
+
+                    empty.innerHTML = `
+
+                        مطلبی با عبارت
+                        <b>
+                            ${escapeHTML(query)}
+                        </b>
+                        پیدا نشد.
+
                     `;
 
+
+                    feed.appendChild(empty);
                 }
 
             }
@@ -2370,7 +2845,9 @@
             () => {
 
                 const nav =
-                    document.querySelector(".nav");
+                    document.querySelector(
+                        ".nav"
+                    );
 
 
                 if (
@@ -2381,11 +2858,11 @@
                         "none";
 
                     return;
-
                 }
 
 
-                nav.style.display = "flex";
+                nav.style.display =
+                    "flex";
 
                 nav.style.position =
                     "absolute";
@@ -2437,4 +2914,3 @@
 
 </body>
 </html>
-```
