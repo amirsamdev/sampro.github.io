@@ -1,20 +1,38 @@
 [
-  {
-    "id": "marvel-rivals",
-    "name": "مارول رایولز",
-    "type": "شوتر قهرمانی",
-    "icon": "🦸"
-  },
-  {
-    "id": "apex",
-    "name": "ایپکس لجندز",
-    "type": "بتل رویال",
-    "icon": "🔫"
-  },
-  {
-    "id": "dead-by-daylight",
-    "name": "دد بای دی‌لایت",
-    "type": "ترس و بقا",
-    "icon": "🧟"
-  }
+    {
+        "id": "discover-1",
+        "name": "Hades II",
+        "type": "Roguelike · Action",
+        "icon": "⚔️"
+    },
+    {
+        "id": "discover-2",
+        "name": "Hollow Knight",
+        "type": "Adventure · Metroidvania",
+        "icon": "🪲"
+    },
+    {
+        "id": "discover-3",
+        "name": "Cyberpunk",
+        "type": "RPG · Open World",
+        "icon": "🌃"
+    },
+    {
+        "id": "discover-4",
+        "name": "Terraria",
+        "type": "Sandbox · Adventure",
+        "icon": "🌳"
+    },
+    {
+        "id": "discover-5",
+        "name": "Dead Cells",
+        "type": "Action · Roguelike",
+        "icon": "💀"
+    },
+    {
+        "id": "discover-6",
+        "name": "No Man's Sky",
+        "type": "Space · Exploration",
+        "icon": "🚀"
+    }
 ]
