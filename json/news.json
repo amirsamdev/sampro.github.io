@@ -1,54 +1,88 @@
-[
-    {
-        "id": "news-1",
-        "gameId": "fortnite",
-        "gameName": "Fortnite",
-        "category": "NEWS",
-        "title": "فصل جدید Fortnite شروع شد",
-        "description": "فصل جدید با تغییرات مختلف، آیتم‌های تازه و محتوای جدید منتشر شد.",
-        "image": "🎯",
-        "readTime": "۳ دقیقه",
-        "time": "۲۰ دقیقه پیش",
-        "order": 100,
-        "url": "#"
-    },
-    {
-        "id": "news-2",
-        "gameId": "minecraft",
-        "gameName": "Minecraft",
-        "category": "UPDATE",
-        "title": "آپدیت جدید Minecraft منتشر شد",
-        "description": "نسخه جدید امکانات و تغییرات مختلفی را به بازی اضافه کرده است.",
-        "image": "⛏️",
-        "readTime": "۴ دقیقه",
-        "time": "۱ ساعت پیش",
-        "order": 99,
-        "url": "#"
-    },
-    {
-        "id": "news-3",
-        "gameId": "valorant",
-        "gameName": "Valorant",
-        "category": "PATCH",
-        "title": "پچ جدید Valorant منتشر شد",
-        "description": "تغییرات جدید در بخش‌های مختلف بازی و اصلاحات گیم‌پلی اعمال شده است.",
-        "image": "🎯",
-        "readTime": "۲ دقیقه",
-        "time": "۲ ساعت پیش",
-        "order": 98,
-        "url": "#"
-    },
-    {
-        "id": "news-4",
-        "gameId": "gta",
-        "gameName": "GTA",
-        "category": "NEWS",
-        "title": "خبرهای تازه از دنیای GTA",
-        "description": "اطلاعات و اتفاقات جدید مربوط به دنیای GTA را اینجا دنبال کن.",
-        "image": "🚗",
-        "readTime": "۵ دقیقه",
-        "time": "۳ ساعت پیش",
-        "order": 97,
-        "url": "#"
-    }
+{
+"news": [
+{
+"id": 1,
+"gameId": "codm",
+"gameName": "Call of Duty Mobile",
+"category": "آپدیت",
+"title": "آپدیت بزرگ فصل جدید منتشر شد",
+"description": "فصل جدید با نقشه، سلاح‌ها، تغییرات گیم‌پلی و محتوای تازه برای بازیکنان منتشر شد.",
+"image": "./assets/news/codm.jpg",
+"icon": "🔫",
+"readTime": "۴ دقیقه مطالعه",
+"time": "۲ ساعت پیش",
+"order": 100,
+"url": "./news/codm-season.html"
+},
+{
+"id": 2,
+"gameId": "freefire",
+"gameName": "Free Fire",
+"category": "ایونت",
+"title": "ایونت جدید Free Fire آغاز شد",
+"description": "بازیکنان می‌توانند در ایونت جدید شرکت کنند و جوایز محدود و آیتم‌های ویژه دریافت کنند.",
+"image": "./assets/news/freefire.jpg",
+"icon": "🔥",
+"readTime": "۳ دقیقه مطالعه",
+"time": "۵ ساعت پیش",
+"order": 99,
+"url": "./news/freefire-event.html"
+},
+{
+"id": 3,
+"gameId": "pubg",
+"gameName": "PUBG Mobile",
+"category": "خبر",
+"title": "جزئیات آپدیت بعدی PUBG Mobile",
+"description": "جزئیات اولیه نسخه بعدی منتشر شده و قرار است قابلیت‌ها و تغییرات مهمی به بازی اضافه شود.",
+"image": "./assets/news/pubg.jpg",
+"icon": "🎯",
+"readTime": "۵ دقیقه مطالعه",
+"time": "امروز",
+"order": 98,
+"url": "./news/pubg-update.html"
+},
+{
+"id": 4,
+"gameId": "brawlstars",
+"gameName": "Brawl Stars",
+"category": "آپدیت",
+"title": "براول استارز با محتوای جدید برگشت",
+"description": "آپدیت جدید بازی شامل تغییرات بالانس، اسکین‌های تازه و محتوای جدید برای بازیکنان است.",
+"image": "./assets/news/brawlstars.jpg",
+"icon": "⭐",
+"readTime": "۳ دقیقه مطالعه",
+"time": "امروز",
+"order": 97,
+"url": "./news/brawlstars-update.html"
+},
+{
+"id": 5,
+"gameId": "minecraft",
+"gameName": "Minecraft",
+"category": "خبر",
+"title": "محتوای تازه Minecraft Mobile معرفی شد",
+"description": "محتوای جدید نسخه موبایل معرفی شده و بازیکنان می‌توانند منتظر تجربه‌ای متفاوت باشند.",
+"image": "./assets/news/minecraft.jpg",
+"icon": "⛏️",
+"readTime": "۴ دقیقه مطالعه",
+"time": "دیروز",
+"order": 96,
+"url": "./news/minecraft-mobile.html"
+},
+{
+"id": 6,
+"gameId": "genshin",
+"gameName": "Genshin Impact",
+"category": "محتوا",
+"title": "شخصیت جدید Genshin Impact معرفی شد",
+"description": "شخصیت جدید با قابلیت‌های منحصر‌به‌فرد معرفی شده و جزئیات بیشتری از آن منتشر شده است.",
+"image": "./assets/news/genshin.jpg",
+"icon": "✨",
+"readTime": "۶ دقیقه مطالعه",
+"time": "دیروز",
+"order": 95,
+"url": "./news/genshin-character.html"
+}
 ]
+}
