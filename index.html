@@ -8,22 +8,31 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
 
     <style>
+
         :root {
             --bg: #222222;
             --bg-soft: #2b2b2b;
             --blue-dark: #2E4192;
             --blue: #4E6FF8;
             --blue-soft: #9aabff;
+
             --white: #ffffff;
             --text: #eeeeee;
             --muted: #a5a5a5;
+
             --border: rgba(255,255,255,0.08);
+
             --card: #2b2b2b;
+
             --radius: 20px;
         }
+
 
         * {
             margin: 0;
@@ -31,12 +40,15 @@
             box-sizing: border-box;
         }
 
+
         html {
             scroll-behavior: smooth;
         }
 
+
         body {
             font-family: "Vazirmatn", sans-serif;
+
             background: linear-gradient(
                 to bottom,
                 #222222 0%,
@@ -44,67 +56,94 @@
                 #2E4192 100%,
                 #4E6FF8 100%
             );
+
             background-attachment: fixed;
+
             color: var(--text);
+
             line-height: 1.8;
+
             min-height: 100vh;
         }
 
+
         a {
-            text-decoration: none;
             color: inherit;
+            text-decoration: none;
         }
+
 
         button {
             font-family: inherit;
         }
 
+
         img {
-            max-width: 100%;
             display: block;
+            max-width: 100%;
         }
+
 
         .container {
             width: min(1200px, calc(100% - 32px));
             margin: auto;
         }
 
-        /* ================= HEADER ================= */
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
 
         header {
             position: sticky;
             top: 0;
             z-index: 1000;
+
             background: rgba(34,34,34,.92);
+
             backdrop-filter: blur(15px);
+
             border-bottom: 1px solid var(--border);
         }
 
+
         .header-inner {
             min-height: 76px;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
+
         .logo {
             display: flex;
             align-items: center;
             gap: 10px;
+
             font-size: 21px;
             font-weight: 900;
         }
 
+
         .logo-mark {
             width: 42px;
             height: 42px;
-            border-radius: 13px;
+
             display: grid;
             place-items: center;
-            background: linear-gradient(135deg, #4E6FF8, #2E4192);
-            color: #fff;
-            font-weight: 900;
+
+            border-radius: 13px;
+
+            background: linear-gradient(
+                135deg,
+                #4E6FF8,
+                #2E4192
+            );
+
+            color: white;
         }
+
 
         nav {
             display: flex;
@@ -112,127 +151,202 @@
             gap: 28px;
         }
 
+
         nav a {
             color: #cfcfcf;
+
             font-size: 14px;
             font-weight: 600;
+
             transition: .2s;
         }
 
+
         nav a:hover,
         nav a.active {
-            color: #fff;
+            color: white;
         }
+
 
         .menu-btn {
             display: none;
+
             width: 42px;
             height: 42px;
+
             border: 1px solid var(--border);
             border-radius: 12px;
+
             background: rgba(255,255,255,.04);
+
             color: white;
+
             cursor: pointer;
         }
 
-        /* ================= HERO ================= */
+
+        /* =====================================================
+           HERO
+        ===================================================== */
 
         .hero {
             padding: 35px 0 25px;
         }
 
+
         .slider {
             position: relative;
+
             min-height: 430px;
+
             overflow: hidden;
+
             border-radius: 26px;
+
             border: 1px solid var(--border);
+
             background: #222;
-            box-shadow: 0 20px 50px rgba(0,0,0,.25);
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,.25);
         }
 
+
         .slides {
-            min-height: 430px;
             position: relative;
+
+            min-height: 430px;
         }
+
 
         .slide {
             position: absolute;
+
             inset: 0;
+
             opacity: 0;
+
             pointer-events: none;
+
             transition: opacity .5s ease;
 
             display: grid;
+
             grid-template-columns: 1fr 1fr;
         }
 
+
         .slide.active {
             opacity: 1;
+
             pointer-events: auto;
         }
 
+
         .slide-content {
             z-index: 2;
+
             padding: 50px;
+
             display: flex;
+
             flex-direction: column;
+
             justify-content: center;
         }
 
+
         .slide-category {
             width: fit-content;
+
             padding: 5px 12px;
+
             margin-bottom: 13px;
+
             border-radius: 999px;
+
             background: rgba(78,111,248,.2);
+
             color: #dce2ff;
+
             font-size: 12px;
+
             font-weight: 700;
         }
 
+
         .slide h1 {
             max-width: 620px;
-            font-size: clamp(25px, 4vw, 43px);
+
+            font-size: clamp(25px,4vw,43px);
+
             line-height: 1.45;
+
             margin-bottom: 14px;
         }
 
+
         .slide-description {
             max-width: 620px;
+
             color: #c5c5c5;
+
             font-size: 14px;
+
             margin-bottom: 18px;
         }
 
+
         .slide-meta {
             display: flex;
-            gap: 10px;
+
             flex-wrap: wrap;
+
+            gap: 10px;
+
             color: #999;
+
             font-size: 12px;
+
             margin-bottom: 20px;
         }
 
+
         .slide-btn {
             width: fit-content;
+
             padding: 9px 18px;
+
             border-radius: 11px;
-            background: linear-gradient(135deg, #4E6FF8, #2E4192);
+
+            background: linear-gradient(
+                135deg,
+                #4E6FF8,
+                #2E4192
+            );
+
             color: white;
+
             font-size: 13px;
+
             font-weight: 800;
         }
 
+
         .slide-image {
             position: relative;
+
             min-height: 430px;
         }
 
+
         .slide-image::after {
             content: "";
+
             position: absolute;
+
             inset: 0;
+
             background: linear-gradient(
                 to left,
                 transparent 15%,
@@ -240,120 +354,548 @@
             );
         }
 
+
         .slide-image img {
             width: 100%;
             height: 100%;
+
             object-fit: cover;
         }
 
+
         .slider-controls {
             position: absolute;
+
             left: 30px;
             bottom: 22px;
+
             z-index: 5;
+
             display: flex;
+
             gap: 7px;
         }
+
 
         .slider-dot {
             width: 8px;
             height: 8px;
+
             border: 0;
+
             border-radius: 50%;
+
             background: rgba(255,255,255,.35);
+
             cursor: pointer;
         }
 
+
         .slider-dot.active {
             width: 23px;
+
             border-radius: 10px;
+
             background: #4E6FF8;
         }
 
-        /* ================= SECTION ================= */
+
+        /* =====================================================
+           SECTION
+        ===================================================== */
 
         .section {
             padding: 28px 0;
         }
 
+
         .section-header {
             display: flex;
+
             justify-content: space-between;
             align-items: center;
+
             margin-bottom: 18px;
         }
 
+
         .section-title {
             font-size: 23px;
+
             font-weight: 900;
         }
 
+
         .section-title::after {
             content: "";
+
             display: block;
+
             width: 42px;
             height: 3px;
+
             margin-top: 4px;
+
             border-radius: 5px;
+
             background: #4E6FF8;
         }
 
-        /* ================= GAME SELECTOR ================= */
+
+        /* =====================================================
+           GAME + NEWS LAYOUT
+        ===================================================== */
+
+        .game-news-layout {
+
+            display: grid;
+
+            grid-template-columns:
+                280px
+                minmax(0, 1fr);
+
+            gap: 18px;
+
+            align-items: stretch;
+        }
+
+
+        /* =====================================================
+           GAMES PANEL
+        ===================================================== */
+
+        .games-panel {
+
+            padding: 18px;
+
+            border-radius: 20px;
+
+            background: linear-gradient(
+                145deg,
+                #222222 0%,
+                #2b2b2b 45%,
+                #2E4192 100%
+            );
+
+            border: 1px solid rgba(78,111,248,.22);
+
+            box-shadow:
+                0 12px 30px rgba(0,0,0,.2);
+        }
+
+
+        .games-panel-title {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 14px;
+
+            font-size: 16px;
+
+            font-weight: 800;
+        }
+
+
+        .games-panel-title span {
+
+            color: #9faeff;
+
+            font-size: 11px;
+
+            font-weight: 600;
+        }
+
 
         .game-selector {
+
             display: flex;
-            gap: 11px;
-            overflow-x: auto;
-            padding-bottom: 7px;
+
+            flex-direction: column;
+
+            gap: 9px;
+
+            max-height: 430px;
+
+            overflow-y: auto;
+
+            padding-left: 2px;
         }
 
+
         .game-selector::-webkit-scrollbar {
-            height: 4px;
+            width: 4px;
         }
+
 
         .game-selector::-webkit-scrollbar-thumb {
             background: #4E6FF8;
+
             border-radius: 10px;
         }
 
+
         .game-button {
-            flex: 0 0 auto;
+
+            width: 100%;
+
             display: flex;
+
             align-items: center;
-            gap: 9px;
-            padding: 9px 14px;
-            border: 1px solid rgba(255,255,255,.08);
-            border-radius: 13px;
-            background: rgba(43,43,43,.85);
+
+            gap: 10px;
+
+            padding: 9px 11px;
+
+            border: 1px solid rgba(255,255,255,.07);
+
+            border-radius: 14px;
+
+            background: rgba(34,34,34,.5);
+
             color: #ccc;
+
+            text-align: right;
+
             cursor: pointer;
-            transition: .2s;
+
+            transition:
+                .2s ease;
         }
+
 
         .game-button:hover {
-            border-color: #4E6FF8;
+
+            transform: translateX(-3px);
+
+            border-color: rgba(78,111,248,.65);
+
+            background: rgba(78,111,248,.13);
         }
+
 
         .game-button.active {
-            background: linear-gradient(135deg, #2E4192, #4E6FF8);
+
+            background: linear-gradient(
+                135deg,
+                #2E4192,
+                #4E6FF8
+            );
+
             color: white;
+
             border-color: transparent;
-            box-shadow: 0 8px 20px rgba(78,111,248,.2);
+
+            box-shadow:
+                0 8px 20px rgba(78,111,248,.22);
         }
+
 
         .game-button img {
-            width: 31px;
-            height: 31px;
+
+            width: 38px;
+            height: 38px;
+
+            flex: 0 0 38px;
+
             object-fit: cover;
-            border-radius: 9px;
+
+            border-radius: 11px;
         }
 
-        /* ================= GAME INFO ================= */
+
+        .game-button-name {
+
+            min-width: 0;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+
+            white-space: nowrap;
+
+            font-size: 13px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           NEWS PANEL
+        ===================================================== */
+
+        .news-panel {
+
+            min-width: 0;
+
+            padding: 20px;
+
+            border-radius: 20px;
+
+            background: linear-gradient(
+                135deg,
+                #2b2b2b 0%,
+                #2b2b2b 32%,
+                #2E4192 100%
+            );
+
+            border: 1px solid rgba(78,111,248,.22);
+
+            box-shadow:
+                0 12px 30px rgba(0,0,0,.2);
+        }
+
+
+        .news-panel-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-bottom: 16px;
+        }
+
+
+        .news-panel-title {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            font-size: 18px;
+
+            font-weight: 900;
+        }
+
+
+        .news-panel-title::before {
+
+            content: "";
+
+            width: 7px;
+            height: 24px;
+
+            border-radius: 8px;
+
+            background: #4E6FF8;
+        }
+
+
+        .selected-game-label {
+
+            padding: 5px 10px;
+
+            border-radius: 999px;
+
+            background: rgba(78,111,248,.15);
+
+            border: 1px solid rgba(78,111,248,.2);
+
+            color: #cbd3ff;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+        }
+
+
+        .feed {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2,minmax(0,1fr));
+
+            gap: 12px;
+        }
+
+
+        .feed-card {
+
+            position: relative;
+
+            min-width: 0;
+
+            padding: 16px;
+
+            border-radius: 16px;
+
+            background: linear-gradient(
+                135deg,
+                rgba(43,43,43,.95),
+                rgba(46,65,146,.72)
+            );
+
+            border: 1px solid rgba(78,111,248,.16);
+
+            box-shadow:
+                0 8px 20px rgba(0,0,0,.15);
+
+            transition:
+                transform .2s ease,
+                border-color .2s ease,
+                box-shadow .2s ease;
+        }
+
+
+        .feed-card:hover {
+
+            transform: translateY(-3px);
+
+            border-color: #4E6FF8;
+
+            box-shadow:
+                0 14px 28px rgba(78,111,248,.17);
+        }
+
+
+        /* ایونت مهم */
+
+        .feed-card.event {
+
+            border-right: 4px solid #4E6FF8;
+
+            background: linear-gradient(
+                135deg,
+                rgba(43,43,43,.95),
+                rgba(46,65,146,.9),
+                rgba(78,111,248,.45)
+            );
+        }
+
+
+        .feed-card.event::before {
+
+            content: "مهم";
+
+            position: absolute;
+
+            left: 13px;
+            top: 13px;
+
+            padding: 2px 7px;
+
+            border-radius: 999px;
+
+            background: #4E6FF8;
+
+            color: white;
+
+            font-size: 9px;
+
+            font-weight: 900;
+        }
+
+
+        .feed-top {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 8px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .feed-type {
+
+            padding: 3px 8px;
+
+            border-radius: 999px;
+
+            background: rgba(255,255,255,.08);
+
+            color: #ddd;
+
+            font-size: 10px;
+
+            font-weight: 800;
+        }
+
+
+        .feed-card.event .feed-type {
+
+            background: rgba(78,111,248,.25);
+
+            color: #dce2ff;
+        }
+
+
+        .feed-time {
+
+            color: #999;
+
+            font-size: 10px;
+        }
+
+
+        .feed-card h3 {
+
+            font-size: 15px;
+
+            line-height: 1.65;
+
+            margin-bottom: 5px;
+
+            padding-left: 35px;
+        }
+
+
+        .feed-card p {
+
+            color: #bbb;
+
+            font-size: 11px;
+
+            line-height: 1.8;
+        }
+
+
+        .empty {
+
+            grid-column: 1 / -1;
+
+            padding: 30px;
+
+            text-align: center;
+
+            border-radius: 16px;
+
+            background: rgba(43,43,43,.8);
+
+            color: #aaa;
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           GAME INFO
+        ===================================================== */
 
         .game-info {
+
             display: grid;
+
             grid-template-columns: 100px 1fr;
+
             gap: 20px;
+
             padding: 23px;
 
             background: linear-gradient(
@@ -364,126 +906,86 @@
             );
 
             border: 1px solid rgba(78,111,248,.22);
+
             border-radius: var(--radius);
 
-            box-shadow: 0 12px 30px rgba(0,0,0,.2);
+            box-shadow:
+                0 12px 30px rgba(0,0,0,.2);
         }
 
+
         .game-info-image img {
+
             width: 100px;
             height: 100px;
+
             object-fit: cover;
+
             border-radius: 20px;
         }
 
+
         .game-info h3 {
+
             font-size: 21px;
+
             margin-bottom: 5px;
         }
 
+
         .game-info p {
+
             color: #ccc;
+
             font-size: 13px;
+
             margin-bottom: 10px;
         }
 
+
         .game-tags {
+
             display: flex;
+
             flex-wrap: wrap;
+
             gap: 7px;
         }
 
+
         .game-tag {
+
             padding: 4px 10px;
+
             border-radius: 999px;
+
             background: rgba(255,255,255,.08);
+
             color: #ddd;
+
             font-size: 11px;
         }
 
-        /* ================= NEWS ================= */
 
-        .feed {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
-        }
-
-        .feed-card {
-            padding: 18px;
-
-            /* فقط رنگ کارت تغییر کرده */
-            background: linear-gradient(
-                135deg,
-                #2b2b2b 0%,
-                #2b2b2b 40%,
-                #2E4192 100%
-            );
-
-            border: 1px solid rgba(78,111,248,.2);
-            border-radius: 18px;
-
-            box-shadow: 0 10px 25px rgba(0,0,0,.18);
-
-            transition:
-                transform .2s ease,
-                border-color .2s ease,
-                box-shadow .2s ease;
-        }
-
-        .feed-card:hover {
-            transform: translateY(-3px);
-            border-color: #4E6FF8;
-            box-shadow: 0 15px 32px rgba(78,111,248,.17);
-        }
-
-        .feed-card.event {
-            border-right: 4px solid #4E6FF8;
-        }
-
-        .feed-top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 7px;
-        }
-
-        .feed-type {
-            padding: 3px 8px;
-            border-radius: 999px;
-            background: rgba(255,255,255,.08);
-            font-size: 10px;
-            font-weight: 800;
-        }
-
-        .feed-card h3 {
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 5px;
-        }
-
-        .feed-card p {
-            color: #bbb;
-            font-size: 12px;
-        }
-
-        .feed-time {
-            color: #999;
-            font-size: 10px;
-        }
-
-        /* ================= ARTICLES ================= */
+        /* =====================================================
+           ARTICLES
+        ===================================================== */
 
         .articles-grid {
+
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+
+            grid-template-columns:
+                repeat(3,minmax(0,1fr));
+
             gap: 18px;
         }
 
+
         .article-card {
+
             overflow: hidden;
 
-            /* کارت مقاله رنگی */
             background: linear-gradient(
                 135deg,
                 #2b2b2b 0%,
@@ -493,9 +995,11 @@
             );
 
             border: 1px solid rgba(78,111,248,.22);
+
             border-radius: 20px;
 
-            box-shadow: 0 12px 30px rgba(0,0,0,.2);
+            box-shadow:
+                0 12px 30px rgba(0,0,0,.2);
 
             transition:
                 transform .25s ease,
@@ -503,64 +1007,106 @@
                 border-color .25s ease;
         }
 
+
         .article-card:hover {
+
             transform: translateY(-5px);
+
             border-color: #4E6FF8;
-            box-shadow: 0 18px 38px rgba(78,111,248,.2);
+
+            box-shadow:
+                0 18px 38px rgba(78,111,248,.2);
         }
 
+
         .article-image {
+
             position: relative;
+
             height: 205px;
+
             overflow: hidden;
         }
 
+
         .article-image img {
+
             width: 100%;
             height: 100%;
+
             object-fit: cover;
-            transition: transform .3s ease;
+
+            transition:
+                transform .3s ease;
         }
 
-        .article-card:hover .article-image img {
+
+        .article-card:hover
+        .article-image img {
+
             transform: scale(1.04);
         }
 
+
         .article-category {
+
             position: absolute;
+
             right: 13px;
             top: 13px;
+
             padding: 4px 9px;
+
             border-radius: 999px;
+
             background: rgba(34,34,34,.8);
+
             color: white;
+
             font-size: 10px;
+
             font-weight: 800;
         }
 
+
         .article-content {
+
             padding: 18px;
         }
 
+
         .article-game {
+
             color: #c1caff;
+
             font-size: 10px;
+
             font-weight: 700;
+
             margin-bottom: 5px;
         }
 
+
         .article-card h3 {
+
             font-size: 17px;
+
             line-height: 1.6;
+
             margin-bottom: 8px;
         }
 
+
         .article-description {
+
             color: #c5c5c5;
+
             font-size: 12px;
 
             display: -webkit-box;
+
             -webkit-line-clamp: 3;
+
             -webkit-box-orient: vertical;
 
             overflow: hidden;
@@ -568,24 +1114,39 @@
             margin-bottom: 13px;
         }
 
+
         .article-meta {
+
             display: flex;
+
             justify-content: space-between;
+
             color: #aaa;
+
             font-size: 10px;
+
             margin-bottom: 12px;
         }
 
+
         .article-link {
+
             color: white;
+
             font-size: 12px;
+
             font-weight: 800;
         }
 
-        /* ================= CTA ================= */
+
+        /* =====================================================
+           CTA
+        ===================================================== */
 
         .cta {
+
             padding: 30px;
+
             margin: 25px 0;
 
             text-align: center;
@@ -598,1037 +1159,1774 @@
             );
 
             border: 1px solid rgba(255,255,255,.08);
+
             border-radius: 22px;
 
-            box-shadow: 0 15px 35px rgba(0,0,0,.2);
+            box-shadow:
+                0 15px 35px rgba(0,0,0,.2);
         }
 
+
         .cta h2 {
+
             font-size: 23px;
+
             margin-bottom: 5px;
         }
 
+
         .cta p {
+
             color: #ccc;
+
             font-size: 13px;
         }
 
-        /* ================= EMPTY ================= */
 
-        .empty {
-            grid-column: 1 / -1;
-            padding: 30px;
-            text-align: center;
-            border-radius: 18px;
-            background: rgba(43,43,43,.8);
-            color: #aaa;
-        }
-
-        /* ================= FOOTER ================= */
+        /* =====================================================
+           FOOTER
+        ===================================================== */
 
         footer {
+
             padding: 30px 0;
-            border-top: 1px solid rgba(255,255,255,.07);
-            background: rgba(34,34,34,.35);
+
+            border-top:
+                1px solid rgba(255,255,255,.07);
+
+            background:
+                rgba(34,34,34,.35);
         }
 
+
         .footer-inner {
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
         }
 
+
         .footer-logo {
+
             font-weight: 900;
         }
 
+
         .footer-copy {
+
             color: #999;
+
             font-size: 11px;
         }
 
-        /* ================= MOBILE ================= */
 
-        @media (max-width: 900px) {
+        /* =====================================================
+           TABLET
+        ===================================================== */
 
-            .articles-grid {
-                grid-template-columns: repeat(2, 1fr);
+        @media (max-width: 950px) {
+
+            .game-news-layout {
+
+                grid-template-columns:
+                    230px
+                    minmax(0,1fr);
             }
+
 
             .feed {
+
                 grid-template-columns: 1fr;
             }
 
-            .slide {
-                grid-template-columns: 1fr;
-            }
 
-            .slide-image {
-                position: absolute;
-                inset: 0;
-                opacity: .3;
-            }
+            .articles-grid {
 
-            .slide-image::after {
-                background: linear-gradient(
-                    to left,
-                    #222 0%,
-                    rgba(34,34,34,.75) 60%,
-                    #222 100%
-                );
+                grid-template-columns:
+                    repeat(2,minmax(0,1fr));
             }
         }
 
-        @media (max-width: 650px) {
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 700px) {
 
             .container {
-                width: calc(100% - 22px);
+
+                width:
+                    calc(100% - 22px);
             }
 
+
             nav {
+
                 display: none;
 
                 position: absolute;
+
                 top: 68px;
+
                 right: 11px;
                 left: 11px;
 
                 padding: 12px;
 
                 flex-direction: column;
+
                 align-items: stretch;
 
                 background: #222;
-                border: 1px solid var(--border);
+
+                border:
+                    1px solid var(--border);
+
                 border-radius: 15px;
             }
 
+
             nav.open {
+
                 display: flex;
             }
 
+
             .menu-btn {
+
                 display: block;
             }
 
+
             .slider,
             .slides {
+
                 min-height: 450px;
             }
+
+
+            .slide {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .slide-image {
+
+                position: absolute;
+
+                inset: 0;
+
+                opacity: .3;
+            }
+
+
+            .slide-image::after {
+
+                background:
+                    linear-gradient(
+                        to left,
+                        #222 0%,
+                        rgba(34,34,34,.75) 60%,
+                        #222 100%
+                    );
+            }
+
 
             .slide-content {
+
                 min-height: 450px;
-                padding: 25px 20px;
+
+                padding:
+                    25px 20px;
             }
 
+
             .slide h1 {
+
                 font-size: 26px;
             }
 
-            .game-info {
+
+            /* بازی و اخبار در موبایل زیر هم */
+
+            .game-news-layout {
+
                 grid-template-columns: 1fr;
+
+                gap: 14px;
+            }
+
+
+            .games-panel {
+
+                padding: 14px;
+            }
+
+
+            .game-selector {
+
+                flex-direction: row;
+
+                overflow-x: auto;
+
+                overflow-y: hidden;
+
+                max-height: none;
+            }
+
+
+            .game-button {
+
+                width: auto;
+
+                min-width: 150px;
+
+                flex: 0 0 auto;
+            }
+
+
+            .news-panel {
+
+                padding: 16px;
+            }
+
+
+            .news-panel-header {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+
+            .feed {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .game-info {
+
+                grid-template-columns: 1fr;
+
                 text-align: center;
             }
+
 
             .game-info-image {
+
                 display: flex;
+
                 justify-content: center;
             }
+
 
             .game-tags {
+
                 justify-content: center;
             }
 
+
             .articles-grid {
+
                 grid-template-columns: 1fr;
             }
 
+
             .footer-inner {
+
                 flex-direction: column;
+
                 text-align: center;
+
                 gap: 10px;
             }
         }
+
     </style>
 </head>
 
+
 <body>
 
-<header>
-    <div class="container header-inner">
 
-        <a href="index.html" class="logo">
-            <div class="logo-mark">G</div>
-            <span>GAMEHUB</span>
-        </a>
+    <!-- =====================================================
+         HEADER
+    ===================================================== -->
 
-        <nav id="mainNav">
-            <a href="#home" class="active">خانه</a>
-            <a href="#games">بازی‌ها</a>
-            <a href="#news">اخبار و اتفاقات</a>
-            <a href="#articles">مقالات</a>
-        </nav>
+    <header>
 
-        <button class="menu-btn" id="menuBtn">
-            ☰
-        </button>
+        <div class="container header-inner">
 
-    </div>
-</header>
+            <a href="index.html" class="logo">
 
-
-<main id="home">
-
-    <!-- HERO -->
-
-    <section class="hero">
-        <div class="container">
-
-            <div class="slider">
-
-                <div class="slides" id="slidesContainer">
-                    <div class="empty">
-                        در حال بارگذاری...
-                    </div>
+                <div class="logo-mark">
+                    G
                 </div>
 
-                <div
-                    class="slider-controls"
-                    id="sliderControls"
-                ></div>
+                <span>
+                    GAMEHUB
+                </span>
 
-            </div>
-
-        </div>
-    </section>
+            </a>
 
 
-    <!-- GAMES -->
+            <nav id="mainNav">
 
-    <section class="section" id="games">
-        <div class="container">
+                <a
+                    href="#home"
+                    class="active"
+                >
+                    خانه
+                </a>
 
-            <div class="section-header">
-                <h2 class="section-title">
+                <a href="#games">
                     بازی‌ها
-                </h2>
-            </div>
+                </a>
 
-            <div
-                class="game-selector"
-                id="gameSelector"
-            >
-                <div class="empty">
-                    در حال بارگذاری بازی‌ها...
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-
-    <!-- GAME INFO -->
-
-    <section class="section">
-        <div class="container">
-
-            <div id="gameInfo">
-                <div class="empty">
-                    در حال بارگذاری اطلاعات بازی...
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-
-    <!-- NEWS -->
-
-    <section class="section" id="news">
-        <div class="container">
-
-            <div class="section-header">
-                <h2 class="section-title">
+                <a href="#news">
                     اخبار و اتفاقات
-                </h2>
-            </div>
+                </a>
 
-            <div
-                class="feed"
-                id="gameFeed"
+                <a href="#articles">
+                    مقالات
+                </a>
+
+            </nav>
+
+
+            <button
+                class="menu-btn"
+                id="menuBtn"
+                aria-label="منو"
             >
-                <div class="empty">
-                    در حال بارگذاری...
-                </div>
-            </div>
+                ☰
+            </button>
 
         </div>
-    </section>
+
+    </header>
 
 
-    <!-- ARTICLES -->
 
-    <section class="section" id="articles">
-        <div class="container">
-
-            <div class="section-header">
-                <h2 class="section-title">
-                    اخبار
-                </h2>
-            </div>
-
-            <div
-                class="articles-grid"
-                id="articlesGrid"
-            >
-                <div class="empty">
-                    در حال بارگذاری مقالات...
-                </div>
-            </div>
-
-        </div>
-    </section>
+    <main id="home">
 
 
-    <!-- CTA -->
+        <!-- =====================================================
+             HERO
+        ===================================================== -->
 
-    <section class="section">
-        <div class="container">
+        <section class="hero">
 
-            <div class="cta">
+            <div class="container">
 
-                <h2>
-                    GAMEHUB؛ همه چیز برای گیمرها
-                </h2>
+                <div class="slider">
 
-                <p>
-                    جدیدترین اخبار، آپدیت‌ها و اتفاقات بازی‌های مورد علاقه‌ات
-                </p>
-
-            </div>
-
-        </div>
-    </section>
-
-</main>
-
-
-<footer>
-    <div class="container footer-inner">
-
-        <div class="footer-logo">
-            GAMEHUB
-        </div>
-
-        <div class="footer-copy">
-            © 2026 GAMEHUB — تمامی حقوق محفوظ است.
-        </div>
-
-    </div>
-</footer>
-
-
-<script>
-
-    const PATHS = {
-        games: "./json/games.json",
-        news: "./json/news.json",
-        events: "./json/events.json",
-        articles: "./json/articles.json"
-    };
-
-    let allGames = [];
-    let allNews = [];
-    let allEvents = [];
-    let allArticles = [];
-
-    let selectedGameId = null;
-    let currentSlide = 0;
-    let slideTimer = null;
-
-
-    function toArray(data, key) {
-
-        if (Array.isArray(data)) {
-            return data;
-        }
-
-        if (data && Array.isArray(data[key])) {
-            return data[key];
-        }
-
-        return [];
-    }
-
-
-    async function loadJSON(path) {
-
-        const response = await fetch(path, {
-            cache: "no-store"
-        });
-
-        if (!response.ok) {
-            throw new Error(`خطا در دریافت ${path}`);
-        }
-
-        return response.json();
-    }
-
-
-    function escapeHTML(value) {
-
-        if (
-            value === null ||
-            value === undefined
-        ) {
-            return "";
-        }
-
-        return String(value)
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
-    }
-
-
-    function getImage(item) {
-
-        return item?.image ||
-               item?.icon ||
-               "https://via.placeholder.com/900x500/2E4192/ffffff?text=GAMEHUB";
-    }
-
-
-    /* ================= HERO ================= */
-
-    function renderSlides() {
-
-        const container =
-            document.getElementById("slidesContainer");
-
-        const controls =
-            document.getElementById("sliderControls");
-
-        const slides =
-            allArticles.slice(0, 5);
-
-        if (!slides.length) {
-
-            container.innerHTML = `
-                <div class="empty">
-                    هنوز مقاله‌ای ثبت نشده است.
-                </div>
-            `;
-
-            controls.innerHTML = "";
-
-            return;
-        }
-
-        currentSlide = 0;
-
-        container.innerHTML =
-            slides.map((article, index) => {
-
-                return `
-                    <a
-                        href="article.html?id=${encodeURIComponent(article.id)}"
-                        class="slide ${index === 0 ? "active" : ""}"
+                    <div
+                        class="slides"
+                        id="slidesContainer"
                     >
 
-                        <div class="slide-content">
-
-                            <div class="slide-category">
-                                ${escapeHTML(article.category || "خبر")}
-                            </div>
-
-                            <h1>
-                                ${escapeHTML(article.title)}
-                            </h1>
-
-                            <p class="slide-description">
-                                ${escapeHTML(article.description || "")}
-                            </p>
-
-                            <div class="slide-meta">
-
-                                <span>
-                                    ${escapeHTML(article.gameName || "")}
-                                </span>
-
-                                <span>•</span>
-
-                                <span>
-                                    ${escapeHTML(article.time || "")}
-                                </span>
-
-                                ${
-                                    article.readTime
-                                    ? `
-                                        <span>•</span>
-                                        <span>
-                                            ${escapeHTML(article.readTime)}
-                                        </span>
-                                    `
-                                    : ""
-                                }
-
-                            </div>
-
-                            <span class="slide-btn">
-                                ادامه خبر ←
-                            </span>
-
+                        <div class="empty">
+                            در حال بارگذاری...
                         </div>
-
-                        <div class="slide-image">
-
-                            <img
-                                src="${escapeHTML(getImage(article))}"
-                                alt="${escapeHTML(article.title)}"
-                            >
-
-                        </div>
-
-                    </a>
-                `;
-
-            }).join("");
-
-
-        controls.innerHTML =
-            slides.map((_, index) => {
-
-                return `
-                    <button
-                        class="slider-dot ${
-                            index === 0 ? "active" : ""
-                        }"
-                        onclick="
-                            goToSlide(${index});
-                            event.stopPropagation();
-                        "
-                    ></button>
-                `;
-
-            }).join("");
-
-
-        startSlider(slides.length);
-    }
-
-
-    function goToSlide(index) {
-
-        const slides =
-            document.querySelectorAll(".slide");
-
-        const dots =
-            document.querySelectorAll(".slider-dot");
-
-        if (!slides.length) {
-            return;
-        }
-
-        currentSlide =
-            (index + slides.length) % slides.length;
-
-        slides.forEach((slide, i) => {
-
-            slide.classList.toggle(
-                "active",
-                i === currentSlide
-            );
-
-        });
-
-        dots.forEach((dot, i) => {
-
-            dot.classList.toggle(
-                "active",
-                i === currentSlide
-            );
-
-        });
-    }
-
-
-    function startSlider(length) {
-
-        if (slideTimer) {
-            clearInterval(slideTimer);
-        }
-
-        if (length <= 1) {
-            return;
-        }
-
-        slideTimer = setInterval(() => {
-
-            goToSlide(currentSlide + 1);
-
-        }, 5000);
-    }
-
-
-    /* ================= GAMES ================= */
-
-    function renderGames() {
-
-        const container =
-            document.getElementById("gameSelector");
-
-        if (!allGames.length) {
-
-            container.innerHTML = `
-                <div class="empty">
-                    هیچ بازی‌ای پیدا نشد.
-                </div>
-            `;
-
-            return;
-        }
-
-        container.innerHTML =
-            allGames.map(game => {
-
-                return `
-                    <button
-                        class="game-button ${
-                            game.id === selectedGameId
-                                ? "active"
-                                : ""
-                        }"
-                        onclick="selectGame('${String(game.id).replace(/'/g, "\\'")}')"
-                    >
-
-                        ${
-                            game.icon || game.image
-                            ? `
-                                <img
-                                    src="${escapeHTML(
-                                        game.icon || game.image
-                                    )}"
-                                    alt="${escapeHTML(game.name)}"
-                                >
-                            `
-                            : ""
-                        }
-
-                        <span>
-                            ${escapeHTML(game.name)}
-                        </span>
-
-                    </button>
-                `;
-
-            }).join("");
-    }
-
-
-    function selectGame(gameId) {
-
-        selectedGameId = gameId;
-
-        renderGames();
-        renderGameInfo();
-        renderGameFeed();
-    }
-
-
-    /* ================= GAME INFO ================= */
-
-    function renderGameInfo() {
-
-        const container =
-            document.getElementById("gameInfo");
-
-        const game =
-            allGames.find(
-                item =>
-                    String(item.id) ===
-                    String(selectedGameId)
-            );
-
-        if (!game) {
-
-            container.innerHTML = `
-                <div class="empty">
-                    اطلاعات بازی پیدا نشد.
-                </div>
-            `;
-
-            return;
-        }
-
-        const image =
-            game.image ||
-            game.icon ||
-            "";
-
-        container.innerHTML = `
-
-            <div class="game-info">
-
-                ${
-                    image
-                    ? `
-                        <div class="game-info-image">
-                            <img
-                                src="${escapeHTML(image)}"
-                                alt="${escapeHTML(game.name)}"
-                            >
-                        </div>
-                    `
-                    : ""
-                }
-
-                <div>
-
-                    <h3>
-                        ${escapeHTML(game.name)}
-                    </h3>
-
-                    ${
-                        game.description
-                        ? `
-                            <p>
-                                ${escapeHTML(game.description)}
-                            </p>
-                        `
-                        : ""
-                    }
-
-                    <div class="game-tags">
-
-                        ${
-                            game.genre
-                            ? `
-                                <span class="game-tag">
-                                    ژانر:
-                                    ${escapeHTML(game.genre)}
-                                </span>
-                            `
-                            : ""
-                        }
-
-                        ${
-                            game.platform
-                            ? `
-                                <span class="game-tag">
-                                    پلتفرم:
-                                    ${escapeHTML(game.platform)}
-                                </span>
-                            `
-                            : ""
-                        }
-
-                        ${
-                            game.status
-                            ? `
-                                <span class="game-tag">
-                                    وضعیت:
-                                    ${escapeHTML(game.status)}
-                                </span>
-                            `
-                            : ""
-                        }
 
                     </div>
 
+
+                    <div
+                        class="slider-controls"
+                        id="sliderControls"
+                    ></div>
+
                 </div>
 
             </div>
-        `;
-    }
+
+        </section>
 
 
-    /* ================= NEWS ================= */
 
-    function renderGameFeed() {
+        <!-- =====================================================
+             GAMES + SELECTED GAME NEWS
+        ===================================================== -->
 
-        const container =
-            document.getElementById("gameFeed");
+        <section
+            class="section"
+            id="games"
+        >
 
-        const news =
-            allNews
-                .filter(item =>
-                    String(item.gameId) ===
-                    String(selectedGameId)
-                )
-                .map(item => ({
-                    ...item,
-                    feedType: "خبر"
-                }));
+            <div class="container">
 
-        const events =
-            allEvents
-                .filter(item =>
-                    String(item.gameId) ===
-                    String(selectedGameId)
-                )
-                .map(item => ({
-                    ...item,
-                    feedType: "رویداد",
-                    isEvent: true
-                }));
 
-        const feed =
-            [...news, ...events];
+                <div class="section-header">
 
-        if (!feed.length) {
+                    <h2 class="section-title">
+                        بازی‌ها و اتفاقات
+                    </h2>
 
-            container.innerHTML = `
-                <div class="empty">
-                    برای این بازی هنوز خبر یا اتفاقی ثبت نشده است.
                 </div>
-            `;
 
-            return;
-        }
 
-        container.innerHTML =
-            feed.map(item => {
+                <div class="game-news-layout">
 
-                return `
-                    <article
-                        class="feed-card ${
-                            item.isEvent ? "event" : ""
-                        }"
-                    >
 
-                        <div class="feed-top">
+                    <!-- ================= GAMES ================= -->
 
-                            <span class="feed-type">
-                                ${escapeHTML(item.feedType)}
+                    <aside class="games-panel">
+
+                        <div class="games-panel-title">
+
+                            <span>
+                                بازی‌ها
                             </span>
 
-                            <span class="feed-time">
-                                ${escapeHTML(item.time || "")}
+                            <span>
+                                انتخاب بازی
                             </span>
 
                         </div>
 
-                        <h3>
-                            ${escapeHTML(item.title)}
-                        </h3>
 
-                        ${
-                            item.description
-                            ? `
-                                <p>
-                                    ${escapeHTML(item.description)}
-                                </p>
-                            `
-                            : ""
-                        }
-
-                    </article>
-                `;
-
-            }).join("");
-    }
-
-
-    /* ================= ARTICLES ================= */
-
-    function renderArticles() {
-
-        const container =
-            document.getElementById("articlesGrid");
-
-        if (!allArticles.length) {
-
-            container.innerHTML = `
-                <div class="empty">
-                    هنوز مقاله‌ای منتشر نشده است.
-                </div>
-            `;
-
-            return;
-        }
-
-        container.innerHTML =
-            allArticles.map(article => {
-
-                return `
-                    <article class="article-card">
-
-                        <a
-                            href="article.html?id=${encodeURIComponent(article.id)}"
+                        <div
+                            class="game-selector"
+                            id="gameSelector"
                         >
 
-                            <div class="article-image">
-
-                                <img
-                                    src="${escapeHTML(getImage(article))}"
-                                    alt="${escapeHTML(article.title)}"
-                                    loading="lazy"
-                                >
-
-                                <span class="article-category">
-                                    ${escapeHTML(
-                                        article.category || "خبر"
-                                    )}
-                                </span>
-
+                            <div class="empty">
+                                در حال بارگذاری بازی‌ها...
                             </div>
 
-                            <div class="article-content">
+                        </div>
 
-                                <div class="article-game">
-                                    ${escapeHTML(
-                                        article.gameName || ""
-                                    )}
-                                </div>
+                    </aside>
 
-                                <h3>
-                                    ${escapeHTML(article.title)}
-                                </h3>
 
-                                <p class="article-description">
-                                    ${escapeHTML(
-                                        article.description || ""
-                                    )}
-                                </p>
 
-                                <div class="article-meta">
+                    <!-- ================= NEWS ================= -->
 
-                                    <span>
-                                        ${escapeHTML(
-                                            article.time || ""
-                                        )}
-                                    </span>
+                    <section
+                        class="news-panel"
+                        id="news"
+                    >
 
-                                    <span>
-                                        ${escapeHTML(
-                                            article.readTime || ""
-                                        )}
-                                    </span>
+                        <div class="news-panel-header">
 
-                                </div>
+                            <h2 class="news-panel-title">
+                                اخبار و اتفاقات
+                            </h2>
 
-                                <span class="article-link">
-                                    ادامه ←
-                                </span>
 
+                            <span
+                                class="selected-game-label"
+                                id="selectedGameLabel"
+                            >
+                                در حال بارگذاری...
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="feed"
+                            id="gameFeed"
+                        >
+
+                            <div class="empty">
+                                در حال بارگذاری اخبار...
                             </div>
 
-                        </a>
+                        </div>
 
-                    </article>
-                `;
-
-            }).join("");
-    }
+                    </section>
 
 
-    /* ================= MENU ================= */
+                </div>
 
-    const menuBtn =
-        document.getElementById("menuBtn");
+            </div>
 
-    const mainNav =
-        document.getElementById("mainNav");
-
-    menuBtn.addEventListener("click", () => {
-        mainNav.classList.toggle("open");
-    });
+        </section>
 
 
-    document
-        .querySelectorAll("#mainNav a")
-        .forEach(link => {
 
-            link.addEventListener("click", () => {
-                mainNav.classList.remove("open");
-            });
+        <!-- =====================================================
+             GAME INFO
+        ===================================================== -->
 
-        });
+        <section class="section">
 
+            <div class="container">
 
-    /* ================= INIT ================= */
+                <div id="gameInfo">
 
-    async function init() {
+                    <div class="empty">
+                        در حال بارگذاری اطلاعات بازی...
+                    </div>
 
-        try {
+                </div>
 
-            const [
-                gamesData,
-                newsData,
-                eventsData,
-                articlesData
-            ] = await Promise.all([
+            </div>
 
-                loadJSON(PATHS.games),
-                loadJSON(PATHS.news),
-                loadJSON(PATHS.events),
-                loadJSON(PATHS.articles)
-
-            ]);
-
-            allGames =
-                toArray(gamesData, "games");
-
-            allNews =
-                toArray(newsData, "news");
-
-            allEvents =
-                toArray(eventsData, "events");
-
-            allArticles =
-                toArray(articlesData, "articles");
+        </section>
 
 
-            /* اولین بازی خودکار انتخاب می‌شود */
 
-            if (allGames.length) {
-                selectedGameId = allGames[0].id;
+        <!-- =====================================================
+             ARTICLES
+        ===================================================== -->
+
+        <section
+            class="section"
+            id="articles"
+        >
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <h2 class="section-title">
+                        اخبار
+                    </h2>
+
+                </div>
+
+
+                <div
+                    class="articles-grid"
+                    id="articlesGrid"
+                >
+
+                    <div class="empty">
+                        در حال بارگذاری مقالات...
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             CTA
+        ===================================================== -->
+
+        <section class="section">
+
+            <div class="container">
+
+                <div class="cta">
+
+                    <h2>
+                        GAMEHUB؛ همه چیز برای گیمرها
+                    </h2>
+
+                    <p>
+                        جدیدترین اخبار، آپدیت‌ها و اتفاقات بازی‌های مورد علاقه‌ات
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer>
+
+        <div class="container footer-inner">
+
+            <div class="footer-logo">
+                GAMEHUB
+            </div>
+
+            <div class="footer-copy">
+                © 2026 GAMEHUB — تمامی حقوق محفوظ است.
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <script>
+
+
+        /* =====================================================
+           JSON PATHS
+        ===================================================== */
+
+        const PATHS = {
+
+            games: "./json/games.json",
+
+            news: "./json/news.json",
+
+            events: "./json/events.json",
+
+            articles: "./json/articles.json"
+
+        };
+
+
+
+        /* =====================================================
+           STATE
+        ===================================================== */
+
+        let allGames = [];
+
+        let allNews = [];
+
+        let allEvents = [];
+
+        let allArticles = [];
+
+        let selectedGameId = null;
+
+        let currentSlide = 0;
+
+        let slideTimer = null;
+
+
+
+        /* =====================================================
+           HELPERS
+        ===================================================== */
+
+        function toArray(data, key) {
+
+            if (Array.isArray(data)) {
+                return data;
+            }
+
+            if (
+                data &&
+                Array.isArray(data[key])
+            ) {
+                return data[key];
+            }
+
+            return [];
+        }
+
+
+
+        async function loadJSON(path) {
+
+            const response = await fetch(
+                path,
+                {
+                    cache: "no-store"
+                }
+            );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    `خطا در دریافت فایل ${path}`
+                );
             }
 
 
-            renderSlides();
+            return response.json();
+        }
+
+
+
+        function escapeHTML(value) {
+
+            if (
+                value === null ||
+                value === undefined
+            ) {
+                return "";
+            }
+
+
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+
+
+        function getImage(item) {
+
+            return (
+                item?.image ||
+                item?.icon ||
+                "https://via.placeholder.com/900x500/2E4192/ffffff?text=GAMEHUB"
+            );
+        }
+
+
+
+        /* =====================================================
+           HERO SLIDER
+        ===================================================== */
+
+        function renderSlides() {
+
+            const container =
+                document.getElementById(
+                    "slidesContainer"
+                );
+
+
+            const controls =
+                document.getElementById(
+                    "sliderControls"
+                );
+
+
+            const slides =
+                allArticles.slice(0,5);
+
+
+            if (!slides.length) {
+
+                container.innerHTML = `
+                    <div class="empty">
+                        هنوز مقاله‌ای ثبت نشده است.
+                    </div>
+                `;
+
+                controls.innerHTML = "";
+
+                return;
+            }
+
+
+            currentSlide = 0;
+
+
+            container.innerHTML =
+                slides.map(
+                    (article,index) => {
+
+                        return `
+
+                            <a
+                                href="article.html?id=${encodeURIComponent(article.id)}"
+                                class="slide ${
+                                    index === 0
+                                        ? "active"
+                                        : ""
+                                }"
+                            >
+
+                                <div class="slide-content">
+
+                                    <div class="slide-category">
+                                        ${escapeHTML(
+                                            article.category ||
+                                            "خبر"
+                                        )}
+                                    </div>
+
+
+                                    <h1>
+                                        ${escapeHTML(
+                                            article.title
+                                        )}
+                                    </h1>
+
+
+                                    <p class="slide-description">
+                                        ${escapeHTML(
+                                            article.description ||
+                                            ""
+                                        )}
+                                    </p>
+
+
+                                    <div class="slide-meta">
+
+                                        <span>
+                                            ${escapeHTML(
+                                                article.gameName ||
+                                                ""
+                                            )}
+                                        </span>
+
+                                        <span>•</span>
+
+                                        <span>
+                                            ${escapeHTML(
+                                                article.time ||
+                                                ""
+                                            )}
+                                        </span>
+
+                                        ${
+                                            article.readTime
+                                                ? `
+                                                    <span>•</span>
+
+                                                    <span>
+                                                        ${escapeHTML(
+                                                            article.readTime
+                                                        )}
+                                                    </span>
+                                                `
+                                                : ""
+                                        }
+
+                                    </div>
+
+
+                                    <span class="slide-btn">
+                                        ادامه خبر ←
+                                    </span>
+
+                                </div>
+
+
+                                <div class="slide-image">
+
+                                    <img
+                                        src="${escapeHTML(
+                                            getImage(article)
+                                        )}"
+                                        alt="${escapeHTML(
+                                            article.title
+                                        )}"
+                                    >
+
+                                </div>
+
+                            </a>
+
+                        `;
+
+                    }
+                ).join("");
+
+
+
+            controls.innerHTML =
+                slides.map(
+                    (_,index) => {
+
+                        return `
+
+                            <button
+                                class="slider-dot ${
+                                    index === 0
+                                        ? "active"
+                                        : ""
+                                }"
+                                onclick="
+                                    goToSlide(${index});
+                                    event.stopPropagation();
+                                "
+                                aria-label="اسلاید ${index + 1}"
+                            ></button>
+
+                        `;
+
+                    }
+                ).join("");
+
+
+            startSlider(slides.length);
+        }
+
+
+
+        function goToSlide(index) {
+
+            const slides =
+                document.querySelectorAll(
+                    ".slide"
+                );
+
+
+            const dots =
+                document.querySelectorAll(
+                    ".slider-dot"
+                );
+
+
+            if (!slides.length) {
+                return;
+            }
+
+
+            currentSlide =
+                (
+                    index +
+                    slides.length
+                ) %
+                slides.length;
+
+
+            slides.forEach(
+                (slide,i) => {
+
+                    slide.classList.toggle(
+                        "active",
+                        i === currentSlide
+                    );
+
+                }
+            );
+
+
+            dots.forEach(
+                (dot,i) => {
+
+                    dot.classList.toggle(
+                        "active",
+                        i === currentSlide
+                    );
+
+                }
+            );
+        }
+
+
+
+        function startSlider(length) {
+
+            if (slideTimer) {
+
+                clearInterval(
+                    slideTimer
+                );
+            }
+
+
+            if (length <= 1) {
+                return;
+            }
+
+
+            slideTimer =
+                setInterval(
+                    () => {
+
+                        goToSlide(
+                            currentSlide + 1
+                        );
+
+                    },
+                    5000
+                );
+        }
+
+
+
+        /* =====================================================
+           GAMES
+        ===================================================== */
+
+        function renderGames() {
+
+            const container =
+                document.getElementById(
+                    "gameSelector"
+                );
+
+
+            if (!allGames.length) {
+
+                container.innerHTML = `
+                    <div class="empty">
+                        هیچ بازی‌ای پیدا نشد.
+                    </div>
+                `;
+
+                return;
+            }
+
+
+            container.innerHTML =
+                allGames.map(
+                    game => {
+
+                        return `
+
+                            <button
+                                class="game-button ${
+                                    String(game.id) ===
+                                    String(selectedGameId)
+                                        ? "active"
+                                        : ""
+                                }"
+                                onclick="selectGame(
+                                    '${String(game.id).replace(
+                                        /'/g,
+                                        "\\'"
+                                    )}'
+                                )"
+                            >
+
+                                ${
+                                    game.icon ||
+                                    game.image
+                                        ? `
+                                            <img
+                                                src="${escapeHTML(
+                                                    game.icon ||
+                                                    game.image
+                                                )}"
+                                                alt="${escapeHTML(
+                                                    game.name
+                                                )}"
+                                            >
+                                        `
+                                        : `
+                                            <div
+                                                style="
+                                                    width:38px;
+                                                    height:38px;
+                                                    flex:0 0 38px;
+                                                    border-radius:11px;
+                                                    background:linear-gradient(
+                                                        135deg,
+                                                        #4E6FF8,
+                                                        #2E4192
+                                                    );
+                                                    display:grid;
+                                                    place-items:center;
+                                                    font-weight:900;
+                                                "
+                                            >
+                                                G
+                                            </div>
+                                        `
+                                }
+
+
+                                <span class="game-button-name">
+                                    ${escapeHTML(
+                                        game.name
+                                    )}
+                                </span>
+
+                            </button>
+
+                        `;
+
+                    }
+                ).join("");
+        }
+
+
+
+        function selectGame(gameId) {
+
+            selectedGameId = gameId;
+
             renderGames();
+
             renderGameInfo();
+
             renderGameFeed();
-            renderArticles();
+        }
 
-        } catch (error) {
 
-            console.error(error);
 
-            document.getElementById("gameSelector").innerHTML = `
-                <div class="empty">
-                    خطا در بارگذاری بازی‌ها.
+        /* =====================================================
+           GAME INFO
+        ===================================================== */
+
+        function renderGameInfo() {
+
+            const container =
+                document.getElementById(
+                    "gameInfo"
+                );
+
+
+            const game =
+                allGames.find(
+                    item =>
+                        String(item.id) ===
+                        String(selectedGameId)
+                );
+
+
+            if (!game) {
+
+                container.innerHTML = `
+                    <div class="empty">
+                        اطلاعات بازی پیدا نشد.
+                    </div>
+                `;
+
+                return;
+            }
+
+
+            const image =
+                game.image ||
+                game.icon ||
+                "";
+
+
+            container.innerHTML = `
+
+                <div class="game-info">
+
+                    ${
+                        image
+                            ? `
+                                <div class="game-info-image">
+
+                                    <img
+                                        src="${escapeHTML(
+                                            image
+                                        )}"
+                                        alt="${escapeHTML(
+                                            game.name
+                                        )}"
+                                    >
+
+                                </div>
+                            `
+                            : `
+                                <div class="game-info-image">
+
+                                    <div
+                                        style="
+                                            width:100px;
+                                            height:100px;
+                                            border-radius:20px;
+                                            background:linear-gradient(
+                                                135deg,
+                                                #4E6FF8,
+                                                #2E4192
+                                            );
+                                            display:grid;
+                                            place-items:center;
+                                            font-size:32px;
+                                            font-weight:900;
+                                        "
+                                    >
+                                        G
+                                    </div>
+
+                                </div>
+                            `
+                    }
+
+
+                    <div>
+
+                        <h3>
+                            ${escapeHTML(
+                                game.name
+                            )}
+                        </h3>
+
+
+                        ${
+                            game.description
+                                ? `
+                                    <p>
+                                        ${escapeHTML(
+                                            game.description
+                                        )}
+                                    </p>
+                                `
+                                : ""
+                        }
+
+
+                        <div class="game-tags">
+
+                            ${
+                                game.genre
+                                    ? `
+                                        <span class="game-tag">
+                                            ژانر:
+                                            ${escapeHTML(
+                                                game.genre
+                                            )}
+                                        </span>
+                                    `
+                                    : ""
+                            }
+
+
+                            ${
+                                game.platform
+                                    ? `
+                                        <span class="game-tag">
+                                            پلتفرم:
+                                            ${escapeHTML(
+                                                game.platform
+                                            )}
+                                        </span>
+                                    `
+                                    : ""
+                            }
+
+
+                            ${
+                                game.status
+                                    ? `
+                                        <span class="game-tag">
+                                            وضعیت:
+                                            ${escapeHTML(
+                                                game.status
+                                            )}
+                                        </span>
+                                    `
+                                    : ""
+                            }
+
+                        </div>
+
+                    </div>
+
                 </div>
-            `;
 
-            document.getElementById("gameInfo").innerHTML = `
-                <div class="empty">
-                    خطا در بارگذاری اطلاعات.
-                </div>
-            `;
-
-            document.getElementById("gameFeed").innerHTML = `
-                <div class="empty">
-                    خطا در بارگذاری اخبار.
-                </div>
-            `;
-
-            document.getElementById("articlesGrid").innerHTML = `
-                <div class="empty">
-                    خطا در بارگذاری مقالات.
-                </div>
             `;
         }
-    }
 
 
-    init();
 
-</script>
+        /* =====================================================
+           NEWS + EVENTS
+        ===================================================== */
+
+        function renderGameFeed() {
+
+            const container =
+                document.getElementById(
+                    "gameFeed"
+                );
+
+
+            const selectedGameLabel =
+                document.getElementById(
+                    "selectedGameLabel"
+                );
+
+
+            const selectedGame =
+                allGames.find(
+                    game =>
+                        String(game.id) ===
+                        String(selectedGameId)
+                );
+
+
+            if (selectedGame) {
+
+                selectedGameLabel.textContent =
+                    selectedGame.name;
+            }
+
+
+            /*
+                خبرهای مربوط به بازی
+            */
+
+            const news =
+                allNews
+                    .filter(
+                        item =>
+                            String(item.gameId) ===
+                            String(selectedGameId)
+                    )
+                    .map(
+                        item => ({
+
+                            ...item,
+
+                            feedType: "خبر",
+
+                            isEvent: false
+
+                        })
+                    );
+
+
+            /*
+                ایونت‌های مربوط به بازی
+            */
+
+            const events =
+                allEvents
+                    .filter(
+                        item =>
+                            String(item.gameId) ===
+                            String(selectedGameId)
+                    )
+                    .map(
+                        item => ({
+
+                            ...item,
+
+                            feedType: "ایونت",
+
+                            isEvent: true
+
+                        })
+                    );
+
+
+            /*
+                اول ایونت‌ها
+                بعد خبرها
+                تا اتفاقات مهم بالاتر باشند.
+            */
+
+            const feed = [
+
+                ...events,
+
+                ...news
+
+            ];
+
+
+            if (!feed.length) {
+
+                container.innerHTML = `
+
+                    <div class="empty">
+
+                        برای
+                        <strong>
+                            ${escapeHTML(
+                                selectedGame?.name ||
+                                "این بازی"
+                            )}
+                        </strong>
+
+                        هنوز خبر یا ایونتی ثبت نشده است.
+
+                    </div>
+
+                `;
+
+                return;
+            }
+
+
+            container.innerHTML =
+                feed.map(
+                    item => {
+
+                        return `
+
+                            <article
+                                class="feed-card ${
+                                    item.isEvent
+                                        ? "event"
+                                        : ""
+                                }"
+                            >
+
+                                <div class="feed-top">
+
+                                    <span class="feed-type">
+                                        ${escapeHTML(
+                                            item.feedType
+                                        )}
+                                    </span>
+
+
+                                    <span class="feed-time">
+                                        ${escapeHTML(
+                                            item.time ||
+                                            ""
+                                        )}
+                                    </span>
+
+                                </div>
+
+
+                                <h3>
+                                    ${escapeHTML(
+                                        item.title
+                                    )}
+                                </h3>
+
+
+                                ${
+                                    item.description
+                                        ? `
+                                            <p>
+                                                ${escapeHTML(
+                                                    item.description
+                                                )}
+                                            </p>
+                                        `
+                                        : ""
+                                }
+
+                            </article>
+
+                        `;
+
+                    }
+                ).join("");
+        }
+
+
+
+        /* =====================================================
+           ARTICLES
+        ===================================================== */
+
+        function renderArticles() {
+
+            const container =
+                document.getElementById(
+                    "articlesGrid"
+                );
+
+
+            if (!allArticles.length) {
+
+                container.innerHTML = `
+
+                    <div class="empty">
+                        هنوز مقاله‌ای منتشر نشده است.
+                    </div>
+
+                `;
+
+                return;
+            }
+
+
+            container.innerHTML =
+                allArticles.map(
+                    article => {
+
+                        return `
+
+                            <article
+                                class="article-card"
+                            >
+
+                                <a
+                                    href="article.html?id=${encodeURIComponent(
+                                        article.id
+                                    )}"
+                                >
+
+                                    <div
+                                        class="article-image"
+                                    >
+
+                                        <img
+                                            src="${escapeHTML(
+                                                getImage(article)
+                                            )}"
+                                            alt="${escapeHTML(
+                                                article.title
+                                            )}"
+                                            loading="lazy"
+                                        >
+
+
+                                        <span
+                                            class="article-category"
+                                        >
+                                            ${escapeHTML(
+                                                article.category ||
+                                                "خبر"
+                                            )}
+                                        </span>
+
+                                    </div>
+
+
+                                    <div
+                                        class="article-content"
+                                    >
+
+                                        <div
+                                            class="article-game"
+                                        >
+                                            ${escapeHTML(
+                                                article.gameName ||
+                                                ""
+                                            )}
+                                        </div>
+
+
+                                        <h3>
+                                            ${escapeHTML(
+                                                article.title
+                                            )}
+                                        </h3>
+
+
+                                        <p
+                                            class="article-description"
+                                        >
+                                            ${escapeHTML(
+                                                article.description ||
+                                                ""
+                                            )}
+                                        </p>
+
+
+                                        <div
+                                            class="article-meta"
+                                        >
+
+                                            <span>
+                                                ${escapeHTML(
+                                                    article.time ||
+                                                    ""
+                                                )}
+                                            </span>
+
+
+                                            <span>
+                                                ${escapeHTML(
+                                                    article.readTime ||
+                                                    ""
+                                                )}
+                                            </span>
+
+                                        </div>
+
+
+                                        <span
+                                            class="article-link"
+                                        >
+                                            ادامه ←
+                                        </span>
+
+                                    </div>
+
+                                </a>
+
+                            </article>
+
+                        `;
+
+                    }
+                ).join("");
+        }
+
+
+
+        /* =====================================================
+           MOBILE MENU
+        ===================================================== */
+
+        const menuBtn =
+            document.getElementById(
+                "menuBtn"
+            );
+
+
+        const mainNav =
+            document.getElementById(
+                "mainNav"
+            );
+
+
+        menuBtn.addEventListener(
+            "click",
+            () => {
+
+                mainNav.classList.toggle(
+                    "open"
+                );
+
+            }
+        );
+
+
+        document
+            .querySelectorAll(
+                "#mainNav a"
+            )
+            .forEach(
+                link => {
+
+                    link.addEventListener(
+                        "click",
+                        () => {
+
+                            mainNav.classList.remove(
+                                "open"
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+
+
+        /* =====================================================
+           INIT
+        ===================================================== */
+
+        async function init() {
+
+            try {
+
+                const [
+
+                    gamesData,
+
+                    newsData,
+
+                    eventsData,
+
+                    articlesData
+
+                ] = await Promise.all([
+
+                    loadJSON(
+                        PATHS.games
+                    ),
+
+                    loadJSON(
+                        PATHS.news
+                    ),
+
+                    loadJSON(
+                        PATHS.events
+                    ),
+
+                    loadJSON(
+                        PATHS.articles
+                    )
+
+                ]);
+
+
+                allGames =
+                    toArray(
+                        gamesData,
+                        "games"
+                    );
+
+
+                allNews =
+                    toArray(
+                        newsData,
+                        "news"
+                    );
+
+
+                allEvents =
+                    toArray(
+                        eventsData,
+                        "events"
+                    );
+
+
+                allArticles =
+                    toArray(
+                        articlesData,
+                        "articles"
+                    );
+
+
+                /*
+                    اولین بازی به صورت
+                    خودکار انتخاب می‌شود.
+                */
+
+                if (allGames.length) {
+
+                    selectedGameId =
+                        allGames[0].id;
+                }
+
+
+                renderSlides();
+
+                renderGames();
+
+                renderGameInfo();
+
+                renderGameFeed();
+
+                renderArticles();
+
+
+            } catch (error) {
+
+                console.error(error);
+
+
+                document.getElementById(
+                    "gameSelector"
+                ).innerHTML = `
+
+                    <div class="empty">
+                        خطا در بارگذاری بازی‌ها.
+                    </div>
+
+                `;
+
+
+                document.getElementById(
+                    "gameFeed"
+                ).innerHTML = `
+
+                    <div class="empty">
+                        خطا در بارگذاری اخبار و اتفاقات.
+                    </div>
+
+                `;
+
+
+                document.getElementById(
+                    "gameInfo"
+                ).innerHTML = `
+
+                    <div class="empty">
+                        خطا در بارگذاری اطلاعات بازی.
+                    </div>
+
+                `;
+
+
+                document.getElementById(
+                    "articlesGrid"
+                ).innerHTML = `
+
+                    <div class="empty">
+                        خطا در بارگذاری مقالات.
+                    </div>
+
+                `;
+            }
+        }
+
+
+        init();
+
+    </script>
 
 </body>
 </html>
