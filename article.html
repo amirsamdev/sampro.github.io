@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
 
     <meta charset="UTF-8">
@@ -10,121 +9,140 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>GAMEHUB — خبر</title>
+    <title>خبر | GAMEHUB</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link
-        href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
-        rel="stylesheet"
-        type="text/css"
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
     >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
 
     <style>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         :root {
+
+            --bg: #202020;
+            --bg-soft: #292929;
+            --bg-lighter: #303030;
+
             --blue-dark: #2E4192;
             --blue: #4E6FF8;
             --blue-soft: #9aabff;
 
-            --text: #ffffff;
-            --text-soft: rgba(255,255,255,.72);
-            --text-muted: rgba(255,255,255,.48);
+            --white: #ffffff;
+            --text: #eeeeee;
+            --muted: #a5a5a5;
 
-            --border: rgba(255,255,255,.09);
+            --border: rgba(255,255,255,0.08);
+
+            --radius: 20px;
+
         }
+
+
+        * {
+
+            margin: 0;
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
 
         html {
+
             scroll-behavior: smooth;
+
         }
+
 
         body {
 
-            min-height: 100vh;
+            font-family: "Vazirmatn", sans-serif;
 
-            background:
-
-                radial-gradient(
-                    circle at 15% 5%,
-                    rgba(78,111,248,.18),
-                    transparent 30%
-                ),
-
-                linear-gradient(
-                    180deg,
-                    #222222 0%,
-                    #292929 40%,
-                    #2E4192 130%
-                );
+            background: var(--bg);
 
             color: var(--text);
 
-            font-family:
-                "Vazirmatn",
-                Tahoma,
-                Arial,
-                sans-serif;
+            line-height: 2;
 
-            line-height: 1.9;
         }
+
 
         a {
+
             color: inherit;
+
             text-decoration: none;
+
         }
+
 
         img {
+
             max-width: 100%;
+
             display: block;
+
         }
 
+
         .container {
-            width:
-                min(
-                    920px,
-                    calc(100% - 36px)
-                );
+
+            width: min(
+                900px,
+                calc(100% - 30px)
+            );
 
             margin: auto;
+
         }
 
 
         /* =========================
            HEADER
-        ========================= */
+        ========================== */
 
-        .header {
-
-            height: 78px;
+        header {
 
             position: sticky;
+
             top: 0;
 
-            z-index: 50;
+            z-index: 100;
+
+            background:
+                rgba(32,32,32,0.92);
+
+            backdrop-filter: blur(16px);
 
             border-bottom:
                 1px solid var(--border);
 
-            background:
-                rgba(30,30,30,.78);
-
-            backdrop-filter:
-                blur(20px);
         }
+
 
         .header-inner {
 
-            height: 100%;
+            min-height: 75px;
 
             display: flex;
 
             align-items: center;
+
             justify-content: space-between;
+
         }
+
 
         .logo {
 
@@ -132,16 +150,223 @@
 
             align-items: center;
 
-            gap: 11px;
+            gap: 10px;
 
-            font-size: 17px;
+            font-size: 23px;
 
-            font-weight: 900;
+            font-weight: 800;
+
         }
+
 
         .logo-mark {
 
+            width: 42px;
+
+            height: 42px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 13px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--blue),
+                    var(--blue-dark)
+                );
+
+        }
+
+
+        .back {
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+            transition: 0.2s;
+
+        }
+
+
+        .back:hover {
+
+            color: white;
+
+        }
+
+
+        /* =========================
+           ARTICLE
+        ========================== */
+
+        main {
+
+            padding:
+                45px 0 80px;
+
+        }
+
+
+        .article {
+
+            overflow: hidden;
+
+            background: var(--bg-soft);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 26px;
+
+        }
+
+
+        .article-image {
+
+            width: 100%;
+
+            height: 470px;
+
+            object-fit: cover;
+
+            background: #333;
+
+        }
+
+
+        .article-content {
+
+            padding: 40px;
+
+        }
+
+
+        .category {
+
+            display: inline-flex;
+
+            padding:
+                5px 13px;
+
+            border-radius: 999px;
+
+            background: var(--blue);
+
+            color: white;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            margin-bottom: 13px;
+
+        }
+
+
+        .game {
+
+            color: var(--blue-soft);
+
+            font-size: 13px;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        h1 {
+
+            font-size:
+                clamp(27px, 5vw, 45px);
+
+            line-height: 1.5;
+
+            font-weight: 800;
+
+            margin-bottom: 14px;
+
+        }
+
+
+        .description {
+
+            color: #c5c5c5;
+
+            font-size: 15px;
+
+            line-height: 2.1;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .meta {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 18px;
+
+            padding-bottom: 20px;
+
+            margin-bottom: 25px;
+
+            border-bottom:
+                1px solid var(--border);
+
+            color: #858585;
+
+            font-size: 11px;
+
+        }
+
+
+        .content p {
+
+            color: #cfcfcf;
+
+            font-size: 15px;
+
+            line-height: 2.3;
+
+            margin-bottom: 22px;
+
+        }
+
+
+        .author-box {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-top: 35px;
+
+            padding: 15px;
+
+            border-radius: 14px;
+
+            background:
+                rgba(255,255,255,0.035);
+
+            border:
+                1px solid var(--border);
+
+        }
+
+
+        .author-avatar {
+
             width: 40px;
+
             height: 40px;
 
             display: grid;
@@ -150,317 +375,119 @@
 
             border-radius: 12px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--blue-dark),
-                    var(--blue)
-                );
+            background: var(--blue);
 
-            box-shadow:
-                0 8px 30px
-                rgba(78,111,248,.25);
         }
 
-        .back {
 
-            color:
-                var(--blue-soft);
+        .author-name {
 
             font-size: 12px;
 
-            font-weight: 800;
+            font-weight: 700;
+
         }
 
 
-        /* =========================
-           ARTICLE
-        ========================= */
+        .author-label {
 
-        .article {
+            color: #777;
 
-            margin-top: 40px;
+            font-size: 10px;
 
-            padding-bottom: 80px;
         }
 
-        .article-card {
 
-            overflow: hidden;
+        .error {
+
+            padding: 70px 20px;
+
+            text-align: center;
+
+            background: var(--bg-soft);
 
             border:
                 1px solid var(--border);
 
-            border-radius: 28px;
+            border-radius: 22px;
 
-            background:
-                rgba(255,255,255,.045);
+            color: #aaa;
 
-            box-shadow:
-                0 30px 100px
-                rgba(0,0,0,.18);
         }
 
-        .hero-image {
 
-            width: 100%;
+        .error h2 {
 
-            height:
-                clamp(
-                    260px,
-                    45vw,
-                    500px
-                );
+            color: white;
 
-            display: flex;
+            margin-bottom: 8px;
 
-            align-items: center;
-            justify-content: center;
-
-            overflow: hidden;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #282828,
-                    #303b78,
-                    #4e6ff8
-                );
-
-            font-size: 120px;
         }
 
-        .hero-image img {
 
-            width: 100%;
-            height: 100%;
+        .home-btn {
 
-            object-fit: cover;
-        }
+            display: inline-block;
 
-        .article-content {
+            margin-top: 18px;
 
             padding:
-                clamp(
-                    25px,
-                    5vw,
-                    55px
-                );
-        }
-
-        .article-tag {
-
-            display: inline-flex;
-
-            padding:
-                6px 11px;
-
-            border-radius: 8px;
-
-            background:
-                rgba(78,111,248,.16);
-
-            color:
-                var(--blue-soft);
-
-            font-size: 10px;
-
-            font-weight: 900;
-        }
-
-        .article-title {
-
-            margin-top: 15px;
-
-            font-size:
-                clamp(
-                    30px,
-                    5vw,
-                    54px
-                );
-
-            line-height: 1.45;
-
-            font-weight: 900;
-        }
-
-        .article-description {
-
-            max-width: 760px;
-
-            margin-top: 16px;
-
-            color:
-                var(--text-soft);
-
-            font-size: 15px;
-
-            line-height: 2;
-        }
-
-        .article-meta {
-
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 15px;
-
-            margin-top: 20px;
-
-            color:
-                var(--text-muted);
-
-            font-size: 10px;
-        }
-
-        .article-body {
-
-            margin-top: 40px;
-
-            padding-top: 30px;
-
-            border-top:
-                1px solid
-                rgba(255,255,255,.07);
-        }
-
-        .article-body p {
-
-            margin-top: 22px;
-
-            color:
-                rgba(255,255,255,.72);
-
-            font-size: 15px;
-
-            line-height: 2.25;
-        }
-
-        .article-body p:first-child {
-            margin-top: 0;
-        }
-
-        .article-footer {
-
-            margin-top: 45px;
-
-            padding-top: 25px;
-
-            border-top:
-                1px solid
-                rgba(255,255,255,.07);
-
-            display: flex;
-
-            align-items: center;
-            justify-content: space-between;
-
-            gap: 15px;
-        }
-
-        .back-button {
-
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 8px;
-
-            padding:
-                11px 16px;
+                9px 18px;
 
             border-radius: 11px;
 
-            background:
-                white;
+            background: var(--blue);
 
-            color:
-                #30469c;
+            color: white;
+
+            font-size: 12px;
+
+        }
+
+
+        footer {
+
+            border-top:
+                1px solid var(--border);
+
+            padding: 25px 0;
+
+            color: #666;
 
             font-size: 11px;
 
-            font-weight: 900;
-        }
-
-        .error {
-
-            margin-top: 40px;
-
-            padding: 35px;
-
-            border:
-                1px solid
-                rgba(255,80,80,.25);
-
-            border-radius: 20px;
-
-            background:
-                rgba(255,60,60,.08);
-
-            color:
-                #ffb0b0;
-
             text-align: center;
+
         }
 
-
-        /* =========================
-           MOBILE
-        ========================= */
 
         @media (max-width: 650px) {
 
-            .container {
+            .article-image {
 
-                width:
-                    calc(100% - 26px);
+                height: 280px;
+
             }
 
-            .header {
 
-                height: 68px;
+            .article-content {
+
+                padding: 25px 18px;
+
             }
 
-            .article {
 
-                margin-top: 17px;
-            }
-
-            .article-card {
-
-                border-radius: 20px;
-            }
-
-            .article-title {
-
-                font-size: 29px;
-            }
-
-            .article-description {
-
-                font-size: 12px;
-            }
-
-            .article-body p {
+            .description {
 
                 font-size: 13px;
 
-                line-height: 2.15;
             }
 
-            .article-footer {
 
-                flex-direction: column;
+            .content p {
 
-                align-items: stretch;
+                font-size: 13px;
 
-                text-align: center;
-            }
-
-            .back-button {
-
-                justify-content: center;
             }
 
         }
@@ -473,29 +500,25 @@
 <body>
 
 
-<header class="header">
+<header>
 
     <div class="container header-inner">
 
-        <a
-            href="index.html"
-            class="logo"
-        >
+        <a href="index.html" class="logo">
 
-            <span class="logo-mark">
+            <div class="logo-mark">
                 🎮
-            </span>
+            </div>
 
-            گیم‌هاب
+            GAMEHUB
 
         </a>
 
 
-        <a
-            href="index.html"
-            class="back"
-        >
-            ← برگشت به گیم‌هاب
+        <a href="index.html" class="back">
+
+            ← بازگشت به گیم‌هاب
+
         </a>
 
     </div>
@@ -504,31 +527,91 @@
 
 
 
-<main class="container article">
+<main>
 
-    <div id="articleContainer"></div>
+    <div class="container">
+
+        <div id="articleContainer">
+
+            <div class="error">
+                در حال بارگذاری مقاله...
+            </div>
+
+        </div>
+
+    </div>
 
 </main>
 
 
 
+<footer>
+
+    © 2026 GAMEHUB — ساخته شده برای گیمرها 🎮
+
+</footer>
+
+
+
 <script>
 
-    const JSON_PATH = "./json/";
-
+    const ARTICLE_PATH =
+        "./json/articles.json";
 
 
     function escapeHTML(value) {
 
-        return String(value ?? "")
-            .replaceAll("&", "&amp;")
-            .replaceAll("<", "&lt;")
-            .replaceAll(">", "&gt;")
-            .replaceAll('"', "&quot;")
-            .replaceAll("'", "&#039;");
+        if (
+            value === null ||
+            value === undefined
+        ) {
+
+            return "";
+
+        }
+
+
+        return String(value)
+
+            .replace(/&/g, "&amp;")
+
+            .replace(/</g, "&lt;")
+
+            .replace(/>/g, "&gt;")
+
+            .replace(/"/g, "&quot;")
+
+            .replace(/'/g, "&#039;");
 
     }
 
+
+    function toArray(data) {
+
+        if (Array.isArray(data)) {
+
+            return data;
+
+        }
+
+
+        if (Array.isArray(data?.articles)) {
+
+            return data.articles;
+
+        }
+
+
+        if (Array.isArray(data?.data)) {
+
+            return data.data;
+
+        }
+
+
+        return [];
+
+    }
 
 
     async function loadArticle() {
@@ -541,20 +624,27 @@
 
         try {
 
+            /*
+                گرفتن id از URL
+
+                مثال:
+                article.html?id=cod-mobile-season-10
+            */
+
             const params =
                 new URLSearchParams(
                     window.location.search
                 );
 
 
-            const id =
+            const requestedId =
                 params.get("id");
 
 
-            if (!id) {
+            if (!requestedId) {
 
                 throw new Error(
-                    "شناسه خبر مشخص نشده است."
+                    "شناسه مقاله مشخص نشده است."
                 );
 
             }
@@ -562,8 +652,7 @@
 
             const response =
                 await fetch(
-                    JSON_PATH +
-                    "articles.json",
+                    ARTICLE_PATH,
                     {
                         cache: "no-store"
                     }
@@ -584,209 +673,249 @@
 
 
             const articles =
-                Array.isArray(data)
-                    ? data
-                    : (
-                        data.articles ||
-                        data.news ||
-                        data.items ||
-                        []
-                    );
+                toArray(data);
 
 
             const article =
                 articles.find(
                     item =>
                         String(item.id) ===
-                        String(id)
+                        String(requestedId)
                 );
 
 
             if (!article) {
 
                 throw new Error(
-                    "این خبر در articles.json پیدا نشد."
+                    "مقاله موردنظر پیدا نشد."
                 );
 
             }
 
 
-            document.title =
-                `GAMEHUB — ${article.title}`;
+            /*
+                تغییر عنوان تب مرورگر
+            */
 
+            document.title =
+                `${article.title || "خبر"} | GAMEHUB`;
+
+
+            /*
+                محتوای مقاله
+            */
+
+            let contentHTML = "";
+
+
+            if (Array.isArray(article.content)) {
+
+                contentHTML =
+                    article.content
+                        .map(
+                            paragraph =>
+                                `<p>${escapeHTML(paragraph)}</p>`
+                        )
+                        .join("");
+
+            }
+
+            else if (typeof article.content === "string") {
+
+                contentHTML =
+                    article.content
+                        .split("\n")
+                        .filter(Boolean)
+                        .map(
+                            paragraph =>
+                                `<p>${escapeHTML(paragraph)}</p>`
+                        )
+                        .join("");
+
+            }
+
+
+            if (!contentHTML) {
+
+                contentHTML = `
+                    <p>
+                        محتوای کامل این مقاله هنوز اضافه نشده است.
+                    </p>
+                `;
+
+            }
+
+
+            /*
+                تصویر اصلی
+            */
 
             const imageHTML =
                 article.image
-                    ? `
-                        <img
-                            src="${escapeHTML(article.image)}"
-                            alt="${escapeHTML(article.title)}"
-                        >
-                      `
-                    : escapeHTML(
-                        article.icon || "📰"
-                    );
+                ?
+                `
+                <img
+                    class="article-image"
+                    src="${escapeHTML(article.image)}"
+                    alt="${escapeHTML(article.title || "خبر")}"
+                >
+                `
+                :
+                "";
 
 
-            const paragraphs =
-                Array.isArray(
-                    article.content
-                )
-                    ? article.content
-                    : [
-                        article.content ||
-                        article.description ||
-                        ""
-                    ];
-
-
-            const bodyHTML =
-                paragraphs
-                    .map(
-                        paragraph => `
-                            <p>
-                                ${escapeHTML(
-                                    paragraph
-                                )}
-                            </p>
-                        `
-                    )
-                    .join("");
-
+            /*
+                نمایش مقاله
+            */
 
             container.innerHTML = `
 
-                <article class="article-card">
+                <article class="article">
 
-
-                    <div class="hero-image">
-
-                        ${imageHTML}
-
-                    </div>
+                    ${imageHTML}
 
 
                     <div class="article-content">
 
+                        ${
+                            article.category
+                            ?
+                            `
+                            <span class="category">
+                                ${escapeHTML(article.category)}
+                            </span>
+                            `
+                            :
+                            ""
+                        }
 
-                        <span class="article-tag">
 
+                        ${
+                            article.gameName
+                            ?
+                            `
+                            <div class="game">
+                                🎮 ${escapeHTML(article.gameName)}
+                            </div>
+                            `
+                            :
+                            ""
+                        }
+
+
+                        <h1>
                             ${escapeHTML(
-                                article.category ||
-                                "خبر"
+                                article.title ||
+                                "بدون عنوان"
                             )}
-
-                            ${
-                                article.gameName
-                                    ? " · " +
-                                      escapeHTML(
-                                          article.gameName
-                                      )
-                                    : ""
-                            }
-
-                        </span>
-
-
-                        <h1 class="article-title">
-
-                            ${escapeHTML(
-                                article.title
-                            )}
-
                         </h1>
 
 
-                        <p class="article-description">
+                        ${
+                            article.description
+                            ?
+                            `
+                            <div class="description">
+                                ${escapeHTML(
+                                    article.description
+                                )}
+                            </div>
+                            `
+                            :
+                            ""
+                        }
 
-                            ${escapeHTML(
-                                article.description ||
-                                ""
-                            )}
 
-                        </p>
-
-
-                        <div class="article-meta">
+                        <div class="meta">
 
                             ${
                                 article.author
-                                    ? `
-                                        <span>
-                                            نویسنده:
-                                            ${escapeHTML(
-                                                article.author
-                                            )}
-                                        </span>
-                                      `
-                                    : ""
+                                ?
+                                `
+                                <span>
+                                    ✍️ ${escapeHTML(article.author)}
+                                </span>
+                                `
+                                :
+                                ""
                             }
 
 
                             ${
                                 article.date
-                                    ? `
-                                        <span>
-                                            ${escapeHTML(
-                                                article.date
-                                            )}
-                                        </span>
-                                      `
-                                    : ""
+                                ?
+                                `
+                                <span>
+                                    📅 ${escapeHTML(article.date)}
+                                </span>
+                                `
+                                :
+                                ""
                             }
 
 
                             ${
                                 article.time
-                                    ? `
-                                        <span>
-                                            ${escapeHTML(
-                                                article.time
-                                            )}
-                                        </span>
-                                      `
-                                    : ""
+                                ?
+                                `
+                                <span>
+                                    🕒 ${escapeHTML(article.time)}
+                                </span>
+                                `
+                                :
+                                ""
                             }
 
 
                             ${
                                 article.readTime
-                                    ? `
-                                        <span>
-                                            ${escapeHTML(
-                                                article.readTime
-                                            )}
-                                        </span>
-                                      `
-                                    : ""
+                                ?
+                                `
+                                <span>
+                                    📖 ${escapeHTML(article.readTime)}
+                                </span>
+                                `
+                                :
+                                ""
                             }
 
                         </div>
 
 
-                        <div class="article-body">
+                        <div class="content">
 
-                            ${bodyHTML}
-
-                        </div>
-
-
-                        <div class="article-footer">
-
-                            <span>
-                                GAMEHUB 🎮
-                            </span>
-
-
-                            <a
-                                href="index.html#news"
-                                class="back-button"
-                            >
-                                ← برگشت به اخبار
-                            </a>
+                            ${contentHTML}
 
                         </div>
 
+
+                        ${
+                            article.author
+                            ?
+                            `
+                            <div class="author-box">
+
+                                <div class="author-avatar">
+                                    ✍️
+                                </div>
+
+                                <div>
+
+                                    <div class="author-name">
+                                        ${escapeHTML(article.author)}
+                                    </div>
+
+                                    <div class="author-label">
+                                        نویسنده مقاله
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            `
+                            :
+                            ""
+                        }
 
                     </div>
 
@@ -794,8 +923,8 @@
 
             `;
 
-        }
-        catch (error) {
+
+        } catch (error) {
 
             console.error(error);
 
@@ -805,22 +934,23 @@
                 <div class="error">
 
                     <h2>
-                        خبر پیدا نشد!
+                        مقاله پیدا نشد
                     </h2>
 
                     <p>
-                        ${escapeHTML(
-                            error.message
-                        )}
+                        ${
+                            escapeHTML(
+                                error.message
+                            )
+                        }
                     </p>
 
-                    <br>
 
                     <a
                         href="index.html"
-                        class="back-button"
+                        class="home-btn"
                     >
-                        برگشت به صفحه اصلی
+                        بازگشت به صفحه اصلی
                     </a>
 
                 </div>
