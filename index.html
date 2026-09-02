@@ -1,19 +1,34 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>GAMEHUB — دنیای گیمینگ موبایل</title>
+    <title>GAMEHUB | گیم‌هاب</title>
 
-    <link
-        href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
-        rel="stylesheet"
-        type="text/css"
-    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --bg: #202020;
+            --bg-soft: #292929;
+            --bg-lighter: #303030;
+
+            --blue-dark: #2E4192;
+            --blue: #4E6FF8;
+            --blue-soft: #9aabff;
+
+            --white: #ffffff;
+            --text: #eeeeee;
+            --muted: #a5a5a5;
+
+            --border: rgba(255,255,255,0.08);
+            --card: #282828;
+
+            --radius: 20px;
+        }
 
         * {
             margin: 0;
@@ -21,68 +36,24 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --bg: #202020;
-            --bg-soft: #292929;
-
-            --blue-dark: #2E4192;
-            --blue: #4E6FF8;
-            --blue-soft: #9aabff;
-
-            --text: #ffffff;
-            --text-soft: rgba(255,255,255,.72);
-            --text-muted: rgba(255,255,255,.48);
-
-            --border: rgba(255,255,255,.09);
-            --card: rgba(255,255,255,.05);
-
-            --radius: 20px;
-        }
-
         html {
             scroll-behavior: smooth;
         }
 
         body {
-            min-height: 100vh;
-
-            background:
-                radial-gradient(
-                    circle at 15% 5%,
-                    rgba(78,111,248,.18),
-                    transparent 30%
-                ),
-                linear-gradient(
-                    180deg,
-                    #222222 0%,
-                    #292929 35%,
-                    #2E4192 130%
-                );
-
+            font-family: "Vazirmatn", sans-serif;
+            background: var(--bg);
             color: var(--text);
-
-            font-family:
-                "Vazirmatn",
-                Tahoma,
-                Arial,
-                sans-serif;
-
-            font-size: 15px;
             line-height: 1.8;
-        }
-
-        button,
-        input {
-            font: inherit;
-        }
-
-        button {
-            cursor: pointer;
         }
 
         a {
             color: inherit;
             text-decoration: none;
+        }
+
+        button {
+            font-family: inherit;
         }
 
         img {
@@ -91,153 +62,129 @@
         }
 
         .container {
-            width: min(1160px, calc(100% - 36px));
+            width: min(1200px, calc(100% - 32px));
             margin: auto;
         }
 
-
         /* =========================
            HEADER
-        ========================= */
+        ========================== */
 
         .header {
-            height: 78px;
-
             position: sticky;
             top: 0;
+            z-index: 1000;
 
-            z-index: 50;
+            background: rgba(32,32,32,0.92);
+            backdrop-filter: blur(16px);
 
-            border-bottom:
-                1px solid var(--border);
-
-            background:
-                rgba(30,30,30,.78);
-
-            backdrop-filter:
-                blur(20px);
+            border-bottom: 1px solid var(--border);
         }
 
         .header-inner {
-            height: 100%;
+            min-height: 76px;
 
             display: flex;
             align-items: center;
+            justify-content: space-between;
 
-            gap: 38px;
+            gap: 30px;
         }
 
         .logo {
             display: flex;
             align-items: center;
+            gap: 10px;
 
-            gap: 11px;
-
-            font-size: 17px;
-            font-weight: 900;
+            font-size: 24px;
+            font-weight: 800;
 
             white-space: nowrap;
         }
 
         .logo-mark {
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
 
             display: grid;
             place-items: center;
 
-            border-radius: 12px;
+            border-radius: 13px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--blue-dark),
-                    var(--blue)
-                );
+            background: linear-gradient(
+                135deg,
+                var(--blue),
+                var(--blue-dark)
+            );
 
-            box-shadow:
-                0 8px 30px
-                rgba(78,111,248,.25);
+            box-shadow: 0 8px 25px rgba(78,111,248,0.25);
+        }
+
+        .logo-mark span {
+            font-size: 19px;
         }
 
         .nav {
             display: flex;
             align-items: center;
-
-            gap: 28px;
+            gap: 8px;
         }
 
         .nav a {
-            color: var(--text-muted);
+            padding: 9px 15px;
 
-            font-size: 13px;
-            font-weight: 700;
+            border-radius: 12px;
 
-            transition: .2s;
+            color: var(--muted);
+
+            font-size: 14px;
+            font-weight: 500;
+
+            transition: 0.2s ease;
         }
 
         .nav a:hover,
         .nav a.active {
-            color: white;
+            color: var(--white);
+            background: rgba(78,111,248,0.13);
         }
 
-        .header-right {
-            margin-right: auto;
-
-            display: flex;
-            align-items: center;
-
-            gap: 10px;
-        }
-
-        .mobile-menu {
-            width: 42px;
-            height: 42px;
-
+        .menu-btn {
             display: none;
-            place-items: center;
 
-            border: 1px solid var(--border);
-            border-radius: 12px;
-
-            background:
-                rgba(255,255,255,.05);
+            border: 0;
+            background: transparent;
 
             color: white;
-            font-size: 16px;
-        }
 
+            font-size: 27px;
+            cursor: pointer;
+        }
 
         /* =========================
-           HERO
-        ========================= */
+           HERO / SLIDER
+        ========================== */
 
-        .hero-slider {
-            margin-top: 30px;
+        .hero {
+            padding: 35px 0 15px;
+        }
 
+        .slider {
             position: relative;
 
-            min-height: 450px;
+            height: 440px;
 
             overflow: hidden;
 
-            border:
-                1px solid var(--border);
+            border-radius: 26px;
 
-            border-radius: 28px;
-
-            background: #242424;
-
-            box-shadow:
-                0 25px 80px
-                rgba(0,0,0,.15);
+            background: var(--bg-soft);
+            border: 1px solid var(--border);
         }
 
         .slides {
-            position: relative;
-
             width: 100%;
-            min-height: 450px;
+            height: 100%;
         }
 
         .slide {
@@ -247,159 +194,144 @@
             display: flex;
             align-items: flex-end;
 
-            padding: 48px;
-
             opacity: 0;
-            visibility: hidden;
+            pointer-events: none;
 
-            transform: scale(1.025);
-
-            transition:
-                opacity .55s ease,
-                transform .55s ease;
+            transition: opacity 0.45s ease;
         }
 
         .slide.active {
             opacity: 1;
-            visibility: visible;
-
-            transform: scale(1);
+            pointer-events: auto;
         }
 
         .slide-bg {
             position: absolute;
             inset: 0;
+
+            overflow: hidden;
         }
 
-        .slide-overlay {
+        .slide-bg img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            opacity: 0.55;
+
+            transform: scale(1.02);
+        }
+
+        .slide::after {
+            content: "";
+
             position: absolute;
             inset: 0;
 
             background:
                 linear-gradient(
-                    90deg,
-                    rgba(20,20,20,.98),
-                    rgba(30,35,65,.78),
-                    rgba(46,65,146,.35)
+                    to top,
+                    rgba(15,15,15,0.97) 0%,
+                    rgba(15,15,15,0.72) 38%,
+                    rgba(15,15,15,0.15) 80%
                 );
-        }
-
-        .slide-glow {
-            position: absolute;
-
-            width: 500px;
-            height: 500px;
-
-            left: -100px;
-            top: -150px;
-
-            border-radius: 50%;
-
-            background:
-                rgba(78,111,248,.18);
-
-            filter: blur(30px);
-        }
-
-        .slide-art {
-            position: absolute;
-
-            left: 5%;
-            bottom: -30px;
-
-            font-size:
-                clamp(150px, 24vw, 290px);
-
-            opacity: .12;
-
-            transform: rotate(8deg);
         }
 
         .slide-content {
             position: relative;
-            z-index: 3;
+            z-index: 2;
 
-            max-width: 690px;
+            width: min(760px, 90%);
+
+            padding: 42px;
         }
 
-        .slide-tag {
+        .slide-category {
             display: inline-flex;
-            align-items: center;
 
-            gap: 8px;
+            padding: 5px 12px;
 
-            padding: 7px 12px;
+            border-radius: 999px;
 
-            border-radius: 9px;
+            background: var(--blue);
 
-            background:
-                rgba(78,111,248,.9);
+            color: white;
 
-            font-size: 11px;
-            font-weight: 900;
+            font-size: 12px;
+            font-weight: 600;
+
+            margin-bottom: 12px;
         }
 
-        .slide h1 {
-            margin-top: 17px;
+        .slide-game {
+            color: var(--blue-soft);
 
-            font-size:
-                clamp(38px, 6vw, 68px);
+            font-size: 13px;
+            margin-bottom: 7px;
+        }
 
-            line-height: 1.25;
+        .slide-title {
+            font-size: clamp(25px, 4vw, 43px);
+            line-height: 1.35;
 
-            font-weight: 900;
+            font-weight: 800;
+
+            margin-bottom: 10px;
         }
 
         .slide-description {
-            max-width: 610px;
+            color: #d0d0d0;
 
-            margin-top: 16px;
+            font-size: 14px;
 
-            color: var(--text-soft);
+            max-width: 680px;
 
-            font-size: 15px;
-            line-height: 2;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .slide-meta {
-            margin-top: 20px;
-
             display: flex;
-            align-items: center;
+            gap: 18px;
 
-            gap: 14px;
+            color: #aaa;
 
-            color: var(--text-muted);
+            font-size: 12px;
 
-            font-size: 11px;
+            margin-top: 13px;
         }
 
-        .read-button {
-            margin-top: 25px;
-
+        .slide-button {
             display: inline-flex;
-            align-items: center;
 
-            gap: 9px;
-
-            padding: 12px 17px;
+            margin-top: 20px;
+            padding: 9px 17px;
 
             border-radius: 11px;
 
             background: white;
-            color: #30469c;
+            color: #202020;
 
-            font-size: 12px;
-            font-weight: 900;
+            font-size: 13px;
+            font-weight: 700;
+
+            transition: 0.2s ease;
         }
 
-        .slider-dots {
+        .slide-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .slider-controls {
             position: absolute;
 
-            left: 30px;
+            left: 25px;
             bottom: 25px;
 
-            z-index: 10;
+            z-index: 5;
 
             display: flex;
             gap: 7px;
@@ -409,1383 +341,954 @@
             width: 8px;
             height: 8px;
 
-            padding: 0;
-
             border: 0;
-
             border-radius: 50%;
 
-            background:
-                rgba(255,255,255,.25);
+            background: rgba(255,255,255,0.35);
 
-            transition: .25s;
+            cursor: pointer;
+
+            transition: 0.2s ease;
         }
 
         .slider-dot.active {
             width: 25px;
-
-            border-radius: 20px;
-
+            border-radius: 10px;
             background: white;
         }
 
-
         /* =========================
            SECTION
-        ========================= */
+        ========================== */
 
         .section {
-            margin-top: 55px;
+            padding: 55px 0;
         }
 
-        .section-top {
+        .section-header {
             display: flex;
-
-            justify-content: space-between;
             align-items: flex-end;
+            justify-content: space-between;
 
-            margin-bottom: 20px;
+            gap: 20px;
+
+            margin-bottom: 25px;
         }
 
         .section-title {
-            font-size: 25px;
-
-            line-height: 1.5;
-
-            font-weight: 900;
-        }
-
-        .section-description {
-            margin-top: 6px;
-
-            color: var(--text-muted);
-
-            font-size: 12px;
-        }
-
-        .section-link {
-            color: var(--blue-soft);
-
-            font-size: 11px;
+            font-size: 27px;
             font-weight: 800;
         }
 
+        .section-subtitle {
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 3px;
+        }
 
         /* =========================
-           GAMES
-        ========================= */
+           GAME SELECTOR
+        ========================== */
 
-        .games-scroll {
+        .game-selector {
             display: flex;
-
-            gap: 11px;
+            gap: 12px;
 
             overflow-x: auto;
 
-            padding: 4px 2px 10px;
+            padding: 4px 2px 12px;
 
-            scrollbar-width: none;
+            scrollbar-width: thin;
         }
 
-        .games-scroll::-webkit-scrollbar {
-            display: none;
+        .game-selector::-webkit-scrollbar {
+            height: 4px;
         }
 
-        .game {
+        .game-selector::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 10px;
+        }
+
+        .game-item {
             flex: 0 0 auto;
 
-            display: flex;
-            align-items: center;
+            min-width: 145px;
 
-            gap: 10px;
+            padding: 14px;
 
-            padding: 11px 15px;
+            border-radius: 16px;
 
-            border:
-                1px solid var(--border);
+            background: var(--card);
+            border: 1px solid var(--border);
 
-            border-radius: 13px;
+            cursor: pointer;
 
-            background:
-                rgba(255,255,255,.045);
-
-            color: var(--text-soft);
-
-            font-size: 12px;
-            font-weight: 800;
-
-            transition: .2s;
+            transition: 0.22s ease;
         }
 
-        .game:hover,
-        .game.active {
-            color: white;
+        .game-item:hover {
+            transform: translateY(-2px);
+            border-color: rgba(78,111,248,0.4);
+        }
 
-            border-color:
-                rgba(78,111,248,.55);
+        .game-item.active {
+            background: rgba(78,111,248,0.15);
+            border-color: var(--blue);
+        }
 
-            background:
-                rgba(78,111,248,.18);
-
-            transform:
-                translateY(-2px);
+        .game-item-top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .game-icon {
-            width: 32px;
-            height: 32px;
+            width: 43px;
+            height: 43px;
 
-            display: grid;
-            place-items: center;
+            border-radius: 12px;
 
-            border-radius: 9px;
+            object-fit: cover;
 
-            background:
-                rgba(255,255,255,.07);
-
-            font-size: 16px;
+            background: #333;
         }
 
-        .selected-game-info {
-            display: flex;
-            align-items: center;
+        .game-name {
+            font-size: 14px;
+            font-weight: 700;
+        }
 
-            gap: 8px;
-
-            margin-top: 14px;
-
-            color: var(--text-muted);
-
+        .game-genre {
+            color: var(--muted);
             font-size: 11px;
         }
 
-        .selected-game-name {
-            color: var(--blue-soft);
-
-            font-weight: 900;
-        }
-
-
         /* =========================
-           FEED
-        ========================= */
+           NEWS + GAME INFO
+        ========================== */
 
-        .feed {
+        .news-layout {
             display: grid;
 
-            grid-template-columns:
-                minmax(0,1fr)
-                330px;
+            grid-template-columns: minmax(0, 1fr) 310px;
 
-            gap: 20px;
+            gap: 25px;
+
+            align-items: start;
         }
 
-        .feed-list {
+        .feed {
             display: grid;
             gap: 12px;
         }
 
-        .story {
+        .feed-card {
             display: grid;
 
-            grid-template-columns:
-                160px
-                minmax(0,1fr);
+            grid-template-columns: 135px minmax(0, 1fr);
 
-            gap: 17px;
+            gap: 18px;
 
-            padding: 12px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius: var(--radius);
+            padding: 14px;
 
             background: var(--card);
 
-            transition:
-                transform .2s,
-                border .2s,
-                background .2s;
+            border: 1px solid var(--border);
+
+            border-radius: 17px;
+
+            transition: 0.22s ease;
 
             cursor: pointer;
         }
 
-        .story:hover {
-            transform: translateY(-3px);
+        .feed-card:hover {
+            transform: translateY(-2px);
 
-            border-color:
-                rgba(78,111,248,.35);
-
-            background:
-                rgba(255,255,255,.065);
+            border-color: rgba(78,111,248,0.35);
         }
 
-        .story-image {
-            min-height: 135px;
+        .feed-card.event {
+            border-right: 3px solid var(--blue);
+        }
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .feed-image {
+            width: 135px;
+            height: 105px;
 
-            overflow: hidden;
+            object-fit: cover;
 
             border-radius: 13px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #282828,
-                    #303b78,
-                    #4e6ff8
-                );
-
-            font-size: 58px;
+            background: #333;
         }
 
-        .story-image img {
-            width: 100%;
-            height: 100%;
-
-            min-height: 135px;
-
-            object-fit: cover;
-        }
-
-        .story-info {
-            padding: 7px 5px 7px 0;
-        }
-
-        .story-tag {
+        .feed-type {
             color: var(--blue-soft);
 
-            font-size: 10px;
-            font-weight: 900;
+            font-size: 11px;
+            font-weight: 600;
+
+            margin-bottom: 4px;
         }
 
-        .story h3 {
-            margin-top: 8px;
+        .feed-title {
+            font-size: 16px;
+            font-weight: 700;
 
-            font-size: 18px;
+            line-height: 1.6;
 
-            line-height: 1.65;
-
-            font-weight: 850;
+            margin-bottom: 4px;
         }
 
-        .story p {
-            margin-top: 8px;
-
-            color: var(--text-muted);
+        .feed-description {
+            color: var(--muted);
 
             font-size: 12px;
 
-            line-height: 1.9;
-        }
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
 
-        .story-bottom {
-            margin-top: 13px;
-
-            display: flex;
-            align-items: center;
-
-            gap: 12px;
-
-            color: var(--text-muted);
-
-            font-size: 10px;
-        }
-
-        .story-bottom span:first-child {
-            color: var(--text-soft);
-        }
-
-        .story.event {
-            border-right:
-                3px solid var(--blue);
-        }
-
-
-        /* =========================
-           SIDEBAR
-        ========================= */
-
-        .sidebar {
-            display: grid;
-            gap: 14px;
-        }
-
-        .side-box {
-            padding: 20px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius: var(--radius);
-
-            background:
-                rgba(20,20,20,.30);
-        }
-
-        .side-heading {
-            display: flex;
-
-            align-items: center;
-            justify-content: space-between;
-
-            margin-bottom: 15px;
-        }
-
-        .side-heading h3 {
-            font-size: 15px;
-            font-weight: 900;
-        }
-
-        .side-heading a {
-            color: var(--blue-soft);
-
-            font-size: 10px;
-            font-weight: 800;
-        }
-
-
-        /* =========================
-           GAME INFO SIDEBAR
-        ========================= */
-
-        .game-info-box {
             overflow: hidden;
         }
 
-        .game-info-cover {
-            height: 125px;
-
-            margin:
-                -20px -20px 16px;
-
+        .feed-meta {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            gap: 15px;
+
+            color: #777;
+
+            font-size: 10px;
+
+            margin-top: 8px;
+        }
+
+        /* =========================
+           GAME INFO
+        ========================== */
+
+        .game-info {
+            position: sticky;
+            top: 100px;
+
+            padding: 20px;
 
             background:
                 linear-gradient(
-                    135deg,
-                    #282828,
-                    #303b78,
-                    #4e6ff8
+                    145deg,
+                    rgba(78,111,248,0.12),
+                    rgba(41,41,41,0.95)
                 );
 
-            font-size: 65px;
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius);
         }
 
-        .game-info-name {
-            font-size: 18px;
-            font-weight: 900;
+        .game-info-cover {
+            width: 100%;
+            height: 145px;
+
+            object-fit: cover;
+
+            border-radius: 15px;
+
+            margin-bottom: 16px;
+
+            background: #333;
         }
 
-        .game-info-description {
-            margin-top: 7px;
+        .game-info-icon {
+            width: 55px;
+            height: 55px;
 
-            color: var(--text-muted);
+            border-radius: 15px;
 
-            font-size: 11px;
-            line-height: 1.9;
+            object-fit: cover;
+
+            margin-bottom: 10px;
         }
 
-        .game-info-meta {
+        .game-info h3 {
+            font-size: 21px;
+            font-weight: 800;
+
+            margin-bottom: 8px;
+        }
+
+        .game-info p {
+            color: #b5b5b5;
+
+            font-size: 12px;
+
+            line-height: 2;
+        }
+
+        .game-tags {
             display: flex;
             flex-wrap: wrap;
 
-            gap: 6px;
+            gap: 7px;
 
-            margin-top: 12px;
+            margin-top: 15px;
         }
 
-        .game-info-meta span {
-            padding: 5px 8px;
+        .game-tag {
+            padding: 5px 9px;
 
-            border-radius: 7px;
+            border-radius: 8px;
 
-            background:
-                rgba(78,111,248,.12);
+            background: rgba(255,255,255,0.06);
 
-            color: var(--blue-soft);
+            color: #bbb;
 
-            font-size: 9px;
+            font-size: 10px;
         }
-
 
         /* =========================
            ARTICLES
-        ========================= */
+        ========================== */
+
+        .articles-section {
+            padding-top: 20px;
+        }
 
         .articles-grid {
             display: grid;
 
-            grid-template-columns:
-                repeat(3, 1fr);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
 
-            gap: 14px;
+            gap: 18px;
         }
 
         .article-card {
             overflow: hidden;
 
-            border:
-                1px solid var(--border);
+            background: var(--card);
 
-            border-radius: 18px;
+            border: 1px solid var(--border);
 
-            background:
-                rgba(255,255,255,.045);
+            border-radius: var(--radius);
 
-            transition:
-                transform .2s,
-                border .2s;
+            transition: 0.25s ease;
         }
 
         .article-card:hover {
             transform: translateY(-5px);
 
-            border-color:
-                rgba(78,111,248,.45);
+            border-color: rgba(78,111,248,0.4);
+
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
         }
 
-        .article-image {
-            height: 190px;
+        .article-image-wrapper {
+            position: relative;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            height: 210px;
 
             overflow: hidden;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #282828,
-                    #303b78,
-                    #4e6ff8
-                );
-
-            font-size: 65px;
+            background: #333;
         }
 
-        .article-image img {
+        .article-image {
             width: 100%;
             height: 100%;
 
             object-fit: cover;
+
+            transition: 0.4s ease;
         }
 
-        .article-content {
-            padding: 17px;
+        .article-card:hover .article-image {
+            transform: scale(1.05);
         }
 
-        .article-tag {
-            color: var(--blue-soft);
-
-            font-size: 9px;
-            font-weight: 900;
-        }
-
-        .article-card h3 {
-            margin-top: 7px;
-
-            font-size: 16px;
-            line-height: 1.7;
-
-            font-weight: 900;
-        }
-
-        .article-card p {
-            margin-top: 7px;
-
-            color: var(--text-muted);
-
-            font-size: 11px;
-            line-height: 1.9;
-        }
-
-        .article-bottom {
-            margin-top: 14px;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            color: var(--text-muted);
-
-            font-size: 9px;
-        }
-
-        .article-more {
-            color: var(--blue-soft);
-
-            font-weight: 900;
-        }
-
-
-        /* =========================
-           DISCOVER
-        ========================= */
-
-        .discover-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
-            gap: 12px;
-        }
-
-        .discover-card {
-            min-height: 185px;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-
-            position: relative;
-
-            overflow: hidden;
-
-            padding: 17px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 18px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #292929,
-                    #303e86
-                );
-
-            transition: .2s;
-        }
-
-        .discover-card:hover {
-            transform: translateY(-4px);
-
-            border-color:
-                rgba(78,111,248,.4);
-        }
-
-        .discover-emoji {
+        .article-category {
             position: absolute;
 
-            left: 5px;
-            top: -8px;
-
-            font-size: 80px;
-
-            opacity: .15;
-
-            transform: rotate(-8deg);
-        }
-
-        .discover-rank {
-            position: absolute;
-
-            top: 13px;
             right: 13px;
+            top: 13px;
 
-            padding: 4px 8px;
+            padding: 5px 10px;
 
-            border-radius: 7px;
+            border-radius: 999px;
 
-            background:
-                rgba(0,0,0,.22);
+            background: rgba(32,32,32,0.82);
 
-            color: var(--blue-soft);
+            backdrop-filter: blur(8px);
 
-            font-size: 9px;
-            font-weight: 900;
-        }
-
-        .discover-game {
-            position: relative;
-            z-index: 2;
-
-            font-size: 16px;
-            font-weight: 900;
-        }
-
-        .discover-type {
-            position: relative;
-            z-index: 2;
-
-            margin-top: 2px;
-
-            color: var(--text-muted);
+            color: white;
 
             font-size: 10px;
         }
 
-        .discover-followers {
-            position: relative;
-            z-index: 2;
-
-            margin-top: 5px;
-
-            color: var(--text-muted);
-
-            font-size: 9px;
+        .article-body {
+            padding: 18px;
         }
 
-        .follow {
-            position: relative;
-            z-index: 2;
+        .article-game {
+            color: var(--blue-soft);
 
-            width: fit-content;
+            font-size: 11px;
 
-            margin-top: 12px;
+            margin-bottom: 5px;
+        }
 
-            padding: 7px 10px;
-
-            border:
-                1px solid rgba(255,255,255,.12);
-
-            border-radius: 8px;
-
-            background:
-                rgba(0,0,0,.18);
-
-            color: white;
-
-            font-size: 9px;
+        .article-title {
+            font-size: 17px;
             font-weight: 800;
+
+            line-height: 1.65;
+
+            margin-bottom: 7px;
         }
 
-        .follow.following {
-            background: var(--blue);
+        .article-description {
+            color: var(--muted);
 
-            border-color:
-                var(--blue);
+            font-size: 12px;
+
+            line-height: 1.9;
+
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+
+            overflow: hidden;
         }
 
+        .article-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 10px;
+
+            margin-top: 14px;
+
+            padding-top: 12px;
+
+            border-top: 1px solid var(--border);
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 9px;
+
+            color: #777;
+
+            font-size: 10px;
+        }
+
+        .article-read {
+            color: var(--blue-soft);
+
+            font-size: 11px;
+            font-weight: 700;
+        }
 
         /* =========================
-           EMPTY
-        ========================= */
+           CTA
+        ========================== */
 
-        .empty-state {
-            padding: 40px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius: var(--radius);
+        .cta {
+            padding: 45px;
 
             text-align: center;
 
-            color: var(--text-muted);
+            border-radius: 25px;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(78,111,248,0.22),
+                    transparent 40%
+                ),
+                var(--bg-soft);
+
+            border: 1px solid var(--border);
+        }
+
+        .cta h2 {
+            font-size: 28px;
+
+            margin-bottom: 8px;
+        }
+
+        .cta p {
+            color: var(--muted);
 
             font-size: 13px;
         }
 
-
-        /* =========================
-           CTA
-        ========================= */
-
-        .cta {
-            padding: 38px;
-
-            border:
-                1px solid rgba(255,255,255,.08);
-
-            border-radius: 24px;
-
-            background:
-                linear-gradient(
-                    120deg,
-                    rgba(46,65,146,.6),
-                    rgba(78,111,248,.16)
-                );
-
-            overflow: hidden;
-
-            position: relative;
-        }
-
-        .cta::after {
-            content: "";
-
-            position: absolute;
-
-            width: 250px;
-            height: 250px;
-
-            left: -70px;
-            top: -100px;
-
-            border-radius: 50%;
-
-            background:
-                rgba(78,111,248,.15);
-
-            filter: blur(30px);
-        }
-
-        .cta-label {
-            position: relative;
-            z-index: 2;
-
-            color: #9aabff;
-
-            font-size: 11px;
-            font-weight: 900;
-        }
-
-        .cta h2 {
-            position: relative;
-            z-index: 2;
-
-            margin-top: 9px;
-
-            font-size:
-                clamp(25px,4vw,39px);
-
-            line-height: 1.5;
-
-            font-weight: 900;
-        }
-
-        .cta p {
-            position: relative;
-            z-index: 2;
-
-            max-width: 650px;
-
-            margin-top: 8px;
-
-            color:
-                rgba(255,255,255,.55);
-
-            font-size: 12px;
-            line-height: 2;
-        }
-
-
-        /* =========================
-           ERROR
-        ========================= */
-
-        .json-error {
-            display: none;
-
-            margin-top: 20px;
-
-            padding: 20px;
-
-            border:
-                1px solid rgba(255,80,80,.25);
-
-            border-radius: 15px;
-
-            background:
-                rgba(255,60,60,.08);
-
-            color: #ffb0b0;
-
-            font-size: 12px;
-
-            line-height: 2;
-        }
-
-
         /* =========================
            FOOTER
-        ========================= */
+        ========================== */
 
-        .footer {
-            margin-top: 80px;
+        footer {
+            margin-top: 30px;
+
+            border-top: 1px solid var(--border);
 
             padding: 30px 0;
 
-            border-top:
-                1px solid rgba(255,255,255,.07);
+            color: #777;
 
-            color: var(--text-muted);
-
-            font-size: 10px;
+            font-size: 12px;
         }
 
         .footer-inner {
             display: flex;
-
             align-items: center;
             justify-content: space-between;
+
+            gap: 20px;
         }
 
+        /* =========================
+           STATES
+        ========================== */
+
+        .loading,
+        .empty,
+        .error-box {
+            padding: 35px 20px;
+
+            text-align: center;
+
+            border-radius: 17px;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            color: var(--muted);
+
+            font-size: 13px;
+        }
+
+        .error-box {
+            color: #ff9b9b;
+        }
 
         /* =========================
-           MOBILE
-        ========================= */
+           RESPONSIVE
+        ========================== */
 
-        @media (max-width: 950px) {
+        @media (max-width: 900px) {
 
             .nav {
+                position: absolute;
+
+                top: 76px;
+                right: 16px;
+                left: 16px;
+
                 display: none;
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+                padding: 10px;
+
+                background: #282828;
+
+                border: 1px solid var(--border);
+
+                border-radius: 17px;
             }
 
-            .mobile-menu {
-                display: grid;
+            .nav.open {
+                display: flex;
             }
 
-            .feed {
+            .nav a {
+                text-align: center;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .slider {
+                height: 400px;
+            }
+
+            .news-layout {
                 grid-template-columns: 1fr;
             }
 
-            .articles-grid {
-                grid-template-columns:
-                    repeat(2, 1fr);
+            .game-info {
+                position: static;
             }
 
-            .discover-grid {
-                grid-template-columns:
-                    repeat(2, 1fr);
+            .articles-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
 
-
-        @media (max-width: 650px) {
-
-            body {
-                font-size: 14px;
-            }
+        @media (max-width: 620px) {
 
             .container {
-                width:
-                    calc(100% - 26px);
-            }
-
-            .header {
-                height: 68px;
+                width: min(100% - 22px, 1200px);
             }
 
             .header-inner {
-                gap: 10px;
+                min-height: 68px;
             }
 
-            .hero-slider {
-                margin-top: 17px;
-
-                min-height: 420px;
-
-                border-radius: 21px;
+            .nav {
+                top: 68px;
+                right: 11px;
+                left: 11px;
             }
 
-            .slides {
-                min-height: 420px;
+            .hero {
+                padding-top: 18px;
             }
 
-            .slide {
-                padding:
-                    28px 22px;
+            .slider {
+                height: 390px;
+
+                border-radius: 20px;
             }
 
-            .slide h1 {
-                font-size: 37px;
+            .slide-content {
+                padding: 25px 20px;
+            }
+
+            .slide-title {
+                font-size: 25px;
             }
 
             .slide-description {
                 font-size: 12px;
             }
 
-            .slide-art {
-                left: -15px;
-                bottom: 20px;
-
-                font-size: 160px;
+            .slider-controls {
+                left: 20px;
+                bottom: 18px;
             }
 
             .section {
-                margin-top: 40px;
+                padding: 40px 0;
             }
 
             .section-title {
-                font-size: 21px;
+                font-size: 23px;
             }
 
-            .section-description {
+            .feed-card {
+                grid-template-columns: 95px minmax(0, 1fr);
+
+                gap: 12px;
+
+                padding: 10px;
+            }
+
+            .feed-image {
+                width: 95px;
+                height: 90px;
+            }
+
+            .feed-title {
+                font-size: 13px;
+            }
+
+            .feed-description {
                 font-size: 10px;
-            }
-
-            .feed {
-                gap: 28px;
-            }
-
-            .story {
-                grid-template-columns:
-                    105px 1fr;
-
-                gap: 11px;
-
-                padding: 9px;
-
-                border-radius: 15px;
-            }
-
-            .story-image {
-                min-height: 120px;
-
-                border-radius: 10px;
-
-                font-size: 40px;
-            }
-
-            .story-image img {
-                min-height: 120px;
-            }
-
-            .story-info {
-                padding:
-                    4px 3px 4px 0;
-            }
-
-            .story h3 {
-                font-size: 14px;
-            }
-
-            .story p {
-                display: none;
-            }
-
-            .story-bottom {
-                margin-top: 8px;
-
-                font-size: 8px;
             }
 
             .articles-grid {
                 grid-template-columns: 1fr;
             }
 
-            .article-image {
-                height: 200px;
+            .article-image-wrapper {
+                height: 210px;
             }
 
-            .discover-grid {
-                display: flex;
-
-                overflow-x: auto;
-
-                grid-template-columns: none;
-
-                padding-bottom: 7px;
-
-                scrollbar-width: none;
+            .cta {
+                padding: 35px 20px;
             }
 
-            .discover-grid::-webkit-scrollbar {
-                display: none;
-            }
-
-            .discover-card {
-                flex: 0 0 190px;
-
-                min-height: 165px;
+            .cta h2 {
+                font-size: 23px;
             }
 
             .footer-inner {
                 flex-direction: column;
 
-                gap: 8px;
-
                 text-align: center;
             }
         }
-
-
-        @media (max-width: 380px) {
-
-            .slide h1 {
-                font-size: 32px;
-            }
-
-            .story {
-                grid-template-columns:
-                    90px 1fr;
-            }
-
-            .story-image {
-                min-height: 105px;
-            }
-
-            .story-image img {
-                min-height: 105px;
-            }
-
-            .story h3 {
-                font-size: 13px;
-            }
-        }
-
     </style>
 </head>
 
-
 <body>
 
+<!-- =========================
+     HEADER
+========================== -->
 
 <header class="header">
-
     <div class="container header-inner">
 
         <a href="index.html" class="logo">
+            <div class="logo-mark">
+                <span>🎮</span>
+            </div>
 
-            <span class="logo-mark">
-                🎮
-            </span>
-
-            گیم‌هاب
-
+            <span>GAMEHUB</span>
         </a>
 
+        <button class="menu-btn" id="menuBtn" aria-label="منو">
+            ☰
+        </button>
 
-        <nav class="nav">
-
-            <a
-                href="index.html"
-                class="active"
-            >
-                خانه
-            </a>
-
-            <a href="#games">
-                بازی‌های موبایل
-            </a>
-
-            <a href="#news">
-                اخبار
-            </a>
-
-            <a href="#discover">
-                کشف بازی‌ها
-            </a>
-
+        <nav class="nav" id="mainNav">
+            <a href="#home" class="active">خانه</a>
+            <a href="#games">بازی‌ها</a>
+            <a href="#news">اخبار و اتفاقات</a>
+            <a href="#articles">اخبار</a>
         </nav>
 
-
-        <div class="header-right">
-
-            <button
-                class="mobile-menu"
-                id="mobileMenu"
-                aria-label="منو"
-            >
-                ☰
-            </button>
-
-        </div>
-
     </div>
-
 </header>
 
 
-
-<main class="container">
-
+<main id="home">
 
     <!-- =========================
          HERO
-    ========================= -->
+    ========================== -->
 
-    <section class="hero-slider">
+    <section class="hero">
+        <div class="container">
 
-        <div
-            class="slides"
-            id="slidesContainer"
-        ></div>
+            <div class="slider" id="heroSlider">
 
-        <div
-            class="slider-dots"
-            id="sliderDots"
-        ></div>
+                <div id="slidesContainer">
+                    <div class="loading">
+                        در حال بارگذاری اخبار...
+                    </div>
+                </div>
 
-    </section>
-
-
-    <!-- ERROR -->
-
-    <div
-        class="json-error"
-        id="jsonError"
-    ></div>
-
-
-
-    <!-- =========================
-         GAMES
-    ========================= -->
-
-    <section
-        class="section"
-        id="games"
-    >
-
-        <div class="section-top">
-
-            <div>
-
-                <h2 class="section-title">
-                    بازی خودت رو انتخاب کن
-                </h2>
-
-                <p class="section-description">
-                    بازی مورد علاقه‌ات را انتخاب کن تا اخبار و اتفاقات همان بازی نمایش داده شود
-                </p>
+                <div class="slider-controls" id="sliderControls"></div>
 
             </div>
 
         </div>
+    </section>
 
 
-        <div
-            class="games-scroll"
-            id="gamesContainer"
-        ></div>
+    <!-- =========================
+         GAME SELECTOR
+    ========================== -->
 
+    <section class="section" id="games">
 
-        <div class="selected-game-info">
+        <div class="container">
 
-            <span>
-                در حال نمایش:
-            </span>
+            <div class="section-header">
 
-            <span
-                class="selected-game-name"
-                id="selectedGameName"
-            >
-                انتخاب نشده
-            </span>
+                <div>
+                    <h2 class="section-title">
+                        بازی‌های موبایل برای کشف
+                    </h2>
+
+                    <p class="section-subtitle">
+                        بازی موردنظرت رو انتخاب کن تا اخبار و اطلاعات مرتبطش رو ببینی.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="game-selector" id="gameSelector">
+
+                <div class="loading">
+                    در حال بارگذاری بازی‌ها...
+                </div>
+
+            </div>
 
         </div>
 
     </section>
 
 
-
     <!-- =========================
-         FEED
-    ========================= -->
+         NEWS + GAME INFO
+    ========================== -->
 
-    <section class="section">
+    <section class="section" id="news">
 
-        <div class="section-top">
+        <div class="container">
 
-            <div>
+            <div class="section-header">
 
-                <h2 class="section-title">
-                    اخبار و اتفاقات
-                </h2>
+                <div>
+                    <h2 class="section-title">
+                        اخبار و اتفاقات
+                    </h2>
 
-                <p
-                    class="section-description"
-                    id="feedDescription"
-                >
-                    یک بازی را انتخاب کن تا اخبار و اتفاقات مربوط به آن را ببینی
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="feed">
-
-
-            <div
-                class="feed-list"
-                id="feedList"
-            >
-
-                <div class="empty-state">
-                    برای شروع یک بازی را انتخاب کن.
+                    <p class="section-subtitle" id="feedSubtitle">
+                        اخبار بازی انتخاب‌شده
+                    </p>
                 </div>
 
             </div>
 
 
+            <div class="news-layout">
 
-            <aside class="sidebar">
+                <!-- NEWS FEED -->
+
+                <div id="newsFeed">
+
+                    <div class="loading">
+                        در حال بارگذاری...
+                    </div>
+
+                </div>
 
 
                 <!-- GAME INFO -->
 
-                <div
-                    class="side-box game-info-box"
-                    id="gameInfoBox"
-                >
+                <aside class="game-info" id="gameInfo">
 
-                    <div class="game-info-cover">
-                        🎮
+                    <div class="loading">
+                        در حال بارگذاری اطلاعات بازی...
                     </div>
 
-                    <div class="game-info-name">
-                        انتخاب بازی
-                    </div>
+                </aside>
 
-                    <div class="game-info-description">
-                        برای مشاهده اطلاعات بازی، یکی از بازی‌های بالا را انتخاب کن.
-                    </div>
+            </div>
 
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ARTICLES
+    ========================== -->
+
+    <section class="section articles-section" id="articles">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div>
+                    <h2 class="section-title">
+                        اخبار
+                    </h2>
+
+                    <p class="section-subtitle">
+                        آخرین مقاله‌ها و خبرهای گیم‌هاب
+                    </p>
                 </div>
 
-
-            </aside>
-
-        </div>
-
-    </section>
+            </div>
 
 
+            <div id="articlesGrid" class="articles-grid">
 
-    <!-- =========================
-         NEWS
-    ========================= -->
-
-    <section
-        class="section"
-        id="news"
-    >
-
-        <div class="section-top">
-
-            <div>
-
-                <h2 class="section-title">
-                    اخبار
-                </h2>
-
-                <p class="section-description">
-                    تازه‌ترین مطالب و اخبار دنیای گیمینگ
-                </p>
+                <div class="loading">
+                    در حال بارگذاری اخبار...
+                </div>
 
             </div>
 
         </div>
 
-
-        <div
-            class="articles-grid"
-            id="articlesContainer"
-        ></div>
-
     </section>
-
-
-
-    <!-- =========================
-         DISCOVER
-    ========================= -->
-
-    <section
-        class="section"
-        id="discover"
-    >
-
-        <div class="section-top">
-
-            <div>
-
-                <h2 class="section-title">
-                    بازی‌های موبایلی جدید
-                </h2>
-
-                <p class="section-description">
-                    چند بازی موبایلی که ارزش کشف کردن دارند
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="discover-grid"
-            id="discoverContainer"
-        ></div>
-
-    </section>
-
 
 
     <!-- =========================
          CTA
-    ========================= -->
+    ========================== -->
 
     <section class="section">
 
-        <div class="cta">
+        <div class="container">
 
-            <span class="cta-label">
-                دنیای گیمینگ تو
-            </span>
+            <div class="cta">
 
-            <h2>
-                فقط بازی‌هایی که واقعاً برایت مهم هستند.
-            </h2>
+                <h2>
+                    دنیای بازی‌ها رو از دست نده 🎮
+                </h2>
 
-            <p>
-                آپدیت‌ها، ایونت‌ها، اخبار و اتفاقات مهم
-                بازی‌های موبایلی مورد علاقه‌ات را بدون شلوغی دنبال کن.
-            </p>
+                <p>
+                    اخبار، اتفاقات و مقاله‌های بازی‌های موردعلاقه‌ات رو در GAMEHUB دنبال کن.
+                </p>
+
+            </div>
 
         </div>
 
     </section>
 
-
 </main>
 
 
+<!-- =========================
+     FOOTER
+========================== -->
 
-<footer class="footer">
+<footer>
 
     <div class="container footer-inner">
 
-        <span>
-            © ۲۰۲۶ گیم‌هاب
-        </span>
+        <div>
+            © 2026 GAMEHUB
+        </div>
 
-        <span>
+        <div>
             ساخته شده برای گیمرها 🎮
-        </span>
+        </div>
 
     </div>
 
 </footer>
 
 
-
 <script>
 
-    const JSON_PATH = "./json/";
+    /* =====================================================
+       CONFIG
+    ====================================================== */
+
+    const PATHS = {
+        games: "./json/games.json",
+        news: "./json/news.json",
+        events: "./json/events.json",
+        articles: "./json/articles.json"
+    };
+
+
+    /* =====================================================
+       GLOBAL DATA
+    ====================================================== */
 
     let allGames = [];
     let allNews = [];
     let allEvents = [];
-    let allSlides = [];
-    let allDiscover = [];
     let allArticles = [];
 
-    let selectedGame = null;
+    let selectedGameId = null;
 
     let currentSlide = 0;
-    let sliderTimer = null;
+    let slideTimer = null;
 
 
-
-    /* =========================
+    /* =====================================================
        HELPERS
-    ========================= */
+    ====================================================== */
 
     function toArray(data, keys = []) {
 
@@ -1793,333 +1296,275 @@
             return data;
         }
 
-        if (data && typeof data === "object") {
+        for (const key of keys) {
 
-            for (const key of keys) {
-
-                if (Array.isArray(data[key])) {
-                    return data[key];
-                }
-
+            if (Array.isArray(data?.[key])) {
+                return data[key];
             }
-
         }
 
         return [];
     }
 
 
-    async function loadJSON(file, keys = []) {
+    async function loadJSON(path) {
 
-        const response = await fetch(
-            JSON_PATH + file,
-            {
-                cache: "no-store"
-            }
-        );
+        const response = await fetch(path, {
+            cache: "no-store"
+        });
 
         if (!response.ok) {
             throw new Error(
-                `خطا در دریافت ${file}`
+                `خطا در دریافت ${path} - ${response.status}`
             );
         }
 
-        const data = await response.json();
-
-        return toArray(data, keys);
+        return await response.json();
     }
 
 
     function escapeHTML(value) {
 
-        return String(value ?? "")
-            .replaceAll("&", "&amp;")
-            .replaceAll("<", "&lt;")
-            .replaceAll(">", "&gt;")
-            .replaceAll('"', "&quot;")
-            .replaceAll("'", "&#039;");
+        if (value === null || value === undefined) {
+            return "";
+        }
+
+        return String(value)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
     }
 
 
+    function normalizeId(value) {
 
-    /* =========================
-       INITIALIZE
-    ========================= */
-
-    async function initialize() {
-
-        try {
-
-            const [
-                slides,
-                games,
-                news,
-                events,
-                discover,
-                articles
-            ] = await Promise.all([
-
-                loadJSON(
-                    "slides.json",
-                    ["slides", "items"]
-                ),
-
-                loadJSON(
-                    "games.json",
-                    ["games", "items"]
-                ),
-
-                loadJSON(
-                    "news.json",
-                    ["news", "items"]
-                ),
-
-                loadJSON(
-                    "events.json",
-                    ["events", "items"]
-                ),
-
-                loadJSON(
-                    "discover.json",
-                    ["discover", "games", "items"]
-                ),
-
-                loadJSON(
-                    "articles.json",
-                    ["articles", "news", "items"]
-                )
-
-            ]);
-
-
-            allSlides = slides;
-            allGames = games;
-            allNews = news;
-            allEvents = events;
-            allDiscover = discover;
-            allArticles = articles;
-
-
-            renderSlides();
-            renderGames();
-            renderArticles();
-            renderDiscover();
-
-
-            /*
-                دیگر همه بازی‌ها وجود ندارد.
-                اولین بازی به صورت خودکار انتخاب می‌شود.
-            */
-
-            if (allGames.length) {
-
-                selectGame(
-                    allGames[0].id
-                );
-
-            }
-
-        }
-        catch (error) {
-
-            console.error(error);
-
-            const errorBox =
-                document.getElementById(
-                    "jsonError"
-                );
-
-            errorBox.style.display = "block";
-
-            errorBox.innerHTML = `
-                <strong>
-                    خطا در بارگذاری اطلاعات JSON
-                </strong>
-                <br>
-                ${escapeHTML(error.message)}
-                <br><br>
-                اگر فایل HTML را مستقیماً با
-                <b>file://</b>
-                باز کرده‌ای، پروژه را با Local Server اجرا کن.
-            `;
-
+        if (value === null || value === undefined) {
+            return "";
         }
 
+        return String(value);
     }
 
 
+    function getImage(item, fallback = "") {
 
-    /* =========================
-       SLIDER
-    ========================= */
+        return item?.image ||
+               item?.cover ||
+               item?.thumbnail ||
+               item?.icon ||
+               fallback;
+    }
+
+
+    function articleURL(id) {
+
+        return `article.html?id=${encodeURIComponent(id)}`;
+    }
+
+
+    /* =====================================================
+       MOBILE MENU
+    ====================================================== */
+
+    const menuBtn = document.getElementById("menuBtn");
+    const mainNav = document.getElementById("mainNav");
+
+    menuBtn.addEventListener("click", () => {
+
+        mainNav.classList.toggle("open");
+
+    });
+
+
+    document.querySelectorAll(".nav a").forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            mainNav.classList.remove("open");
+
+        });
+
+    });
+
+
+    /* =====================================================
+       HERO SLIDER
+       مستقیم از articles.json
+    ====================================================== */
 
     function renderSlides() {
 
         const container =
-            document.getElementById(
-                "slidesContainer"
-            );
+            document.getElementById("slidesContainer");
 
-        const dots =
-            document.getElementById(
-                "sliderDots"
-            );
-
-        container.innerHTML = "";
-        dots.innerHTML = "";
+        const controls =
+            document.getElementById("sliderControls");
 
 
-        if (!allSlides.length) {
+        /*
+            پنج مقاله اول برای اسلایدر استفاده می‌شوند.
+        */
+
+        const slides = allArticles.slice(0, 5);
+
+
+        if (!slides.length) {
+
+            container.innerHTML = `
+                <div class="empty">
+                    هنوز خبری برای نمایش وجود ندارد.
+                </div>
+            `;
+
+            controls.innerHTML = "";
+
             return;
         }
 
 
-        allSlides.forEach(
-            (slide, index) => {
+        container.innerHTML = slides.map((article, index) => {
 
-                const article =
-                    document.createElement(
-                        "article"
-                    );
+            const id =
+                normalizeId(article.id);
 
-                article.className =
-                    "slide" +
-                    (
-                        index === 0
-                            ? " active"
-                            : ""
-                    );
+            const image =
+                getImage(article, "");
 
 
-                article.innerHTML = `
+            return `
 
-                    <div
-                        class="slide-bg"
-                        style="
-                            background:
-                            ${slide.background ||
-                                "linear-gradient(110deg,#121212,#2E4192)"
-                            }
-                        "
-                    ></div>
+                <a
+                    class="slide ${index === 0 ? "active" : ""}"
+                    href="${articleURL(id)}"
+                    data-slide="${index}"
+                >
 
-                    <div class="slide-overlay"></div>
+                    <div class="slide-bg">
 
-                    <div class="slide-glow"></div>
+                        ${
+                            image
+                            ?
+                            `<img
+                                src="${escapeHTML(image)}"
+                                alt="${escapeHTML(article.title || "خبر")}"
+                            >`
+                            :
+                            ""
+                        }
 
-                    <div class="slide-art">
-                        ${escapeHTML(
-                            slide.art || "🎮"
-                        )}
                     </div>
+
 
                     <div class="slide-content">
 
-                        <span class="slide-tag">
-                            ${escapeHTML(
-                                slide.tag || "FEATURED"
-                            )}
+                        <span class="slide-category">
+                            ${escapeHTML(article.category || "خبر")}
                         </span>
 
-                        <h1>
-                            ${escapeHTML(
-                                slide.title || ""
-                            )}
+
+                        ${
+                            article.gameName
+                            ?
+                            `
+                            <div class="slide-game">
+                                ${escapeHTML(article.gameName)}
+                            </div>
+                            `
+                            :
+                            ""
+                        }
+
+
+                        <h1 class="slide-title">
+                            ${escapeHTML(article.title || "بدون عنوان")}
                         </h1>
 
+
                         <p class="slide-description">
-                            ${escapeHTML(
-                                slide.description || ""
-                            )}
+                            ${escapeHTML(article.description || "")}
                         </p>
+
 
                         <div class="slide-meta">
 
-                            <span>
-                                ${escapeHTML(
-                                    slide.readTime || ""
-                                )}
-                            </span>
+                            ${
+                                article.time
+                                ?
+                                `<span>🕒 ${escapeHTML(article.time)}</span>`
+                                :
+                                ""
+                            }
 
-                            <span>•</span>
-
-                            <span>
-                                ${escapeHTML(
-                                    slide.time || ""
-                                )}
-                            </span>
+                            ${
+                                article.readTime
+                                ?
+                                `<span>📖 ${escapeHTML(article.readTime)}</span>`
+                                :
+                                ""
+                            }
 
                         </div>
 
-                        <a
-                            href="${escapeHTML(
-                                slide.url || "#"
-                            )}"
-                            class="read-button"
-                        >
-                            ${escapeHTML(
-                                slide.buttonText ||
-                                "مطالعه مطلب ←"
-                            )}
-                        </a>
+
+                        <span class="slide-button">
+                            ادامه خبر ←
+                        </span>
 
                     </div>
-                `;
+
+                </a>
+
+            `;
+
+        }).join("");
 
 
-                container.appendChild(article);
+        controls.innerHTML = slides.map((_, index) => {
+
+            return `
+                <button
+                    class="slider-dot ${index === 0 ? "active" : ""}"
+                    data-index="${index}"
+                    aria-label="اسلاید ${index + 1}"
+                ></button>
+            `;
+
+        }).join("");
 
 
-                const dot =
-                    document.createElement(
-                        "button"
-                    );
+        controls.querySelectorAll(".slider-dot").forEach(dot => {
 
-                dot.className =
-                    "slider-dot" +
-                    (
-                        index === 0
-                            ? " active"
-                            : ""
-                    );
+            dot.addEventListener("click", event => {
 
+                event.preventDefault();
+                event.stopPropagation();
 
-                dot.setAttribute(
-                    "aria-label",
-                    `اسلاید ${index + 1}`
-                );
+                const index =
+                    Number(dot.dataset.index);
 
+                showSlide(index);
+                startSlider();
 
-                dot.addEventListener(
-                    "click",
-                    () => goToSlide(index)
-                );
+            });
 
-
-                dots.appendChild(dot);
-
-            }
-        );
+        });
 
 
         currentSlide = 0;
 
         startSlider();
-
     }
 
 
-    function goToSlide(index) {
+    function showSlide(index) {
 
         const slides =
-            document.querySelectorAll(
-                ".slide"
-            );
+            document.querySelectorAll(".slide");
 
         const dots =
-            document.querySelectorAll(
-                ".slider-dot"
-            );
+            document.querySelectorAll(".slider-dot");
 
 
         if (!slides.length) {
@@ -2127,138 +1572,195 @@
         }
 
 
-        currentSlide =
-            (index + slides.length) %
-            slides.length;
+        if (index >= slides.length) {
+            index = 0;
+        }
+
+        if (index < 0) {
+            index = slides.length - 1;
+        }
 
 
-        slides.forEach(
-            (slide, i) => {
+        slides.forEach((slide, i) => {
 
-                slide.classList.toggle(
-                    "active",
-                    i === currentSlide
-                );
+            slide.classList.toggle(
+                "active",
+                i === index
+            );
 
-            }
-        );
+        });
 
 
-        dots.forEach(
-            (dot, i) => {
+        dots.forEach((dot, i) => {
 
-                dot.classList.toggle(
-                    "active",
-                    i === currentSlide
-                );
+            dot.classList.toggle(
+                "active",
+                i === index
+            );
 
-            }
-        );
+        });
 
+
+        currentSlide = index;
     }
 
 
     function startSlider() {
 
-        clearInterval(sliderTimer);
+        clearInterval(slideTimer);
 
-        if (allSlides.length <= 1) {
+
+        const slides =
+            document.querySelectorAll(".slide");
+
+
+        if (slides.length <= 1) {
             return;
         }
 
-        sliderTimer =
-            setInterval(
-                () => {
 
-                    goToSlide(
-                        currentSlide + 1
-                    );
+        slideTimer = setInterval(() => {
 
-                },
-                5000
-            );
+            showSlide(currentSlide + 1);
 
+        }, 6000);
     }
 
 
-
-    /* =========================
+    /* =====================================================
        GAMES
-    ========================= */
+    ====================================================== */
 
     function renderGames() {
 
-        const container =
-            document.getElementById(
-                "gamesContainer"
-            );
-
-        container.innerHTML = "";
+        const selector =
+            document.getElementById("gameSelector");
 
 
-        allGames.forEach(
-            game => {
+        if (!allGames.length) {
 
-                const button =
-                    document.createElement(
-                        "button"
-                    );
+            selector.innerHTML = `
+                <div class="empty">
+                    بازی‌ای پیدا نشد.
+                </div>
+            `;
 
-
-                button.className =
-                    "game" +
-                    (
-                        selectedGame === game.id
-                            ? " active"
-                            : ""
-                    );
+            return;
+        }
 
 
-                button.dataset.game =
-                    game.id;
+        selector.innerHTML = allGames.map((game, index) => {
+
+            const id =
+                normalizeId(game.id);
 
 
-                button.innerHTML = `
-
-                    <span class="game-icon">
-
-                        ${escapeHTML(
-                            game.icon || "🎮"
-                        )}
-
-                    </span>
-
-                    ${escapeHTML(
-                        game.name
-                    )}
-
-                `;
+            const icon =
+                getImage(game, "");
 
 
-                button.addEventListener(
-                    "click",
-                    () => selectGame(game.id)
-                );
+            return `
+
+                <button
+                    class="game-item ${index === 0 ? "active" : ""}"
+                    data-game-id="${escapeHTML(id)}"
+                    type="button"
+                >
+
+                    <div class="game-item-top">
+
+                        ${
+                            icon
+                            ?
+                            `
+                            <img
+                                class="game-icon"
+                                src="${escapeHTML(icon)}"
+                                alt="${escapeHTML(game.name || "بازی")}"
+                            >
+                            `
+                            :
+                            `
+                            <div class="game-icon"></div>
+                            `
+                        }
 
 
-                container.appendChild(button);
+                        <div>
 
-            }
-        );
+                            <div class="game-name">
+                                ${escapeHTML(game.name || "بدون نام")}
+                            </div>
 
+                            ${
+                                game.genre
+                                ?
+                                `
+                                <div class="game-genre">
+                                    ${escapeHTML(game.genre)}
+                                </div>
+                                `
+                                :
+                                ""
+                            }
+
+                        </div>
+
+                    </div>
+
+                </button>
+
+            `;
+
+        }).join("");
+
+
+        selector
+            .querySelectorAll(".game-item")
+            .forEach(button => {
+
+                button.addEventListener("click", () => {
+
+                    selectedGameId =
+                        button.dataset.gameId;
+
+
+                    selector
+                        .querySelectorAll(".game-item")
+                        .forEach(item => {
+
+                            item.classList.toggle(
+                                "active",
+                                item === button
+                            );
+
+                        });
+
+
+                    renderSelectedGame();
+
+                });
+
+            });
+
+
+        selectedGameId =
+            normalizeId(allGames[0].id);
+
+        renderSelectedGame();
     }
 
 
+    /* =====================================================
+       SELECTED GAME
+    ====================================================== */
 
-    /* =========================
-       SELECT GAME
-    ========================= */
-
-    function selectGame(gameId) {
+    function renderSelectedGame() {
 
         const game =
             allGames.find(
-                item => item.id === gameId
+                item =>
+                    normalizeId(item.id) === selectedGameId
             );
 
 
@@ -2267,143 +1769,189 @@
         }
 
 
-        selectedGame = gameId;
-
-
-        renderGames();
-
-        renderFeed();
-
         renderGameInfo(game);
+        renderGameFeed(game);
 
 
-        document.getElementById(
-            "selectedGameName"
-        ).textContent =
-            game.name;
+        const subtitle =
+            document.getElementById("feedSubtitle");
 
 
-        document.getElementById(
-            "feedDescription"
-        ).textContent =
-            `تازه‌ترین اخبار و اتفاقات ${game.name}`;
-
+        subtitle.textContent =
+            `آخرین اخبار و اتفاقات ${game.name || "این بازی"}`;
     }
 
 
-
-    /* =========================
-       GAME INFO
-    ========================= */
+    /* =====================================================
+       GAME INFO SIDEBAR
+    ====================================================== */
 
     function renderGameInfo(game) {
 
         const box =
-            document.getElementById(
-                "gameInfoBox"
-            );
+            document.getElementById("gameInfo");
+
+
+        const image =
+            game.image ||
+            game.cover ||
+            "";
+
+
+        const icon =
+            game.icon ||
+            game.image ||
+            "";
 
 
         box.innerHTML = `
 
-            <div class="game-info-cover">
-
-                ${game.image
-                    ? `
-                        <img
-                            src="${escapeHTML(game.image)}"
-                            alt="${escapeHTML(game.name)}"
-                        >
-                      `
-                    : escapeHTML(
-                        game.icon || "🎮"
-                    )
-                }
-
-            </div>
+            ${
+                image
+                ?
+                `
+                <img
+                    class="game-info-cover"
+                    src="${escapeHTML(image)}"
+                    alt="${escapeHTML(game.name || "بازی")}"
+                >
+                `
+                :
+                ""
+            }
 
 
-            <div class="game-info-name">
+            ${
+                icon
+                ?
+                `
+                <img
+                    class="game-info-icon"
+                    src="${escapeHTML(icon)}"
+                    alt=""
+                >
+                `
+                :
+                ""
+            }
 
-                ${escapeHTML(
-                    game.name
-                )}
 
-            </div>
+            <h3>
+                ${escapeHTML(game.name || "بدون نام")}
+            </h3>
 
 
-            <div class="game-info-description">
-
+            <p>
                 ${escapeHTML(
                     game.description ||
-                    "اطلاعاتی برای این بازی ثبت نشده."
+                    "اطلاعاتی برای این بازی ثبت نشده است."
                 )}
+            </p>
 
-            </div>
 
-
-            <div class="game-info-meta">
+            <div class="game-tags">
 
                 ${
                     game.genre
-                        ? `
-                            <span>
-                                ${escapeHTML(game.genre)}
-                            </span>
-                          `
-                        : ""
+                    ?
+                    `<span class="game-tag">
+                        🎮 ${escapeHTML(game.genre)}
+                    </span>`
+                    :
+                    ""
                 }
+
 
                 ${
                     game.platform
-                        ? `
-                            <span>
-                                ${escapeHTML(game.platform)}
-                            </span>
-                          `
-                        : ""
+                    ?
+                    `<span class="game-tag">
+                        📱 ${escapeHTML(game.platform)}
+                    </span>`
+                    :
+                    ""
                 }
+
 
                 ${
                     game.status
-                        ? `
-                            <span>
-                                ${escapeHTML(game.status)}
-                            </span>
-                          `
-                        : ""
+                    ?
+                    `<span class="game-tag">
+                        ● ${escapeHTML(game.status)}
+                    </span>`
+                    :
+                    ""
                 }
 
             </div>
 
         `;
-
     }
 
 
+    /* =====================================================
+       NEWS + EVENTS FEED
+    ====================================================== */
 
-    /* =========================
-       FEED
-       NEWS + EVENTS
-       MATCH SELECTED GAME
-    ========================= */
+    function renderGameFeed(game) {
 
-    function renderFeed() {
-
-        const container =
-            document.getElementById(
-                "feedList"
-            );
+        const feed =
+            document.getElementById("newsFeed");
 
 
-        container.innerHTML = "";
+        const gameId =
+            normalizeId(game.id);
 
 
-        if (!selectedGame) {
+        const newsItems =
+            allNews
+                .filter(item =>
+                    normalizeId(item.gameId) === gameId
+                )
+                .map(item => ({
+                    ...item,
+                    _type: "news"
+                }));
 
-            container.innerHTML = `
-                <div class="empty-state">
-                    یک بازی را انتخاب کن.
+
+        const eventItems =
+            allEvents
+                .filter(item =>
+                    normalizeId(item.gameId) === gameId
+                )
+                .map(item => ({
+                    ...item,
+                    _type: "event"
+                }));
+
+
+        const items =
+            [...newsItems, ...eventItems];
+
+
+        /*
+            اگر تاریخ داشته باشند،
+            جدیدترین‌ها بالاتر قرار می‌گیرند.
+        */
+
+        items.sort((a, b) => {
+
+            const dateA =
+                new Date(a.date || a.createdAt || 0).getTime();
+
+            const dateB =
+                new Date(b.date || b.createdAt || 0).getTime();
+
+            return dateB - dateA;
+        });
+
+
+        if (!items.length) {
+
+            feed.innerHTML = `
+                <div class="empty">
+                    برای «${escapeHTML(game.name || "")}»
+                    هنوز خبر یا اتفاقی ثبت نشده است.
                 </div>
             `;
 
@@ -2411,228 +1959,122 @@
         }
 
 
-        const news =
-            allNews.filter(
-                item =>
-                    item.gameId === selectedGame
-            );
+        feed.innerHTML = `
 
+            <div class="feed">
 
-        const events =
-            allEvents.filter(
-                item =>
-                    item.gameId === selectedGame
-            );
+                ${items.map(item => {
 
+                    const image =
+                        getImage(item, "");
 
-        const combined = [
-
-            ...news.map(
-                item => ({
-                    ...item,
-                    contentType: "news"
-                })
-            ),
-
-            ...events.map(
-                item => ({
-                    ...item,
-                    contentType: "event"
-                })
-            )
-
-        ];
-
-
-        combined.sort(
-            (a, b) =>
-                Number(b.order || 0) -
-                Number(a.order || 0)
-        );
-
-
-        if (!combined.length) {
-
-            const game =
-                allGames.find(
-                    item =>
-                        item.id === selectedGame
-                );
-
-
-            container.innerHTML = `
-
-                <div class="empty-state">
-
-                    برای
-                    <strong>
-                        ${escapeHTML(
-                            game?.name || ""
-                        )}
-                    </strong>
-
-                    هنوز خبر یا ایونتی ثبت نشده.
-
-                </div>
-
-            `;
-
-            return;
-        }
-
-
-        combined.forEach(
-            item => {
-
-                const article =
-                    document.createElement(
-                        "article"
-                    );
-
-
-                article.className =
-                    "story" +
-                    (
-                        item.contentType === "event"
-                            ? " event"
-                            : ""
-                    );
-
-
-                const imageHTML =
-                    item.image
-                        ? `
-                            <img
-                                src="${escapeHTML(item.image)}"
-                                alt="${escapeHTML(item.title || "")}"
-                            >
-                          `
-                        : escapeHTML(
-                            item.icon || "🎮"
+                    const target =
+                        item.articleId
+                        ? articleURL(item.articleId)
+                        : (
+                            item.url &&
+                            item.url !== "#"
+                            ? item.url
+                            : "#"
                         );
 
 
-                article.innerHTML = `
+                    return `
 
-                    <div class="story-image">
+                        <a
+                            href="${escapeHTML(target)}"
+                            class="feed-card ${item._type === "event" ? "event" : ""}"
+                        >
 
-                        ${imageHTML}
-
-                    </div>
-
-
-                    <div class="story-info">
-
-                        <span class="story-tag">
-
-                            ${escapeHTML(
-                                item.gameName || ""
-                            )}
-
-                            ·
-
-                            ${escapeHTML(
-                                item.category || ""
-                            )}
-
-                        </span>
+                            ${
+                                image
+                                ?
+                                `
+                                <img
+                                    class="feed-image"
+                                    src="${escapeHTML(image)}"
+                                    alt="${escapeHTML(item.title || "")}"
+                                >
+                                `
+                                :
+                                `
+                                <div class="feed-image"></div>
+                                `
+                            }
 
 
-                        <h3>
+                            <div>
 
-                            ${escapeHTML(
-                                item.title || ""
-                            )}
+                                <div class="feed-type">
 
-                        </h3>
+                                    ${
+                                        item._type === "event"
+                                        ? "📅 رویداد"
+                                        : "📰 خبر"
+                                    }
 
-
-                        <p>
-
-                            ${escapeHTML(
-                                item.description || ""
-                            )}
-
-                        </p>
+                                </div>
 
 
-                        <div class="story-bottom">
-
-                            <span>
-
-                                ${escapeHTML(
-                                    item.readTime || ""
-                                )}
-
-                            </span>
-
-                            <span>•</span>
-
-                            <span>
-
-                                ${escapeHTML(
-                                    item.time || ""
-                                )}
-
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                `;
+                                <h3 class="feed-title">
+                                    ${escapeHTML(item.title || "بدون عنوان")}
+                                </h3>
 
 
-                article.addEventListener(
-                    "click",
-                    () => {
-
-                        if (
-                            item.url &&
-                            item.url !== "#"
-                        ) {
-
-                            window.location.href =
-                                item.url;
-
-                        }
-
-                    }
-                );
+                                <p class="feed-description">
+                                    ${escapeHTML(item.description || "")}
+                                </p>
 
 
-                container.appendChild(
-                    article
-                );
+                                <div class="feed-meta">
 
-            }
-        );
+                                    ${
+                                        item.time
+                                        ?
+                                        `<span>🕒 ${escapeHTML(item.time)}</span>`
+                                        :
+                                        ""
+                                    }
 
+                                    ${
+                                        item.date
+                                        ?
+                                        `<span>📅 ${escapeHTML(item.date)}</span>`
+                                        :
+                                        ""
+                                    }
+
+                                </div>
+
+                            </div>
+
+                        </a>
+
+                    `;
+
+                }).join("")}
+
+            </div>
+
+        `;
     }
 
 
-
-    /* =========================
+    /* =====================================================
        ARTICLES
-       FROM articles.json
-    ========================= */
+    ====================================================== */
 
     function renderArticles() {
 
-        const container =
-            document.getElementById(
-                "articlesContainer"
-            );
-
-
-        container.innerHTML = "";
+        const grid =
+            document.getElementById("articlesGrid");
 
 
         if (!allArticles.length) {
 
-            container.innerHTML = `
-                <div class="empty-state">
-                    هنوز خبری ثبت نشده.
+            grid.innerHTML = `
+                <div class="empty">
+                    هنوز مقاله‌ای منتشر نشده است.
                 </div>
             `;
 
@@ -2640,326 +2082,220 @@
         }
 
 
-        allArticles.forEach(
-            article => {
+        grid.innerHTML =
+            allArticles.map(article => {
 
-                const card =
-                    document.createElement(
-                        "article"
-                    );
+                const id =
+                    normalizeId(article.id);
 
 
-                card.className =
-                    "article-card";
+                const image =
+                    getImage(article, "");
 
 
-                const imageHTML =
-                    article.image
-                        ? `
-                            <img
-                                src="${escapeHTML(article.image)}"
-                                alt="${escapeHTML(article.title || "")}"
-                            >
-                          `
-                        : escapeHTML(
-                            article.icon || "📰"
-                        );
+                return `
 
+                    <a
+                        class="article-card"
+                        href="${articleURL(id)}"
+                    >
 
-                card.innerHTML = `
-
-                    <div class="article-image">
-
-                        ${imageHTML}
-
-                    </div>
-
-
-                    <div class="article-content">
-
-                        <span class="article-tag">
-
-                            ${escapeHTML(
-                                article.category || "خبر"
-                            )}
+                        <div class="article-image-wrapper">
 
                             ${
-                                article.gameName
-                                    ? " · " +
-                                      escapeHTML(article.gameName)
-                                    : ""
+                                image
+                                ?
+                                `
+                                <img
+                                    class="article-image"
+                                    src="${escapeHTML(image)}"
+                                    alt="${escapeHTML(article.title || "خبر")}"
+                                >
+                                `
+                                :
+                                ""
                             }
 
-                        </span>
 
-
-                        <h3>
-
-                            ${escapeHTML(
-                                article.title || ""
-                            )}
-
-                        </h3>
-
-
-                        <p>
-
-                            ${escapeHTML(
-                                article.description || ""
-                            )}
-
-                        </p>
-
-
-                        <div class="article-bottom">
-
-                            <span>
-
-                                ${escapeHTML(
-                                    article.time || ""
-                                )}
-
-                            </span>
-
-
-                            <span class="article-more">
-
-                                ادامه ←
-
-                            </span>
+                            ${
+                                article.category
+                                ?
+                                `
+                                <span class="article-category">
+                                    ${escapeHTML(article.category)}
+                                </span>
+                                `
+                                :
+                                ""
+                            }
 
                         </div>
 
-                    </div>
 
-                `;
+                        <div class="article-body">
 
-
-                card.addEventListener(
-                    "click",
-                    () => {
-
-                        window.location.href =
-                            `article.html?id=${encodeURIComponent(article.id)}`;
-
-                    }
-                );
-
-
-                container.appendChild(
-                    card
-                );
-
-            }
-        );
-
-    }
+                            ${
+                                article.gameName
+                                ?
+                                `
+                                <div class="article-game">
+                                    🎮 ${escapeHTML(article.gameName)}
+                                </div>
+                                `
+                                :
+                                ""
+                            }
 
 
-
-    /* =========================
-       DISCOVER
-    ========================= */
-
-    function renderDiscover() {
-
-        const container =
-            document.getElementById(
-                "discoverContainer"
-            );
+                            <h3 class="article-title">
+                                ${escapeHTML(article.title || "بدون عنوان")}
+                            </h3>
 
 
-        container.innerHTML = "";
+                            <p class="article-description">
+                                ${escapeHTML(article.description || "")}
+                            </p>
 
 
-        allDiscover.forEach(
-            game => {
+                            <div class="article-bottom">
 
-                const card =
-                    document.createElement(
-                        "article"
-                    );
+                                <div class="article-meta">
+
+                                    ${
+                                        article.time
+                                        ?
+                                        `<span>🕒 ${escapeHTML(article.time)}</span>`
+                                        :
+                                        ""
+                                    }
+
+                                    ${
+                                        article.date
+                                        ?
+                                        `<span>📅 ${escapeHTML(article.date)}</span>`
+                                        :
+                                        ""
+                                    }
+
+                                </div>
 
 
-                card.className =
-                    "discover-card";
-
-
-                card.innerHTML = `
-
-                    <div class="discover-emoji">
-
-                        ${escapeHTML(
-                            game.icon || "🎮"
-                        )}
-
-                    </div>
-
-
-                    ${
-                        game.rank
-                            ? `
-                                <span class="discover-rank">
-
-                                    #${escapeHTML(
-                                        game.rank
-                                    )}
-
+                                <span class="article-read">
+                                    ادامه ←
                                 </span>
-                              `
-                            : ""
-                    }
 
+                            </div>
 
-                    <strong class="discover-game">
+                        </div>
 
-                        ${escapeHTML(
-                            game.name
-                        )}
-
-                    </strong>
-
-
-                    <span class="discover-type">
-
-                        ${escapeHTML(
-                            game.type ||
-                            "Mobile Game"
-                        )}
-
-                    </span>
-
-
-                    <span class="discover-followers">
-
-                        ${escapeHTML(
-                            game.followers || ""
-                        )}
-
-                    </span>
-
-
-                    <button class="follow">
-
-                        + دنبال کردن
-
-                    </button>
+                    </a>
 
                 `;
 
-
-                const button =
-                    card.querySelector(
-                        ".follow"
-                    );
+            }).join("");
+    }
 
 
-                button.addEventListener(
-                    "click",
-                    event => {
+    /* =====================================================
+       LOAD EVERYTHING
+    ====================================================== */
 
-                        event.stopPropagation();
+    async function init() {
+
+        try {
+
+            const [
+                gamesData,
+                newsData,
+                eventsData,
+                articlesData
+            ] = await Promise.all([
+
+                loadJSON(PATHS.games),
+
+                loadJSON(PATHS.news),
+
+                loadJSON(PATHS.events),
+
+                loadJSON(PATHS.articles)
+
+            ]);
 
 
-                        const following =
-                            button.classList.toggle(
-                                "following"
-                            );
-
-
-                        button.textContent =
-                            following
-                                ? "✓ دنبال می‌کنی"
-                                : "+ دنبال کردن";
-
-                    }
+            allGames =
+                toArray(
+                    gamesData,
+                    ["games", "data"]
                 );
 
 
-                container.appendChild(
-                    card
+            allNews =
+                toArray(
+                    newsData,
+                    ["news", "data"]
                 );
 
-            }
-        );
+
+            allEvents =
+                toArray(
+                    eventsData,
+                    ["events", "data"]
+                );
+
+
+            allArticles =
+                toArray(
+                    articlesData,
+                    ["articles", "data"]
+                );
+
+
+            /*
+                اسلایدر از همین articles.json می‌آید.
+            */
+
+            renderSlides();
+
+            renderGames();
+
+            renderArticles();
+
+
+        } catch (error) {
+
+            console.error(error);
+
+
+            document.getElementById("gameSelector").innerHTML = `
+                <div class="error-box">
+                    خطا در بارگذاری اطلاعات بازی‌ها.
+                </div>
+            `;
+
+
+            document.getElementById("newsFeed").innerHTML = `
+                <div class="error-box">
+                    خطا در بارگذاری اخبار و اتفاقات.
+                </div>
+            `;
+
+
+            document.getElementById("articlesGrid").innerHTML = `
+                <div class="error-box">
+                    خطا در بارگذاری مقاله‌ها.
+                </div>
+            `;
+
+        }
 
     }
 
 
+    /* =====================================================
+       START
+    ====================================================== */
 
-    /* =========================
-       MOBILE MENU
-    ========================= */
-
-    document
-        .getElementById("mobileMenu")
-        .addEventListener(
-            "click",
-            () => {
-
-                const nav =
-                    document.querySelector(
-                        ".nav"
-                    );
-
-
-                if (
-                    nav.style.display ===
-                    "flex"
-                ) {
-
-                    nav.style.display =
-                        "none";
-
-                    return;
-
-                }
-
-
-                nav.style.display =
-                    "flex";
-
-                nav.style.position =
-                    "absolute";
-
-                nav.style.top =
-                    "68px";
-
-                nav.style.left =
-                    "13px";
-
-                nav.style.right =
-                    "13px";
-
-                nav.style.padding =
-                    "18px";
-
-                nav.style.flexDirection =
-                    "column";
-
-                nav.style.alignItems =
-                    "stretch";
-
-                nav.style.gap =
-                    "16px";
-
-                nav.style.border =
-                    "1px solid rgba(255,255,255,.08)";
-
-                nav.style.borderRadius =
-                    "16px";
-
-                nav.style.background =
-                    "rgba(30,30,30,.97)";
-
-                nav.style.backdropFilter =
-                    "blur(20px)";
-
-            }
-        );
-
-
-    initialize();
+    init();
 
 </script>
 
