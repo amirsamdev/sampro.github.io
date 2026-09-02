@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>GAMEHUB — خبر</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
+        rel="stylesheet"
+        type="text/css"
+    >
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --blue-dark: #2E4192;
+            --blue: #4E6FF8;
+            --blue-soft: #9aabff;
+
+            --text: #ffffff;
+            --text-soft: rgba(255,255,255,.72);
+            --text-muted: rgba(255,255,255,.48);
+
+            --border: rgba(255,255,255,.09);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+
+                radial-gradient(
+                    circle at 15% 5%,
+                    rgba(78,111,248,.18),
+                    transparent 30%
+                ),
+
+                linear-gradient(
+                    180deg,
+                    #222222 0%,
+                    #292929 40%,
+                    #2E4192 130%
+                );
+
+            color: var(--text);
+
+            font-family:
+                "Vazirmatn",
+                Tahoma,
+                Arial,
+                sans-serif;
+
+            line-height: 1.9;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width:
+                min(
+                    920px,
+                    calc(100% - 36px)
+                );
+
+            margin: auto;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+
+            height: 78px;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 50;
+
+            border-bottom:
+                1px solid var(--border);
+
+            background:
+                rgba(30,30,30,.78);
+
+            backdrop-filter:
+                blur(20px);
+        }
+
+        .header-inner {
+
+            height: 100%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 11px;
+
+            font-size: 17px;
+
+            font-weight: 900;
+        }
+
+        .logo-mark {
+
+            width: 40px;
+            height: 40px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--blue-dark),
+                    var(--blue)
+                );
+
+            box-shadow:
+                0 8px 30px
+                rgba(78,111,248,.25);
+        }
+
+        .back {
+
+            color:
+                var(--blue-soft);
+
+            font-size: 12px;
+
+            font-weight: 800;
+        }
+
+
+        /* =========================
+           ARTICLE
+        ========================= */
+
+        .article {
+
+            margin-top: 40px;
+
+            padding-bottom: 80px;
+        }
+
+        .article-card {
+
+            overflow: hidden;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 28px;
+
+            background:
+                rgba(255,255,255,.045);
+
+            box-shadow:
+                0 30px 100px
+                rgba(0,0,0,.18);
+        }
+
+        .hero-image {
+
+            width: 100%;
+
+            height:
+                clamp(
+                    260px,
+                    45vw,
+                    500px
+                );
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #282828,
+                    #303b78,
+                    #4e6ff8
+                );
+
+            font-size: 120px;
+        }
+
+        .hero-image img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+        .article-content {
+
+            padding:
+                clamp(
+                    25px,
+                    5vw,
+                    55px
+                );
+        }
+
+        .article-tag {
+
+            display: inline-flex;
+
+            padding:
+                6px 11px;
+
+            border-radius: 8px;
+
+            background:
+                rgba(78,111,248,.16);
+
+            color:
+                var(--blue-soft);
+
+            font-size: 10px;
+
+            font-weight: 900;
+        }
+
+        .article-title {
+
+            margin-top: 15px;
+
+            font-size:
+                clamp(
+                    30px,
+                    5vw,
+                    54px
+                );
+
+            line-height: 1.45;
+
+            font-weight: 900;
+        }
+
+        .article-description {
+
+            max-width: 760px;
+
+            margin-top: 16px;
+
+            color:
+                var(--text-soft);
+
+            font-size: 15px;
+
+            line-height: 2;
+        }
+
+        .article-meta {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+
+            margin-top: 20px;
+
+            color:
+                var(--text-muted);
+
+            font-size: 10px;
+        }
+
+        .article-body {
+
+            margin-top: 40px;
+
+            padding-top: 30px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,.07);
+        }
+
+        .article-body p {
+
+            margin-top: 22px;
+
+            color:
+                rgba(255,255,255,.72);
+
+            font-size: 15px;
+
+            line-height: 2.25;
+        }
+
+        .article-body p:first-child {
+            margin-top: 0;
+        }
+
+        .article-footer {
+
+            margin-top: 45px;
+
+            padding-top: 25px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,.07);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 15px;
+        }
+
+        .back-button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding:
+                11px 16px;
+
+            border-radius: 11px;
+
+            background:
+                white;
+
+            color:
+                #30469c;
+
+            font-size: 11px;
+
+            font-weight: 900;
+        }
+
+        .error {
+
+            margin-top: 40px;
+
+            padding: 35px;
+
+            border:
+                1px solid
+                rgba(255,80,80,.25);
+
+            border-radius: 20px;
+
+            background:
+                rgba(255,60,60,.08);
+
+            color:
+                #ffb0b0;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 650px) {
+
+            .container {
+
+                width:
+                    calc(100% - 26px);
+            }
+
+            .header {
+
+                height: 68px;
+            }
+
+            .article {
+
+                margin-top: 17px;
+            }
+
+            .article-card {
+
+                border-radius: 20px;
+            }
+
+            .article-title {
+
+                font-size: 29px;
+            }
+
+            .article-description {
+
+                font-size: 12px;
+            }
+
+            .article-body p {
+
+                font-size: 13px;
+
+                line-height: 2.15;
+            }
+
+            .article-footer {
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+                text-align: center;
+            }
+
+            .back-button {
+
+                justify-content: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <div class="container header-inner">
+
+        <a
+            href="index.html"
+            class="logo"
+        >
+
+            <span class="logo-mark">
+                🎮
+            </span>
+
+            گیم‌هاب
+
+        </a>
+
+
+        <a
+            href="index.html"
+            class="back"
+        >
+            ← برگشت به گیم‌هاب
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<main class="container article">
+
+    <div id="articleContainer"></div>
+
+</main>
+
+
+
+<script>
+
+    const JSON_PATH = "./json/";
+
+
+
+    function escapeHTML(value) {
+
+        return String(value ?? "")
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
+
+    }
+
+
+
+    async function loadArticle() {
+
+        const container =
+            document.getElementById(
+                "articleContainer"
+            );
+
+
+        try {
+
+            const params =
+                new URLSearchParams(
+                    window.location.search
+                );
+
+
+            const id =
+                params.get("id");
+
+
+            if (!id) {
+
+                throw new Error(
+                    "شناسه خبر مشخص نشده است."
+                );
+
+            }
+
+
+            const response =
+                await fetch(
+                    JSON_PATH +
+                    "articles.json",
+                    {
+                        cache: "no-store"
+                    }
+                );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "فایل articles.json پیدا نشد."
+                );
+
+            }
+
+
+            const data =
+                await response.json();
+
+
+            const articles =
+                Array.isArray(data)
+                    ? data
+                    : (
+                        data.articles ||
+                        data.news ||
+                        data.items ||
+                        []
+                    );
+
+
+            const article =
+                articles.find(
+                    item =>
+                        String(item.id) ===
+                        String(id)
+                );
+
+
+            if (!article) {
+
+                throw new Error(
+                    "این خبر در articles.json پیدا نشد."
+                );
+
+            }
+
+
+            document.title =
+                `GAMEHUB — ${article.title}`;
+
+
+            const imageHTML =
+                article.image
+                    ? `
+                        <img
+                            src="${escapeHTML(article.image)}"
+                            alt="${escapeHTML(article.title)}"
+                        >
+                      `
+                    : escapeHTML(
+                        article.icon || "📰"
+                    );
+
+
+            const paragraphs =
+                Array.isArray(
+                    article.content
+                )
+                    ? article.content
+                    : [
+                        article.content ||
+                        article.description ||
+                        ""
+                    ];
+
+
+            const bodyHTML =
+                paragraphs
+                    .map(
+                        paragraph => `
+                            <p>
+                                ${escapeHTML(
+                                    paragraph
+                                )}
+                            </p>
+                        `
+                    )
+                    .join("");
+
+
+            container.innerHTML = `
+
+                <article class="article-card">
+
+
+                    <div class="hero-image">
+
+                        ${imageHTML}
+
+                    </div>
+
+
+                    <div class="article-content">
+
+
+                        <span class="article-tag">
+
+                            ${escapeHTML(
+                                article.category ||
+                                "خبر"
+                            )}
+
+                            ${
+                                article.gameName
+                                    ? " · " +
+                                      escapeHTML(
+                                          article.gameName
+                                      )
+                                    : ""
+                            }
+
+                        </span>
+
+
+                        <h1 class="article-title">
+
+                            ${escapeHTML(
+                                article.title
+                            )}
+
+                        </h1>
+
+
+                        <p class="article-description">
+
+                            ${escapeHTML(
+                                article.description ||
+                                ""
+                            )}
+
+                        </p>
+
+
+                        <div class="article-meta">
+
+                            ${
+                                article.author
+                                    ? `
+                                        <span>
+                                            نویسنده:
+                                            ${escapeHTML(
+                                                article.author
+                                            )}
+                                        </span>
+                                      `
+                                    : ""
+                            }
+
+
+                            ${
+                                article.date
+                                    ? `
+                                        <span>
+                                            ${escapeHTML(
+                                                article.date
+                                            )}
+                                        </span>
+                                      `
+                                    : ""
+                            }
+
+
+                            ${
+                                article.time
+                                    ? `
+                                        <span>
+                                            ${escapeHTML(
+                                                article.time
+                                            )}
+                                        </span>
+                                      `
+                                    : ""
+                            }
+
+
+                            ${
+                                article.readTime
+                                    ? `
+                                        <span>
+                                            ${escapeHTML(
+                                                article.readTime
+                                            )}
+                                        </span>
+                                      `
+                                    : ""
+                            }
+
+                        </div>
+
+
+                        <div class="article-body">
+
+                            ${bodyHTML}
+
+                        </div>
+
+
+                        <div class="article-footer">
+
+                            <span>
+                                GAMEHUB 🎮
+                            </span>
+
+
+                            <a
+                                href="index.html#news"
+                                class="back-button"
+                            >
+                                ← برگشت به اخبار
+                            </a>
+
+                        </div>
+
+
+                    </div>
+
+                </article>
+
+            `;
+
+        }
+        catch (error) {
+
+            console.error(error);
+
+
+            container.innerHTML = `
+
+                <div class="error">
+
+                    <h2>
+                        خبر پیدا نشد!
+                    </h2>
+
+                    <p>
+                        ${escapeHTML(
+                            error.message
+                        )}
+                    </p>
+
+                    <br>
+
+                    <a
+                        href="index.html"
+                        class="back-button"
+                    >
+                        برگشت به صفحه اصلی
+                    </a>
+
+                </div>
+
+            `;
+
+        }
+
+    }
+
+
+    loadArticle();
+
+</script>
+
+
+</body>
+</html>
