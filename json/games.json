@@ -26,19 +26,5 @@
         "icon": "🟢",
         "trending": true,
         "followers": "۱.۵M دنبال‌کننده"
-    },
-    {
-        "id": "elden-ring",
-        "name": "Elden Ring",
-        "icon": "🟡",
-        "trending": true,
-        "followers": "۹۸۰K دنبال‌کننده"
-    },
-    {
-        "id": "fifa",
-        "name": "FC",
-        "icon": "⚽",
-        "trending": false,
-        "followers": "۷۲۰K دنبال‌کننده"
     }
 ]
