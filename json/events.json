@@ -13,6 +13,20 @@
         "today": true,
         "order": 96,
         "url": "#"
+    }, {
+        "id": "event-1",
+        "gameId": "fortnite",
+        "gameName": "Fortnite",
+        "category": "EVENT",
+        "title": "Fortnite Live Event",
+        "description": "یک رویداد ویژه در Fortnite برگزار می‌شود.",
+        "icon": "🔥",
+        "readTime": "۲ دقیقه",
+        "time": "امروز",
+        "eventTime": "۱۸:۰۰",
+        "today": true,
+        "order": 96,
+        "url": "#"
     },
     {
         "id": "event-2",
