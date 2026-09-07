@@ -1,6 +1,19 @@
 {
 "news": [
 {
+  "id": 1,
+"gameId": "codm",
+"gameName": "Call of Duty Mobile",
+"category": "آپدیت",
+"title": "آپدیت بزرگ فصل جدید منتشر شد",
+"description": "فصل جدید با نقشه، سلاح‌ها، تغییرات گیم‌پلی و محتوای تازه برای بازیکنان منتشر شد.",
+"image": "./assets/news/codm.jpg",
+"icon": "🔫",
+"readTime": "۴ دقیقه مطالعه",
+"time": "۲ ساعت پیش",
+"order": 100,
+"url": "./news/codm-season.html"
+},
 "id": 1,
 "gameId": "codm",
 "gameName": "Call of Duty Mobile",
