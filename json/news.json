@@ -56,20 +56,7 @@
 "order": 97,
 "url": "./news/brawlstars-update.html"
 },
-{
-"id": 5,
-"gameId": "minecraft",
-"gameName": "Minecraft",
-"category": "خبر",
-"title": "محتوای تازه Minecraft Mobile معرفی شد",
-"description": "محتوای جدید نسخه موبایل معرفی شده و بازیکنان می‌توانند منتظر تجربه‌ای متفاوت باشند.",
-"image": "./assets/news/minecraft.jpg",
-"icon": "⛏️",
-"readTime": "۴ دقیقه مطالعه",
-"time": "دیروز",
-"order": 96,
-"url": "./news/minecraft-mobile.html"
-},
+
 {
 "id": 6,
 "gameId": "genshin",
