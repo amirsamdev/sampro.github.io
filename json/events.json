@@ -72,5 +72,20 @@
         "today": true,
         "order": 93,
         "url": "#"
+    },
+        {
+        "id": "event-4",
+        "gameId": "pubg",
+        "gameName": "pubg",
+        "category": "ONLINE",
+        "title": "رویداد هفتگی pubg Online",
+        "description": "رویداد هفتگی GTA Online با مأموریت‌ها و پاداش‌های جدید.",
+        "icon": "🚘",
+        "readTime": "۳ دقیقه",
+        "time": "امروز",
+        "eventTime": "۲۱:۰۰",
+        "today": true,
+        "order": 93,
+        "url": "#"
     }
 ]
