@@ -12,16 +12,15 @@
 
     <style>
         :root {
-            --bg: #222222;
+            --bg: #222;
             --bg-soft: #2b2b2b;
-            --blue-dark: #2E4192;
-            --blue: #4E6FF8;
+            --blue: #4e6ff8;
+            --blue-dark: #2e4192;
             --blue-soft: #9aabff;
-            --white: #ffffff;
-            --text: #eeeeee;
+            --white: #fff;
+            --text: #eee;
             --muted: #a5a5a5;
             --border: rgba(255,255,255,.08);
-            --card: #2b2b2b;
             --radius: 20px;
         }
 
@@ -33,9 +32,10 @@
         }
 
         html {
-            scroll-behavior: smooth;
             width: 100%;
+            min-height: 100%;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -44,12 +44,11 @@
             overflow-x: hidden;
             font-family: "Vazirmatn", sans-serif;
             background: linear-gradient(
-                to bottom,
-                #222222 0%,
-                #2b2b2b 35%,
-                #2E4192 100%
+                180deg,
+                #222 0%,
+                #2b2b2b 38%,
+                #2e4192 100%
             );
-            background-attachment: fixed;
             color: var(--text);
             line-height: 1.8;
         }
@@ -64,8 +63,8 @@
         }
 
         img {
-            max-width: 100%;
             display: block;
+            max-width: 100%;
         }
 
         .container {
@@ -81,10 +80,10 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(34,34,34,.94);
+            background: rgba(34,34,34,.96);
+            border-bottom: 1px solid var(--border);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
-            border-bottom: 1px solid var(--border);
         }
 
         .header-inner {
@@ -92,13 +91,13 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 25px;
+            gap: 20px;
         }
 
         .logo {
+            color: #fff;
             font-size: 25px;
             font-weight: 800;
-            color: var(--white);
             white-space: nowrap;
         }
 
@@ -126,57 +125,57 @@
 
         .mobile-menu {
             display: none;
-            border: 1px solid var(--border);
-            background: var(--bg-soft);
-            color: white;
             width: 42px;
             height: 42px;
+            border: 1px solid var(--border);
             border-radius: 12px;
-            cursor: pointer;
+            background: #2b2b2b;
+            color: white;
             font-size: 20px;
+            cursor: pointer;
         }
 
         /* =========================
-           HERO SLIDER
+           HERO
         ========================= */
 
         .hero {
-            margin-top: 28px;
+            margin-top: 25px;
         }
+
+        /*
+            نکته اصلی:
+            اسلایدها با flex + translate3d حرکت می‌کنند.
+            دیگر absolute/opacity برای جابه‌جایی استفاده نشده.
+            این روش روی Android و Portrait پایدارتر است.
+        */
 
         .slider {
             position: relative;
             width: 100%;
-            min-height: 390px;
-            height: clamp(360px, 42vw, 500px);
+            height: 500px;
             overflow: hidden;
-            border-radius: 26px;
+            border-radius: 25px;
             border: 1px solid var(--border);
-            background: #2b2b2b;
-            isolation: isolate;
+            background: #222;
             touch-action: pan-y;
+            user-select: none;
+            -webkit-user-select: none;
         }
-
-        /*
-            مهم:
-            اسلایدها دیگر absolute نیستند.
-            با transform جابه‌جا می‌شوند تا روی
-            Android و حالت Portrait پایدار باشند.
-        */
 
         .slides {
-            position: relative;
             width: 100%;
             height: 100%;
-            min-height: 100%;
             display: flex;
+            flex-direction: row;
             direction: ltr;
-            will-change: transform;
+            transform: translate3d(0,0,0);
             transition: transform .45s cubic-bezier(.22,.61,.36,1);
+            will-change: transform;
         }
 
-        .slides.dragging {
-            transition: none;
+        .slides.no-transition {
+            transition: none !important;
         }
 
         .slide {
@@ -187,17 +186,20 @@
             min-width: 100%;
             display: grid;
             grid-template-columns: 1.05fr 1fr;
-            overflow: hidden;
             direction: rtl;
-            user-select: none;
-            -webkit-user-select: none;
-            -webkit-touch-callout: none;
+            overflow: hidden;
+            cursor: grab;
+        }
+
+        .slide:active {
+            cursor: grabbing;
         }
 
         .slide-image {
+            width: 100%;
             height: 100%;
-            min-height: 390px;
             overflow: hidden;
+            background: #202020;
         }
 
         .slide-image img {
@@ -205,47 +207,49 @@
             height: 100%;
             object-fit: cover;
             pointer-events: none;
-            user-select: none;
+            -webkit-user-drag: none;
         }
 
         .slide-content {
             min-width: 0;
+            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             padding: 38px;
             background: linear-gradient(
                 135deg,
-                #222222,
+                #222,
                 #2b2b2b 55%,
-                #2E4192
+                #2e4192
             );
         }
 
         .slide-category {
             width: fit-content;
-            background: rgba(78,111,248,.18);
-            color: var(--blue-soft);
-            border: 1px solid rgba(78,111,248,.35);
+            margin-bottom: 15px;
             padding: 5px 12px;
             border-radius: 999px;
+            color: var(--blue-soft);
+            background: rgba(78,111,248,.18);
+            border: 1px solid rgba(78,111,248,.35);
             font-size: 12px;
-            margin-bottom: 15px;
         }
 
         .slide-content h1 {
-            font-size: clamp(24px, 3vw, 38px);
-            line-height: 1.4;
-            margin-bottom: 13px;
             color: white;
+            font-size: clamp(23px,3vw,38px);
+            line-height: 1.45;
+            margin-bottom: 13px;
             overflow-wrap: anywhere;
         }
 
         .slide-content p {
-            color: #c3c3c3;
-            font-size: 14px;
             max-width: 560px;
             margin-bottom: 18px;
+            color: #c3c3c3;
+            font-size: 14px;
+            line-height: 2;
             overflow-wrap: anywhere;
         }
 
@@ -253,28 +257,30 @@
             display: flex;
             flex-wrap: wrap;
             gap: 8px 15px;
+            margin-bottom: 20px;
             color: var(--muted);
             font-size: 12px;
-            margin-bottom: 20px;
         }
 
         .continue-btn {
             width: fit-content;
-            background: var(--blue);
-            color: white;
             padding: 9px 18px;
             border-radius: 12px;
+            background: var(--blue);
+            color: white;
             font-size: 13px;
             font-weight: 600;
         }
 
         .slider-controls {
             position: absolute;
-            left: 25px;
-            bottom: 18px;
-            display: flex;
-            gap: 7px;
             z-index: 20;
+            bottom: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 7px;
             direction: ltr;
         }
 
@@ -284,7 +290,7 @@
             padding: 0;
             border: 0;
             border-radius: 50%;
-            background: rgba(255,255,255,.35);
+            background: rgba(255,255,255,.4);
             cursor: pointer;
             transition: .2s ease;
         }
@@ -296,7 +302,7 @@
         }
 
         /* =========================
-           SECTIONS
+           SECTION
         ========================= */
 
         section {
@@ -312,8 +318,8 @@
         }
 
         .section-heading h2 {
-            font-size: 22px;
             color: white;
+            font-size: 22px;
         }
 
         .section-heading p {
@@ -329,27 +335,26 @@
             display: grid;
             grid-template-columns: 280px minmax(0,1fr);
             gap: 18px;
-            align-items: stretch;
         }
 
         .games-panel {
             min-width: 0;
-            background: linear-gradient(
-                160deg,
-                #222222,
-                #2b2b2b 45%,
-                #2E4192
-            );
+            padding: 18px;
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 18px;
+            background: linear-gradient(
+                160deg,
+                #222,
+                #2b2b2b 45%,
+                #2e4192
+            );
         }
 
         .games-panel-title {
-            font-size: 15px;
-            font-weight: 700;
             margin-bottom: 14px;
             color: white;
+            font-size: 15px;
+            font-weight: 700;
         }
 
         .games-list {
@@ -363,23 +368,17 @@
             align-items: center;
             gap: 10px;
             width: 100%;
-            min-width: 0;
             border: 1px solid transparent;
+            border-radius: 14px;
+            padding: 10px;
             background: rgba(255,255,255,.04);
             color: #d7d7d7;
-            padding: 10px;
-            border-radius: 14px;
             cursor: pointer;
             text-align: right;
-            transition: .2s ease;
         }
 
-        .game-item:hover,
         .game-item.active {
             background: rgba(78,111,248,.18);
-        }
-
-        .game-item.active {
             border-color: rgba(78,111,248,.45);
             color: white;
         }
@@ -387,30 +386,31 @@
         .game-icon {
             width: 38px;
             height: 38px;
+            flex: 0 0 38px;
             border-radius: 11px;
             object-fit: cover;
-            flex-shrink: 0;
             background: #202020;
         }
 
         .game-item-name {
-            font-size: 12px;
-            font-weight: 600;
+            min-width: 0;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            font-size: 12px;
+            font-weight: 600;
         }
 
         .news-panel {
             min-width: 0;
+            padding: 18px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
             background: linear-gradient(
                 145deg,
                 #2b2b2b,
-                #2E4192
+                #2e4192
             );
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 18px;
         }
 
         .news-panel-head {
@@ -439,11 +439,11 @@
         }
 
         .feed-card {
-            background: rgba(34,34,34,.72);
+            min-width: 0;
+            padding: 14px;
             border: 1px solid rgba(255,255,255,.07);
             border-radius: 15px;
-            padding: 14px;
-            min-width: 0;
+            background: rgba(34,34,34,.72);
         }
 
         .feed-card.event {
@@ -459,11 +459,11 @@
         }
 
         .feed-type {
-            font-size: 10px;
-            color: var(--blue-soft);
-            background: rgba(78,111,248,.12);
             padding: 3px 8px;
             border-radius: 999px;
+            color: var(--blue-soft);
+            background: rgba(78,111,248,.12);
+            font-size: 10px;
         }
 
         .feed-card.event .feed-type {
@@ -477,23 +477,23 @@
         }
 
         .feed-card h4 {
+            margin-bottom: 6px;
+            color: white;
             font-size: 13px;
             line-height: 1.7;
-            color: white;
-            margin-bottom: 6px;
         }
 
         .feed-card p {
-            font-size: 11px;
             color: #aaa;
+            font-size: 11px;
             line-height: 1.8;
         }
 
         .empty {
             padding: 30px 15px;
-            text-align: center;
             color: var(--muted);
             font-size: 13px;
+            text-align: center;
         }
 
         /* =========================
@@ -508,13 +508,13 @@
 
         .article-card {
             overflow: hidden;
-            background: linear-gradient(
-                145deg,
-                #222222,
-                #2b2b2b
-            );
             border: 1px solid var(--border);
             border-radius: var(--radius);
+            background: linear-gradient(
+                145deg,
+                #222,
+                #2b2b2b
+            );
         }
 
         .article-image {
@@ -535,8 +535,8 @@
 
         .article-meta-top {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
             gap: 8px;
             margin-bottom: 9px;
         }
@@ -552,17 +552,17 @@
         }
 
         .article-body h3 {
+            margin-bottom: 8px;
             color: white;
             font-size: 15px;
             line-height: 1.7;
-            margin-bottom: 8px;
         }
 
         .article-body p {
+            margin-bottom: 12px;
             color: #a9a9a9;
             font-size: 11px;
             line-height: 1.9;
-            margin-bottom: 12px;
         }
 
         .article-footer {
@@ -592,8 +592,8 @@
 
         .footer-inner {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
             gap: 20px;
         }
 
@@ -613,14 +613,20 @@
 
         @media (max-width: 950px) {
 
+            .slider {
+                height: 450px;
+            }
+
             .game-news-layout {
                 grid-template-columns: 1fr;
             }
 
             .games-list {
                 flex-direction: row;
+                width: 100%;
                 overflow-x: auto;
-                padding-bottom: 6px;
+                overflow-y: hidden;
+                padding-bottom: 5px;
                 scrollbar-width: none;
                 -webkit-overflow-scrolling: touch;
                 touch-action: pan-x;
@@ -657,25 +663,21 @@
         }
 
         /* =========================
-           MOBILE PORTRAIT
+           MOBILE
         ========================= */
 
         @media (max-width: 650px) {
-
-            body {
-                background-attachment: scroll;
-            }
 
             .container {
                 width: calc(100% - 20px);
             }
 
-            header {
-                position: sticky;
-            }
-
             .header-inner {
                 min-height: 64px;
+            }
+
+            .mobile-menu {
+                display: block;
             }
 
             nav {
@@ -688,85 +690,63 @@
                 align-items: stretch;
                 gap: 0;
                 padding: 8px;
-                background: #252525;
                 border: 1px solid var(--border);
                 border-radius: 15px;
+                background: #252525;
             }
 
             nav a {
                 padding: 10px 12px;
             }
 
-            .mobile-menu {
-                display: block;
-            }
-
             .hero {
                 margin-top: 14px;
             }
+
+            /*
+                ارتفاع ثابت و مطمئن برای Portrait
+            */
 
             .slider {
                 height: 470px;
                 min-height: 470px;
                 border-radius: 20px;
-                touch-action: pan-y;
             }
 
             .slides {
-                height: 100%;
-                min-height: 100%;
+                height: 470px;
             }
 
             .slide {
-                height: 100%;
-                min-height: 100%;
+                height: 470px;
+                min-height: 470px;
+                display: block;
             }
 
             .slide-content {
+                width: 100%;
                 height: 100%;
                 min-height: 470px;
-                padding: 24px 20px 55px;
+                padding: 25px 20px 55px;
                 justify-content: center;
-                overflow-y: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-
-            .slide-category {
-                font-size: 11px;
-                margin-bottom: 12px;
+                overflow: hidden;
             }
 
             .slide-content h1 {
-                font-size: 24px;
-                line-height: 1.55;
-                margin-bottom: 12px;
+                font-size: 23px;
             }
 
             .slide-content p {
                 font-size: 12px;
                 line-height: 2;
-                margin-bottom: 14px;
             }
 
             .slide-meta {
                 font-size: 10px;
-                margin-bottom: 15px;
-            }
-
-            .continue-btn {
-                font-size: 12px;
-                padding: 8px 15px;
             }
 
             .slider-controls {
-                left: 50%;
-                right: auto;
-                transform: translateX(-50%);
                 bottom: 14px;
-            }
-
-            .section-heading {
-                margin-bottom: 14px;
             }
 
             .section-heading h2 {
@@ -784,7 +764,7 @@
             }
 
             .game-item {
-                flex-basis: 155px;
+                flex: 0 0 155px;
                 width: 155px;
             }
 
@@ -806,33 +786,18 @@
             }
         }
 
-        /* =========================
-           VERY SMALL PHONES
-        ========================= */
-
         @media (max-width: 380px) {
 
-            .slider {
+            .slider,
+            .slides,
+            .slide,
+            .slide-content {
                 height: 450px;
                 min-height: 450px;
             }
 
-            .slide-content {
-                min-height: 450px;
-                padding: 20px 17px 50px;
-            }
-
             .slide-content h1 {
                 font-size: 21px;
-            }
-
-            .slide-content p {
-                font-size: 11px;
-            }
-
-            .game-item {
-                flex-basis: 145px;
-                width: 145px;
             }
         }
     </style>
@@ -858,7 +823,6 @@
             id="mobileMenu"
             type="button"
             aria-label="منو"
-            aria-expanded="false"
         >
             ☰
         </button>
@@ -869,13 +833,11 @@
 
 <main class="container">
 
-    <!-- HERO -->
     <section class="hero">
 
         <div
             class="slider"
             id="heroSlider"
-            aria-label="اسلایدر اخبار"
         >
 
             <div
@@ -893,7 +855,6 @@
     </section>
 
 
-    <!-- GAMES + NEWS -->
     <section id="games-news">
 
         <div class="section-heading">
@@ -959,7 +920,6 @@
     </section>
 
 
-    <!-- ARTICLES -->
     <section id="articles">
 
         <div class="section-heading">
@@ -970,7 +930,6 @@
             </div>
 
         </div>
-
 
         <div
             class="articles-grid"
@@ -1006,7 +965,7 @@
 <script>
 
     /* =========================
-       PATHS
+       JSON PATHS
     ========================= */
 
     const PATHS = {
@@ -1028,16 +987,16 @@
 
     let selectedGameId = null;
 
-    let allSlides = [];
     let currentSlide = 0;
-    let slideTimer = null;
+    let allSlides = [];
 
-    let sliderStartX = 0;
-    let sliderStartY = 0;
-    let sliderCurrentX = 0;
-    let sliderDragging = false;
-    let sliderMoved = false;
+    let autoplayTimer = null;
 
+    let startX = 0;
+    let startY = 0;
+    let currentX = 0;
+    let isDragging = false;
+    let horizontalSwipe = false;
     let sliderWidth = 0;
 
 
@@ -1061,17 +1020,20 @@
 
     async function loadJSON(path) {
 
-        const response = await fetch(path, {
-            cache: "no-store"
-        });
+        const response = await fetch(
+            path,
+            {
+                cache: "no-store"
+            }
+        );
 
         if (!response.ok) {
             throw new Error(
-                `خطا در دریافت فایل: ${path}`
+                "خطا در دریافت: " + path
             );
         }
 
-        return await response.json();
+        return response.json();
     }
 
 
@@ -1087,25 +1049,32 @@
 
 
     /* =========================
-       HERO SLIDER
-       Android + Touch + Portrait
+       SLIDER
     ========================= */
 
     function renderSlides() {
 
-        const slidesEl =
+        const slides =
             document.getElementById("slides");
 
-        const controlsEl =
+        const controls =
             document.getElementById("sliderControls");
 
-        if (!slidesEl || !controlsEl) {
+        if (!slides || !controls) {
             return;
         }
 
-        if (!allArticles.length) {
 
-            slidesEl.innerHTML = `
+        allSlides =
+            allArticles.slice(0, 5);
+
+
+        currentSlide = 0;
+
+
+        if (!allSlides.length) {
+
+            slides.innerHTML = `
                 <div class="slide">
                     <div class="slide-content">
                         <div class="empty">
@@ -1115,20 +1084,14 @@
                 </div>
             `;
 
-            controlsEl.innerHTML = "";
+            controls.innerHTML = "";
 
             return;
         }
 
 
-        allSlides =
-            allArticles.slice(0, 5);
-
-        currentSlide = 0;
-
-
-        slidesEl.innerHTML =
-            allSlides.map((article) => {
+        slides.innerHTML =
+            allSlides.map(article => {
 
                 return `
                     <a
@@ -1147,7 +1110,6 @@
                             >
 
                         </div>
-
 
                         <div class="slide-content">
 
@@ -1191,14 +1153,16 @@
             }).join("");
 
 
-        controlsEl.innerHTML =
+        controls.innerHTML =
             allSlides.map((_, index) => {
 
                 return `
                     <button
-                        class="slider-dot ${index === 0 ? "active" : ""}"
                         type="button"
-                        data-slide="${index}"
+                        class="slider-dot ${
+                            index === 0 ? "active" : ""
+                        }"
+                        data-index="${index}"
                         aria-label="اسلاید ${index + 1}"
                     ></button>
                 `;
@@ -1206,31 +1170,40 @@
             }).join("");
 
 
-        controlsEl
+        controls
             .querySelectorAll(".slider-dot")
             .forEach(dot => {
 
-                dot.addEventListener("click", function(event) {
+                dot.addEventListener(
+                    "click",
+                    function(event) {
 
-                    event.preventDefault();
-                    event.stopPropagation();
+                        event.preventDefault();
+                        event.stopPropagation();
 
-                    const index =
-                        Number(this.dataset.slide);
+                        goToSlide(
+                            Number(this.dataset.index)
+                        );
 
-                    goToSlide(index, true);
-                });
+                    }
+                );
 
             });
 
 
-        updateSliderSize();
-        updateSliderPosition(false);
-        startSlider();
+        requestAnimationFrame(() => {
+
+            updateSliderWidth();
+            moveSlider(false);
+
+        });
+
+
+        startAutoplay();
     }
 
 
-    function updateSliderSize() {
+    function updateSliderWidth() {
 
         const slider =
             document.getElementById("heroSlider");
@@ -1244,38 +1217,31 @@
     }
 
 
-    function updateSliderPosition(animate = true) {
+    function moveSlider(animate = true) {
 
-        const slidesEl =
+        const slides =
             document.getElementById("slides");
 
-        if (!slidesEl) {
+        if (!slides) {
             return;
         }
 
-        if (!animate) {
-            slidesEl.style.transition = "none";
-        } else {
-            slidesEl.style.transition =
-                "transform .45s cubic-bezier(.22,.61,.36,1)";
-        }
+
+        slides.classList.toggle(
+            "no-transition",
+            !animate
+        );
+
 
         /*
-            LTR transform برای اسلایدها.
-            خود محتوا RTL باقی می‌ماند.
+            فقط همین transform اسلاید را عوض می‌کند.
+            هر اسلاید 100% عرض دارد.
         */
 
-        slidesEl.style.transform =
-            `translate3d(${-currentSlide * 100}%, 0, 0)`;
-
-        requestAnimationFrame(() => {
-
-            if (!sliderDragging) {
-                slidesEl.style.transition =
-                    "transform .45s cubic-bezier(.22,.61,.36,1)";
-            }
-
-        });
+        slides.style.transform =
+            "translate3d(" +
+            (-currentSlide * 100) +
+            "%, 0, 0)";
 
 
         const dots =
@@ -1289,268 +1255,368 @@
             );
 
         });
+
+
+        if (!animate) {
+
+            requestAnimationFrame(() => {
+
+                slides.classList.remove(
+                    "no-transition"
+                );
+
+            });
+
+        }
     }
 
 
-    function goToSlide(index, restart = false) {
+    function goToSlide(index) {
 
         if (!allSlides.length) {
             return;
         }
 
-        const total =
+        currentSlide =
+            (index + allSlides.length) %
             allSlides.length;
 
-        currentSlide =
-            ((index % total) + total) % total;
+        moveSlider(true);
 
-        updateSliderPosition(true);
-
-        if (restart) {
-            startSlider();
-        }
+        startAutoplay();
     }
 
 
     function nextSlide() {
 
-        if (!allSlides.length) {
-            return;
-        }
-
-        goToSlide(currentSlide + 1);
+        goToSlide(
+            currentSlide + 1
+        );
     }
 
 
     function previousSlide() {
 
-        if (!allSlides.length) {
-            return;
-        }
-
-        goToSlide(currentSlide - 1);
+        goToSlide(
+            currentSlide - 1
+        );
     }
 
 
-    function startSlider() {
+    function startAutoplay() {
 
-        clearInterval(slideTimer);
+        clearInterval(autoplayTimer);
 
         if (allSlides.length <= 1) {
             return;
         }
 
-        slideTimer =
-            setInterval(nextSlide, 5000);
+        autoplayTimer =
+            setInterval(
+                nextSlide,
+                5000
+            );
     }
 
 
-    function stopSlider() {
+    function stopAutoplay() {
 
-        clearInterval(slideTimer);
+        clearInterval(
+            autoplayTimer
+        );
     }
 
 
-    /*
-        Touch slider:
-        - Android
-        - iPhone
-        - Portrait
-        - Landscape
-        - راست به چپ برای اسلاید بعدی
-        - چپ به راست برای اسلاید قبلی
-    */
+    /* =========================
+       ANDROID / TOUCH SLIDER
+       استفاده از Pointer Events
+       به جای touchmove قدیمی
+    ========================= */
 
-    function enableHeroTouch() {
+    function setupSliderTouch() {
 
         const slider =
             document.getElementById("heroSlider");
 
-        const slidesEl =
+        const slides =
             document.getElementById("slides");
 
-        if (!slider || !slidesEl) {
+        if (!slider || !slides) {
             return;
         }
 
 
+        /*
+            Pointer Events روی Android Chrome
+            و اکثر مرورگرهای موبایل کار می‌کند.
+        */
+
         slider.addEventListener(
-            "touchstart",
+            "pointerdown",
             function(event) {
 
-                if (!event.touches || !event.touches.length) {
+                /*
+                    فقط لمس/قلم/ماوس.
+                */
+
+                if (
+                    event.pointerType !== "touch" &&
+                    event.pointerType !== "pen" &&
+                    event.pointerType !== "mouse"
+                ) {
                     return;
                 }
 
-                stopSlider();
 
-                updateSliderSize();
+                updateSliderWidth();
 
-                sliderDragging = true;
-                sliderMoved = false;
+                stopAutoplay();
 
-                sliderStartX =
-                    event.touches[0].clientX;
+                startX =
+                    event.clientX;
 
-                sliderStartY =
-                    event.touches[0].clientY;
+                startY =
+                    event.clientY;
 
-                sliderCurrentX =
-                    sliderStartX;
+                currentX =
+                    event.clientX;
 
-                slidesEl.classList.add("dragging");
+                isDragging = true;
+                horizontalSwipe = false;
 
-            },
-            {
-                passive: true
+
+                slides.classList.add(
+                    "no-transition"
+                );
+
+
+                /*
+                    باعث می‌شود همان pointer
+                    تا پایان حرکت به همین عنصر متصل بماند.
+                */
+
+                try {
+                    slider.setPointerCapture(
+                        event.pointerId
+                    );
+                } catch (e) {}
+
             }
         );
 
 
         slider.addEventListener(
-            "touchmove",
+            "pointermove",
             function(event) {
 
-                if (!sliderDragging) {
+                if (!isDragging) {
                     return;
                 }
 
-                if (!event.touches || !event.touches.length) {
-                    return;
-                }
 
-                sliderCurrentX =
-                    event.touches[0].clientX;
+                currentX =
+                    event.clientX;
 
-                const currentY =
-                    event.touches[0].clientY;
 
                 const deltaX =
-                    sliderCurrentX - sliderStartX;
+                    currentX - startX;
 
                 const deltaY =
-                    currentY - sliderStartY;
+                    event.clientY - startY;
 
 
                 /*
-                    اگر حرکت عمودی باشد،
-                    اسکرول صفحه مختل نمی‌شود.
+                    تشخیص جهت حرکت
                 */
 
-                if (
-                    !sliderMoved &&
-                    Math.abs(deltaY) > Math.abs(deltaX) &&
-                    Math.abs(deltaY) > 8
-                ) {
-                    sliderDragging = false;
-                    slidesEl.classList.remove("dragging");
-                    startSlider();
-                    return;
+                if (!horizontalSwipe) {
+
+                    if (
+                        Math.abs(deltaX) < 8 &&
+                        Math.abs(deltaY) < 8
+                    ) {
+                        return;
+                    }
+
+
+                    /*
+                        حرکت عمودی:
+                        اسلایدر دخالت نمی‌کند.
+                    */
+
+                    if (
+                        Math.abs(deltaY) >
+                        Math.abs(deltaX)
+                    ) {
+
+                        isDragging = false;
+
+                        slides.classList.remove(
+                            "no-transition"
+                        );
+
+                        moveSlider(true);
+                        startAutoplay();
+
+                        return;
+                    }
+
+
+                    horizontalSwipe = true;
                 }
 
 
-                if (Math.abs(deltaX) < 5) {
+                if (!horizontalSwipe) {
                     return;
                 }
 
-                sliderMoved = true;
 
                 /*
-                    جلوگیری از پرش اسلاید در Android
+                    جلوگیری از اینکه حرکت زیاد شود.
+                */
+
+                let dragX =
+                    deltaX;
+
+                const resistance = 0.85;
+
+                dragX *= resistance;
+
+
+                /*
+                    مقدار فعلی اسلاید
+                    + مقدار کشیدن انگشت
                 */
 
                 const base =
                     -(currentSlide * sliderWidth);
 
-                const resistance =
-                    deltaX * 0.85;
 
-                slidesEl.style.transform =
-                    `translate3d(${base + resistance}px, 0, 0)`;
-
-            },
-            {
-                passive: true
+                slides.style.transform =
+                    "translate3d(" +
+                    (base + dragX) +
+                    "px, 0, 0)";
             }
         );
 
 
-        slider.addEventListener(
-            "touchend",
-            function() {
+        function finishSwipe(event) {
 
-                if (!sliderDragging) {
-                    return;
+            if (!isDragging) {
+                return;
+            }
+
+
+            isDragging = false;
+
+
+            const deltaX =
+                currentX - startX;
+
+
+            slides.classList.remove(
+                "no-transition"
+            );
+
+
+            /*
+                اگر swipe افقی معتبر باشد.
+            */
+
+            if (
+                horizontalSwipe &&
+                Math.abs(deltaX) >
+                Math.max(
+                    45,
+                    sliderWidth * 0.12
+                )
+            ) {
+
+                /*
+                    راست به چپ = اسلاید بعدی
+                */
+
+                if (deltaX < 0) {
+                    currentSlide++;
                 }
 
-                sliderDragging = false;
+                /*
+                    چپ به راست = اسلاید قبلی
+                */
 
-                slidesEl.classList.remove("dragging");
+                else {
+                    currentSlide--;
+                }
 
-                const deltaX =
-                    sliderCurrentX - sliderStartX;
 
-                const threshold =
-                    Math.max(
-                        45,
-                        Math.min(100, sliderWidth * 0.15)
+                currentSlide =
+                    (
+                        currentSlide +
+                        allSlides.length
+                    ) %
+                    allSlides.length;
+
+            }
+
+
+            /*
+                همیشه بعد از لمس،
+                اسلایدر دقیقاً روی اسلاید قرار می‌گیرد.
+            */
+
+            moveSlider(true);
+
+            startAutoplay();
+
+
+            try {
+
+                slider.releasePointerCapture(
+                    event.pointerId
+                );
+
+            } catch (e) {}
+
+
+            horizontalSwipe = false;
+        }
+
+
+        slider.addEventListener(
+            "pointerup",
+            finishSwipe
+        );
+
+
+        slider.addEventListener(
+            "pointercancel",
+            finishSwipe
+        );
+
+
+        slider.addEventListener(
+            "lostpointercapture",
+            function() {
+
+                if (isDragging) {
+
+                    isDragging = false;
+
+                    slides.classList.remove(
+                        "no-transition"
                     );
 
-
-                if (
-                    sliderMoved &&
-                    Math.abs(deltaX) >= threshold
-                ) {
-
-                    /*
-                        Swipe راست به چپ:
-                        deltaX منفی
-                        => اسلاید بعدی
-                    */
-
-                    if (deltaX < 0) {
-                        nextSlide();
-                    } else {
-                        previousSlide();
-                    }
-
-                } else {
-
-                    updateSliderPosition(true);
-                    startSlider();
+                    moveSlider(true);
+                    startAutoplay();
 
                 }
 
-                sliderMoved = false;
-
-            },
-            {
-                passive: true
-            }
-        );
-
-
-        slider.addEventListener(
-            "touchcancel",
-            function() {
-
-                sliderDragging = false;
-                sliderMoved = false;
-
-                slidesEl.classList.remove("dragging");
-
-                updateSliderPosition(true);
-                startSlider();
-
-            },
-            {
-                passive: true
             }
         );
 
 
         /*
-            جلوگیری از drag پیش‌فرض تصویر
+            جلوگیری از drag تصویر
         */
 
         slider.addEventListener(
@@ -1562,56 +1628,85 @@
 
 
         /*
-            وقتی کاربر ماوس/تاچ را روی اسلایدر نگه می‌دارد
-            autoplay موقتاً متوقف می‌شود.
+            دسکتاپ
         */
 
         slider.addEventListener(
             "mouseenter",
-            stopSlider
+            function() {
+                stopAutoplay();
+            }
         );
+
 
         slider.addEventListener(
             "mouseleave",
-            startSlider
+            function() {
+
+                if (!isDragging) {
+                    startAutoplay();
+                }
+
+            }
         );
     }
 
 
     /* =========================
-       RESIZE
+       RESIZE / ORIENTATION
     ========================= */
 
-    function handleResize() {
+    function refreshSlider() {
 
-        updateSliderSize();
-        updateSliderPosition(false);
+        setTimeout(() => {
+
+            updateSliderWidth();
+            moveSlider(false);
+
+        }, 100);
     }
 
 
     window.addEventListener(
         "resize",
-        handleResize,
-        {
-            passive: true
-        }
+        refreshSlider
     );
 
 
     window.addEventListener(
         "orientationchange",
+        refreshSlider
+    );
+
+
+    window.addEventListener(
+        "pageshow",
         function() {
 
-            setTimeout(() => {
+            refreshSlider();
+            startAutoplay();
 
-                updateSliderSize();
-                updateSliderPosition(false);
+        }
+    );
 
-            }, 250);
 
-        },
-        {
-            passive: true
+    document.addEventListener(
+        "visibilitychange",
+        function() {
+
+            if (
+                document.visibilityState === "visible"
+            ) {
+
+                refreshSlider();
+                startAutoplay();
+
+            } else {
+
+                stopAutoplay();
+
+            }
+
         }
     );
 
@@ -1629,6 +1724,7 @@
             return;
         }
 
+
         if (!allGames.length) {
 
             gamesList.innerHTML = `
@@ -1644,24 +1740,27 @@
         gamesList.innerHTML =
             allGames.map(game => {
 
-                const gameId =
+                const id =
                     String(game.id ?? "");
 
-                const gameName =
+                const name =
                     String(game.name ?? "");
 
                 const image =
-                    game.icon || game.image || "";
+                    game.icon ||
+                    game.image ||
+                    "";
+
 
                 return `
                     <button
                         type="button"
                         class="game-item ${
-                            gameId === String(selectedGameId)
+                            id === String(selectedGameId)
                                 ? "active"
                                 : ""
                         }"
-                        data-game-id="${escapeHTML(gameId)}"
+                        data-game-id="${escapeHTML(id)}"
                     >
 
                         ${
@@ -1670,9 +1769,8 @@
                                     <img
                                         class="game-icon"
                                         src="${escapeHTML(image)}"
-                                        alt="${escapeHTML(gameName)}"
+                                        alt="${escapeHTML(name)}"
                                         loading="lazy"
-                                        onerror="this.style.display='none'"
                                     >
                                 `
                                 : `
@@ -1681,7 +1779,7 @@
                         }
 
                         <span class="game-item-name">
-                            ${escapeHTML(gameName)}
+                            ${escapeHTML(name)}
                         </span>
 
                     </button>
@@ -1709,10 +1807,10 @@
     }
 
 
-    function selectGame(gameId) {
+    function selectGame(id) {
 
         selectedGameId =
-            String(gameId);
+            String(id);
 
         renderGames();
         renderGameFeed();
@@ -1725,15 +1823,13 @@
 
     function renderGameFeed() {
 
-        const feedEl =
+        const feed =
             document.getElementById("feed");
 
-        const labelEl =
-            document.getElementById("selectedGameLabel");
-
-        if (!feedEl || !labelEl) {
-            return;
-        }
+        const label =
+            document.getElementById(
+                "selectedGameLabel"
+            );
 
 
         const selectedGame =
@@ -1744,7 +1840,7 @@
             );
 
 
-        labelEl.textContent =
+        label.textContent =
             selectedGame
                 ? selectedGame.name
                 : "-";
@@ -1752,7 +1848,7 @@
 
         if (!selectedGame) {
 
-            feedEl.innerHTML = `
+            feed.innerHTML = `
                 <div class="empty">
                     بازی انتخاب نشده است.
                 </div>
@@ -1790,15 +1886,15 @@
                 }));
 
 
-        const feed = [
+        const result = [
             ...events,
             ...news
         ];
 
 
-        if (!feed.length) {
+        if (!result.length) {
 
-            feedEl.innerHTML = `
+            feed.innerHTML = `
                 <div class="empty">
                     برای ${escapeHTML(selectedGame.name)}
                     هنوز خبر یا اتفاقی ثبت نشده است.
@@ -1809,13 +1905,15 @@
         }
 
 
-        feedEl.innerHTML =
-            feed.map(item => {
+        feed.innerHTML =
+            result.map(item => {
 
                 return `
                     <article
                         class="feed-card ${
-                            item.isEvent ? "event" : ""
+                            item.isEvent
+                                ? "event"
+                                : ""
                         }"
                     >
 
@@ -1860,16 +1958,15 @@
 
     function renderArticles() {
 
-        const articlesGrid =
-            document.getElementById("articlesGrid");
+        const grid =
+            document.getElementById(
+                "articlesGrid"
+            );
 
-        if (!articlesGrid) {
-            return;
-        }
 
         if (!allArticles.length) {
 
-            articlesGrid.innerHTML = `
+            grid.innerHTML = `
                 <div class="empty">
                     هنوز مقاله‌ای ثبت نشده است.
                 </div>
@@ -1879,7 +1976,7 @@
         }
 
 
-        articlesGrid.innerHTML =
+        grid.innerHTML =
             allArticles.map(article => {
 
                 return `
@@ -1894,11 +1991,9 @@
                                 src="${escapeHTML(article.image || "")}"
                                 alt="${escapeHTML(article.title || "")}"
                                 loading="lazy"
-                                onerror="this.style.display='none'"
                             >
 
                         </div>
-
 
                         <div class="article-body">
 
@@ -1914,16 +2009,13 @@
 
                             </div>
 
-
                             <h3>
                                 ${escapeHTML(article.title || "")}
                             </h3>
 
-
                             <p>
                                 ${escapeHTML(article.description || "")}
                             </p>
-
 
                             <div class="article-footer">
 
@@ -1953,30 +2045,35 @@
     function setupMobileMenu() {
 
         const button =
-            document.getElementById("mobileMenu");
+            document.getElementById(
+                "mobileMenu"
+            );
 
         const nav =
-            document.getElementById("mainNav");
-
-        if (!button || !nav) {
-            return;
-        }
+            document.getElementById(
+                "mainNav"
+            );
 
 
         button.addEventListener(
             "click",
             function() {
 
-                const isOpen =
+                const open =
                     nav.style.display === "flex";
 
-                nav.style.display =
-                    isOpen ? "none" : "flex";
 
-                button.setAttribute(
-                    "aria-expanded",
-                    String(!isOpen)
-                );
+                if (open) {
+
+                    nav.style.display =
+                        "none";
+
+                } else {
+
+                    nav.style.display =
+                        "flex";
+
+                }
 
             }
         );
@@ -1993,12 +2090,8 @@
                             window.innerWidth <= 650
                         ) {
 
-                            nav.style.display = "none";
-
-                            button.setAttribute(
-                                "aria-expanded",
-                                "false"
-                            );
+                            nav.style.display =
+                                "none";
 
                         }
 
@@ -2007,49 +2100,6 @@
 
             });
     }
-
-
-    /* =========================
-       PAGE VISIBILITY
-       برای برگشت از صفحه مقاله
-    ========================= */
-
-    document.addEventListener(
-        "visibilitychange",
-        function() {
-
-            if (
-                document.visibilityState === "visible"
-            ) {
-
-                updateSliderSize();
-                updateSliderPosition(false);
-                startSlider();
-
-            } else {
-
-                stopSlider();
-
-            }
-
-        }
-    );
-
-
-    window.addEventListener(
-        "pageshow",
-        function() {
-
-            setTimeout(() => {
-
-                updateSliderSize();
-                updateSliderPosition(false);
-                startSlider();
-
-            }, 100);
-
-        }
-    );
 
 
     /* =========================
@@ -2114,20 +2164,21 @@
             renderGameFeed();
             renderArticles();
 
-            enableHeroTouch();
+            setupSliderTouch();
             setupMobileMenu();
 
+
             /*
-                یک بار دیگر بعد از کامل شدن DOM
-                اندازه اسلایدر را محاسبه می‌کنیم.
+                برای اطمینان از درست شدن اندازه
+                در Portrait Android
             */
 
             setTimeout(() => {
 
-                updateSliderSize();
-                updateSliderPosition(false);
+                updateSliderWidth();
+                moveSlider(false);
 
-            }, 100);
+            }, 150);
 
 
         } catch (error) {
@@ -2135,47 +2186,31 @@
             console.error(error);
 
 
-            const gamesList =
-                document.getElementById("gamesList");
-
-            const feed =
-                document.getElementById("feed");
-
-            const articlesGrid =
-                document.getElementById("articlesGrid");
-
-
-            if (gamesList) {
-
-                gamesList.innerHTML = `
-                    <div class="empty">
-                        خطا در بارگذاری اطلاعات بازی‌ها.
-                    </div>
-                `;
-
-            }
+            document.getElementById(
+                "gamesList"
+            ).innerHTML = `
+                <div class="empty">
+                    خطا در بارگذاری اطلاعات بازی‌ها.
+                </div>
+            `;
 
 
-            if (feed) {
-
-                feed.innerHTML = `
-                    <div class="empty">
-                        خطا در بارگذاری اخبار و اتفاقات.
-                    </div>
-                `;
-
-            }
+            document.getElementById(
+                "feed"
+            ).innerHTML = `
+                <div class="empty">
+                    خطا در بارگذاری اخبار و اتفاقات.
+                </div>
+            `;
 
 
-            if (articlesGrid) {
-
-                articlesGrid.innerHTML = `
-                    <div class="empty">
-                        خطا در بارگذاری اخبار.
-                    </div>
-                `;
-
-            }
+            document.getElementById(
+                "articlesGrid"
+            ).innerHTML = `
+                <div class="empty">
+                    خطا در بارگذاری اخبار.
+                </div>
+            `;
 
         }
 
@@ -2183,10 +2218,13 @@
 
 
     /*
-        اجرای اصلی بعد از آماده شدن کامل صفحه
+        مهم:
+        فقط یک بار init اجرا می‌شود.
     */
 
-    if (document.readyState === "loading") {
+    if (
+        document.readyState === "loading"
+    ) {
 
         document.addEventListener(
             "DOMContentLoaded",
