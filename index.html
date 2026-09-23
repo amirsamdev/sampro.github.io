@@ -136,6 +136,7 @@
 
         /* =========================
            HERO SLIDER
+           SWIPE RIGHT TO LEFT
         ========================= */
 
         .hero {
@@ -149,6 +150,9 @@
             border-radius: 26px;
             border: 1px solid var(--border);
             background: #2b2b2b;
+            touch-action: pan-y;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         .slides {
@@ -191,6 +195,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            pointer-events: none;
         }
 
         .slide-content {
@@ -251,18 +256,16 @@
             transition: 0.2s ease;
         }
 
-        .continue-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .slider-controls {
+        .slider-indicator {
             position: absolute;
             bottom: 18px;
             right: 25px;
+            z-index: 20;
             display: flex;
+            align-items: center;
             gap: 7px;
-            z-index: 10;
             direction: ltr;
+            pointer-events: none;
         }
 
         .slider-dot {
@@ -271,8 +274,7 @@
             border: 0;
             border-radius: 50%;
             background: rgba(255,255,255,0.35);
-            cursor: pointer;
-            transition: 0.2s ease;
+            transition: 0.25s ease;
         }
 
         .slider-dot.active {
@@ -341,9 +343,8 @@
         }
 
         /*
-         * اسلایدر بازی‌ها
-         * direction: rtl باعث می‌شود حرکت و ترتیب اسلاید
-         * از سمت راست به چپ باشد.
+         * بازی‌ها با انگشت اسلاید می‌شوند.
+         * هیچ دکمه‌ای وجود ندارد.
          */
         .games-list-wrapper {
             position: relative;
@@ -360,21 +361,22 @@
             direction: rtl;
             scroll-behavior: smooth;
             scroll-snap-type: x mandatory;
-            scrollbar-width: thin;
-            scrollbar-color: rgba(78,111,248,0.55) transparent;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            touch-action: pan-x;
+            cursor: grab;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         .games-list::-webkit-scrollbar {
-            height: 5px;
+            display: none;
         }
 
-        .games-list::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .games-list::-webkit-scrollbar-thumb {
-            background: rgba(78,111,248,0.55);
-            border-radius: 20px;
+        .games-list.dragging {
+            cursor: grabbing;
+            scroll-behavior: auto;
+            scroll-snap-type: none;
         }
 
         .game-item {
@@ -424,37 +426,6 @@
             white-space: nowrap;
         }
 
-        .games-slider-buttons {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 10px;
-            gap: 8px;
-        }
-
-        .games-slider-buttons button {
-            width: 34px;
-            height: 34px;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            background: rgba(255,255,255,0.05);
-            color: white;
-            cursor: pointer;
-            transition: 0.2s ease;
-        }
-
-        .games-slider-buttons button:hover {
-            background: var(--blue);
-            border-color: var(--blue);
-        }
-
-        .games-slider-hint {
-            color: var(--muted);
-            font-size: 10px;
-            text-align: center;
-            flex: 1;
-        }
-
         /* =========================
            NEWS
         ========================= */
@@ -493,7 +464,8 @@
         }
 
         /*
-         * اخبار همیشه ستونی نمایش داده می‌شوند.
+         * اخبار به صورت کاملاً ستونی.
+         * سه خبر از JSON در سه کارت زیر هم.
          */
         .feed {
             display: flex;
@@ -700,6 +672,7 @@
         ========================= */
 
         @media (max-width: 950px) {
+
             .game-news-layout {
                 grid-template-columns: 1fr;
             }
@@ -716,10 +689,6 @@
                 flex-basis: 190px;
                 width: 190px;
                 min-width: 190px;
-            }
-
-            .feed {
-                grid-template-columns: 1fr;
             }
 
             .articles-grid {
@@ -744,6 +713,7 @@
         ========================= */
 
         @media (max-width: 650px) {
+
             .container {
                 width: calc(100% - 20px);
             }
@@ -815,7 +785,7 @@
                 font-size: 12px;
             }
 
-            .slider-controls {
+            .slider-indicator {
                 right: 18px;
                 bottom: 15px;
             }
@@ -847,10 +817,6 @@
                 width: 175px;
                 min-width: 175px;
                 padding: 9px;
-            }
-
-            .games-slider-buttons {
-                margin-top: 8px;
             }
 
             .news-panel-head {
@@ -894,6 +860,7 @@
         }
 
         @media (max-width: 380px) {
+
             .container {
                 width: calc(100% - 16px);
             }
@@ -958,9 +925,21 @@
     <!-- HERO -->
     <section class="hero">
 
-        <div class="slider">
+        <div
+            class="slider"
+            id="heroSlider"
+            aria-label="اسلایدر اخبار"
+        >
+
             <div class="slides" id="slides"></div>
-            <div class="slider-controls" id="sliderControls"></div>
+
+            <!-- فقط اندیکاتور؛ بدون دکمه -->
+            <div
+                class="slider-indicator"
+                id="sliderIndicator"
+                aria-hidden="true"
+            ></div>
+
         </div>
 
     </section>
@@ -987,30 +966,15 @@
 
                 <div class="games-list-wrapper">
 
-                    <div class="games-list" id="gamesList">
-                        <div class="empty">در حال بارگذاری...</div>
-                    </div>
-
-                    <div class="games-slider-buttons">
-                        <button
-                            type="button"
-                            id="gamesNext"
-                            aria-label="بازی بعدی"
-                        >
-                            ←
-                        </button>
-
-                        <div class="games-slider-hint">
-                            برای دیدن بازی‌ها اسلاید کنید
+                    <!-- فقط با انگشت اسلاید می‌شود -->
+                    <div
+                        class="games-list"
+                        id="gamesList"
+                        aria-label="لیست بازی‌ها"
+                    >
+                        <div class="empty">
+                            در حال بارگذاری...
                         </div>
-
-                        <button
-                            type="button"
-                            id="gamesPrev"
-                            aria-label="بازی قبلی"
-                        >
-                            →
-                        </button>
                     </div>
 
                 </div>
@@ -1036,6 +1000,7 @@
 
                 </div>
 
+                <!-- سه خبر به صورت ستونی -->
                 <div class="feed" id="feed">
                     <div class="empty">
                         در حال بارگذاری...
@@ -1158,7 +1123,8 @@
 
     /* =========================
        HERO SLIDER
-       راست به چپ
+       SWIPE WITH FINGER
+       RIGHT -> LEFT
     ========================= */
 
     function renderSlides() {
@@ -1166,8 +1132,8 @@
         const slidesEl =
             document.getElementById("slides");
 
-        const controlsEl =
-            document.getElementById("sliderControls");
+        const indicatorEl =
+            document.getElementById("sliderIndicator");
 
         if (!allArticles.length) {
 
@@ -1177,7 +1143,7 @@
                 </div>
             `;
 
-            controlsEl.innerHTML = "";
+            indicatorEl.innerHTML = "";
 
             return;
         }
@@ -1203,6 +1169,7 @@
                                 src="${escapeHTML(article.image || "")}"
                                 alt="${escapeHTML(article.title)}"
                                 onerror="this.style.display='none'"
+                                draggable="false"
                             >
 
                         </div>
@@ -1250,34 +1217,16 @@
             }).join("");
 
 
-        controlsEl.innerHTML =
+        indicatorEl.innerHTML =
             allSlides.map((_, index) => {
 
                 return `
-                    <button
+                    <span
                         class="slider-dot ${index === 0 ? "active" : ""}"
-                        type="button"
-                        data-slide="${index}"
-                        aria-label="اسلاید ${index + 1}"
-                    ></button>
+                    ></span>
                 `;
 
             }).join("");
-
-
-        controlsEl
-            .querySelectorAll(".slider-dot")
-            .forEach(dot => {
-
-                dot.addEventListener("click", () => {
-
-                    goToSlide(
-                        Number(dot.dataset.slide)
-                    );
-
-                });
-
-            });
 
 
         startSlider();
@@ -1333,6 +1282,16 @@
     }
 
 
+    function previousSlide() {
+
+        if (!allSlides.length) {
+            return;
+        }
+
+        goToSlide(currentSlide - 1);
+    }
+
+
     function startSlider() {
 
         clearInterval(slideTimer);
@@ -1349,7 +1308,173 @@
 
 
     /* =========================
+       HERO TOUCH SWIPE
+       بدون دکمه
+    ========================= */
+
+    function enableHeroTouch() {
+
+        const slider =
+            document.getElementById("heroSlider");
+
+        if (!slider) {
+            return;
+        }
+
+
+        let startX = 0;
+        let startY = 0;
+        let isTouching = false;
+
+
+        slider.addEventListener(
+            "touchstart",
+            event => {
+
+                if (!event.touches.length) {
+                    return;
+                }
+
+                const touch =
+                    event.touches[0];
+
+                startX = touch.clientX;
+                startY = touch.clientY;
+                isTouching = true;
+
+                clearInterval(slideTimer);
+
+            },
+            { passive: true }
+        );
+
+
+        slider.addEventListener(
+            "touchend",
+            event => {
+
+                if (!isTouching || !event.changedTouches.length) {
+                    return;
+                }
+
+                const touch =
+                    event.changedTouches[0];
+
+                const endX = touch.clientX;
+                const endY = touch.clientY;
+
+                const deltaX =
+                    endX - startX;
+
+                const deltaY =
+                    endY - startY;
+
+                isTouching = false;
+
+
+                /*
+                 * حرکت افقی باید از حرکت عمودی بیشتر باشد.
+                 */
+                if (
+                    Math.abs(deltaX) > 50 &&
+                    Math.abs(deltaX) > Math.abs(deltaY)
+                ) {
+
+                    /*
+                     * در موبایل:
+                     * کشیدن انگشت از راست به چپ = خبر بعدی
+                     */
+                    if (deltaX < 0) {
+                        nextSlide();
+                    }
+
+                    /*
+                     * کشیدن انگشت از چپ به راست = خبر قبلی
+                     */
+                    else {
+                        previousSlide();
+                    }
+
+                }
+
+
+                startSlider();
+
+            },
+            { passive: true }
+        );
+
+
+        /*
+         * روی دسکتاپ هم با موس قابل کشیدن است،
+         * ولی هیچ دکمه‌ای وجود ندارد.
+         */
+        let mouseDown = false;
+        let mouseStartX = 0;
+
+
+        slider.addEventListener(
+            "mousedown",
+            event => {
+
+                mouseDown = true;
+                mouseStartX = event.clientX;
+
+                clearInterval(slideTimer);
+
+            }
+        );
+
+
+        slider.addEventListener(
+            "mouseup",
+            event => {
+
+                if (!mouseDown) {
+                    return;
+                }
+
+                const deltaX =
+                    event.clientX - mouseStartX;
+
+                mouseDown = false;
+
+
+                if (Math.abs(deltaX) > 50) {
+
+                    if (deltaX < 0) {
+                        nextSlide();
+                    } else {
+                        previousSlide();
+                    }
+
+                }
+
+                startSlider();
+
+            }
+        );
+
+
+        slider.addEventListener(
+            "mouseleave",
+            () => {
+
+                if (mouseDown) {
+                    mouseDown = false;
+                    startSlider();
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =========================
        GAMES
+       SWIPE WITH FINGER
+       RTL
     ========================= */
 
     function renderGames() {
@@ -1392,6 +1517,7 @@
                                         src="${escapeHTML(game.icon || game.image)}"
                                         alt="${escapeHTML(game.name)}"
                                         onerror="this.style.display='none'"
+                                        draggable="false"
                                     >
                                 `
                                 : `
@@ -1415,6 +1541,10 @@
 
                 button.addEventListener("click", () => {
 
+                    if (gamesList.classList.contains("dragging")) {
+                        return;
+                    }
+
                     selectGame(
                         button.dataset.gameId
                     );
@@ -1432,14 +1562,12 @@
         renderGames();
         renderGameFeed();
 
-        /*
-         * بعد از انتخاب بازی، کارت انتخاب‌شده
-         * به صورت خودکار داخل ناحیه قابل مشاهده قرار می‌گیرد.
-         */
+
         const selectedButton =
             document.querySelector(
                 `.game-item[data-game-id="${CSS.escape(String(gameId))}"]`
             );
+
 
         if (selectedButton) {
 
@@ -1454,59 +1582,10 @@
 
 
     /* =========================
-       GAMES HORIZONTAL SLIDER
-       RTL
+       GAMES TOUCH / MOUSE DRAG
     ========================= */
 
-    function moveGamesSlider(direction) {
-
-        const gamesList =
-            document.getElementById("gamesList");
-
-        if (!gamesList) {
-            return;
-        }
-
-        const amount =
-            Math.max(
-                220,
-                gamesList.clientWidth * 0.75
-            );
-
-        /*
-         * در RTL جهت حرکت به صورت بصری
-         * از راست به چپ مدیریت می‌شود.
-         */
-        gamesList.scrollBy({
-            left: direction * amount,
-            behavior: "smooth"
-        });
-    }
-
-
-    document
-        .getElementById("gamesNext")
-        .addEventListener("click", () => {
-
-            moveGamesSlider(1);
-
-        });
-
-
-    document
-        .getElementById("gamesPrev")
-        .addEventListener("click", () => {
-
-            moveGamesSlider(-1);
-
-        });
-
-
-    /* =========================
-       TOUCH / DRAG FOR GAMES
-    ========================= */
-
-    function enableGamesDrag() {
+    function enableGamesSwipe() {
 
         const slider =
             document.getElementById("gamesList");
@@ -1515,20 +1594,34 @@
             return;
         }
 
-        let isDown = false;
+
+        let isDragging = false;
         let startX = 0;
         let startScroll = 0;
+        let moved = false;
 
 
         slider.addEventListener(
             "pointerdown",
             event => {
 
-                isDown = true;
+                if (event.pointerType === "mouse" && event.button !== 0) {
+                    return;
+                }
+
+                isDragging = true;
+                moved = false;
+
                 startX = event.clientX;
                 startScroll = slider.scrollLeft;
 
-                slider.setPointerCapture(event.pointerId);
+                slider.classList.add("dragging");
+
+                try {
+                    slider.setPointerCapture(
+                        event.pointerId
+                    );
+                } catch (_) {}
 
             }
         );
@@ -1538,12 +1631,18 @@
             "pointermove",
             event => {
 
-                if (!isDown) {
+                if (!isDragging) {
                     return;
                 }
 
                 const distance =
                     event.clientX - startX;
+
+
+                if (Math.abs(distance) > 5) {
+                    moved = true;
+                }
+
 
                 slider.scrollLeft =
                     startScroll - distance;
@@ -1554,9 +1653,39 @@
 
         slider.addEventListener(
             "pointerup",
-            () => {
+            event => {
 
-                isDown = false;
+                if (!isDragging) {
+                    return;
+                }
+
+                isDragging = false;
+
+                slider.classList.remove(
+                    "dragging"
+                );
+
+
+                try {
+                    slider.releasePointerCapture(
+                        event.pointerId
+                    );
+                } catch (_) {}
+
+
+                /*
+                 * بعد از رها کردن، نزدیک‌ترین کارت
+                 * به صورت نرم در جای خودش قرار می‌گیرد.
+                 */
+                if (moved) {
+
+                    snapGamesToNearest();
+
+                    setTimeout(() => {
+                        moved = false;
+                    }, 50);
+
+                }
 
             }
         );
@@ -1566,18 +1695,107 @@
             "pointercancel",
             () => {
 
-                isDown = false;
+                isDragging = false;
+
+                slider.classList.remove(
+                    "dragging"
+                );
 
             }
         );
 
+
+        /*
+         * جلوگیری از کلیک اشتباهی بعد از Drag
+         */
+        slider.addEventListener(
+            "click",
+            event => {
+
+                if (moved) {
+
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    moved = false;
+
+                }
+
+            },
+            true
+        );
+
+    }
+
+
+    function snapGamesToNearest() {
+
+        const slider =
+            document.getElementById("gamesList");
+
+        if (!slider) {
+            return;
+        }
+
+
+        const cards =
+            [...slider.querySelectorAll(".game-item")];
+
+        if (!cards.length) {
+            return;
+        }
+
+
+        const sliderRect =
+            slider.getBoundingClientRect();
+
+
+        let closestCard = null;
+        let closestDistance = Infinity;
+
+
+        cards.forEach(card => {
+
+            const rect =
+                card.getBoundingClientRect();
+
+            /*
+             * چون direction: rtl است،
+             * سمت راست کارت معیار Snap است.
+             */
+            const distance =
+                Math.abs(
+                    rect.right -
+                    sliderRect.right
+                );
+
+
+            if (distance < closestDistance) {
+
+                closestDistance = distance;
+                closestCard = card;
+
+            }
+
+        });
+
+
+        if (closestCard) {
+
+            closestCard.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+                inline: "start"
+            });
+
+        }
     }
 
 
     /* =========================
        NEWS
        سه خبر از news.json
-       به صورت کاملاً ستونی
+       ستونی
     ========================= */
 
     function renderGameFeed() {
@@ -1616,8 +1834,8 @@
 
 
         /*
-         * فقط اخبار فایل news.json را می‌گیریم
-         * و حداکثر سه خبر نمایش داده می‌شود.
+         * سه خبر اول مرتبط با بازی
+         * از news.json گرفته می‌شوند.
          */
         const news =
             allNews
@@ -1635,8 +1853,8 @@
 
 
         /*
-         * اگر برای بازی خبر کافی وجود نداشت،
-         * از events.json برای پر کردن سه کارت استفاده می‌شود.
+         * اگر کمتر از سه خبر وجود داشت،
+         * event ها برای تکمیل لیست استفاده می‌شوند.
          */
         const events =
             allEvents
@@ -1683,7 +1901,7 @@
 
 
         feedEl.innerHTML =
-            feed.map(item => {
+            feed.slice(0, 3).map(item => {
 
                 return `
                     <article
@@ -1766,6 +1984,7 @@
                                 src="${escapeHTML(article.image || "")}"
                                 alt="${escapeHTML(article.title)}"
                                 onerror="this.style.display='none'"
+                                draggable="false"
                             >
 
                         </div>
@@ -1819,9 +2038,6 @@
 
     /* =========================
        MOBILE MENU
-       بدون inline style
-       تا بعد از رفتن به صفحه دیگر
-       و برگشت، ریسپانسیو خراب نشود.
     ========================= */
 
     const mobileMenu =
@@ -1849,10 +2065,6 @@
     );
 
 
-    /*
-     * با کلیک روی لینک‌های منوی موبایل،
-     * منو بسته می‌شود.
-     */
     mainNav
         .querySelectorAll("a")
         .forEach(link => {
@@ -1876,10 +2088,6 @@
         });
 
 
-    /*
-     * اگر صفحه از موبایل به دسکتاپ تغییر اندازه داد،
-     * وضعیت منوی موبایل پاک می‌شود.
-     */
     window.addEventListener(
         "resize",
         () => {
@@ -1940,9 +2148,6 @@
                 toArray(articlesData, "articles");
 
 
-            /*
-             * اولین بازی به صورت خودکار انتخاب می‌شود.
-             */
             selectedGameId =
                 allGames.length
                     ? allGames[0].id
@@ -1954,7 +2159,8 @@
             renderGameFeed();
             renderArticles();
 
-            enableGamesDrag();
+            enableHeroTouch();
+            enableGamesSwipe();
 
 
         } catch (error) {
