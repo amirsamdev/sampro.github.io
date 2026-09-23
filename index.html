@@ -2,7 +2,7 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <title>GAMEHUB | گیم‌هاب</title>
 
@@ -20,7 +20,7 @@
             --white: #ffffff;
             --text: #eeeeee;
             --muted: #a5a5a5;
-            --border: rgba(255,255,255,0.08);
+            --border: rgba(255,255,255,.08);
             --card: #2b2b2b;
             --radius: 20px;
         }
@@ -29,13 +29,19 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         html {
             scroll-behavior: smooth;
+            width: 100%;
+            overflow-x: hidden;
         }
 
         body {
+            width: 100%;
+            min-height: 100vh;
+            overflow-x: hidden;
             font-family: "Vazirmatn", sans-serif;
             background: linear-gradient(
                 to bottom,
@@ -46,8 +52,6 @@
             background-attachment: fixed;
             color: var(--text);
             line-height: 1.8;
-            min-height: 100vh;
-            overflow-x: hidden;
         }
 
         a {
@@ -66,7 +70,7 @@
 
         .container {
             width: min(1180px, calc(100% - 32px));
-            margin: 0 auto;
+            margin-inline: auto;
         }
 
         /* =========================
@@ -77,8 +81,9 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(34, 34, 34, 0.92);
+            background: rgba(34,34,34,.94);
             backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             border-bottom: 1px solid var(--border);
         }
 
@@ -88,7 +93,6 @@
             align-items: center;
             justify-content: space-between;
             gap: 25px;
-            position: relative;
         }
 
         .logo {
@@ -98,7 +102,8 @@
             white-space: nowrap;
         }
 
-        .logo span {
+        .logo span,
+        .footer-logo span {
             color: var(--blue);
         }
 
@@ -112,11 +117,10 @@
             color: #d6d6d6;
             font-size: 14px;
             font-weight: 500;
-            transition: 0.2s ease;
         }
 
-        nav a:hover,
-        nav a.active {
+        nav a.active,
+        nav a:hover {
             color: var(--blue);
         }
 
@@ -130,13 +134,10 @@
             border-radius: 12px;
             cursor: pointer;
             font-size: 20px;
-            align-items: center;
-            justify-content: center;
         }
 
         /* =========================
            HERO SLIDER
-           SWIPE RIGHT TO LEFT
         ========================= */
 
         .hero {
@@ -145,49 +146,57 @@
 
         .slider {
             position: relative;
+            width: 100%;
             min-height: 390px;
+            height: clamp(360px, 42vw, 500px);
             overflow: hidden;
             border-radius: 26px;
             border: 1px solid var(--border);
             background: #2b2b2b;
+            isolation: isolate;
             touch-action: pan-y;
-            user-select: none;
-            -webkit-user-select: none;
         }
+
+        /*
+            مهم:
+            اسلایدها دیگر absolute نیستند.
+            با transform جابه‌جا می‌شوند تا روی
+            Android و حالت Portrait پایدار باشند.
+        */
 
         .slides {
             position: relative;
-            min-height: 390px;
             width: 100%;
-            overflow: hidden;
+            height: 100%;
+            min-height: 100%;
+            display: flex;
+            direction: ltr;
+            will-change: transform;
+            transition: transform .45s cubic-bezier(.22,.61,.36,1);
+        }
+
+        .slides.dragging {
+            transition: none;
         }
 
         .slide {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateX(100%);
-            transition:
-                transform 0.55s ease,
-                opacity 0.55s ease,
-                visibility 0.55s ease;
+            position: relative;
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+            min-width: 100%;
             display: grid;
             grid-template-columns: 1.05fr 1fr;
             overflow: hidden;
-            pointer-events: none;
-        }
-
-        .slide.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(0);
-            pointer-events: auto;
-            z-index: 2;
+            direction: rtl;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
         }
 
         .slide-image {
-            height: 390px;
+            height: 100%;
+            min-height: 390px;
             overflow: hidden;
         }
 
@@ -196,9 +205,11 @@
             height: 100%;
             object-fit: cover;
             pointer-events: none;
+            user-select: none;
         }
 
         .slide-content {
+            min-width: 0;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -213,9 +224,9 @@
 
         .slide-category {
             width: fit-content;
-            background: rgba(78,111,248,0.18);
+            background: rgba(78,111,248,.18);
             color: var(--blue-soft);
-            border: 1px solid rgba(78,111,248,0.35);
+            border: 1px solid rgba(78,111,248,.35);
             padding: 5px 12px;
             border-radius: 999px;
             font-size: 12px;
@@ -227,6 +238,7 @@
             line-height: 1.4;
             margin-bottom: 13px;
             color: white;
+            overflow-wrap: anywhere;
         }
 
         .slide-content p {
@@ -234,6 +246,7 @@
             font-size: 14px;
             max-width: 560px;
             margin-bottom: 18px;
+            overflow-wrap: anywhere;
         }
 
         .slide-meta {
@@ -253,28 +266,27 @@
             border-radius: 12px;
             font-size: 13px;
             font-weight: 600;
-            transition: 0.2s ease;
         }
 
-        .slider-indicator {
+        .slider-controls {
             position: absolute;
+            left: 25px;
             bottom: 18px;
-            right: 25px;
-            z-index: 20;
             display: flex;
-            align-items: center;
             gap: 7px;
+            z-index: 20;
             direction: ltr;
-            pointer-events: none;
         }
 
         .slider-dot {
             width: 8px;
             height: 8px;
+            padding: 0;
             border: 0;
             border-radius: 50%;
-            background: rgba(255,255,255,0.35);
-            transition: 0.25s ease;
+            background: rgba(255,255,255,.35);
+            cursor: pointer;
+            transition: .2s ease;
         }
 
         .slider-dot.active {
@@ -284,12 +296,11 @@
         }
 
         /* =========================
-           SECTION
+           SECTIONS
         ========================= */
 
         section {
             margin-top: 45px;
-            scroll-margin-top: 95px;
         }
 
         .section-heading {
@@ -316,10 +327,9 @@
 
         .game-news-layout {
             display: grid;
-            grid-template-columns: 280px minmax(0, 1fr);
+            grid-template-columns: 280px minmax(0,1fr);
             gap: 18px;
             align-items: stretch;
-            min-width: 0;
         }
 
         .games-panel {
@@ -342,69 +352,35 @@
             color: white;
         }
 
-        /*
-         * بازی‌ها با انگشت اسلاید می‌شوند.
-         * هیچ دکمه‌ای وجود ندارد.
-         */
-        .games-list-wrapper {
-            position: relative;
-            min-width: 0;
-        }
-
         .games-list {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             gap: 9px;
-            overflow-x: auto;
-            overflow-y: hidden;
-            padding: 2px 2px 8px;
-            direction: rtl;
-            scroll-behavior: smooth;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            touch-action: pan-x;
-            cursor: grab;
-            user-select: none;
-            -webkit-user-select: none;
-        }
-
-        .games-list::-webkit-scrollbar {
-            display: none;
-        }
-
-        .games-list.dragging {
-            cursor: grabbing;
-            scroll-behavior: auto;
-            scroll-snap-type: none;
         }
 
         .game-item {
             display: flex;
             align-items: center;
             gap: 10px;
-            flex: 0 0 205px;
-            width: 205px;
-            min-width: 205px;
+            width: 100%;
+            min-width: 0;
             border: 1px solid transparent;
-            background: rgba(255,255,255,0.04);
+            background: rgba(255,255,255,.04);
             color: #d7d7d7;
             padding: 10px;
             border-radius: 14px;
             cursor: pointer;
             text-align: right;
-            transition: 0.2s ease;
-            scroll-snap-align: start;
-            direction: rtl;
+            transition: .2s ease;
         }
 
-        .game-item:hover {
-            background: rgba(255,255,255,0.07);
+        .game-item:hover,
+        .game-item.active {
+            background: rgba(78,111,248,.18);
         }
 
         .game-item.active {
-            background: rgba(78,111,248,0.18);
-            border-color: rgba(78,111,248,0.45);
+            border-color: rgba(78,111,248,.45);
             color: white;
         }
 
@@ -420,19 +396,13 @@
         .game-item-name {
             font-size: 12px;
             font-weight: 600;
-            min-width: 0;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
         }
 
-        /* =========================
-           NEWS
-        ========================= */
-
         .news-panel {
             min-width: 0;
-            width: 100%;
             background: linear-gradient(
                 145deg,
                 #2b2b2b,
@@ -460,33 +430,20 @@
             color: var(--blue-soft);
             font-size: 12px;
             font-weight: 600;
-            white-space: nowrap;
         }
 
-        /*
-         * اخبار به صورت کاملاً ستونی.
-         * سه خبر از JSON در سه کارت زیر هم.
-         */
         .feed {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(2,minmax(0,1fr));
             gap: 12px;
-            width: 100%;
         }
 
         .feed-card {
-            width: 100%;
-            min-width: 0;
-            background: rgba(34,34,34,0.72);
-            border: 1px solid rgba(255,255,255,0.07);
+            background: rgba(34,34,34,.72);
+            border: 1px solid rgba(255,255,255,.07);
             border-radius: 15px;
             padding: 14px;
-            transition: 0.2s ease;
-        }
-
-        .feed-card:hover {
-            transform: translateY(-2px);
-            border-color: rgba(255,255,255,0.13);
+            min-width: 0;
         }
 
         .feed-card.event {
@@ -504,7 +461,7 @@
         .feed-type {
             font-size: 10px;
             color: var(--blue-soft);
-            background: rgba(78,111,248,0.12);
+            background: rgba(78,111,248,.12);
             padding: 3px 8px;
             border-radius: 999px;
         }
@@ -537,7 +494,6 @@
             text-align: center;
             color: var(--muted);
             font-size: 13px;
-            width: 100%;
         }
 
         /* =========================
@@ -546,7 +502,7 @@
 
         .articles-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(3,minmax(0,1fr));
             gap: 18px;
         }
 
@@ -559,13 +515,6 @@
             );
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            transition: 0.25s ease;
-            min-width: 0;
-        }
-
-        .article-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(78,111,248,0.4);
         }
 
         .article-image {
@@ -578,11 +527,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: 0.3s ease;
-        }
-
-        .article-card:hover .article-image img {
-            transform: scale(1.04);
         }
 
         .article-body {
@@ -643,7 +587,7 @@
             margin-top: 65px;
             padding: 25px 0;
             border-top: 1px solid var(--border);
-            background: rgba(34,34,34,0.35);
+            background: rgba(34,34,34,.35);
         }
 
         .footer-inner {
@@ -656,10 +600,6 @@
         .footer-logo {
             font-size: 18px;
             font-weight: 800;
-        }
-
-        .footer-logo span {
-            color: var(--blue);
         }
 
         .footer-text {
@@ -677,22 +617,30 @@
                 grid-template-columns: 1fr;
             }
 
-            .games-panel {
-                padding: 16px;
+            .games-list {
+                flex-direction: row;
+                overflow-x: auto;
+                padding-bottom: 6px;
+                scrollbar-width: none;
+                -webkit-overflow-scrolling: touch;
+                touch-action: pan-x;
             }
 
-            .games-list {
-                width: 100%;
+            .games-list::-webkit-scrollbar {
+                display: none;
             }
 
             .game-item {
-                flex-basis: 190px;
-                width: 190px;
-                min-width: 190px;
+                flex: 0 0 170px;
+                width: 170px;
+            }
+
+            .feed {
+                grid-template-columns: 1fr;
             }
 
             .articles-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-columns: repeat(2,minmax(0,1fr));
             }
 
             .slide {
@@ -704,15 +652,19 @@
             }
 
             .slide-content {
-                min-height: 390px;
+                padding: 35px;
             }
         }
 
         /* =========================
-           MOBILE
+           MOBILE PORTRAIT
         ========================= */
 
         @media (max-width: 650px) {
+
+            body {
+                background-attachment: scroll;
+            }
 
             .container {
                 width: calc(100% - 20px);
@@ -720,82 +672,105 @@
 
             header {
                 position: sticky;
-                top: 0;
             }
 
             .header-inner {
-                min-height: 68px;
+                min-height: 64px;
             }
 
             nav {
                 display: none;
                 position: absolute;
-                top: calc(100% + 8px);
-                right: 0;
-                left: 0;
-                z-index: 1100;
-                padding: 15px;
+                top: 64px;
+                right: 10px;
+                left: 10px;
                 flex-direction: column;
                 align-items: stretch;
-                gap: 8px;
-                background: #222222;
-                border: 1px solid rgba(255,255,255,0.08);
-                border-radius: 16px;
-                box-shadow: 0 15px 35px rgba(0,0,0,0.35);
-            }
-
-            nav.mobile-open {
-                display: flex;
+                gap: 0;
+                padding: 8px;
+                background: #252525;
+                border: 1px solid var(--border);
+                border-radius: 15px;
             }
 
             nav a {
-                width: 100%;
                 padding: 10px 12px;
-                border-radius: 10px;
-            }
-
-            nav a:hover,
-            nav a.active {
-                background: rgba(78,111,248,0.12);
             }
 
             .mobile-menu {
-                display: flex;
+                display: block;
             }
 
             .hero {
-                margin-top: 15px;
+                margin-top: 14px;
             }
 
-            .slider,
+            .slider {
+                height: 470px;
+                min-height: 470px;
+                border-radius: 20px;
+                touch-action: pan-y;
+            }
+
             .slides {
-                min-height: 430px;
+                height: 100%;
+                min-height: 100%;
+            }
+
+            .slide {
+                height: 100%;
+                min-height: 100%;
             }
 
             .slide-content {
-                min-height: 430px;
-                padding: 25px 20px;
+                height: 100%;
+                min-height: 470px;
+                padding: 24px 20px 55px;
+                justify-content: center;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .slide-category {
+                font-size: 11px;
+                margin-bottom: 12px;
             }
 
             .slide-content h1 {
                 font-size: 24px;
+                line-height: 1.55;
+                margin-bottom: 12px;
             }
 
             .slide-content p {
                 font-size: 12px;
+                line-height: 2;
+                margin-bottom: 14px;
             }
 
-            .slider-indicator {
-                right: 18px;
-                bottom: 15px;
+            .slide-meta {
+                font-size: 10px;
+                margin-bottom: 15px;
+            }
+
+            .continue-btn {
+                font-size: 12px;
+                padding: 8px 15px;
+            }
+
+            .slider-controls {
+                left: 50%;
+                right: auto;
+                transform: translateX(-50%);
+                bottom: 14px;
             }
 
             .section-heading {
-                align-items: flex-start;
+                margin-bottom: 14px;
             }
 
             .section-heading h2 {
-                font-size: 19px;
+                font-size: 18px;
             }
 
             .section-heading p {
@@ -804,45 +779,17 @@
 
             .games-panel,
             .news-panel {
-                border-radius: 16px;
-            }
-
-            .games-list {
-                gap: 8px;
-                padding-bottom: 9px;
+                padding: 14px;
+                border-radius: 17px;
             }
 
             .game-item {
-                flex: 0 0 175px;
-                width: 175px;
-                min-width: 175px;
-                padding: 9px;
-            }
-
-            .news-panel-head {
-                align-items: flex-start;
-                flex-direction: column;
-                gap: 4px;
-            }
-
-            .selected-game-label {
-                font-size: 11px;
+                flex-basis: 155px;
+                width: 155px;
             }
 
             .feed {
-                gap: 10px;
-            }
-
-            .feed-card {
-                padding: 12px;
-            }
-
-            .feed-card h4 {
-                font-size: 12px;
-            }
-
-            .feed-card p {
-                font-size: 10px;
+                grid-template-columns: 1fr;
             }
 
             .articles-grid {
@@ -859,33 +806,33 @@
             }
         }
 
+        /* =========================
+           VERY SMALL PHONES
+        ========================= */
+
         @media (max-width: 380px) {
 
-            .container {
-                width: calc(100% - 16px);
+            .slider {
+                height: 450px;
+                min-height: 450px;
             }
 
             .slide-content {
-                padding: 22px 16px;
+                min-height: 450px;
+                padding: 20px 17px 50px;
             }
 
             .slide-content h1 {
                 font-size: 21px;
             }
 
-            .game-item {
-                flex-basis: 155px;
-                width: 155px;
-                min-width: 155px;
-            }
-
-            .game-icon {
-                width: 34px;
-                height: 34px;
-            }
-
-            .game-item-name {
+            .slide-content p {
                 font-size: 11px;
+            }
+
+            .game-item {
+                flex-basis: 145px;
+                width: 145px;
             }
         }
     </style>
@@ -931,13 +878,14 @@
             aria-label="اسلایدر اخبار"
         >
 
-            <div class="slides" id="slides"></div>
-
-            <!-- فقط اندیکاتور؛ بدون دکمه -->
             <div
-                class="slider-indicator"
-                id="sliderIndicator"
-                aria-hidden="true"
+                class="slides"
+                id="slides"
+            ></div>
+
+            <div
+                class="slider-controls"
+                id="sliderControls"
             ></div>
 
         </div>
@@ -949,40 +897,35 @@
     <section id="games-news">
 
         <div class="section-heading">
+
             <div>
                 <h2>بازی‌ها و اخبار و اتفاقات</h2>
                 <p>اخبار و ایونت‌های مربوط به بازی انتخاب‌شده</p>
             </div>
+
         </div>
+
 
         <div class="game-news-layout">
 
-            <!-- GAME SELECTOR -->
             <div class="games-panel">
 
                 <div class="games-panel-title">
                     بازی‌ها
                 </div>
 
-                <div class="games-list-wrapper">
-
-                    <!-- فقط با انگشت اسلاید می‌شود -->
-                    <div
-                        class="games-list"
-                        id="gamesList"
-                        aria-label="لیست بازی‌ها"
-                    >
-                        <div class="empty">
-                            در حال بارگذاری...
-                        </div>
+                <div
+                    class="games-list"
+                    id="gamesList"
+                >
+                    <div class="empty">
+                        در حال بارگذاری...
                     </div>
-
                 </div>
 
             </div>
 
 
-            <!-- NEWS -->
             <div class="news-panel">
 
                 <div class="news-panel-head">
@@ -1000,8 +943,10 @@
 
                 </div>
 
-                <!-- سه خبر به صورت ستونی -->
-                <div class="feed" id="feed">
+                <div
+                    class="feed"
+                    id="feed"
+                >
                     <div class="empty">
                         در حال بارگذاری...
                     </div>
@@ -1026,12 +971,14 @@
 
         </div>
 
-        <div class="articles-grid" id="articlesGrid">
 
+        <div
+            class="articles-grid"
+            id="articlesGrid"
+        >
             <div class="empty">
                 در حال بارگذاری...
             </div>
-
         </div>
 
     </section>
@@ -1058,6 +1005,10 @@
 
 <script>
 
+    /* =========================
+       PATHS
+    ========================= */
+
     const PATHS = {
         games: "./json/games.json",
         news: "./json/news.json",
@@ -1065,6 +1016,10 @@
         articles: "./json/articles.json"
     };
 
+
+    /* =========================
+       DATA
+    ========================= */
 
     let allGames = [];
     let allNews = [];
@@ -1076,6 +1031,14 @@
     let allSlides = [];
     let currentSlide = 0;
     let slideTimer = null;
+
+    let sliderStartX = 0;
+    let sliderStartY = 0;
+    let sliderCurrentX = 0;
+    let sliderDragging = false;
+    let sliderMoved = false;
+
+    let sliderWidth = 0;
 
 
     /* =========================
@@ -1103,7 +1066,9 @@
         });
 
         if (!response.ok) {
-            throw new Error(`خطا در دریافت فایل: ${path}`);
+            throw new Error(
+                `خطا در دریافت فایل: ${path}`
+            );
         }
 
         return await response.json();
@@ -1123,8 +1088,7 @@
 
     /* =========================
        HERO SLIDER
-       SWIPE WITH FINGER
-       RIGHT -> LEFT
+       Android + Touch + Portrait
     ========================= */
 
     function renderSlides() {
@@ -1132,44 +1096,54 @@
         const slidesEl =
             document.getElementById("slides");
 
-        const indicatorEl =
-            document.getElementById("sliderIndicator");
+        const controlsEl =
+            document.getElementById("sliderControls");
+
+        if (!slidesEl || !controlsEl) {
+            return;
+        }
 
         if (!allArticles.length) {
 
             slidesEl.innerHTML = `
-                <div class="empty">
-                    هنوز مقاله‌ای ثبت نشده است.
+                <div class="slide">
+                    <div class="slide-content">
+                        <div class="empty">
+                            هنوز مقاله‌ای ثبت نشده است.
+                        </div>
+                    </div>
                 </div>
             `;
 
-            indicatorEl.innerHTML = "";
+            controlsEl.innerHTML = "";
 
             return;
         }
 
 
-        allSlides = allArticles.slice(0, 5);
+        allSlides =
+            allArticles.slice(0, 5);
 
         currentSlide = 0;
 
 
         slidesEl.innerHTML =
-            allSlides.map((article, index) => {
+            allSlides.map((article) => {
 
                 return `
                     <a
-                        class="slide ${index === 0 ? "active" : ""}"
+                        class="slide"
                         href="article.html?id=${encodeURIComponent(article.id)}"
+                        draggable="false"
                     >
 
                         <div class="slide-image">
 
                             <img
                                 src="${escapeHTML(article.image || "")}"
-                                alt="${escapeHTML(article.title)}"
-                                onerror="this.style.display='none'"
+                                alt="${escapeHTML(article.title || "")}"
                                 draggable="false"
+                                onerror="this.style.display='none'"
                             >
 
                         </div>
@@ -1182,7 +1156,7 @@
                             </div>
 
                             <h1>
-                                ${escapeHTML(article.title)}
+                                ${escapeHTML(article.title || "")}
                             </h1>
 
                             <p>
@@ -1217,58 +1191,124 @@
             }).join("");
 
 
-        indicatorEl.innerHTML =
+        controlsEl.innerHTML =
             allSlides.map((_, index) => {
 
                 return `
-                    <span
+                    <button
                         class="slider-dot ${index === 0 ? "active" : ""}"
-                    ></span>
+                        type="button"
+                        data-slide="${index}"
+                        aria-label="اسلاید ${index + 1}"
+                    ></button>
                 `;
 
             }).join("");
 
 
+        controlsEl
+            .querySelectorAll(".slider-dot")
+            .forEach(dot => {
+
+                dot.addEventListener("click", function(event) {
+
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    const index =
+                        Number(this.dataset.slide);
+
+                    goToSlide(index, true);
+                });
+
+            });
+
+
+        updateSliderSize();
+        updateSliderPosition(false);
         startSlider();
     }
 
 
-    function goToSlide(index) {
+    function updateSliderSize() {
 
-        const slides =
-            document.querySelectorAll(".slide");
+        const slider =
+            document.getElementById("heroSlider");
+
+        if (!slider) {
+            return;
+        }
+
+        sliderWidth =
+            slider.getBoundingClientRect().width;
+    }
+
+
+    function updateSliderPosition(animate = true) {
+
+        const slidesEl =
+            document.getElementById("slides");
+
+        if (!slidesEl) {
+            return;
+        }
+
+        if (!animate) {
+            slidesEl.style.transition = "none";
+        } else {
+            slidesEl.style.transition =
+                "transform .45s cubic-bezier(.22,.61,.36,1)";
+        }
+
+        /*
+            LTR transform برای اسلایدها.
+            خود محتوا RTL باقی می‌ماند.
+        */
+
+        slidesEl.style.transform =
+            `translate3d(${-currentSlide * 100}%, 0, 0)`;
+
+        requestAnimationFrame(() => {
+
+            if (!sliderDragging) {
+                slidesEl.style.transition =
+                    "transform .45s cubic-bezier(.22,.61,.36,1)";
+            }
+
+        });
+
 
         const dots =
             document.querySelectorAll(".slider-dot");
 
-        if (!slides.length) {
-            return;
-        }
-
-
-        currentSlide =
-            (index + slides.length) % slides.length;
-
-
-        slides.forEach((slide, i) => {
-
-            slide.classList.toggle(
-                "active",
-                i === currentSlide
-            );
-
-        });
-
-
-        dots.forEach((dot, i) => {
+        dots.forEach((dot, index) => {
 
             dot.classList.toggle(
                 "active",
-                i === currentSlide
+                index === currentSlide
             );
 
         });
+    }
 
+
+    function goToSlide(index, restart = false) {
+
+        if (!allSlides.length) {
+            return;
+        }
+
+        const total =
+            allSlides.length;
+
+        currentSlide =
+            ((index % total) + total) % total;
+
+        updateSliderPosition(true);
+
+        if (restart) {
+            startSlider();
+        }
     }
 
 
@@ -1300,147 +1340,173 @@
             return;
         }
 
-        slideTimer = setInterval(
-            nextSlide,
-            5000
-        );
+        slideTimer =
+            setInterval(nextSlide, 5000);
     }
 
 
-    /* =========================
-       HERO TOUCH SWIPE
-       بدون دکمه
-    ========================= */
+    function stopSlider() {
+
+        clearInterval(slideTimer);
+    }
+
+
+    /*
+        Touch slider:
+        - Android
+        - iPhone
+        - Portrait
+        - Landscape
+        - راست به چپ برای اسلاید بعدی
+        - چپ به راست برای اسلاید قبلی
+    */
 
     function enableHeroTouch() {
 
         const slider =
             document.getElementById("heroSlider");
 
-        if (!slider) {
+        const slidesEl =
+            document.getElementById("slides");
+
+        if (!slider || !slidesEl) {
             return;
         }
 
 
-        let startX = 0;
-        let startY = 0;
-        let isTouching = false;
-
-
         slider.addEventListener(
             "touchstart",
-            event => {
+            function(event) {
 
-                if (!event.touches.length) {
+                if (!event.touches || !event.touches.length) {
                     return;
                 }
 
-                const touch =
-                    event.touches[0];
+                stopSlider();
 
-                startX = touch.clientX;
-                startY = touch.clientY;
-                isTouching = true;
+                updateSliderSize();
 
-                clearInterval(slideTimer);
+                sliderDragging = true;
+                sliderMoved = false;
 
-            },
-            { passive: true }
-        );
+                sliderStartX =
+                    event.touches[0].clientX;
 
+                sliderStartY =
+                    event.touches[0].clientY;
 
-        slider.addEventListener(
-            "touchend",
-            event => {
+                sliderCurrentX =
+                    sliderStartX;
 
-                if (!isTouching || !event.changedTouches.length) {
-                    return;
-                }
-
-                const touch =
-                    event.changedTouches[0];
-
-                const endX = touch.clientX;
-                const endY = touch.clientY;
-
-                const deltaX =
-                    endX - startX;
-
-                const deltaY =
-                    endY - startY;
-
-                isTouching = false;
-
-
-                /*
-                 * حرکت افقی باید از حرکت عمودی بیشتر باشد.
-                 */
-                if (
-                    Math.abs(deltaX) > 50 &&
-                    Math.abs(deltaX) > Math.abs(deltaY)
-                ) {
-
-                    /*
-                     * در موبایل:
-                     * کشیدن انگشت از راست به چپ = خبر بعدی
-                     */
-                    if (deltaX < 0) {
-                        nextSlide();
-                    }
-
-                    /*
-                     * کشیدن انگشت از چپ به راست = خبر قبلی
-                     */
-                    else {
-                        previousSlide();
-                    }
-
-                }
-
-
-                startSlider();
+                slidesEl.classList.add("dragging");
 
             },
-            { passive: true }
-        );
-
-
-        /*
-         * روی دسکتاپ هم با موس قابل کشیدن است،
-         * ولی هیچ دکمه‌ای وجود ندارد.
-         */
-        let mouseDown = false;
-        let mouseStartX = 0;
-
-
-        slider.addEventListener(
-            "mousedown",
-            event => {
-
-                mouseDown = true;
-                mouseStartX = event.clientX;
-
-                clearInterval(slideTimer);
-
+            {
+                passive: true
             }
         );
 
 
         slider.addEventListener(
-            "mouseup",
-            event => {
+            "touchmove",
+            function(event) {
 
-                if (!mouseDown) {
+                if (!sliderDragging) {
                     return;
                 }
 
+                if (!event.touches || !event.touches.length) {
+                    return;
+                }
+
+                sliderCurrentX =
+                    event.touches[0].clientX;
+
+                const currentY =
+                    event.touches[0].clientY;
+
                 const deltaX =
-                    event.clientX - mouseStartX;
+                    sliderCurrentX - sliderStartX;
 
-                mouseDown = false;
+                const deltaY =
+                    currentY - sliderStartY;
 
 
-                if (Math.abs(deltaX) > 50) {
+                /*
+                    اگر حرکت عمودی باشد،
+                    اسکرول صفحه مختل نمی‌شود.
+                */
+
+                if (
+                    !sliderMoved &&
+                    Math.abs(deltaY) > Math.abs(deltaX) &&
+                    Math.abs(deltaY) > 8
+                ) {
+                    sliderDragging = false;
+                    slidesEl.classList.remove("dragging");
+                    startSlider();
+                    return;
+                }
+
+
+                if (Math.abs(deltaX) < 5) {
+                    return;
+                }
+
+                sliderMoved = true;
+
+                /*
+                    جلوگیری از پرش اسلاید در Android
+                */
+
+                const base =
+                    -(currentSlide * sliderWidth);
+
+                const resistance =
+                    deltaX * 0.85;
+
+                slidesEl.style.transform =
+                    `translate3d(${base + resistance}px, 0, 0)`;
+
+            },
+            {
+                passive: true
+            }
+        );
+
+
+        slider.addEventListener(
+            "touchend",
+            function() {
+
+                if (!sliderDragging) {
+                    return;
+                }
+
+                sliderDragging = false;
+
+                slidesEl.classList.remove("dragging");
+
+                const deltaX =
+                    sliderCurrentX - sliderStartX;
+
+                const threshold =
+                    Math.max(
+                        45,
+                        Math.min(100, sliderWidth * 0.15)
+                    );
+
+
+                if (
+                    sliderMoved &&
+                    Math.abs(deltaX) >= threshold
+                ) {
+
+                    /*
+                        Swipe راست به چپ:
+                        deltaX منفی
+                        => اسلاید بعدی
+                    */
 
                     if (deltaX < 0) {
                         nextSlide();
@@ -1448,33 +1514,110 @@
                         previousSlide();
                     }
 
+                } else {
+
+                    updateSliderPosition(true);
+                    startSlider();
+
                 }
 
-                startSlider();
+                sliderMoved = false;
 
+            },
+            {
+                passive: true
             }
         );
 
 
         slider.addEventListener(
-            "mouseleave",
-            () => {
+            "touchcancel",
+            function() {
 
-                if (mouseDown) {
-                    mouseDown = false;
-                    startSlider();
-                }
+                sliderDragging = false;
+                sliderMoved = false;
 
+                slidesEl.classList.remove("dragging");
+
+                updateSliderPosition(true);
+                startSlider();
+
+            },
+            {
+                passive: true
             }
         );
 
+
+        /*
+            جلوگیری از drag پیش‌فرض تصویر
+        */
+
+        slider.addEventListener(
+            "dragstart",
+            function(event) {
+                event.preventDefault();
+            }
+        );
+
+
+        /*
+            وقتی کاربر ماوس/تاچ را روی اسلایدر نگه می‌دارد
+            autoplay موقتاً متوقف می‌شود.
+        */
+
+        slider.addEventListener(
+            "mouseenter",
+            stopSlider
+        );
+
+        slider.addEventListener(
+            "mouseleave",
+            startSlider
+        );
     }
 
 
     /* =========================
+       RESIZE
+    ========================= */
+
+    function handleResize() {
+
+        updateSliderSize();
+        updateSliderPosition(false);
+    }
+
+
+    window.addEventListener(
+        "resize",
+        handleResize,
+        {
+            passive: true
+        }
+    );
+
+
+    window.addEventListener(
+        "orientationchange",
+        function() {
+
+            setTimeout(() => {
+
+                updateSliderSize();
+                updateSliderPosition(false);
+
+            }, 250);
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    /* =========================
        GAMES
-       SWIPE WITH FINGER
-       RTL
     ========================= */
 
     function renderGames() {
@@ -1482,6 +1625,9 @@
         const gamesList =
             document.getElementById("gamesList");
 
+        if (!gamesList) {
+            return;
+        }
 
         if (!allGames.length) {
 
@@ -1498,26 +1644,35 @@
         gamesList.innerHTML =
             allGames.map(game => {
 
+                const gameId =
+                    String(game.id ?? "");
+
+                const gameName =
+                    String(game.name ?? "");
+
+                const image =
+                    game.icon || game.image || "";
+
                 return `
                     <button
                         type="button"
                         class="game-item ${
-                            String(game.id) === String(selectedGameId)
+                            gameId === String(selectedGameId)
                                 ? "active"
                                 : ""
                         }"
-                        data-game-id="${escapeHTML(game.id)}"
+                        data-game-id="${escapeHTML(gameId)}"
                     >
 
                         ${
-                            game.icon || game.image
+                            image
                                 ? `
                                     <img
                                         class="game-icon"
-                                        src="${escapeHTML(game.icon || game.image)}"
-                                        alt="${escapeHTML(game.name)}"
+                                        src="${escapeHTML(image)}"
+                                        alt="${escapeHTML(gameName)}"
+                                        loading="lazy"
                                         onerror="this.style.display='none'"
-                                        draggable="false"
                                     >
                                 `
                                 : `
@@ -1526,7 +1681,7 @@
                         }
 
                         <span class="game-item-name">
-                            ${escapeHTML(game.name)}
+                            ${escapeHTML(gameName)}
                         </span>
 
                     </button>
@@ -1539,17 +1694,16 @@
             .querySelectorAll(".game-item")
             .forEach(button => {
 
-                button.addEventListener("click", () => {
+                button.addEventListener(
+                    "click",
+                    function() {
 
-                    if (gamesList.classList.contains("dragging")) {
-                        return;
+                        selectGame(
+                            this.dataset.gameId
+                        );
+
                     }
-
-                    selectGame(
-                        button.dataset.gameId
-                    );
-
-                });
+                );
 
             });
     }
@@ -1557,245 +1711,16 @@
 
     function selectGame(gameId) {
 
-        selectedGameId = gameId;
+        selectedGameId =
+            String(gameId);
 
         renderGames();
         renderGameFeed();
-
-
-        const selectedButton =
-            document.querySelector(
-                `.game-item[data-game-id="${CSS.escape(String(gameId))}"]`
-            );
-
-
-        if (selectedButton) {
-
-            selectedButton.scrollIntoView({
-                behavior: "smooth",
-                block: "nearest",
-                inline: "nearest"
-            });
-
-        }
     }
 
 
     /* =========================
-       GAMES TOUCH / MOUSE DRAG
-    ========================= */
-
-    function enableGamesSwipe() {
-
-        const slider =
-            document.getElementById("gamesList");
-
-        if (!slider) {
-            return;
-        }
-
-
-        let isDragging = false;
-        let startX = 0;
-        let startScroll = 0;
-        let moved = false;
-
-
-        slider.addEventListener(
-            "pointerdown",
-            event => {
-
-                if (event.pointerType === "mouse" && event.button !== 0) {
-                    return;
-                }
-
-                isDragging = true;
-                moved = false;
-
-                startX = event.clientX;
-                startScroll = slider.scrollLeft;
-
-                slider.classList.add("dragging");
-
-                try {
-                    slider.setPointerCapture(
-                        event.pointerId
-                    );
-                } catch (_) {}
-
-            }
-        );
-
-
-        slider.addEventListener(
-            "pointermove",
-            event => {
-
-                if (!isDragging) {
-                    return;
-                }
-
-                const distance =
-                    event.clientX - startX;
-
-
-                if (Math.abs(distance) > 5) {
-                    moved = true;
-                }
-
-
-                slider.scrollLeft =
-                    startScroll - distance;
-
-            }
-        );
-
-
-        slider.addEventListener(
-            "pointerup",
-            event => {
-
-                if (!isDragging) {
-                    return;
-                }
-
-                isDragging = false;
-
-                slider.classList.remove(
-                    "dragging"
-                );
-
-
-                try {
-                    slider.releasePointerCapture(
-                        event.pointerId
-                    );
-                } catch (_) {}
-
-
-                /*
-                 * بعد از رها کردن، نزدیک‌ترین کارت
-                 * به صورت نرم در جای خودش قرار می‌گیرد.
-                 */
-                if (moved) {
-
-                    snapGamesToNearest();
-
-                    setTimeout(() => {
-                        moved = false;
-                    }, 50);
-
-                }
-
-            }
-        );
-
-
-        slider.addEventListener(
-            "pointercancel",
-            () => {
-
-                isDragging = false;
-
-                slider.classList.remove(
-                    "dragging"
-                );
-
-            }
-        );
-
-
-        /*
-         * جلوگیری از کلیک اشتباهی بعد از Drag
-         */
-        slider.addEventListener(
-            "click",
-            event => {
-
-                if (moved) {
-
-                    event.preventDefault();
-                    event.stopPropagation();
-
-                    moved = false;
-
-                }
-
-            },
-            true
-        );
-
-    }
-
-
-    function snapGamesToNearest() {
-
-        const slider =
-            document.getElementById("gamesList");
-
-        if (!slider) {
-            return;
-        }
-
-
-        const cards =
-            [...slider.querySelectorAll(".game-item")];
-
-        if (!cards.length) {
-            return;
-        }
-
-
-        const sliderRect =
-            slider.getBoundingClientRect();
-
-
-        let closestCard = null;
-        let closestDistance = Infinity;
-
-
-        cards.forEach(card => {
-
-            const rect =
-                card.getBoundingClientRect();
-
-            /*
-             * چون direction: rtl است،
-             * سمت راست کارت معیار Snap است.
-             */
-            const distance =
-                Math.abs(
-                    rect.right -
-                    sliderRect.right
-                );
-
-
-            if (distance < closestDistance) {
-
-                closestDistance = distance;
-                closestCard = card;
-
-            }
-
-        });
-
-
-        if (closestCard) {
-
-            closestCard.scrollIntoView({
-                behavior: "smooth",
-                block: "nearest",
-                inline: "start"
-            });
-
-        }
-    }
-
-
-    /* =========================
-       NEWS
-       سه خبر از news.json
-       ستونی
+       NEWS + EVENTS
     ========================= */
 
     function renderGameFeed() {
@@ -1805,6 +1730,10 @@
 
         const labelEl =
             document.getElementById("selectedGameLabel");
+
+        if (!feedEl || !labelEl) {
+            return;
+        }
 
 
         const selectedGame =
@@ -1833,10 +1762,6 @@
         }
 
 
-        /*
-         * سه خبر اول مرتبط با بازی
-         * از news.json گرفته می‌شوند.
-         */
         const news =
             allNews
                 .filter(
@@ -1844,7 +1769,6 @@
                         String(item.gameId) ===
                         String(selectedGameId)
                 )
-                .slice(0, 3)
                 .map(item => ({
                     ...item,
                     feedType: "خبر",
@@ -1852,10 +1776,6 @@
                 }));
 
 
-        /*
-         * اگر کمتر از سه خبر وجود داشت،
-         * event ها برای تکمیل لیست استفاده می‌شوند.
-         */
         const events =
             allEvents
                 .filter(
@@ -1871,20 +1791,9 @@
 
 
         const feed = [
+            ...events,
             ...news
         ];
-
-
-        if (feed.length < 3) {
-
-            feed.push(
-                ...events.slice(
-                    0,
-                    3 - feed.length
-                )
-            );
-
-        }
 
 
         if (!feed.length) {
@@ -1901,7 +1810,7 @@
 
 
         feedEl.innerHTML =
-            feed.slice(0, 3).map(item => {
+            feed.map(item => {
 
                 return `
                     <article
@@ -1926,11 +1835,9 @@
 
                         </div>
 
-
                         <h4>
                             ${escapeHTML(item.title || "")}
                         </h4>
-
 
                         <p>
                             ${escapeHTML(
@@ -1956,6 +1863,9 @@
         const articlesGrid =
             document.getElementById("articlesGrid");
 
+        if (!articlesGrid) {
+            return;
+        }
 
         if (!allArticles.length) {
 
@@ -1982,9 +1892,9 @@
 
                             <img
                                 src="${escapeHTML(article.image || "")}"
-                                alt="${escapeHTML(article.title)}"
+                                alt="${escapeHTML(article.title || "")}"
+                                loading="lazy"
                                 onerror="this.style.display='none'"
-                                draggable="false"
                             >
 
                         </div>
@@ -2006,7 +1916,7 @@
 
 
                             <h3>
-                                ${escapeHTML(article.title)}
+                                ${escapeHTML(article.title || "")}
                             </h3>
 
 
@@ -2040,70 +1950,103 @@
        MOBILE MENU
     ========================= */
 
-    const mobileMenu =
-        document.getElementById("mobileMenu");
+    function setupMobileMenu() {
 
-    const mainNav =
-        document.getElementById("mainNav");
+        const button =
+            document.getElementById("mobileMenu");
+
+        const nav =
+            document.getElementById("mainNav");
+
+        if (!button || !nav) {
+            return;
+        }
 
 
-    mobileMenu.addEventListener(
-        "click",
-        () => {
+        button.addEventListener(
+            "click",
+            function() {
 
-            const isOpen =
-                mainNav.classList.toggle(
-                    "mobile-open"
+                const isOpen =
+                    nav.style.display === "flex";
+
+                nav.style.display =
+                    isOpen ? "none" : "flex";
+
+                button.setAttribute(
+                    "aria-expanded",
+                    String(!isOpen)
                 );
 
-            mobileMenu.setAttribute(
-                "aria-expanded",
-                String(isOpen)
-            );
+            }
+        );
+
+
+        nav.querySelectorAll("a")
+            .forEach(link => {
+
+                link.addEventListener(
+                    "click",
+                    function() {
+
+                        if (
+                            window.innerWidth <= 650
+                        ) {
+
+                            nav.style.display = "none";
+
+                            button.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
+
+                        }
+
+                    }
+                );
+
+            });
+    }
+
+
+    /* =========================
+       PAGE VISIBILITY
+       برای برگشت از صفحه مقاله
+    ========================= */
+
+    document.addEventListener(
+        "visibilitychange",
+        function() {
+
+            if (
+                document.visibilityState === "visible"
+            ) {
+
+                updateSliderSize();
+                updateSliderPosition(false);
+                startSlider();
+
+            } else {
+
+                stopSlider();
+
+            }
 
         }
     );
 
 
-    mainNav
-        .querySelectorAll("a")
-        .forEach(link => {
-
-            link.addEventListener(
-                "click",
-                () => {
-
-                    mainNav.classList.remove(
-                        "mobile-open"
-                    );
-
-                    mobileMenu.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                }
-            );
-
-        });
-
-
     window.addEventListener(
-        "resize",
-        () => {
+        "pageshow",
+        function() {
 
-            if (window.innerWidth > 650) {
+            setTimeout(() => {
 
-                mainNav.classList.remove(
-                    "mobile-open"
-                );
+                updateSliderSize();
+                updateSliderPosition(false);
+                startSlider();
 
-                mobileMenu.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-            }
+            }, 100);
 
         }
     );
@@ -2133,24 +2076,36 @@
 
 
             allGames =
-                toArray(gamesData, "games");
+                toArray(
+                    gamesData,
+                    "games"
+                );
 
 
             allNews =
-                toArray(newsData, "news");
+                toArray(
+                    newsData,
+                    "news"
+                );
 
 
             allEvents =
-                toArray(eventsData, "events");
+                toArray(
+                    eventsData,
+                    "events"
+                );
 
 
             allArticles =
-                toArray(articlesData, "articles");
+                toArray(
+                    articlesData,
+                    "articles"
+                );
 
 
             selectedGameId =
                 allGames.length
-                    ? allGames[0].id
+                    ? String(allGames[0].id)
                     : null;
 
 
@@ -2160,7 +2115,19 @@
             renderArticles();
 
             enableHeroTouch();
-            enableGamesSwipe();
+            setupMobileMenu();
+
+            /*
+                یک بار دیگر بعد از کامل شدن DOM
+                اندازه اسلایدر را محاسبه می‌کنیم.
+            */
+
+            setTimeout(() => {
+
+                updateSliderSize();
+                updateSliderPosition(false);
+
+            }, 100);
 
 
         } catch (error) {
@@ -2168,32 +2135,72 @@
             console.error(error);
 
 
-            document.getElementById("gamesList").innerHTML = `
-                <div class="empty">
-                    خطا در بارگذاری اطلاعات بازی‌ها.
-                </div>
-            `;
+            const gamesList =
+                document.getElementById("gamesList");
+
+            const feed =
+                document.getElementById("feed");
+
+            const articlesGrid =
+                document.getElementById("articlesGrid");
 
 
-            document.getElementById("feed").innerHTML = `
-                <div class="empty">
-                    خطا در بارگذاری اخبار و اتفاقات.
-                </div>
-            `;
+            if (gamesList) {
+
+                gamesList.innerHTML = `
+                    <div class="empty">
+                        خطا در بارگذاری اطلاعات بازی‌ها.
+                    </div>
+                `;
+
+            }
 
 
-            document.getElementById("articlesGrid").innerHTML = `
-                <div class="empty">
-                    خطا در بارگذاری اخبار.
-                </div>
-            `;
+            if (feed) {
+
+                feed.innerHTML = `
+                    <div class="empty">
+                        خطا در بارگذاری اخبار و اتفاقات.
+                    </div>
+                `;
+
+            }
+
+
+            if (articlesGrid) {
+
+                articlesGrid.innerHTML = `
+                    <div class="empty">
+                        خطا در بارگذاری اخبار.
+                    </div>
+                `;
+
+            }
 
         }
 
     }
 
 
-    init();
+    /*
+        اجرای اصلی بعد از آماده شدن کامل صفحه
+    */
+
+    if (document.readyState === "loading") {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            init,
+            {
+                once: true
+            }
+        );
+
+    } else {
+
+        init();
+
+    }
 
 </script>
 
