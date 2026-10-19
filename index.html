@@ -2,802 +2,398 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#222222">
 
-    <title>GAMEHUB | گیم‌هاب</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Game Center | مدیریت بازی‌ها</title>
 
     <style>
         :root {
-            --bg: #222;
-            --bg-soft: #2b2b2b;
-            --blue: #4e6ff8;
-            --blue-dark: #2e4192;
-            --blue-soft: #9aabff;
-            --white: #fff;
-            --text: #eee;
-            --muted: #a5a5a5;
-            --border: rgba(255,255,255,.08);
-            --radius: 20px;
+            --bg: #222222;
+            --card: #2B2B2B;
+            --primary: #2E4192;
+            --accent: #4E6FF8;
+            --light: #9AABFF;
+
+            --text: #FFFFFF;
+            --muted: #B8B8B8;
+
+            --border: rgba(154, 171, 255, 0.20);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        html {
-            width: 100%;
-            min-height: 100%;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
         }
 
         body {
-            width: 100%;
-            min-height: 100vh;
-            overflow-x: hidden;
-            font-family: "Vazirmatn", sans-serif;
-            background: linear-gradient(
-                180deg,
-                #222 0%,
-                #2b2b2b 38%,
-                #2e4192 100%
-            );
+            font-family: Tahoma, Arial, sans-serif;
+            background:
+                radial-gradient(
+                    circle at 85% 0%,
+                    rgba(78, 111, 248, 0.16),
+                    transparent 35%
+                ),
+                var(--bg);
+
             color: var(--text);
-            line-height: 1.8;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        button {
-            font-family: inherit;
-        }
-
-        img {
-            display: block;
-            max-width: 100%;
+            min-height: 100vh;
         }
 
         .container {
-            width: min(1180px, calc(100% - 32px));
-            margin-inline: auto;
+            width: min(1150px, 100%);
+            margin: auto;
+            padding: 28px 20px;
         }
 
-        /* =========================
-           HEADER
-        ========================= */
+        /* Header */
 
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(34,34,34,.96);
-            border-bottom: 1px solid var(--border);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-        }
-
-        .header-inner {
-            min-height: 76px;
+        .header {
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
             gap: 20px;
+            margin-bottom: 35px;
         }
 
-        .logo {
-            color: #fff;
-            font-size: 25px;
-            font-weight: 800;
-            white-space: nowrap;
-        }
-
-        .logo span,
-        .footer-logo span {
-            color: var(--blue);
-        }
-
-        nav {
+        .brand {
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: 15px;
         }
 
-        nav a {
-            color: #d6d6d6;
-            font-size: 14px;
-            font-weight: 500;
-        }
+        .brand-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 18px;
 
-        nav a.active,
-        nav a:hover {
-            color: var(--blue);
-        }
-
-        .mobile-menu {
-            display: none;
-            width: 42px;
-            height: 42px;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            background: #2b2b2b;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            margin-top: 25px;
-        }
-
-        /*
-            نکته اصلی:
-            اسلایدها با flex + translate3d حرکت می‌کنند.
-            دیگر absolute/opacity برای جابه‌جایی استفاده نشده.
-            این روش روی Android و Portrait پایدارتر است.
-        */
-
-        .slider {
-            position: relative;
-            width: 100%;
-            height: 500px;
-            overflow: hidden;
-            border-radius: 25px;
-            border: 1px solid var(--border);
-            background: #222;
-            touch-action: pan-y;
-            user-select: none;
-            -webkit-user-select: none;
-        }
-
-        .slides {
-            width: 100%;
-            height: 100%;
             display: flex;
-            flex-direction: row;
-            direction: ltr;
-            transform: translate3d(0,0,0);
-            transition: transform .45s cubic-bezier(.22,.61,.36,1);
-            will-change: transform;
-        }
-
-        .slides.no-transition {
-            transition: none !important;
-        }
-
-        .slide {
-            position: relative;
-            flex: 0 0 100%;
-            width: 100%;
-            height: 100%;
-            min-width: 100%;
-            display: grid;
-            grid-template-columns: 1.05fr 1fr;
-            direction: rtl;
-            overflow: hidden;
-            cursor: grab;
-        }
-
-        .slide:active {
-            cursor: grabbing;
-        }
-
-        .slide-image {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background: #202020;
-        }
-
-        .slide-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            pointer-events: none;
-            -webkit-user-drag: none;
-        }
-
-        .slide-content {
-            min-width: 0;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
             justify-content: center;
-            padding: 38px;
+            align-items: center;
+
             background: linear-gradient(
                 135deg,
-                #222,
-                #2b2b2b 55%,
-                #2e4192
+                var(--accent),
+                var(--primary)
             );
-        }
 
-        .slide-category {
-            width: fit-content;
-            margin-bottom: 15px;
-            padding: 5px 12px;
-            border-radius: 999px;
-            color: var(--blue-soft);
-            background: rgba(78,111,248,.18);
-            border: 1px solid rgba(78,111,248,.35);
-            font-size: 12px;
-        }
-
-        .slide-content h1 {
             color: white;
-            font-size: clamp(23px,3vw,38px);
-            line-height: 1.45;
-            margin-bottom: 13px;
-            overflow-wrap: anywhere;
+            font-size: 28px;
+            font-weight: bold;
+
+            box-shadow: 0 0 25px rgba(78, 111, 248, 0.25);
         }
 
-        .slide-content p {
-            max-width: 560px;
-            margin-bottom: 18px;
-            color: #c3c3c3;
-            font-size: 14px;
-            line-height: 2;
-            overflow-wrap: anywhere;
-        }
-
-        .slide-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px 15px;
-            margin-bottom: 20px;
-            color: var(--muted);
-            font-size: 12px;
-        }
-
-        .continue-btn {
-            width: fit-content;
-            padding: 9px 18px;
-            border-radius: 12px;
-            background: var(--blue);
-            color: white;
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        .slider-controls {
-            position: absolute;
-            z-index: 20;
-            bottom: 18px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            gap: 7px;
-            direction: ltr;
-        }
-
-        .slider-dot {
-            width: 8px;
-            height: 8px;
-            padding: 0;
-            border: 0;
-            border-radius: 50%;
-            background: rgba(255,255,255,.4);
-            cursor: pointer;
-            transition: .2s ease;
-        }
-
-        .slider-dot.active {
-            width: 25px;
-            border-radius: 20px;
-            background: var(--blue);
-        }
-
-        /* =========================
-           SECTION
-        ========================= */
-
-        section {
-            margin-top: 45px;
-        }
-
-        .section-heading {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-            margin-bottom: 18px;
-        }
-
-        .section-heading h2 {
-            color: white;
-            font-size: 22px;
-        }
-
-        .section-heading p {
-            color: var(--muted);
-            font-size: 12px;
-        }
-
-        /* =========================
-           GAMES + NEWS
-        ========================= */
-
-        .game-news-layout {
-            display: grid;
-            grid-template-columns: 280px minmax(0,1fr);
-            gap: 18px;
-        }
-
-        .games-panel {
-            min-width: 0;
-            padding: 18px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            background: linear-gradient(
-                160deg,
-                #222,
-                #2b2b2b 45%,
-                #2e4192
-            );
-        }
-
-        .games-panel-title {
-            margin-bottom: 14px;
-            color: white;
-            font-size: 15px;
-            font-weight: 700;
-        }
-
-        .games-list {
-            display: flex;
-            flex-direction: column;
-            gap: 9px;
-        }
-
-        .game-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            width: 100%;
-            border: 1px solid transparent;
-            border-radius: 14px;
-            padding: 10px;
-            background: rgba(255,255,255,.04);
-            color: #d7d7d7;
-            cursor: pointer;
-            text-align: right;
-        }
-
-        .game-item.active {
-            background: rgba(78,111,248,.18);
-            border-color: rgba(78,111,248,.45);
-            color: white;
-        }
-
-        .game-icon {
-            width: 38px;
-            height: 38px;
-            flex: 0 0 38px;
-            border-radius: 11px;
-            object-fit: cover;
-            background: #202020;
-        }
-
-        .game-item-name {
-            min-width: 0;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .news-panel {
-            min-width: 0;
-            padding: 18px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            background: linear-gradient(
-                145deg,
-                #2b2b2b,
-                #2e4192
-            );
-        }
-
-        .news-panel-head {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .news-panel-head h3 {
-            color: white;
-            font-size: 17px;
-        }
-
-        .selected-game-label {
-            color: var(--blue-soft);
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .feed {
-            display: grid;
-            grid-template-columns: repeat(2,minmax(0,1fr));
-            gap: 12px;
-        }
-
-        .feed-card {
-            min-width: 0;
-            padding: 14px;
-            border: 1px solid rgba(255,255,255,.07);
-            border-radius: 15px;
-            background: rgba(34,34,34,.72);
-        }
-
-        .feed-card.event {
-            border-right: 3px solid var(--blue);
-        }
-
-        .feed-top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 8px;
+        .brand h1 {
+            font-size: 25px;
             margin-bottom: 8px;
         }
 
-        .feed-type {
-            padding: 3px 8px;
-            border-radius: 999px;
-            color: var(--blue-soft);
-            background: rgba(78,111,248,.12);
-            font-size: 10px;
-        }
-
-        .feed-card.event .feed-type {
-            color: white;
-            background: var(--blue);
-        }
-
-        .feed-time {
-            color: var(--muted);
-            font-size: 10px;
-        }
-
-        .feed-card h4 {
-            margin-bottom: 6px;
-            color: white;
+        .brand p {
             font-size: 13px;
-            line-height: 1.7;
-        }
-
-        .feed-card p {
-            color: #aaa;
-            font-size: 11px;
-            line-height: 1.8;
-        }
-
-        .empty {
-            padding: 30px 15px;
             color: var(--muted);
-            font-size: 13px;
-            text-align: center;
         }
 
-        /* =========================
-           ARTICLES
-        ========================= */
-
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(3,minmax(0,1fr));
-            gap: 18px;
-        }
-
-        .article-card {
-            overflow: hidden;
+        .counter {
+            padding: 12px 18px;
             border: 1px solid var(--border);
-            border-radius: var(--radius);
-            background: linear-gradient(
-                145deg,
-                #222,
-                #2b2b2b
-            );
+            border-radius: 12px;
+
+            background: var(--card);
+            color: var(--light);
+
+            font-size: 13px;
+            white-space: nowrap;
         }
 
-        .article-image {
-            height: 190px;
+        /* Search */
+
+        .search-box {
+            margin-bottom: 25px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 16px;
+
+            border: 1px solid var(--border);
+            border-radius: 14px;
+
+            background: var(--card);
+            color: white;
+
+            font-size: 14px;
+            font-family: inherit;
+
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(78, 111, 248, 0.12);
+        }
+
+        .search-box input::placeholder {
+            color: #999999;
+        }
+
+        /* Games Grid */
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        /* Game Card */
+
+        .game-card {
+            min-width: 0;
+
+            padding: 18px;
+
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 17px;
+
+            transition:
+                transform 0.2s,
+                border-color 0.2s,
+                box-shadow 0.2s;
+        }
+
+        .game-card:hover {
+            transform: translateY(-4px);
+
+            border-color: var(--accent);
+
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .game-top {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        /* Game Icon */
+
+        .game-icon {
+            width: 52px;
+            height: 52px;
+
+            flex-shrink: 0;
+
+            border-radius: 14px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: var(--primary);
+            border: 1px solid rgba(154, 171, 255, 0.25);
+
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+
             overflow: hidden;
-            background: #202020;
         }
 
-        .article-image img {
+        .game-icon img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .article-body {
-            padding: 17px;
+        .game-info {
+            min-width: 0;
         }
 
-        .article-meta-top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 8px;
-            margin-bottom: 9px;
-        }
-
-        .article-category {
-            color: var(--blue-soft);
-            font-size: 10px;
-        }
-
-        .article-game {
-            color: #929292;
-            font-size: 10px;
-        }
-
-        .article-body h3 {
-            margin-bottom: 8px;
-            color: white;
+        .game-name {
             font-size: 15px;
             line-height: 1.7;
+            overflow-wrap: anywhere;
         }
 
-        .article-body p {
-            margin-bottom: 12px;
-            color: #a9a9a9;
-            font-size: 11px;
-            line-height: 1.9;
+        .package-name {
+            margin-top: 5px;
+
+            font-size: 10px;
+            color: #A9A9A9;
+
+            direction: ltr;
+            text-align: right;
+            overflow-wrap: anywhere;
         }
 
-        .article-footer {
+        /* Status */
+
+        .game-status {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 10px;
-            color: var(--muted);
-            font-size: 10px;
-        }
 
-        .article-read {
-            color: var(--blue-soft);
-            font-weight: 600;
-        }
+            margin-top: 20px;
+            padding-top: 14px;
 
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            margin-top: 65px;
-            padding: 25px 0;
             border-top: 1px solid var(--border);
-            background: rgba(34,34,34,.35);
         }
 
-        .footer-inner {
+        .status-label {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 20px;
+            gap: 8px;
+
+            font-size: 13px;
+            font-weight: bold;
         }
 
-        .footer-logo {
-            font-size: 18px;
-            font-weight: 800;
+        .status-dot {
+            width: 9px;
+            height: 9px;
+
+            border-radius: 50%;
+            flex-shrink: 0;
         }
 
-        .footer-text {
-            color: var(--muted);
+        .active .status-label {
+            color: var(--light);
+        }
+
+        .active .status-dot {
+            background: var(--accent);
+            box-shadow: 0 0 10px rgba(78, 111, 248, 0.7);
+        }
+
+        .inactive .status-label {
+            color: #AAAAAA;
+        }
+
+        .inactive .status-dot {
+            background: #777777;
+        }
+
+        .status-badge {
+            padding: 7px 10px;
+
+            border-radius: 8px;
+
+            background: rgba(78, 111, 248, 0.13);
+            border: 1px solid rgba(78, 111, 248, 0.3);
+
+            color: var(--light);
             font-size: 11px;
+            font-weight: bold;
         }
 
-        /* =========================
-           TABLET
-        ========================= */
+        .inactive .status-badge {
+            background: rgba(150, 150, 150, 0.08);
+            border-color: rgba(180, 180, 180, 0.2);
+            color: #AAAAAA;
+        }
+
+        .empty-message {
+            grid-column: 1 / -1;
+            padding: 35px;
+            text-align: center;
+
+            background: var(--card);
+            border-radius: 14px;
+
+            color: var(--muted);
+        }
+
+        /* Footer */
+
+        .footer {
+            margin-top: 35px;
+            padding-top: 20px;
+
+            border-top: 1px solid var(--border);
+
+            text-align: center;
+            color: #999999;
+
+            font-size: 12px;
+            line-height: 2;
+        }
+
+        /* Responsive */
 
         @media (max-width: 950px) {
-
-            .slider {
-                height: 450px;
-            }
-
-            .game-news-layout {
-                grid-template-columns: 1fr;
-            }
-
-            .games-list {
-                flex-direction: row;
-                width: 100%;
-                overflow-x: auto;
-                overflow-y: hidden;
-                padding-bottom: 5px;
-                scrollbar-width: none;
-                -webkit-overflow-scrolling: touch;
-                touch-action: pan-x;
-            }
-
-            .games-list::-webkit-scrollbar {
-                display: none;
-            }
-
-            .game-item {
-                flex: 0 0 170px;
-                width: 170px;
-            }
-
-            .feed {
-                grid-template-columns: 1fr;
-            }
-
-            .articles-grid {
-                grid-template-columns: repeat(2,minmax(0,1fr));
-            }
-
-            .slide {
-                grid-template-columns: 1fr;
-            }
-
-            .slide-image {
-                display: none;
-            }
-
-            .slide-content {
-                padding: 35px;
+            .games-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
             }
         }
-
-        /* =========================
-           MOBILE
-        ========================= */
 
         @media (max-width: 650px) {
-
             .container {
-                width: calc(100% - 20px);
+                padding: 20px 13px;
             }
 
-            .header-inner {
-                min-height: 64px;
-            }
-
-            .mobile-menu {
-                display: block;
-            }
-
-            nav {
-                display: none;
-                position: absolute;
-                top: 64px;
-                right: 10px;
-                left: 10px;
+            .header {
+                align-items: flex-start;
                 flex-direction: column;
-                align-items: stretch;
-                gap: 0;
-                padding: 8px;
-                border: 1px solid var(--border);
-                border-radius: 15px;
-                background: #252525;
             }
 
-            nav a {
-                padding: 10px 12px;
+            .brand h1 {
+                font-size: 21px;
             }
 
-            .hero {
-                margin-top: 14px;
+            .brand-icon {
+                width: 52px;
+                height: 52px;
             }
 
-            /*
-                ارتفاع ثابت و مطمئن برای Portrait
-            */
-
-            .slider {
-                height: 470px;
-                min-height: 470px;
-                border-radius: 20px;
+            .games-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 10px;
             }
 
-            .slides {
-                height: 470px;
+            .game-card {
+                padding: 12px;
+                border-radius: 14px;
             }
 
-            .slide {
-                height: 470px;
-                min-height: 470px;
-                display: block;
+            .game-icon {
+                width: 42px;
+                height: 42px;
+                border-radius: 11px;
             }
 
-            .slide-content {
-                width: 100%;
-                height: 100%;
-                min-height: 470px;
-                padding: 25px 20px 55px;
-                justify-content: center;
-                overflow: hidden;
-            }
-
-            .slide-content h1 {
-                font-size: 23px;
-            }
-
-            .slide-content p {
+            .game-name {
                 font-size: 12px;
-                line-height: 2;
             }
 
-            .slide-meta {
+            .package-name {
+                font-size: 9px;
+            }
+
+            .status-label {
+                font-size: 11px;
+            }
+
+            .status-badge {
+                padding: 6px 8px;
                 font-size: 10px;
-            }
-
-            .slider-controls {
-                bottom: 14px;
-            }
-
-            .section-heading h2 {
-                font-size: 18px;
-            }
-
-            .section-heading p {
-                font-size: 10px;
-            }
-
-            .games-panel,
-            .news-panel {
-                padding: 14px;
-                border-radius: 17px;
-            }
-
-            .game-item {
-                flex: 0 0 155px;
-                width: 155px;
-            }
-
-            .feed {
-                grid-template-columns: 1fr;
-            }
-
-            .articles-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .article-image {
-                height: 210px;
-            }
-
-            .footer-inner {
-                flex-direction: column;
-                text-align: center;
             }
         }
 
-        @media (max-width: 380px) {
-
-            .slider,
-            .slides,
-            .slide,
-            .slide-content {
-                height: 450px;
-                min-height: 450px;
+        @media (max-width: 360px) {
+            .games-grid {
+                grid-template-columns: 1fr;
             }
+        }
 
-            .slide-content h1 {
-                font-size: 21px;
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                transition: none !important;
             }
         }
     </style>
@@ -805,1440 +401,403 @@
 
 <body>
 
-<header>
-    <div class="container header-inner">
+<div class="container">
 
-        <a href="index.html" class="logo">
-            SWIFT<span>NEWS</span>
-        </a>
+    <header class="header">
 
-        <nav id="mainNav">
-            <a href="index.html" class="active">خانه</a>
-            <a href="#games-news">بازی‌ها</a>
-            <a href="#articles">اخبار</a>
-        </nav>
+        <div class="brand">
 
-        <button
-            class="mobile-menu"
-            id="mobileMenu"
-            type="button"
-            aria-label="منو"
-        >
-            ☰
-        </button>
-
-    </div>
-</header>
-
-
-<main class="container">
-
-    <section class="hero">
-
-        <div
-            class="slider"
-            id="heroSlider"
-        >
-
-            <div
-                class="slides"
-                id="slides"
-            ></div>
-
-            <div
-                class="slider-controls"
-                id="sliderControls"
-            ></div>
-
-        </div>
-
-    </section>
-
-
-    <section id="games-news">
-
-        <div class="section-heading">
+            <div class="brand-icon">
+                G
+            </div>
 
             <div>
-                <h2>بازی‌ها و اخبار و اتفاقات</h2>
-                <p>اخبار و ایونت‌های مربوط به بازی انتخاب‌شده</p>
+                <h1>Game Center</h1>
+
+                <p>
+                    مرکز نمایش وضعیت بازی‌ها
+                </p>
             </div>
 
         </div>
 
-
-        <div class="game-news-layout">
-
-            <div class="games-panel">
-
-                <div class="games-panel-title">
-                    بازی‌ها
-                </div>
-
-                <div
-                    class="games-list"
-                    id="gamesList"
-                >
-                    <div class="empty">
-                        در حال بارگذاری...
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div class="news-panel">
-
-                <div class="news-panel-head">
-
-                    <h3>
-                        اخبار و اتفاقات
-                    </h3>
-
-                    <div
-                        class="selected-game-label"
-                        id="selectedGameLabel"
-                    >
-                        -
-                    </div>
-
-                </div>
-
-                <div
-                    class="feed"
-                    id="feed"
-                >
-                    <div class="empty">
-                        در حال بارگذاری...
-                    </div>
-                </div>
-
-            </div>
-
+        <div class="counter" id="counter">
+            در حال بارگذاری...
         </div>
 
-    </section>
+    </header>
 
 
-    <section id="articles">
+    <div class="search-box">
 
-        <div class="section-heading">
-
-            <div>
-                <h2>اخبار</h2>
-                <p>آخرین مقاله‌ها و خبرهای گیمینگ</p>
-            </div>
-
-        </div>
-
-        <div
-            class="articles-grid"
-            id="articlesGrid"
+        <input
+            type="search"
+            id="search"
+            placeholder="🔍 جست‌وجوی بازی..."
+            aria-label="جست‌وجوی بازی"
         >
-            <div class="empty">
-                در حال بارگذاری...
-            </div>
-        </div>
-
-    </section>
-
-</main>
-
-
-<footer>
-
-    <div class="container footer-inner">
-
-        <div class="footer-logo">
-            SWIFT<span>NEWS</span>
-        </div>
-
-        <div class="footer-text">
-            © 2026 SWIFTNEWS — تمامی حقوق محفوظ است.
-        </div>
 
     </div>
 
-</footer>
+
+    <section
+        class="games-grid"
+        id="gamesGrid"
+        aria-label="فهرست بازی‌ها"
+    ></section>
+
+
+    <footer class="footer">
+
+        Game Center © 2026
+
+        <br>
+
+        طراحی شده با رابط کاربری اختصاصی
+
+    </footer>
+
+</div>
 
 
 <script>
 
-    /* =========================
-       JSON PATHS
-    ========================= */
+/*
+====================================================
+          تنظیمات مدیر سایت
+====================================================
 
-    const PATHS = {
-        games: "./json/games.json",
-        news: "./json/news.json",
-        events: "./json/events.json",
-        articles: "./json/articles.json"
-    };
+وضعیت بازی‌ها را فقط از همین قسمت تغییر بده.
 
+active   = فعال
+inactive = غیرفعال
 
-    /* =========================
-       DATA
-    ========================= */
+برای افزودن آیکون:
+icon: "icons/pubg.png"
 
-    let allGames = [];
-    let allNews = [];
-    let allEvents = [];
-    let allArticles = [];
+اگر آیکون نداری، مقدار icon را خالی بگذار.
 
-    let selectedGameId = null;
-
-    let currentSlide = 0;
-    let allSlides = [];
-
-    let autoplayTimer = null;
-
-    let startX = 0;
-    let startY = 0;
-    let currentX = 0;
-    let isDragging = false;
-    let horizontalSwipe = false;
-    let sliderWidth = 0;
+بعد از تغییر، فایل را ذخیره و دوباره روی هاست
+بارگذاری کن.
+====================================================
+*/
 
 
-    /* =========================
-       HELPERS
-    ========================= */
+const GAME_LIST = [
 
-    function toArray(data, key) {
+    {
+        name: "PUBG Mobile",
+        package: "com.tencent.ig",
+        status: "active",
+        icon: "https://myket.ir/app-icon/ff27e582-ce9d-43c9-9c6b-9b1ae0c80591.png"
+    },
 
-        if (Array.isArray(data)) {
-            return data;
-        }
+    {
+        name: "Call of Duty Mobile",
+        package: "com.activision.callofduty.shooter",
+        status: "active",
+        icon: ""
+    },
 
-        if (data && Array.isArray(data[key])) {
-            return data[key];
-        }
+    {
+        name: "Mobile Legends",
+        package: "com.mobile.legends",
+        status: "active",
+        icon: ""
+    },
 
-        return [];
+    {
+        name: "Brawl Stars",
+        package: "com.supercell.brawlstars",
+        status: "active",
+        icon: ""
+    },
+
+    {
+        name: "Clash Royale",
+        package: "com.supercell.clashroyale",
+        status: "active",
+        icon: ""
+    },
+
+    {
+        name: "Clash of Clans",
+        package: "com.supercell.clashofclans",
+        status: "active",
+        icon: ""
+    },
+
+    {
+        name: "Free Fire",
+        package: "com.dts.freefire",
+        status: "active",
+        icon: ""
+    },
+
+    {
+        name: "Delta Force",
+        package: "com.proxima.dfm",
+        status: "active",
+        icon: ""
+    },
+
+    {
+        name: "Standoff 2",
+        package: "com.axlebolt.standoff2",
+        status: "active",
+        icon: ""
+    },
+
+    {
+        name: "Arena Breakout",
+        package: "com.proximabeta.mf.uamo",
+        status: "active",
+        icon: ""
+    },
+
+    {
+        name: "Blood Strike",
+        package: "com.netease.newspike",
+        status: "active",
+        icon: ""
+    },
+
+    {
+        name: "eFootball",
+        package: "jp.konami.pesam",
+        status: "active",
+        icon: ""
+    },
+
+    {
+        name: "FC",
+        package: "com.ea.gp.fifamobile",
+        status: "active",
+        icon: ""
+    },
+
+    {
+        name: "Roblox",
+        package: "com.roblox.client",
+        status: "active",
+        icon: ""
+    },
+
+    {
+        name: "LOL",
+        package: "com.riotgames.league.wildrift",
+        status: "active",
+        icon: ""
+    },
+
+    {
+        name: "Minecraft",
+        package: "com.mojang.minecraftpe",
+        status: "active",
+        icon: ""
     }
 
+];
 
-    async function loadJSON(path) {
 
-        const response = await fetch(
-            path,
-            {
-                cache: "no-store"
-            }
+/* نمایش بازی‌ها */
+
+const gamesGrid = document.getElementById("gamesGrid");
+const searchInput = document.getElementById("search");
+const counter = document.getElementById("counter");
+
+
+function renderGames() {
+
+    const query = searchInput.value
+        .trim()
+        .toLowerCase();
+
+    const filteredGames = GAME_LIST.filter(game => {
+
+        return (
+            game.name.toLowerCase().includes(query) ||
+            game.package.toLowerCase().includes(query)
         );
 
-        if (!response.ok) {
-            throw new Error(
-                "خطا در دریافت: " + path
-            );
-        }
+    });
 
-        return response.json();
+    gamesGrid.innerHTML = "";
+
+
+    if (filteredGames.length === 0) {
+
+        const message = document.createElement("div");
+
+        message.className = "empty-message";
+
+        message.textContent = "بازی موردنظر پیدا نشد.";
+
+        gamesGrid.appendChild(message);
+
     }
 
 
-    function escapeHTML(value) {
+    filteredGames.forEach(game => {
 
-        return String(value ?? "")
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
-    }
+        const isActive = game.status === "active";
 
 
-    /* =========================
-       SLIDER
-    ========================= */
+        const card = document.createElement("article");
 
-    function renderSlides() {
-
-        const slides =
-            document.getElementById("slides");
-
-        const controls =
-            document.getElementById("sliderControls");
-
-        if (!slides || !controls) {
-            return;
-        }
+        card.className =
+            "game-card " +
+            (isActive ? "active" : "inactive");
 
 
-        allSlides =
-            allArticles.slice(0, 5);
+        /* اطلاعات بازی */
+
+        const top = document.createElement("div");
+
+        top.className = "game-top";
 
 
-        currentSlide = 0;
+        /* آیکون بازی */
+
+        const iconBox = document.createElement("div");
+
+        iconBox.className = "game-icon";
 
 
-        if (!allSlides.length) {
+        if (game.icon) {
 
-            slides.innerHTML = `
-                <div class="slide">
-                    <div class="slide-content">
-                        <div class="empty">
-                            هنوز مقاله‌ای ثبت نشده است.
-                        </div>
-                    </div>
-                </div>
-            `;
+            const image = document.createElement("img");
 
-            controls.innerHTML = "";
+            image.src = game.icon;
 
-            return;
-        }
+            image.alt = "آیکون " + game.name;
 
+            image.onerror = function () {
 
-        slides.innerHTML =
-            allSlides.map(article => {
+                iconBox.textContent = game.name.charAt(0);
 
-                return `
-                    <a
-                        class="slide"
-                        href="article.html?id=${encodeURIComponent(article.id)}"
-                        draggable="false"
-                    >
+            };
 
-                        <div class="slide-image">
+            iconBox.appendChild(image);
 
-                            <img
-                                src="${escapeHTML(article.image || "")}"
-                                alt="${escapeHTML(article.title || "")}"
-                                draggable="false"
-                                onerror="this.style.display='none'"
-                            >
+        } else {
 
-                        </div>
+            iconBox.textContent = game.name.charAt(0);
 
-                        <div class="slide-content">
-
-                            <div class="slide-category">
-                                ${escapeHTML(article.category || "خبر")}
-                            </div>
-
-                            <h1>
-                                ${escapeHTML(article.title || "")}
-                            </h1>
-
-                            <p>
-                                ${escapeHTML(article.description || "")}
-                            </p>
-
-                            <div class="slide-meta">
-
-                                <span>
-                                    ${escapeHTML(article.gameName || "")}
-                                </span>
-
-                                <span>
-                                    ${escapeHTML(article.time || "")}
-                                </span>
-
-                                <span>
-                                    ${escapeHTML(article.readTime || "")}
-                                </span>
-
-                            </div>
-
-                            <span class="continue-btn">
-                                ادامه خبر
-                            </span>
-
-                        </div>
-
-                    </a>
-                `;
-
-            }).join("");
-
-
-        controls.innerHTML =
-            allSlides.map((_, index) => {
-
-                return `
-                    <button
-                        type="button"
-                        class="slider-dot ${
-                            index === 0 ? "active" : ""
-                        }"
-                        data-index="${index}"
-                        aria-label="اسلاید ${index + 1}"
-                    ></button>
-                `;
-
-            }).join("");
-
-
-        controls
-            .querySelectorAll(".slider-dot")
-            .forEach(dot => {
-
-                dot.addEventListener(
-                    "click",
-                    function(event) {
-
-                        event.preventDefault();
-                        event.stopPropagation();
-
-                        goToSlide(
-                            Number(this.dataset.index)
-                        );
-
-                    }
-                );
-
-            });
-
-
-        requestAnimationFrame(() => {
-
-            updateSliderWidth();
-            moveSlider(false);
-
-        });
-
-
-        startAutoplay();
-    }
-
-
-    function updateSliderWidth() {
-
-        const slider =
-            document.getElementById("heroSlider");
-
-        if (!slider) {
-            return;
-        }
-
-        sliderWidth =
-            slider.getBoundingClientRect().width;
-    }
-
-
-    function moveSlider(animate = true) {
-
-        const slides =
-            document.getElementById("slides");
-
-        if (!slides) {
-            return;
         }
 
 
-        slides.classList.toggle(
-            "no-transition",
-            !animate
-        );
+        /* نام و پکیج */
 
+        const info = document.createElement("div");
 
-        /*
-            فقط همین transform اسلاید را عوض می‌کند.
-            هر اسلاید 100% عرض دارد.
-        */
+        info.className = "game-info";
 
-        slides.style.transform =
-            "translate3d(" +
-            (-currentSlide * 100) +
-            "%, 0, 0)";
 
+        const name = document.createElement("h2");
 
-        const dots =
-            document.querySelectorAll(".slider-dot");
+        name.className = "game-name";
 
-        dots.forEach((dot, index) => {
+        name.textContent = game.name;
 
-            dot.classList.toggle(
-                "active",
-                index === currentSlide
-            );
 
-        });
+        const packageName = document.createElement("p");
 
+        packageName.className = "package-name";
 
-        if (!animate) {
+        packageName.textContent = game.package;
 
-            requestAnimationFrame(() => {
 
-                slides.classList.remove(
-                    "no-transition"
-                );
+        info.appendChild(name);
 
-            });
+        info.appendChild(packageName);
 
-        }
-    }
 
+        top.appendChild(iconBox);
 
-    function goToSlide(index) {
+        top.appendChild(info);
 
-        if (!allSlides.length) {
-            return;
-        }
 
-        currentSlide =
-            (index + allSlides.length) %
-            allSlides.length;
+        /* وضعیت بازی */
 
-        moveSlider(true);
+        const status = document.createElement("div");
 
-        startAutoplay();
-    }
+        status.className = "game-status";
 
 
-    function nextSlide() {
+        const label = document.createElement("div");
 
-        goToSlide(
-            currentSlide + 1
-        );
-    }
+        label.className = "status-label";
 
 
-    function previousSlide() {
+        const dot = document.createElement("span");
 
-        goToSlide(
-            currentSlide - 1
-        );
-    }
+        dot.className = "status-dot";
 
 
-    function startAutoplay() {
+        const labelText = document.createElement("span");
 
-        clearInterval(autoplayTimer);
+        labelText.textContent = isActive
+            ? "فعال"
+            : "غیرفعال";
 
-        if (allSlides.length <= 1) {
-            return;
-        }
 
-        autoplayTimer =
-            setInterval(
-                nextSlide,
-                5000
-            );
-    }
+        label.appendChild(dot);
 
+        label.appendChild(labelText);
 
-    function stopAutoplay() {
 
-        clearInterval(
-            autoplayTimer
-        );
-    }
+        const badge = document.createElement("span");
 
+        badge.className = "status-badge";
 
-    /* =========================
-       ANDROID / TOUCH SLIDER
-       استفاده از Pointer Events
-       به جای touchmove قدیمی
-    ========================= */
+        badge.textContent = isActive
+            ? "ACTIVE"
+            : "INACTIVE";
 
-    function setupSliderTouch() {
 
-        const slider =
-            document.getElementById("heroSlider");
+        status.appendChild(label);
 
-        const slides =
-            document.getElementById("slides");
+        status.appendChild(badge);
 
-        if (!slider || !slides) {
-            return;
-        }
 
+        card.appendChild(top);
 
-        /*
-            Pointer Events روی Android Chrome
-            و اکثر مرورگرهای موبایل کار می‌کند.
-        */
+        card.appendChild(status);
 
-        slider.addEventListener(
-            "pointerdown",
-            function(event) {
 
-                /*
-                    فقط لمس/قلم/ماوس.
-                */
+        gamesGrid.appendChild(card);
 
-                if (
-                    event.pointerType !== "touch" &&
-                    event.pointerType !== "pen" &&
-                    event.pointerType !== "mouse"
-                ) {
-                    return;
-                }
+    });
 
 
-                updateSliderWidth();
+    /* شمارنده */
 
-                stopAutoplay();
+    const activeCount = GAME_LIST.filter(
+        game => game.status === "active"
+    ).length;
 
-                startX =
-                    event.clientX;
 
-                startY =
-                    event.clientY;
+    counter.textContent =
+        activeCount +
+        " از " +
+        GAME_LIST.length +
+        " بازی فعال";
 
-                currentX =
-                    event.clientX;
+}
 
-                isDragging = true;
-                horizontalSwipe = false;
 
+/* جست‌وجو */
 
-                slides.classList.add(
-                    "no-transition"
-                );
+searchInput.addEventListener(
+    "input",
+    renderGames
+);
 
 
-                /*
-                    باعث می‌شود همان pointer
-                    تا پایان حرکت به همین عنصر متصل بماند.
-                */
+/* اجرای اولیه */
 
-                try {
-                    slider.setPointerCapture(
-                        event.pointerId
-                    );
-                } catch (e) {}
-
-            }
-        );
-
-
-        slider.addEventListener(
-            "pointermove",
-            function(event) {
-
-                if (!isDragging) {
-                    return;
-                }
-
-
-                currentX =
-                    event.clientX;
-
-
-                const deltaX =
-                    currentX - startX;
-
-                const deltaY =
-                    event.clientY - startY;
-
-
-                /*
-                    تشخیص جهت حرکت
-                */
-
-                if (!horizontalSwipe) {
-
-                    if (
-                        Math.abs(deltaX) < 8 &&
-                        Math.abs(deltaY) < 8
-                    ) {
-                        return;
-                    }
-
-
-                    /*
-                        حرکت عمودی:
-                        اسلایدر دخالت نمی‌کند.
-                    */
-
-                    if (
-                        Math.abs(deltaY) >
-                        Math.abs(deltaX)
-                    ) {
-
-                        isDragging = false;
-
-                        slides.classList.remove(
-                            "no-transition"
-                        );
-
-                        moveSlider(true);
-                        startAutoplay();
-
-                        return;
-                    }
-
-
-                    horizontalSwipe = true;
-                }
-
-
-                if (!horizontalSwipe) {
-                    return;
-                }
-
-
-                /*
-                    جلوگیری از اینکه حرکت زیاد شود.
-                */
-
-                let dragX =
-                    deltaX;
-
-                const resistance = 0.85;
-
-                dragX *= resistance;
-
-
-                /*
-                    مقدار فعلی اسلاید
-                    + مقدار کشیدن انگشت
-                */
-
-                const base =
-                    -(currentSlide * sliderWidth);
-
-
-                slides.style.transform =
-                    "translate3d(" +
-                    (base + dragX) +
-                    "px, 0, 0)";
-            }
-        );
-
-
-        function finishSwipe(event) {
-
-            if (!isDragging) {
-                return;
-            }
-
-
-            isDragging = false;
-
-
-            const deltaX =
-                currentX - startX;
-
-
-            slides.classList.remove(
-                "no-transition"
-            );
-
-
-            /*
-                اگر swipe افقی معتبر باشد.
-            */
-
-            if (
-                horizontalSwipe &&
-                Math.abs(deltaX) >
-                Math.max(
-                    45,
-                    sliderWidth * 0.12
-                )
-            ) {
-
-                /*
-                    راست به چپ = اسلاید بعدی
-                */
-
-                if (deltaX < 0) {
-                    currentSlide++;
-                }
-
-                /*
-                    چپ به راست = اسلاید قبلی
-                */
-
-                else {
-                    currentSlide--;
-                }
-
-
-                currentSlide =
-                    (
-                        currentSlide +
-                        allSlides.length
-                    ) %
-                    allSlides.length;
-
-            }
-
-
-            /*
-                همیشه بعد از لمس،
-                اسلایدر دقیقاً روی اسلاید قرار می‌گیرد.
-            */
-
-            moveSlider(true);
-
-            startAutoplay();
-
-
-            try {
-
-                slider.releasePointerCapture(
-                    event.pointerId
-                );
-
-            } catch (e) {}
-
-
-            horizontalSwipe = false;
-        }
-
-
-        slider.addEventListener(
-            "pointerup",
-            finishSwipe
-        );
-
-
-        slider.addEventListener(
-            "pointercancel",
-            finishSwipe
-        );
-
-
-        slider.addEventListener(
-            "lostpointercapture",
-            function() {
-
-                if (isDragging) {
-
-                    isDragging = false;
-
-                    slides.classList.remove(
-                        "no-transition"
-                    );
-
-                    moveSlider(true);
-                    startAutoplay();
-
-                }
-
-            }
-        );
-
-
-        /*
-            جلوگیری از drag تصویر
-        */
-
-        slider.addEventListener(
-            "dragstart",
-            function(event) {
-                event.preventDefault();
-            }
-        );
-
-
-        /*
-            دسکتاپ
-        */
-
-        slider.addEventListener(
-            "mouseenter",
-            function() {
-                stopAutoplay();
-            }
-        );
-
-
-        slider.addEventListener(
-            "mouseleave",
-            function() {
-
-                if (!isDragging) {
-                    startAutoplay();
-                }
-
-            }
-        );
-    }
-
-
-    /* =========================
-       RESIZE / ORIENTATION
-    ========================= */
-
-    function refreshSlider() {
-
-        setTimeout(() => {
-
-            updateSliderWidth();
-            moveSlider(false);
-
-        }, 100);
-    }
-
-
-    window.addEventListener(
-        "resize",
-        refreshSlider
-    );
-
-
-    window.addEventListener(
-        "orientationchange",
-        refreshSlider
-    );
-
-
-    window.addEventListener(
-        "pageshow",
-        function() {
-
-            refreshSlider();
-            startAutoplay();
-
-        }
-    );
-
-
-    document.addEventListener(
-        "visibilitychange",
-        function() {
-
-            if (
-                document.visibilityState === "visible"
-            ) {
-
-                refreshSlider();
-                startAutoplay();
-
-            } else {
-
-                stopAutoplay();
-
-            }
-
-        }
-    );
-
-
-    /* =========================
-       GAMES
-    ========================= */
-
-    function renderGames() {
-
-        const gamesList =
-            document.getElementById("gamesList");
-
-        if (!gamesList) {
-            return;
-        }
-
-
-        if (!allGames.length) {
-
-            gamesList.innerHTML = `
-                <div class="empty">
-                    بازی‌ای پیدا نشد.
-                </div>
-            `;
-
-            return;
-        }
-
-
-        gamesList.innerHTML =
-            allGames.map(game => {
-
-                const id =
-                    String(game.id ?? "");
-
-                const name =
-                    String(game.name ?? "");
-
-                const image =
-                    game.icon ||
-                    game.image ||
-                    "";
-
-
-                return `
-                    <button
-                        type="button"
-                        class="game-item ${
-                            id === String(selectedGameId)
-                                ? "active"
-                                : ""
-                        }"
-                        data-game-id="${escapeHTML(id)}"
-                    >
-
-                        ${
-                            image
-                                ? `
-                                    <img
-                                        class="game-icon"
-                                        src="${escapeHTML(image)}"
-                                        alt="${escapeHTML(name)}"
-                                        loading="lazy"
-                                    >
-                                `
-                                : `
-                                    <div class="game-icon"></div>
-                                `
-                        }
-
-                        <span class="game-item-name">
-                            ${escapeHTML(name)}
-                        </span>
-
-                    </button>
-                `;
-
-            }).join("");
-
-
-        gamesList
-            .querySelectorAll(".game-item")
-            .forEach(button => {
-
-                button.addEventListener(
-                    "click",
-                    function() {
-
-                        selectGame(
-                            this.dataset.gameId
-                        );
-
-                    }
-                );
-
-            });
-    }
-
-
-    function selectGame(id) {
-
-        selectedGameId =
-            String(id);
-
-        renderGames();
-        renderGameFeed();
-    }
-
-
-    /* =========================
-       NEWS + EVENTS
-    ========================= */
-
-    function renderGameFeed() {
-
-        const feed =
-            document.getElementById("feed");
-
-        const label =
-            document.getElementById(
-                "selectedGameLabel"
-            );
-
-
-        const selectedGame =
-            allGames.find(
-                game =>
-                    String(game.id) ===
-                    String(selectedGameId)
-            );
-
-
-        label.textContent =
-            selectedGame
-                ? selectedGame.name
-                : "-";
-
-
-        if (!selectedGame) {
-
-            feed.innerHTML = `
-                <div class="empty">
-                    بازی انتخاب نشده است.
-                </div>
-            `;
-
-            return;
-        }
-
-
-        const news =
-            allNews
-                .filter(
-                    item =>
-                        String(item.gameId) ===
-                        String(selectedGameId)
-                )
-                .map(item => ({
-                    ...item,
-                    feedType: "خبر",
-                    isEvent: false
-                }));
-
-
-        const events =
-            allEvents
-                .filter(
-                    item =>
-                        String(item.gameId) ===
-                        String(selectedGameId)
-                )
-                .map(item => ({
-                    ...item,
-                    feedType: "ایونت",
-                    isEvent: true
-                }));
-
-
-        const result = [
-            ...events,
-            ...news
-        ];
-
-
-        if (!result.length) {
-
-            feed.innerHTML = `
-                <div class="empty">
-                    برای ${escapeHTML(selectedGame.name)}
-                    هنوز خبر یا اتفاقی ثبت نشده است.
-                </div>
-            `;
-
-            return;
-        }
-
-
-        feed.innerHTML =
-            result.map(item => {
-
-                return `
-                    <article
-                        class="feed-card ${
-                            item.isEvent
-                                ? "event"
-                                : ""
-                        }"
-                    >
-
-                        <div class="feed-top">
-
-                            <span class="feed-type">
-                                ${
-                                    item.isEvent
-                                        ? "مهم"
-                                        : escapeHTML(item.feedType)
-                                }
-                            </span>
-
-                            <span class="feed-time">
-                                ${escapeHTML(item.time || "")}
-                            </span>
-
-                        </div>
-
-                        <h4>
-                            ${escapeHTML(item.title || "")}
-                        </h4>
-
-                        <p>
-                            ${escapeHTML(
-                                item.description ||
-                                item.summary ||
-                                ""
-                            )}
-                        </p>
-
-                    </article>
-                `;
-
-            }).join("");
-    }
-
-
-    /* =========================
-       ARTICLES
-    ========================= */
-
-    function renderArticles() {
-
-        const grid =
-            document.getElementById(
-                "articlesGrid"
-            );
-
-
-        if (!allArticles.length) {
-
-            grid.innerHTML = `
-                <div class="empty">
-                    هنوز مقاله‌ای ثبت نشده است.
-                </div>
-            `;
-
-            return;
-        }
-
-
-        grid.innerHTML =
-            allArticles.map(article => {
-
-                return `
-                    <a
-                        class="article-card"
-                        href="article.html?id=${encodeURIComponent(article.id)}"
-                    >
-
-                        <div class="article-image">
-
-                            <img
-                                src="${escapeHTML(article.image || "")}"
-                                alt="${escapeHTML(article.title || "")}"
-                                loading="lazy"
-                            >
-
-                        </div>
-
-                        <div class="article-body">
-
-                            <div class="article-meta-top">
-
-                                <span class="article-category">
-                                    ${escapeHTML(article.category || "خبر")}
-                                </span>
-
-                                <span class="article-game">
-                                    ${escapeHTML(article.gameName || "")}
-                                </span>
-
-                            </div>
-
-                            <h3>
-                                ${escapeHTML(article.title || "")}
-                            </h3>
-
-                            <p>
-                                ${escapeHTML(article.description || "")}
-                            </p>
-
-                            <div class="article-footer">
-
-                                <span>
-                                    ${escapeHTML(article.time || "")}
-                                </span>
-
-                                <span class="article-read">
-                                    ادامه
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </a>
-                `;
-
-            }).join("");
-    }
-
-
-    /* =========================
-       MOBILE MENU
-    ========================= */
-
-    function setupMobileMenu() {
-
-        const button =
-            document.getElementById(
-                "mobileMenu"
-            );
-
-        const nav =
-            document.getElementById(
-                "mainNav"
-            );
-
-
-        button.addEventListener(
-            "click",
-            function() {
-
-                const open =
-                    nav.style.display === "flex";
-
-
-                if (open) {
-
-                    nav.style.display =
-                        "none";
-
-                } else {
-
-                    nav.style.display =
-                        "flex";
-
-                }
-
-            }
-        );
-
-
-        nav.querySelectorAll("a")
-            .forEach(link => {
-
-                link.addEventListener(
-                    "click",
-                    function() {
-
-                        if (
-                            window.innerWidth <= 650
-                        ) {
-
-                            nav.style.display =
-                                "none";
-
-                        }
-
-                    }
-                );
-
-            });
-    }
-
-
-    /* =========================
-       INIT
-    ========================= */
-
-    async function init() {
-
-        try {
-
-            const [
-                gamesData,
-                newsData,
-                eventsData,
-                articlesData
-            ] = await Promise.all([
-
-                loadJSON(PATHS.games),
-                loadJSON(PATHS.news),
-                loadJSON(PATHS.events),
-                loadJSON(PATHS.articles)
-
-            ]);
-
-
-            allGames =
-                toArray(
-                    gamesData,
-                    "games"
-                );
-
-
-            allNews =
-                toArray(
-                    newsData,
-                    "news"
-                );
-
-
-            allEvents =
-                toArray(
-                    eventsData,
-                    "events"
-                );
-
-
-            allArticles =
-                toArray(
-                    articlesData,
-                    "articles"
-                );
-
-
-            selectedGameId =
-                allGames.length
-                    ? String(allGames[0].id)
-                    : null;
-
-
-            renderSlides();
-            renderGames();
-            renderGameFeed();
-            renderArticles();
-
-            setupSliderTouch();
-            setupMobileMenu();
-
-
-            /*
-                برای اطمینان از درست شدن اندازه
-                در Portrait Android
-            */
-
-            setTimeout(() => {
-
-                updateSliderWidth();
-                moveSlider(false);
-
-            }, 150);
-
-
-        } catch (error) {
-
-            console.error(error);
-
-
-            document.getElementById(
-                "gamesList"
-            ).innerHTML = `
-                <div class="empty">
-                    خطا در بارگذاری اطلاعات بازی‌ها.
-                </div>
-            `;
-
-
-            document.getElementById(
-                "feed"
-            ).innerHTML = `
-                <div class="empty">
-                    خطا در بارگذاری اخبار و اتفاقات.
-                </div>
-            `;
-
-
-            document.getElementById(
-                "articlesGrid"
-            ).innerHTML = `
-                <div class="empty">
-                    خطا در بارگذاری اخبار.
-                </div>
-            `;
-
-        }
-
-    }
-
-
-    /*
-        مهم:
-        فقط یک بار init اجرا می‌شود.
-    */
-
-    if (
-        document.readyState === "loading"
-    ) {
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            init,
-            {
-                once: true
-            }
-        );
-
-    } else {
-
-        init();
-
-    }
+renderGames();
 
 </script>
 
